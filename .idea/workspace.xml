@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="" />
+    <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,19 +57,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -93,27 +82,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="457" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1614000778995">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="457" y="133" key="#com.intellij.ide.util.MemberChooser/0.25.1440.807@0.25.1440.807" timestamp="1614000778995" />
-    <state x="229" y="64" key="SettingsEditor" timestamp="1613997980140">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="229" y="64" key="SettingsEditor/0.25.1440.807@0.25.1440.807" timestamp="1613997980140" />
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1613998305840">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.25.1440.807@0.25.1440.807" timestamp="1613998305840" />
-    <state x="421" y="183" width="597" height="490" key="find.popup" timestamp="1613999016111">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="421" y="183" width="597" height="490" key="find.popup/0.25.1440.807@0.25.1440.807" timestamp="1613999016111" />
-    <state x="355" y="48" key="new project wizard" timestamp="1613997868669">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="355" y="48" key="new project wizard/0.25.1440.807@0.25.1440.807" timestamp="1613997868669" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -11,34 +11,37 @@ public class Trip {
     private final Station to;
     private final int points;
 
-    public Trip (Station from, Station to, int points){
-        Preconditions.checkArgument(points>0);
+    public Trip(Station from, Station to, int points) {
+        Preconditions.checkArgument(points > 0);
         this.from = Objects.requireNonNull(from);
         this.to = Objects.requireNonNull(to);
-        this.points=points;
-
-    }
-    public static List<Trip> all(List<Station> from, List<Station> to, int points){
-        Preconditions.checkArgument((!(from.isEmpty()&&to.isEmpty()))&&points>0);
-      List<Trip> allList = new ArrayList<Trip>();
-
-
+        this.points = points;
 
     }
 
-    public Station from(){
+    public static List<Trip> all(List<Station> from, List<Station> to, int points) {
+        Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
+        List<Trip> allList = new ArrayList<Trip>();
+
+        return null; // TODO COMPLETE
+    }
+
+    public Station from() {
         return from;
     }
-    public Station to(){
+
+    public Station to() {
         return to;
     }
-    public int points(){
+
+    public int points() {
         return points;
     }
-    public int points(StationConnectivity connectivity){
-        if (connectivity.connected(from,to)){
+
+    public int points(StationConnectivity connectivity) {
+        if (connectivity.connected(from, to)) {
             return points;
-        }else return -points;
+        } else return -points;
 
     }
 }

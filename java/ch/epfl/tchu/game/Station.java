@@ -5,10 +5,11 @@ import ch.epfl.tchu.Preconditions;
 public class Station {
     private int id;
     private String name;
-    public Station(int id, String name){
+
+    public Station(int id, String name) {
         Preconditions.checkArgument(id >= 0);
-        this.id=id;
-        this.name=name;
+        this.id = id;
+        this.name = name;
 
     }
 
@@ -19,8 +20,9 @@ public class Station {
     public String getName() {
         return name;
     }
-@Override
-    public String toString(){
+
+    @Override
+    public String toString() {
         return name;
     }
 }
