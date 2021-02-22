@@ -19,7 +19,9 @@ public class Trip {
 
     }
     public static List<Trip> all(List<Station> from, List<Station> to, int points){
+        Preconditions.checkArgument((!(from.isEmpty()&&to.isEmpty()))&&points>0);
       List<Trip> allList = new ArrayList<Trip>();
+
 
 
     }
