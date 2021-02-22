@@ -28,6 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -45,6 +47,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
@@ -68,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613997850974</updated>
-      <workItem from="1613997852209" duration="430000" />
+      <workItem from="1613997852209" duration="4492000" />
     </task>
     <servers />
   </component>
@@ -87,10 +95,22 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="457" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1614000778995">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state x="457" y="133" key="#com.intellij.ide.util.MemberChooser/0.25.1440.807@0.25.1440.807" timestamp="1614000778995" />
     <state x="229" y="64" key="SettingsEditor" timestamp="1613997980140">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
     <state x="229" y="64" key="SettingsEditor/0.25.1440.807@0.25.1440.807" timestamp="1613997980140" />
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1613998305840">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.25.1440.807@0.25.1440.807" timestamp="1613998305840" />
+    <state x="421" y="183" width="597" height="490" key="find.popup" timestamp="1613999016111">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state x="421" y="183" width="597" height="490" key="find.popup/0.25.1440.807@0.25.1440.807" timestamp="1613999016111" />
     <state x="355" y="48" key="new project wizard" timestamp="1613997868669">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
