@@ -3,8 +3,8 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 
 public class Station {
-    private int id;
-    private String name;
+    private final int id;
+    private final String name;
 
     public Station(int id, String name) {
         Preconditions.checkArgument(id >= 0);
@@ -13,11 +13,11 @@ public class Station {
 
     }
 
-    public int getId() {
+    public int id() {
         return id;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 

@@ -22,8 +22,13 @@ public class Trip {
     public static List<Trip> all(List<Station> from, List<Station> to, int points) {
         Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
         List<Trip> allList = new ArrayList<Trip>();
+        for(Station stationFrom : from) {
+            for (Station stationTo : to) {
+                allList.add(new Trip(stationFrom, stationTo, points));
+            }
 
-        return null; // TODO COMPLETE
+        }
+        return allList;
     }
 
     public Station from() {
