@@ -20,16 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EPFL-BA2-Project-1-tCHu-Game.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EPFL-BA2-Project-1-tCHu-Game.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Trip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/PreconditionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/PreconditionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/ColorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/ColorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -71,9 +76,12 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TicketTest">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -85,6 +93,91 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.ColorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.StationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TicketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TicketTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TicketTest.textIsCorrectForSimpleTicket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TicketTest" />
+      <option name="METHOD_NAME" value="textIsCorrectForSimpleTicket" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TripTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TripTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TicketTest" />
+        <item itemvalue="JUnit.TicketTest.textIsCorrectForSimpleTicket" />
+        <item itemvalue="JUnit.TripTest" />
+        <item itemvalue="JUnit.StationTest" />
+        <item itemvalue="JUnit.ColorTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -96,7 +189,7 @@
       <updated>1613997850974</updated>
       <workItem from="1613997852209" duration="4492000" />
       <workItem from="1614111641550" duration="105000" />
-      <workItem from="1614111769776" duration="6191000" />
+      <workItem from="1614111769776" duration="7151000" />
     </task>
     <servers />
   </component>
@@ -114,5 +207,22 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$ColorTest.ic" NAME="ColorTest Coverage Results" MODIFIED="1614118576083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ch.epfl.tchu.game.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$TripTest.ic" NAME="TripTest Coverage Results" MODIFIED="1614118705079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ch.epfl.tchu.game.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$TicketTest.ic" NAME="TicketTest Coverage Results" MODIFIED="1614118877509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ch.epfl.tchu.game.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$StationTest.ic" NAME="StationTest Coverage Results" MODIFIED="1614118653112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ch.epfl.tchu.game.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$TicketTest_textIsCorrectForSimpleTicket.ic" NAME="TicketTest.textIsCorrectForSimpleTicket Coverage Results" MODIFIED="1614118785053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ch.epfl.tchu.game.*</FILTER>
+    </SUITE>
   </component>
 </project>

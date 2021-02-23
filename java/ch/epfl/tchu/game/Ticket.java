@@ -38,17 +38,18 @@ public final class Ticket implements Comparable<Ticket> {
             stationTo.add(String.format("%s (%s)", trip.to().name(), trip.points()));
 
         }
-        if(stationTo.size()==0){
-         return stationForm + " - "+ String.join(" ,", stationTo);
-        }else{
-         return stationForm + " - "+"{"+String.join(" ,", stationTo)+"}";
-         }
+        if (stationTo.size() == 1) {
+            return stationForm + " - " + String.join(", ", stationTo);
+        } else {
+            return stationForm + " - " + "{" + String.join(", ", stationTo) + "}";
+        }
 
     }
 
 
     int points(StationConnectivity connectivity) {
 
+        return 0; //TODO COMPLETE
     }
 
 

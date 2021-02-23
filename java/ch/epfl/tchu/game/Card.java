@@ -7,7 +7,7 @@ public enum Card {
 
     private Color color;
     public final static List<Card> ALL = List.of(values());
-    public final static int COUNT = ALL.size();
+    public final static int count = ALL.size();
     public final static List<Card> CARS = ALL.subList(0, 8);
 
     private Card(Color color) {
@@ -37,5 +37,9 @@ public enum Card {
                 return LOCOMOTIVE;
 
         }
+    }
+
+    public Color color() {
+        return color;
     }
 }
