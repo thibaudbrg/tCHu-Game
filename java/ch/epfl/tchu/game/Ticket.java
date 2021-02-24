@@ -72,14 +72,21 @@ public final class Ticket implements Comparable<Ticket> {
 
 
     int points(StationConnectivity connectivity) {
-
-        return 0; //TODO COMPLETE
+        int maxPoint = 0;
+        int minPoint = Integer.MAX_VALUE;
+        for (Trip trip : trips) {
+            if (connectivity.connected(stationForm, trip.to())) {
+                maxPoint = Integer.max(maxPoint,trip.points());
+            }
+           minPoint= Integer.min(minPoint,trip.points());
+        }
+        if (maxPoint == 0) {
+            return -minPoint;
+        } else return maxPoint;
     }
 
 
     /**
-     *
-     *
      * @param that
      * @return
      */
