@@ -1,19 +1,20 @@
 package ch.epfl.tchu;
 
 /**
- * La description de la classe
+ * Class that verifies certain conditions for the good of the execution of certain methods
  *
- * @author Decotignie Matthieu
+ * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
 public final class Preconditions {
-    private Preconditions() {
-    }
+
+    private Preconditions() {}
 
     /**
-     * La description de la méthode
+     * Throws an exception if the given parameter is false
      *
-     * @param shouldBeTrue
+     * @param shouldBeTrue (boolean) parameter to test
+     * @throws IllegalArgumentException
      */
     public static void checkArgument(boolean shouldBeTrue) {
         if (!shouldBeTrue) {

@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * La description de la classe
+ * Represents a ticket
  *
- * @author Decotignie Matthieu
+ * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
 public final class Ticket implements Comparable<Ticket> {
@@ -17,9 +17,9 @@ public final class Ticket implements Comparable<Ticket> {
     private final Station stationForm;
 
     /**
-     * La description du constructeur
+     * Built a ticket
      *
-     * @param trips
+     * @param trips (Trip) the journey of the ticket
      */
     Ticket(List<Trip> trips) {
         Preconditions.checkArgument(!trips.isEmpty());
@@ -36,11 +36,11 @@ public final class Ticket implements Comparable<Ticket> {
 
 
     /**
-     * La description du cosntructeur
+     * Constructor calling the previous Constructor
      *
-     * @param from
-     * @param to
-     * @param points
+     * @param from (Station) Departure station
+     * @param to (Station) Arrival station
+     * @param points (int) number of points given to the trip
      */
     Ticket(Station from, Station to, int points) {
         this((List.of(new Trip(from, to, points))));
@@ -51,10 +51,11 @@ public final class Ticket implements Comparable<Ticket> {
         return finalText;
     }
 
+
     /**
-     * La description de la méthode
+     * Compute the text corresponding to the ticket
      *
-     * @return
+     * @return (String) the text corresponding to the ticket
      */
     private String computeText() {
         TreeSet<String> stationTo = new TreeSet<>();
@@ -70,7 +71,12 @@ public final class Ticket implements Comparable<Ticket> {
 
     }
 
-
+    /**
+     * Connectivity of the player holding the corresponding ticket
+     *
+     * @param connectivity (StationConnectivity) the connectivity given is that of the player holding the ticket
+     * @return (int) returns the number of points the ticket is worth
+     */
     int points(StationConnectivity connectivity) {
         int maxPoint = 0;
         int minPoint = Integer.MAX_VALUE;
@@ -87,8 +93,10 @@ public final class Ticket implements Comparable<Ticket> {
 
 
     /**
-     * @param that
-     * @return
+     * Compares the this and that banknotes in alphabetical order of their textual representation
+     *
+     * @param that (Ticket) the second ticket
+     * @return (int) an integer depending on the lexicographic ordering between both ticket names
      */
     @Override
     public int compareTo(Ticket that) {

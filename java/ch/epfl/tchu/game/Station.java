@@ -3,9 +3,9 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 
 /**
- * La description de la classe
+ * Represents a train station
  *
- * @author Decotignie Matthieu
+ * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
 public class Station {
@@ -13,10 +13,10 @@ public class Station {
     private final String name;
 
     /**
-     * La description du constructeur
+     * Built a train station
      *
-     * @param id
-     * @param name
+     * @param id   (int) the id of the train station
+     * @param name (String) the name of the train station
      */
     public Station(int id, String name) {
         Preconditions.checkArgument(id >= 0);

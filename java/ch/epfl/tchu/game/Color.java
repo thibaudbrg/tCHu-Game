@@ -3,9 +3,9 @@ package ch.epfl.tchu.game;
 import java.util.List;
 
 /**
- * La description de la classe
+ * Represents the eight colors used in the game to color the wagon and road maps
  *
- * @author Decotignie Matthieu
+ * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
 public enum Color {

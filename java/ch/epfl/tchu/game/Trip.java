@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * La description de la classe
+ * Represents a Trip
  *
- * @author Decotignie Matthieu
+ * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
 public class Trip {
@@ -18,11 +18,11 @@ public class Trip {
     private final int points;
 
     /**
-     * La description du constructeur
+     * Build a Trip
      *
-     * @param from
-     * @param to
-     * @param points
+     * @param from (Station) departure station
+     * @param to (Station) arrival station
+     * @param points (int) number of points given to the trip
      */
     public Trip(Station from, Station to, int points) {
         Preconditions.checkArgument(points > 0);
@@ -33,17 +33,18 @@ public class Trip {
     }
 
     /**
-     * La descritiption de la méthode
+     * Create a list of all possible trip between a list of departure station and arrival
+     * station and give a number of points to the trip
      *
-     * @param from
-     * @param to
-     * @param points
+     * @param from   (Station) departure station
+     * @param to     (Station) arrival station
+     * @param points (int) number of points given to the trip
      * @return
      */
     public static List<Trip> all(List<Station> from, List<Station> to, int points) {
         Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
         List<Trip> allList = new ArrayList<Trip>();
-        for(Station stationFrom : from) {
+        for (Station stationFrom : from) {
             for (Station stationTo : to) {
                 allList.add(new Trip(stationFrom, stationTo, points));
             }
@@ -51,7 +52,6 @@ public class Trip {
         }
         return allList;
     }
-
 
     public Station from() {
         return from;
@@ -66,15 +66,16 @@ public class Trip {
     }
 
     /**
-     * La description de la méthode
+     * Returns the number of points on the route if the connected method  returns true when applied
+     * to the two stations on the route - meaning that they are well connected -, and the negation
+     * of this number of points otherwise
      *
      * @param connectivity
-     * @return
+     * @return (int) Returns the number of points in the path for the given connectivity
      */
     public int points(StationConnectivity connectivity) {
         if (connectivity.connected(from, to)) {
             return points;
         } else return -points;
-
     }
 }

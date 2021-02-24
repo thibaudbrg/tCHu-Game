@@ -3,9 +3,10 @@ package ch.epfl.tchu.game;
 import java.util.List;
 
 /**
- * La description de la classe
+ * Represents the different types of cards in the game,
+ * i.e. the eight types of wagon cards (one per suit), and the type of locomotive card
  *
- * @author Decotignie Matthieu
+ * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
 public enum Card {
@@ -17,19 +18,19 @@ public enum Card {
     public final static List<Card> CARS = ALL.subList(0, 8);
 
     /**
-     * La escription du constructeur
+     * Constructor which initializes the parameters
      *
-     * @param color
+     * @param color the color
      */
     Card(Color color) {
         this.color = color;
     }
 
     /**
-     * La description de la méthode
+     * Return the card corresponding to the input color
      *
-     * @param color
-     * @return
+     * @param color (Color) the color
+     * @return (Card) the corresponding card
      */
     public static Card of(Color color) {
         switch (color) {

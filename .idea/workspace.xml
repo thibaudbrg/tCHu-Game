@@ -21,27 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/Preconditions.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/Preconditions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Color.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Color.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Station.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationConnectivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Ticket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/PreconditionsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/PreconditionsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/ColorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/ColorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$FullConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$FullConnectivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestConnectivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$FullConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$FullConnectivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$NoConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$NoConnectivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/test/TestRandomizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/test/TestRandomizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/Preconditions.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/Preconditions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/StationConnectivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/StationConnectivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ch/epfl/tchu/game/Trip.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,9 +78,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="JUnit.TicketTest">
@@ -210,7 +196,7 @@
       <workItem from="1614111769776" duration="7499000" />
       <workItem from="1614168528647" duration="45000" />
       <workItem from="1614188949165" duration="2159000" />
-      <workItem from="1614195446447" duration="2581000" />
+      <workItem from="1614195446447" duration="4682000" />
     </task>
     <servers />
   </component>
@@ -230,25 +216,29 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom" timestamp="1614197593563">
+    <state x="208" y="25" key="#Project_Structure" timestamp="1614200317339">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614197593563" />
+    <state x="208" y="25" key="#Project_Structure/0.25.1440.807@0.25.1440.807" timestamp="1614200317339" />
+    <state width="1398" height="205" key="GridCell.Tab.0.bottom" timestamp="1614198314387">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614198314387" />
     <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1614196223967" />
-    <state width="1398" height="205" key="GridCell.Tab.0.center" timestamp="1614197593562">
+    <state width="1398" height="205" key="GridCell.Tab.0.center" timestamp="1614198314385">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1614197593562" />
+    <state width="1398" height="205" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1614198314385" />
     <state width="1398" height="205" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1614196223966" />
-    <state width="1398" height="205" key="GridCell.Tab.0.left" timestamp="1614197593561">
+    <state width="1398" height="205" key="GridCell.Tab.0.left" timestamp="1614198314382">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1614197593561" />
+    <state width="1398" height="205" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1614198314382" />
     <state width="1398" height="205" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1614196223965" />
-    <state width="1398" height="205" key="GridCell.Tab.0.right" timestamp="1614197593563">
+    <state width="1398" height="205" key="GridCell.Tab.0.right" timestamp="1614198314386">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1614197593563" />
+    <state width="1398" height="205" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1614198314386" />
     <state width="1398" height="205" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1614196223967" />
     <state x="229" y="64" key="SettingsEditor" timestamp="1614197290790">
       <screen x="0" y="25" width="1440" height="807" />
