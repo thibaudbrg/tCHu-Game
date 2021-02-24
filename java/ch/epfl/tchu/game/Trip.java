@@ -6,11 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * La description de la classe
+ *
+ * @author Decotignie Matthieu
+ * @author Bourgeois Thibaud (324604)
+ */
 public class Trip {
     private final Station from;
     private final Station to;
     private final int points;
 
+    /**
+     * La description du constructeur
+     *
+     * @param from
+     * @param to
+     * @param points
+     */
     public Trip(Station from, Station to, int points) {
         Preconditions.checkArgument(points > 0);
         this.from = Objects.requireNonNull(from);
@@ -19,6 +32,14 @@ public class Trip {
 
     }
 
+    /**
+     * La descritiption de la méthode
+     *
+     * @param from
+     * @param to
+     * @param points
+     * @return
+     */
     public static List<Trip> all(List<Station> from, List<Station> to, int points) {
         Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
         List<Trip> allList = new ArrayList<Trip>();
@@ -30,6 +51,7 @@ public class Trip {
         }
         return allList;
     }
+
 
     public Station from() {
         return from;
@@ -43,6 +65,12 @@ public class Trip {
         return points;
     }
 
+    /**
+     * La description de la méthode
+     *
+     * @param connectivity
+     * @return
+     */
     public int points(StationConnectivity connectivity) {
         if (connectivity.connected(from, to)) {
             return points;

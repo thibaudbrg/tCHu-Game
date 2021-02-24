@@ -2,6 +2,12 @@ package ch.epfl.tchu.game;
 
 import java.util.List;
 
+/**
+ * La description de la classe
+ *
+ * @author Decotignie Matthieu
+ * @author Bourgeois Thibaud (324604)
+ */
 public enum Color {
     BLACK, VIOLET, BLUE, GREEN, YELLOW, ORANGE, RED, WHITE;
 

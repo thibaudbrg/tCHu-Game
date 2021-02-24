@@ -2,6 +2,12 @@ package ch.epfl.tchu.game;
 
 import java.util.List;
 
+/**
+ * La description de la classe
+ *
+ * @author Decotignie Matthieu
+ * @author Bourgeois Thibaud (324604)
+ */
 public enum Card {
     BLACK(Color.BLACK), VIOLET(Color.VIOLET), BLUE(Color.BLUE), GREEN(Color.GREEN), YELLOW(Color.YELLOW), ORANGE(Color.ORANGE), RED(Color.RED), WHITE(Color.WHITE), LOCOMOTIVE(null);
 
@@ -10,11 +16,21 @@ public enum Card {
     public final static int count = ALL.size();
     public final static List<Card> CARS = ALL.subList(0, 8);
 
-    private Card(Color color) {
+    /**
+     * La escription du constructeur
+     *
+     * @param color
+     */
+    Card(Color color) {
         this.color = color;
     }
 
-
+    /**
+     * La description de la méthode
+     *
+     * @param color
+     * @return
+     */
     public static Card of(Color color) {
         switch (color) {
             case RED:
