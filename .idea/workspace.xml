@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="" />
+    <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +77,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="JUnit.TicketTest">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
@@ -176,6 +189,8 @@
       <workItem from="1614188949165" duration="2159000" />
       <workItem from="1614195446447" duration="4682000" />
       <workItem from="1614200479658" duration="22000" />
+      <workItem from="1614200519499" duration="730000" />
+      <workItem from="1614203043642" duration="609000" />
     </task>
     <servers />
   </component>
@@ -193,37 +208,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="208" y="25" key="#Project_Structure" timestamp="1614200317339">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="208" y="25" key="#Project_Structure/0.25.1440.807@0.25.1440.807" timestamp="1614200317339" />
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom" timestamp="1614198314387">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614198314387" />
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1614196223967" />
-    <state width="1398" height="205" key="GridCell.Tab.0.center" timestamp="1614198314385">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1614198314385" />
-    <state width="1398" height="205" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1614196223966" />
-    <state width="1398" height="205" key="GridCell.Tab.0.left" timestamp="1614198314382">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1614198314382" />
-    <state width="1398" height="205" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1614196223965" />
-    <state width="1398" height="205" key="GridCell.Tab.0.right" timestamp="1614198314386">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1614198314386" />
-    <state width="1398" height="205" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1614196223967" />
-    <state x="229" y="64" key="SettingsEditor" timestamp="1614197290790">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="229" y="64" key="SettingsEditor/0.25.1440.807@0.25.1440.807" timestamp="1614197290790" />
-    <state x="229" y="64" key="SettingsEditor/0.25.1440.809@0.25.1440.809" timestamp="1614196222255" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$ColorTest.ic" NAME="ColorTest Coverage Results" MODIFIED="1614118576083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
