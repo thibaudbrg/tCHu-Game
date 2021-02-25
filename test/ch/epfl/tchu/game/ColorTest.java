@@ -24,6 +24,6 @@ class ColorTest {
 
     @Test
     void colorCountIsDefinedCorrectly() {
-        assertEquals(8, count);
+        assertEquals(8, COUNT);
     }
 }

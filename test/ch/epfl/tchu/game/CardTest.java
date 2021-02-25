@@ -24,7 +24,7 @@ class CardTest {
 
     @Test
     void cardCountIsDefinedCorrectly() {
-        assertEquals(9, count);
+        assertEquals(9, COUNT);
     }
 
     @Test

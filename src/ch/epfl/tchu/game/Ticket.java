@@ -21,7 +21,7 @@ public final class Ticket implements Comparable<Ticket> {
      *
      * @param trips (Trip) the journey of the ticket
      */
-    Ticket(List<Trip> trips) {
+    public Ticket(List<Trip> trips) {
         Preconditions.checkArgument(!trips.isEmpty());
 
         for (Trip trip : trips) {
@@ -42,7 +42,7 @@ public final class Ticket implements Comparable<Ticket> {
      * @param to (Station) Arrival station
      * @param points (int) number of points given to the trip
      */
-    Ticket(Station from, Station to, int points) {
+    public Ticket(Station from, Station to, int points) {
         this((List.of(new Trip(from, to, points))));
 
     }
@@ -77,7 +77,7 @@ public final class Ticket implements Comparable<Ticket> {
      * @param connectivity (StationConnectivity) the connectivity given is that of the player holding the ticket
      * @return (int) returns the number of points the ticket is worth
      */
-    int points(StationConnectivity connectivity) {
+    public int points(StationConnectivity connectivity) {
         int maxPoint = 0;
         int minPoint = Integer.MAX_VALUE;
         for (Trip trip : trips) {
