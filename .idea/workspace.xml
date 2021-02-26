@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/SortedBag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/ChMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/CardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/CardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/ColorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/ColorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,17 +84,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="JUnit.TicketTest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
@@ -175,9 +162,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TicketTest" />
-        <item itemvalue="JUnit.TicketTest.textIsCorrectForSimpleTicket" />
         <item itemvalue="JUnit.TripTest" />
+        <item itemvalue="JUnit.TicketTest.textIsCorrectForSimpleTicket" />
+        <item itemvalue="JUnit.TicketTest" />
         <item itemvalue="JUnit.StationTest" />
         <item itemvalue="JUnit.ColorTest" />
       </list>
@@ -201,6 +188,7 @@
       <workItem from="1614200519499" duration="730000" />
       <workItem from="1614203043642" duration="609000" />
       <workItem from="1614241903616" duration="640000" />
+      <workItem from="1614340955791" duration="99000" />
     </task>
     <servers />
   </component>
