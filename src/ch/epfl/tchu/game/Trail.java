@@ -1,64 +1,74 @@
 package ch.epfl.tchu.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class Trail {
-    private final int length;
+    private final List<Route> routes;
     private final Station station1;
     private final Station station2;
+    private int length = 0;
 
-
-    private Trail(int length, Station station1, Station station2) {
-        this.length = length;
-        this.station1 = station1;
-        this.station2 = station2;
+    private Trail(List<Route> routes) {
+        this.routes = routes;
+        for (Route route : routes) length = length + route.length();
+        // the starting station (departure of the first road)
+        station1 = routes.get(0).station1();
+        // the arrival station (arrival of the last road)
+        station2 = routes.get(routes.size()).station2();
     }
-
-    // Constructeur de copie
-    Trail(Trail t) {
-        length = t.length;
-        station1 = t.station1;
-        station2 = t.station2;
-    }
-
-    /*
-
-    CA CASSE LA TETE
 
 
     public static Trail longest(List<Route> routes) {
         if (routes.isEmpty()) {
-            return new Trail(0, null, null);
+            return new Trail(null);
         } else {
-            int indexMax = 0;
-            for(int i = 0; i < routes.size(); ++i) {
-                if (routes.get(i).length() > routes.get(indexMax).length()) {
-                    indexMax = i;
+            List<Trail> cs = getSingleTrailsPaths(routes);
+            while (cs != null) {
+                List<Trail> emptyTrailList = null;
+                for (Trail trail : cs) {
+
                 }
             }
-            return routes.get(indexMax);
         }
     }
-*/
+
+    // Liste des chemins possibles composés d'une seule route
+
+    //TODO : USINE A GAZ TROP COMPLIQUEE A REVOIR, TROP D'OBJETS CREES
+    private static List<Trail> getSingleTrailsPaths(List<Route> routes) {
+        ArrayList<Trail> littleTrails = new ArrayList<>();
+        for (Route route : routes) {
+            List<Route> r = new ArrayList<Route>();
+            r.add(route);
+            Trail t = new Trail(r);
+            littleTrails.add(t);
+        }
+        return littleTrails;
+    }
 
     public int length() {
         return length;
     }
 
     public Station station1() {
-        if(this.length() == 0) return null;
+        if (this.length() == 0) return null;
         else return station1;
     }
 
     public Station station2() {
-        if(this.length() == 0) return null;
+        if (this.length() == 0) return null;
         return station2;
     }
 
 
     @Override
     public String toString() {
-        return station1 + " - " + String.join(" - ", ENSEMBLE DES STATIONS INTERMEDIAIRES) +
-                " - " +  station2 + " (" + length + ") ";
+        ArrayList<String> listStation = new ArrayList();
+        for (Route route : routes) {
+            listStation.add(route.station1().toString());
+            listStation.add(route.station2().toString());
+        }
+        return String.join(" - ", listStation) + " " + (this.length());
     }
 }
