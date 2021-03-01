@@ -20,10 +20,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/RouteTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/TrailTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/Preconditions.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/Preconditions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Color.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Color.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Station.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationConnectivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Ticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/PreconditionsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/PreconditionsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/ColorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/ColorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$FullConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$FullConnectivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestConnectivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest$TestMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TicketTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$FullConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$FullConnectivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$NoConnectivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest$NoConnectivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TripTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" afterDir="false" />
     </list>
-    <list id="0e3a1664-8a32-4926-ad1c-24220e6e072b" name="Changes by matthieudecotignie" comment="" />
+    <list id="0e3a1664-8a32-4926-ad1c-24220e6e072b" name="Changes by matthieudecotignie" comment="">
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +92,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -82,23 +106,24 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="JUnit.TicketTest">
-    <configuration name="ColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.ColorTest" />
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ch.epfl.tchu.game" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RouteTest.additionalClaimCardsCountFailsWithNot3Card2">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RouteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -107,13 +132,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.StationTest" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TicketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RouteTest.additionalClaimCardsCountFailsWithNot3Card2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -122,29 +147,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TicketTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TicketTest.textIsCorrectForSimpleTicket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TicketTest" />
-      <option name="METHOD_NAME" value="textIsCorrectForSimpleTicket" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="METHOD_NAME" value="additionalClaimCardsCountFailsWithNot3Card2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TripTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RouteTest.additionalClaimCardsCountFailsWithoutTunnel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -153,19 +163,52 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TripTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="METHOD_NAME" value="additionalClaimCardsCountFailsWithoutTunnel" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RouteTest.additionalClaimCardsCountWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="METHOD_NAME" value="additionalClaimCardsCountWorks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RouteTest.testPossibleClaimWithNullColorRoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="METHOD_NAME" value="testPossibleClaimWithNullColorRoad" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TripTest" />
-        <item itemvalue="JUnit.TicketTest.textIsCorrectForSimpleTicket" />
-        <item itemvalue="JUnit.TicketTest" />
-        <item itemvalue="JUnit.StationTest" />
-        <item itemvalue="JUnit.ColorTest" />
+        <item itemvalue="JUnit.RouteTest" />
+        <item itemvalue="JUnit.RouteTest.additionalClaimCardsCountFailsWithNot3Card2" />
+        <item itemvalue="JUnit.RouteTest.testPossibleClaimWithNullColorRoad" />
+        <item itemvalue="JUnit.RouteTest.additionalClaimCardsCountWorks" />
+        <item itemvalue="JUnit.RouteTest.additionalClaimCardsCountFailsWithoutTunnel" />
       </list>
     </recent_temporary>
   </component>
@@ -193,6 +236,8 @@
       <workItem from="1614347137487" duration="450000" />
       <workItem from="1614347623031" duration="5690000" />
       <workItem from="1614531205215" duration="4510000" />
+      <workItem from="1614601522026" duration="34000" />
+      <workItem from="1614601716848" duration="12662000" />
     </task>
     <servers />
   </component>
@@ -213,6 +258,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/RouteTest.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$ColorTest.ic" NAME="ColorTest Coverage Results" MODIFIED="1614118576083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

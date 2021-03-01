@@ -6,7 +6,16 @@ import ch.epfl.tchu.SortedBag;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a Route
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public final class Route {
+    /**
+     * Enum of Level
+     */
     public enum Level {
         OVERGROUND, UNDERGROUND;
     }
@@ -18,6 +27,16 @@ public final class Route {
     private final Level level;
     private final Color color;
 
+    /**
+     * Route constructor
+     * @param id route id
+     * @param station1 departure station
+     * @param station2 arrival station
+     * @param length length of the Route
+     * @param level level of the Route
+     * @param color color of the Route
+     * @throws NullPointerException
+     */
     public Route(String id, Station station1, Station station2, int length, Level level, Color color) throws NullPointerException {
         Preconditions.checkArgument((!(station1.name().equals(station2.name()))) &&
                 (length >= Constants.MIN_ROUTE_LENGTH) && (length <= Constants.MAX_ROUTE_LENGTH));
@@ -32,30 +51,58 @@ public final class Route {
         this.color = color;
     }
 
+    /**
+     * Return the id of the route
+     * @return
+     */
     public String id() {
         return id;
     }
 
+    /**
+     *Return the departure station of the route
+     * @return the departure station of the route
+     */
     public Station station1() {
         return station1;
     }
 
+    /**
+     *Return the arrival station of the route
+     * @return the arrival station of the route
+     */
     public Station station2() {
         return station2;
     }
 
+    /**
+     *Return the length of the Route
+     * @return the length of the Route
+     */
     public int length() {
         return length;
     }
 
+    /**
+     *Return the level of the Route
+     * @return the level of the Route
+     */
     public Level level() {
         return level;
     }
 
+    /**
+     * Return the color of the Route
+     * @return the color of the Route
+     */
     public Color color() {
         return color;
     }
 
+    /**
+     * Return a list with the two stations in the order of the constructor
+     * @return a list with the two stations in the order of the constructor
+     */
     public List<Station> stations() {
         List<Station> a = new ArrayList<Station>();
         a.add(station1);
@@ -65,6 +112,11 @@ public final class Route {
 
     }
 
+    /**
+     * Return the station of the Route which is not given
+     * @param station Given station
+     * @return the station of the Route which is not given
+     */
     public Station stationOpposite(Station station) {
         Preconditions.checkArgument(station1.name().equals(station.name()) ||
                 station2.name().equals(station.name()));
@@ -75,10 +127,18 @@ public final class Route {
         }
     }
 
+    /**
+     * Return the number of points which is given when you claim the Route
+     * @return the number of points which is given when you claim the Route
+     */
     public int claimPoints() {
         return Constants.ROUTE_CLAIM_POINTS.get(length);
     }
 
+    /**
+     * Return a list of all possible combination of cards that allow you to claim the Route
+     * @return a list of all possible combination of cards that allow you to claim the Route
+     */
     public List<SortedBag<Card>> possibleClaimCards() {
         List<SortedBag<Card>> possibleClaim = new ArrayList();
         if (color == null) {
@@ -97,13 +157,27 @@ public final class Route {
             possibleClaim.add(cardBuilder.build());
         }
 
-        return possibleClaim; // TODO COMPLETE
+        return possibleClaim;
     }
 
+    /**
+     * Return the number of card you have to play to claim a tunnel
+     * @param claimCards
+     * @param drawnCards
+     * @return the number of card you have to play to claim a tunnel
+     */
     public int additionalClaimCardsCount(SortedBag<Card> claimCards, SortedBag<Card> drawnCards) {
-        Preconditions.checkArgument(level==Level.UNDERGROUND && drawnCards.size()==3);
+        Preconditions.checkArgument(level == Level.UNDERGROUND && drawnCards.size() == 3);
+        int i = 0;
+        Card card = claimCards.get(0);
 
-        return 0; // TODO COMPLETE
+        for (Card card1 : drawnCards) {
+            if (card1.color() == null || card1.color().equals(card.color())) {
+                i++;
+            }
+        }
+
+        return i;
     }
 
 }
