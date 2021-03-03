@@ -24,6 +24,7 @@ public final class Trail {
             }
         }
     }
+
     /**
      * Determines the longest Trail of the network made up of the given Routes
      *
@@ -32,7 +33,7 @@ public final class Trail {
      */
     public static Trail longest(List<Route> routes) {
         if (routes.isEmpty()) {
-            return new Trail(new ArrayList<Route>() , null, null);
+            return new Trail(new ArrayList<Route>(), null, null);
         } else {
             List<Trail> cs = findCS(routes);
             Trail longestTrail = cs.get(0);
@@ -45,21 +46,22 @@ public final class Trail {
                     List<Route> rs = new ArrayList<>();
 
                     for (Route playerRoad : routes) {
-                        if (!c.routes.contains(playerRoad)&&!c.routes.contains(new Route(playerRoad.id(), playerRoad.station2(), playerRoad.station1(), playerRoad.length(),playerRoad.level(),playerRoad.color())) && playerRoad.station1().id() == c.station2.id()) {
+                        if (!c.routes.contains(playerRoad) && !c.routes.contains(new Route(playerRoad.id(), playerRoad.station2(), playerRoad.station1(), playerRoad.length(), playerRoad.level(), playerRoad.color())) && playerRoad.station1().id() == c.station2.id()) {
                             rs.add(playerRoad);
                         }
 
                     }
                     if (!rs.isEmpty()) {
                         for (Route r : rs) {
-                            c.routes.add(r);
-                            Trail t = new Trail(c.routes, c.station1, r.station2());
+                            List<Route> road = c.routes;
+                            road.add(r);
+                            Trail t = new Trail(road, c.station1, r.station2());
                             emptyCS.add(t);
                         }
 
                     }
-                    cs = emptyCS;
-                }
+
+                } cs = emptyCS;
 
             }
             return longestTrail;
@@ -137,7 +139,7 @@ public final class Trail {
     /**
      * Method that instantiates any Trail for unit tests --Not Definite--.
      *
-     * @param routes (List<Route>) the List of the Trail
+     * @param routes   (List<Route>) the List of the Trail
      * @param station1 (Station) the depart Station of the Trail
      * @param station2 (Station) The arrival Station of the Trail
      * @return the Trail
