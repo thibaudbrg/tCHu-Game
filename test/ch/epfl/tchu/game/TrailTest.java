@@ -51,7 +51,7 @@ public class TrailTest {
         route.add(d);
         route.add(e);
         route.add(f);
-        assertEquals("BJR", Trail.longest(route).toString());
+        assertEquals("Lucerne - Berne - Neuchâtel - Soleure - Berne - Fribourg (13)", Trail.longest(route).toString());
     }
 
     @Test
