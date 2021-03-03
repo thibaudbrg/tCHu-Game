@@ -89,14 +89,16 @@
       <recent name="ch.epfl.tchu.game" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TrailTest.longest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TrailTest.WorksWhenToStringIsCalling">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,8 +183,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TrailTest.longest" />
         <item itemvalue="JUnit.TrailTest.WorksWhenToStringIsCalling" />
+        <item itemvalue="JUnit.TrailTest.longest" />
         <item itemvalue="JUnit.TrailTest" />
         <item itemvalue="JUnit.RouteTest.additionalClaimCardsCountFailsWithNot3Card2" />
         <item itemvalue="JUnit.RouteTest" />
