@@ -25,15 +25,29 @@ public class Station {
 
     }
 
-
+    /**
+     * Return the id of the Station
+     *
+     * @return the id of the Station
+     */
     public int id() {
         return id;
     }
 
+    /**
+     * Return rhe name of the Station
+     *
+     * @return the name of the Station
+     */
     public String name() {
         return name;
     }
 
+    /**
+     * Write the name of the Station
+     *
+     * @return the String of the name of the Station
+     */
     @Override
     public String toString() {
         return name;

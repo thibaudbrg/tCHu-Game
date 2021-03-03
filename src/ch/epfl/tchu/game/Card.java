@@ -56,6 +56,11 @@ public enum Card {
         }
     }
 
+    /**
+     * Return the color of the card
+     *
+     * @return the color of the card
+     */
     public Color color() {
         return color;
     }

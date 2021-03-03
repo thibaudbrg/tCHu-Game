@@ -12,7 +12,7 @@ import java.util.TreeSet;
  * @author Bourgeois Thibaud (324604)
  */
 public final class Ticket implements Comparable<Ticket> {
-    private final String finalText;
+    private final String Text;
     private List<Trip> trips;
     private final Station stationForm;
 
@@ -31,7 +31,7 @@ public final class Ticket implements Comparable<Ticket> {
         }
         this.trips = trips;
         stationForm = trips.get(0).from();
-        finalText = computeText();
+        Text = computeText();
     }
 
 
@@ -47,8 +47,13 @@ public final class Ticket implements Comparable<Ticket> {
 
     }
 
+    /**
+     *  Returns the textual representation of the ticket
+     *
+     * @return the textual representation of the ticket
+     */
     public String text() {
-        return finalText;
+        return Text;
     }
 
 
@@ -70,6 +75,7 @@ public final class Ticket implements Comparable<Ticket> {
         }
 
     }
+
 
     /**
      * Connectivity of the player holding the corresponding ticket
@@ -106,8 +112,13 @@ public final class Ticket implements Comparable<Ticket> {
         return (this.text().compareTo(that.text()));
     }
 
+    /**
+     *  Returns the textual representation of the ticket
+     *
+     * @return the textual representation of the ticket
+     */
     @Override
     public String toString() {
-        return finalText;
+        return Text;
     }
 }

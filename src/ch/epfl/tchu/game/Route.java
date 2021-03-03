@@ -13,6 +13,7 @@ import java.util.List;
  * @author Bourgeois Thibaud (324604)
  */
 public final class Route {
+
     /**
      * Enum of Level
      */
@@ -29,6 +30,7 @@ public final class Route {
 
     /**
      * Route constructor
+     *
      * @param id route id
      * @param station1 departure station
      * @param station2 arrival station
@@ -53,7 +55,8 @@ public final class Route {
 
     /**
      * Return the id of the route
-     * @return
+     *
+     * @return the id of the course
      */
     public String id() {
         return id;
@@ -61,6 +64,7 @@ public final class Route {
 
     /**
      *Return the departure station of the route
+     *
      * @return the departure station of the route
      */
     public Station station1() {
@@ -69,6 +73,7 @@ public final class Route {
 
     /**
      *Return the arrival station of the route
+     *
      * @return the arrival station of the route
      */
     public Station station2() {
@@ -77,6 +82,7 @@ public final class Route {
 
     /**
      *Return the length of the Route
+     *
      * @return the length of the Route
      */
     public int length() {
@@ -85,6 +91,7 @@ public final class Route {
 
     /**
      *Return the level of the Route
+     *
      * @return the level of the Route
      */
     public Level level() {
@@ -93,6 +100,7 @@ public final class Route {
 
     /**
      * Return the color of the Route
+     *
      * @return the color of the Route
      */
     public Color color() {
@@ -101,6 +109,7 @@ public final class Route {
 
     /**
      * Return a list with the two stations in the order of the constructor
+     *
      * @return a list with the two stations in the order of the constructor
      */
     public List<Station> stations() {
@@ -108,12 +117,11 @@ public final class Route {
         a.add(station1);
         a.add(station2);
         return a;
-
-
     }
 
     /**
      * Return the station of the Route which is not given
+     *
      * @param station Given station
      * @return the station of the Route which is not given
      */
@@ -129,6 +137,7 @@ public final class Route {
 
     /**
      * Return the number of points which is given when you claim the Route
+     *
      * @return the number of points which is given when you claim the Route
      */
     public int claimPoints() {
@@ -137,6 +146,7 @@ public final class Route {
 
     /**
      * Return a list of all possible combination of cards that allow you to claim the Route
+     *
      * @return a list of all possible combination of cards that allow you to claim the Route
      */
     public List<SortedBag<Card>> possibleClaimCards() {
@@ -162,6 +172,7 @@ public final class Route {
 
     /**
      * Return the number of card you have to play to claim a tunnel
+     *
      * @param claimCards
      * @param drawnCards
      * @return the number of card you have to play to claim a tunnel
@@ -176,8 +187,6 @@ public final class Route {
                 i++;
             }
         }
-
         return i;
     }
-
 }

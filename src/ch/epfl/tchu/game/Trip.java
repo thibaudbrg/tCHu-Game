@@ -33,7 +33,7 @@ public class Trip {
     }
 
     /**
-     * Create a list of all possible trip between a list of departure station and arrival
+     * Creates a list of all possible trip between a list of departure station and arrival
      * station and give a number of points to the trip
      *
      * @param from   (Station) departure station
@@ -53,25 +53,40 @@ public class Trip {
         return allList;
     }
 
+    /**
+     * Return the departure Station
+     *
+     * @return the departure Station
+     */
     public Station from() {
         return from;
     }
 
+    /**
+     * Return the arrival Station
+     *
+     * @return the arrival Station
+     */
     public Station to() {
         return to;
     }
 
+    /**
+     * Return the number of points given to the trip
+     *
+     * @return the number of points given to the trip
+     */
     public int points() {
         return points;
     }
 
     /**
-     * Returns the number of points on the route if the connected method  returns true when applied
+     * Returns the number of points on the route if the connected method returns true when applied
      * to the two stations on the route - meaning that they are well connected -, and the negation
      * of this number of points otherwise
      *
-     * @param connectivity
-     * @return (int) Returns the number of points in the path for the given connectivity
+     * @param connectivity (StationConnectivity) the connexion
+     * @return (int) The number of points in the path for the given connectivity
      */
     public int points(StationConnectivity connectivity) {
         if (connectivity.connected(from, to)) {
