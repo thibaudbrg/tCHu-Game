@@ -44,25 +44,22 @@ public final class Trail {
                         longestTrail = c;
                     }
                     List<Route> rs = new ArrayList<>();
-
-                    for (Route playerRoad : routes) {
-                        if (!c.routes.contains(playerRoad) && !c.routes.contains(new Route(playerRoad.id(), playerRoad.station2(), playerRoad.station1(), playerRoad.length(), playerRoad.level(), playerRoad.color())) && playerRoad.station1().id() == c.station2.id()) {
-                            rs.add(playerRoad);
+                    for (Route playerRoute : routes) {
+                        if (!c.routes.contains(playerRoute) && (playerRoute.station1().id() == c.station2.id()
+                                || playerRoute.station2().id() == c.station2.id())) {
+                            rs.add(playerRoute);
                         }
-
                     }
                     if (!rs.isEmpty()) {
                         for (Route r : rs) {
-                            List<Route> road =new ArrayList<>(c.routes);
+                            List<Route> road = new ArrayList<>(c.routes);
                             road.add(r);
-                            Trail t = new Trail(road, c.station1, r.station2());
+                            Trail t = new Trail(road, c.station1, r.stationOpposite(c.station2));
                             emptyCS.add(t);
                         }
-
                     }
-
-                } cs = emptyCS;
-
+                }
+                cs = emptyCS;
             }
             return longestTrail;
         }
@@ -88,105 +85,75 @@ public final class Trail {
         return cs;
     }
 
-    /**
-     * Calculates all possible Trails and lists them in a List
-     *
-     * @param routes (Route) All Routes that belong to the player
-     * @return (List < Trail >) List of all possible Trails
-     */
-    private static List<Trail> getAllTrails(List<Route> routes) {
-        List<Trail> cs = findCS(routes);
-        List<Trail> allTrail = findCS((routes));
-        while (!cs.isEmpty()) {
-            ArrayList<Trail> emptyCS = null;
-            for (Trail c : cs) {
-                List<Route> rs = null;
-
-                for (Route playerRoad : routes) {
-                    if (!c.routes.contains(playerRoad) && playerRoad.station1().id() == c.station2.id()) {
-                        rs.add(playerRoad);
-                    }
-
-                }
-                for (Route r : rs) {
-                    c.routes.add(r);
-                    Trail t = new Trail(c.routes, c.station1, r.station2());
-                    emptyCS.add(t);
-                    allTrail.add(t);
-                }
+        /**
+         * Lists all the stations of a trail
+         *
+         * @param trail (Trail) The Trail concerned
+         * @return (List < String >) A list of all the stations of the Trail
+         */
+        public List<String> listStation (Trail trail){
+            ArrayList<String> listStation = new ArrayList();
+            Station opposite = trail.station1;
+            for (Route route : trail.routes) {
+                listStation.add(opposite.toString());
+                opposite = route.stationOpposite(opposite);
 
             }
-            cs = emptyCS;
+            listStation.add(trail.station2().toString());
+            return listStation;
         }
-        return allTrail;
-    }
 
-    /**
-     * Lists all the stations of a trail
-     *
-     * @param trail (Trail) The Trail concerned
-     * @return (List < String >) A list of all the stations of the Trail
-     */
-    public List<String> listStation(Trail trail) {
-        ArrayList<String> listStation = new ArrayList();
-        for (Route route : trail.routes) {
-            listStation.add(route.station1().toString());
+
+        /**
+         * Method that instantiates any Trail for unit tests --Not Definite--.
+         *
+         * @param routes   (List<Route>) the List of the Trail
+         * @param station1 (Station) the depart Station of the Trail
+         * @param station2 (Station) The arrival Station of the Trail
+         * @return the Trail
+         */
+        public static Trail newTrailForTests (List < Route > routes, Station station1, Station station2){
+            return new Trail(routes, station1, station2);
         }
-        listStation.add(trail.station2().toString());
-        return listStation;
+
+
+        /**
+         * Returns the length of the Trail
+         *
+         * @return the length of the Trail
+         */
+        public int length () {
+            return length;
+        }
+
+        /**
+         * Returns the depart Station of the Trail of null if there is any Station
+         *
+         * @return the depart Station of the Trail of null if there is any Station
+         */
+        public Station station1 () {
+            if (this.length() == 0) return null;
+            else return station1;
+        }
+
+        /**
+         * Returns the arrival Station of the Trail of null if there is any Station
+         *
+         * @return the arrival Station of the Trail of null if there is any Station
+         */
+        public Station station2 () {
+            if (this.length() == 0) return null;
+            return station2;
+        }
+
+        /**
+         * Returns the list provided by all Trail stations followed by the length of the Trail.
+         *
+         * @return the list provided by all Trail stations followed by the length of the Trail.
+         */
+        @Override
+        public String toString () {
+            List<String> listStation = listStation(this);
+            return String.join(" - ", listStation) + " " + "(" + (this.length() + ")");
+        }
     }
-
-    /**
-     * Method that instantiates any Trail for unit tests --Not Definite--.
-     *
-     * @param routes   (List<Route>) the List of the Trail
-     * @param station1 (Station) the depart Station of the Trail
-     * @param station2 (Station) The arrival Station of the Trail
-     * @return the Trail
-     */
-    public static Trail newTrailForTests(List<Route> routes, Station station1, Station station2) {
-        return new Trail(routes, station1, station2);
-    }
-
-    /**
-     * Returns the length of the Trail
-     *
-     * @return the length of the Trail
-     */
-    public int length() {
-        return length;
-    }
-
-    /**
-     * Returns the depart Station of the Trail of null if there is any Station
-     *
-     * @return the depart Station of the Trail of null if there is any Station
-     */
-    public Station station1() {
-        if (this.length() == 0) return null;
-        else return station1;
-    }
-
-    /**
-     * Returns the arrival Station of the Trail of null if there is any Station
-     *
-     * @return the arrival Station of the Trail of null if there is any Station
-     */
-    public Station station2() {
-        if (this.length() == 0) return null;
-        return station2;
-    }
-
-    /**
-     * Returns the list provided by all Trail stations followed by the length of the Trail.
-     *
-     * @return the list provided by all Trail stations followed by the length of the Trail.
-     */
-    @Override
-    public String toString() {
-        List<String> listStation = listStation(this);
-        return String.join(" - ", listStation) + " " + "(" + (this.length() + ")");
-    }
-
-
-}

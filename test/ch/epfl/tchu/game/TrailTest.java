@@ -64,8 +64,8 @@ public class TrailTest {
         Station Fribourg = new Station(6, "Fribourg");
 
         Route a = new Route("A", Neuchatel, Yverdon, 2, Route.Level.OVERGROUND, Color.BLACK);
-        Route b = new Route("B", Yverdon, Soleure, 4, Route.Level.OVERGROUND, Color.BLACK);
-        Route c = new Route("C", Soleure, Berne, 2, Route.Level.OVERGROUND, Color.BLACK);
+        Route b = new Route("B", Soleure, Yverdon, 4, Route.Level.OVERGROUND, Color.BLACK);
+        Route c = new Route("C", Berne, Soleure, 2, Route.Level.OVERGROUND, Color.BLACK);
         Route d = new Route("D", Berne, Lucerne, 2, Route.Level.OVERGROUND, Color.BLACK);
         Route e = new Route("E", Lucerne, Fribourg, 4, Route.Level.OVERGROUND, Color.BLACK);
 
