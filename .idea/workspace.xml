@@ -21,10 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route$Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route$Level.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trail.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" afterDir="false" />
     </list>
     <list id="0e3a1664-8a32-4926-ad1c-24220e6e072b" name="Changes by matthieudecotignie" comment="" />
@@ -93,19 +89,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TrailTest.longest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RouteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
@@ -225,6 +208,8 @@
       <workItem from="1614773713284" duration="21000" />
       <workItem from="1614781577128" duration="4081000" />
       <workItem from="1614785796081" duration="1073000" />
+      <workItem from="1614794871918" duration="4000" />
+      <workItem from="1614797469394" duration="638000" />
     </task>
     <servers />
   </component>
@@ -247,49 +232,58 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="125" width="1240" height="607" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1614786874772">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state x="100" y="125" width="1240" height="606" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1614797831354">
+      <screen x="0" y="25" width="1440" height="805" />
     </state>
+    <state x="100" y="125" width="1240" height="606" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.805@0.25.1440.805" timestamp="1614797831354" />
     <state x="100" y="125" width="1240" height="607" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.809@0.25.1440.809" timestamp="1614786874772" />
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom" timestamp="1614786874666">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom" timestamp="1614797769295">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614786782438" />
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.805@0.25.1440.805" timestamp="1614797749102" />
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614797769295" />
     <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1614786874666" />
-    <state width="1398" height="205" key="GridCell.Tab.0.center" timestamp="1614786874666">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.0.center" timestamp="1614797769295">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1614786782438" />
+    <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.805@0.25.1440.805" timestamp="1614797749101" />
+    <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1614797769295" />
     <state width="1398" height="205" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1614786874666" />
-    <state width="1398" height="205" key="GridCell.Tab.0.left" timestamp="1614786874665">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.0.left" timestamp="1614797769294">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1614786782437" />
+    <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.805@0.25.1440.805" timestamp="1614797749101" />
+    <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1614797769294" />
     <state width="1398" height="205" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1614786874665" />
-    <state width="1398" height="205" key="GridCell.Tab.0.right" timestamp="1614786874666">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.0.right" timestamp="1614797769295">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1614786782438" />
+    <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.805@0.25.1440.805" timestamp="1614797749101" />
+    <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1614797769295" />
     <state width="1398" height="205" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1614786874666" />
-    <state width="1398" height="255" key="GridCell.Tab.1.bottom" timestamp="1614786874661">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1614797770201">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614786783523" />
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.805@0.25.1440.805" timestamp="1614797749103" />
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614797770201" />
     <state width="1398" height="255" key="GridCell.Tab.1.bottom/0.25.1440.809@0.25.1440.809" timestamp="1614786874661" />
-    <state width="1398" height="255" key="GridCell.Tab.1.center" timestamp="1614786874661">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1614797770200">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.center/0.25.1440.807@0.25.1440.807" timestamp="1614786783522" />
+    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.805@0.25.1440.805" timestamp="1614797749103" />
+    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.807@0.25.1440.807" timestamp="1614797770200" />
     <state width="1398" height="255" key="GridCell.Tab.1.center/0.25.1440.809@0.25.1440.809" timestamp="1614786874661" />
-    <state width="1398" height="255" key="GridCell.Tab.1.left" timestamp="1614786874660">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1614797770200">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.left/0.25.1440.807@0.25.1440.807" timestamp="1614786783521" />
+    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.805@0.25.1440.805" timestamp="1614797749102" />
+    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.807@0.25.1440.807" timestamp="1614797770200" />
     <state width="1398" height="255" key="GridCell.Tab.1.left/0.25.1440.809@0.25.1440.809" timestamp="1614786874660" />
-    <state width="1398" height="255" key="GridCell.Tab.1.right" timestamp="1614786874661">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1614797770201">
+      <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.right/0.25.1440.807@0.25.1440.807" timestamp="1614786783522" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.805@0.25.1440.805" timestamp="1614797749103" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.807@0.25.1440.807" timestamp="1614797770201" />
     <state width="1398" height="255" key="GridCell.Tab.1.right/0.25.1440.809@0.25.1440.809" timestamp="1614786874661" />
   </component>
   <component name="XDebuggerManager">

@@ -53,7 +53,7 @@ public final class Trail {
                     }
                     if (!rs.isEmpty()) {
                         for (Route r : rs) {
-                            List<Route> road = c.routes;
+                            List<Route> road =new ArrayList<>(c.routes);
                             road.add(r);
                             Trail t = new Trail(road, c.station1, r.station2());
                             emptyCS.add(t);
