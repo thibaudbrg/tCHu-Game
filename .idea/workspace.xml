@@ -1,50 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" afterDir="false" />
+    <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EPFL-BA2-Project-1-tCHu-Game.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/EPFL-BA2-Project-1-tCHu-Game.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Station.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" afterDir="false" />
     </list>
-    <list id="0e3a1664-8a32-4926-ad1c-24220e6e072b" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CoverageOptionsProvider">
-    <option name="myAddOrReplace" value="1" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Enum" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,176 +27,29 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="1opyVagTkY3Wsjhm0HNrP6YuTIa" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="jdk.selected.JAVA_MODULE" value="11" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="ch.epfl.tchu.game" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.TrailTest.longest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RouteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RouteTest.additionalClaimCardsCountFailsWithNot3Card2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
-      <option name="METHOD_NAME" value="additionalClaimCardsCountFailsWithNot3Card2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TrailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TrailTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TrailTest.WorksWhenToStringIsCalling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TrailTest" />
-      <option name="METHOD_NAME" value="WorksWhenToStringIsCalling" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TrailTest.longest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TrailTest" />
-      <option name="METHOD_NAME" value="longest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.TrailTest.longest" />
-        <item itemvalue="JUnit.TrailTest.WorksWhenToStringIsCalling" />
-        <item itemvalue="JUnit.TrailTest" />
-        <item itemvalue="JUnit.RouteTest.additionalClaimCardsCountFailsWithNot3Card2" />
-        <item itemvalue="JUnit.RouteTest" />
-      </list>
-    </recent_temporary>
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/Crypto-CS107-2020" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5d14e303-4121-47b2-9b02-a1501ac0831b" name="Default Changelist" comment="" />
-      <created>1613997850974</created>
+      <changelist id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="" />
+      <created>1614948635481</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1613997850974</updated>
-      <workItem from="1613997852209" duration="4492000" />
-      <workItem from="1614111641550" duration="105000" />
-      <workItem from="1614111769776" duration="7499000" />
-      <workItem from="1614168528647" duration="45000" />
-      <workItem from="1614188949165" duration="2159000" />
-      <workItem from="1614195446447" duration="4682000" />
-      <workItem from="1614200479658" duration="22000" />
-      <workItem from="1614200519499" duration="730000" />
-      <workItem from="1614203043642" duration="609000" />
-      <workItem from="1614241903616" duration="640000" />
-      <workItem from="1614340955791" duration="99000" />
-      <workItem from="1614341082581" duration="421000" />
-      <workItem from="1614344677466" duration="2408000" />
-      <workItem from="1614347137487" duration="450000" />
-      <workItem from="1614347623031" duration="5690000" />
-      <workItem from="1614531205215" duration="4510000" />
-      <workItem from="1614601522026" duration="34000" />
-      <workItem from="1614601716848" duration="12662000" />
-      <workItem from="1614627790047" duration="4016000" />
-      <workItem from="1614632569060" duration="2420000" />
-      <workItem from="1614773713284" duration="21000" />
-      <workItem from="1614781577128" duration="4081000" />
-      <workItem from="1614785796081" duration="1073000" />
-      <workItem from="1614794871918" duration="4000" />
-      <workItem from="1614797469394" duration="5816000" />
-      <workItem from="1614942717388" duration="4444000" />
+      <updated>1614948635481</updated>
+      <workItem from="1614948642358" duration="834000" />
     </task>
     <servers />
   </component>
@@ -243,104 +66,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="100" y="125" width="1240" height="606" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1614797831354">
-      <screen x="0" y="25" width="1440" height="805" />
-    </state>
-    <state x="100" y="125" width="1240" height="606" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.805@0.25.1440.805" timestamp="1614797831354" />
-    <state x="100" y="125" width="1240" height="607" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.809@0.25.1440.809" timestamp="1614786874772" />
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom" timestamp="1614943730825">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.805@0.25.1440.805" timestamp="1614797749102" />
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614943730825" />
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1614801819287" />
-    <state width="1398" height="254" key="GridCell.Tab.0.center" timestamp="1614943730825">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.805@0.25.1440.805" timestamp="1614797749101" />
-    <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1614943730825" />
-    <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1614801819283" />
-    <state width="1398" height="254" key="GridCell.Tab.0.left" timestamp="1614943730824">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.805@0.25.1440.805" timestamp="1614797749101" />
-    <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1614943730824" />
-    <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1614801819281" />
-    <state width="1398" height="254" key="GridCell.Tab.0.right" timestamp="1614943730825">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.805@0.25.1440.805" timestamp="1614797749101" />
-    <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1614943730825" />
-    <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1614801819286" />
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1614943730827">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.805@0.25.1440.805" timestamp="1614797749103" />
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.807@0.25.1440.807" timestamp="1614943730827" />
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.809@0.25.1440.809" timestamp="1614801820349" />
-    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1614943730826">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.805@0.25.1440.805" timestamp="1614797749103" />
-    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.807@0.25.1440.807" timestamp="1614943730826" />
-    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.809@0.25.1440.809" timestamp="1614801820349" />
-    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1614943730826">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.805@0.25.1440.805" timestamp="1614797749102" />
-    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.807@0.25.1440.807" timestamp="1614943730826" />
-    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.809@0.25.1440.809" timestamp="1614801820348" />
-    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1614943730827">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.805@0.25.1440.805" timestamp="1614797749103" />
-    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.807@0.25.1440.807" timestamp="1614943730827" />
-    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.809@0.25.1440.809" timestamp="1614801820349" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/RouteTest.java</url>
-          <line>138</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="4" />
-        </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java</url>
-          <line>33</line>
-          <properties class="ch.epfl.tchu.game.Trail" method="longest">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$TripTest.ic" NAME="TripTest Coverage Results" MODIFIED="1614118705079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ch.epfl.tchu.game.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$TicketTest.ic" NAME="TicketTest Coverage Results" MODIFIED="1614118950247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ch.epfl.tchu.game.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$TicketTest_textIsCorrectForSimpleTicket.ic" NAME="TicketTest.textIsCorrectForSimpleTicket Coverage Results" MODIFIED="1614118785053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ch.epfl.tchu.game.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$ColorTest.ic" NAME="ColorTest Coverage Results" MODIFIED="1614118576083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ch.epfl.tchu.game.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/EPFL_BA2_Project_1_tCHu_Game$StationTest.ic" NAME="StationTest Coverage Results" MODIFIED="1614118653112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ch.epfl.tchu.game.*</FILTER>
-    </SUITE>
   </component>
 </project>

@@ -52,7 +52,11 @@ public final class CardState extends PublicCardState {
 
 
     public CardState withDeckRecreateFromDiscards(Random rng) {
-        Preconditions.checkArgument(!pioche.isEm
+        Preconditions.checkArgument(!pioche.isEmpty());
         return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), Collections.shuffle(defausse.toList(), rng), null);
+    }
+
+    public CardState withMoreDiscardedCards(SortedBag<Card> additionalDiscards) {
+        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), this.pioche, this.defausse.union(additionalDiscards));
     }
 }
