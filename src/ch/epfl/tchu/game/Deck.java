@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public final class Deck<C extends Comparable<C>> {
-    private List<C> cards;
+    private final List<C> cards;
 
 
     private Deck(List<C> cards) {
@@ -21,10 +21,6 @@ public final class Deck<C extends Comparable<C>> {
 
     }
 
-    // Constructeur de copie
-    private Deck(Deck other) {
-        this.cards = other.cards;
-    }
 
     public int size() {
         return cards.size();

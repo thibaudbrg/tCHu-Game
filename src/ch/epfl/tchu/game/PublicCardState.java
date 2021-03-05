@@ -3,14 +3,15 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
 public class PublicCardState {
-    List<Card> faceUpCards;
-    private int deckSize;
-    private int discardsSize;
+    private final List<Card> faceUpCards;
+    private final int deckSize;
+    private final int discardsSize;
 
     public PublicCardState(List<Card> faceUpCards, int deckSize, int discardsSize) {
         this.faceUpCards = faceUpCards;
@@ -27,7 +28,13 @@ public class PublicCardState {
     }
 
     public List<Card> faceUpCards() {
-        return faceUpCards;
+        ArrayList<Card> faceUpCopy = new ArrayList<>();
+        for (Card card : faceUpCards) {
+            faceUpCopy.add(card);
+        }
+
+
+        return faceUpCopy;
     }
 
     public Card faceUpCard(int slot) {
