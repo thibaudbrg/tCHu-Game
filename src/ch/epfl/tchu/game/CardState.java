@@ -23,7 +23,7 @@ public final class CardState extends PublicCardState {
     public static CardState of(Deck<Card> deck) {
         Preconditions.checkArgument(deck.size() >= Constants.FACE_UP_CARDS_COUNT);
         Deck<Card> pioche1 = deck.withoutTopCards(Constants.FACE_UP_CARDS_COUNT);
-        SortedBag<Card> defausse2 = new SortedBag<>();
+        SortedBag<Card> defausse2 = SortedBag.of();
         return new CardState(deck.topCards(Constants.FACE_UP_CARDS_COUNT).toList(), pioche1.size(), 0, pioche1, defausse2);
     }
 
@@ -32,7 +32,7 @@ public final class CardState extends PublicCardState {
         Objects.checkIndex(0, Constants.FACE_UP_CARDS_COUNT);
 
         List<Card> newFaceUpCards = this.faceUpCards();
-        Deck<Card> newPioche= pioche.withoutTopCards(0);
+        Deck<Card> newPioche = pioche.withoutTopCards(0);
         newFaceUpCards.remove(slot);
         newFaceUpCards.add(newPioche.topCard());
         newPioche.withoutTopCard();
@@ -47,16 +47,21 @@ public final class CardState extends PublicCardState {
 
     public CardState withoutTopDeckCard() {
         Preconditions.checkArgument(!pioche.isEmpty());
-       return new CardState(this.faceUpCards(), pioche.size()-1, this.discardsSize(), pioche.withoutTopCard(), this.defausse);
+        return new CardState(this.faceUpCards(), pioche.size() - 1, this.discardsSize(), pioche.withoutTopCard(), this.defausse);
     }
 
 
     public CardState withDeckRecreateFromDiscards(Random rng) {
-        Preconditions.checkArgument(!pioche.isEmpty());
-        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), Collections.shuffle(defausse.toList(), rng), null);
+        Preconditions.checkArgument(pioche.isEmpty());
+        List<Card> newDefausse = this.defausse.toList();
+        Collections.shuffle(newDefausse, rng);
+
+
+        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), this.pioche, SortedBag.of(newDefausse));
     }
 
     public CardState withMoreDiscardedCards(SortedBag<Card> additionalDiscards) {
+        //TODO VERIFIER POUR L'UNION
         return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), this.pioche, this.defausse.union(additionalDiscards));
     }
 }
