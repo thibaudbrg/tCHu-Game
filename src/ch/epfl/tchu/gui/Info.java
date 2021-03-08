@@ -4,11 +4,11 @@ import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.Card;
 import ch.epfl.tchu.game.Route;
 import ch.epfl.tchu.game.Trail;
-import ch.epfl.tchu.gui.StringsFr;
 
 import java.util.List;
 
 import static ch.epfl.tchu.gui.StringsFr.plural;
+
 /**
  * Generate most of the in-game messages
  *
@@ -19,7 +19,8 @@ public final class Info {
     private final String playerName;
 
     /**
-     *Public constructor
+     * Public constructor
+     *
      * @param playerName name of the player
      */
     public Info(String playerName) {
@@ -28,7 +29,8 @@ public final class Info {
 
     /**
      * Returns a strings with the card's name
-     * @param card given card
+     *
+     * @param card  given card
      * @param count (int) indicates if we use the plural or not
      * @return a strings with the card's name
      */
@@ -67,7 +69,7 @@ public final class Info {
             if (index < cards.toSet().size() - 1) {
                 result.append(cards.countOf(c)).append(" ").append(cardName(c, cards.countOf(c))).append(", ");
             } else if (index == cards.toSet().size() - 1) {
-                result.append(cards.countOf(c)).append(" ").append(cardName(c, cards.countOf(c))).append("et ");
+                result.append(cards.countOf(c)).append(" ").append(cardName(c, cards.countOf(c))).append(" et ");
             } else {
                 result.append(cards.countOf(c)).append(" ").append(cardName(c, cards.countOf(c)));
             }
@@ -79,8 +81,9 @@ public final class Info {
 
     /**
      * Returns a string, declaring that the game finished and that the players are ex aeqo with (points) points.
+     *
      * @param playerNames list of the player's names
-     * @param points number of points of the players
+     * @param points      number of points of the players
      * @return
      */
     public static String draw(List<String> playerNames, int points) {
@@ -89,6 +92,7 @@ public final class Info {
 
     /**
      * Returns a String declaring which player plays first
+     *
      * @return a String declaring which player plays first
      */
     public String willPlayFirst() {
@@ -97,15 +101,17 @@ public final class Info {
 
     /**
      * Returns a String declaring that the player kept count ticket(s)
+     *
      * @param count number of ticket kept
      * @return a String declaring that the player kept count ticket(s)
      */
     public String keptTickets(int count) {
-        return String.format(StringsFr.KEPT_N_TICKETS, playerName, count);
+        return String.format(StringsFr.KEPT_N_TICKETS, playerName, count, plural(count));
     }
 
     /**
      * Returns a String declaring that the player can play
+     *
      * @return a String declaring that the player can play
      */
     public String canPlay() {
@@ -113,16 +119,18 @@ public final class Info {
     }
 
     /**
-     *Returns a String declaring that the player drew count ticket(s)
+     * Returns a String declaring that the player drew count ticket(s)
+     *
      * @param count number of drew ticket
      * @return a String declaring that the player drew count ticket(s)
      */
     public String drewTickets(int count) {
-        return String.format(StringsFr.DREW_TICKETS, playerName, count);
+        return String.format(StringsFr.DREW_TICKETS, playerName, count, plural(count));
     }
 
     /**
-     *Returns a String declaring that the player drew a card from the deck
+     * Returns a String declaring that the player drew a card from the deck
+     *
      * @return a String declaring that the player drew a card from the deck
      */
     public String drewBlindCard() {
@@ -130,7 +138,8 @@ public final class Info {
     }
 
     /**
-     *Returns a String declaring that the player drew the given card from the face up cards
+     * Returns a String declaring that the player drew the given card from the face up cards
+     *
      * @param card drew by the player
      * @return a String declaring that the player drew the given card from the face up cards
      */
@@ -139,7 +148,8 @@ public final class Info {
     }
 
     /**
-     *Returns a String declaring that the player claimed the given route with the given cards
+     * Returns a String declaring that the player claimed the given route with the given cards
+     *
      * @param route Route claimed by the player
      * @param cards Cards used by the player to claim the route
      * @return a String declaring that the player claimed the given route with the given cards
@@ -149,8 +159,9 @@ public final class Info {
     }
 
     /**
-     *Returns a String declaring that the player try to claim the given route with the given cards
-     * @param route Route that the player try to claim
+     * Returns a String declaring that the player try to claim the given route with the given cards
+     *
+     * @param route        Route that the player try to claim
      * @param initialCards Cards used by the player to try to claim the route
      * @return a String declaring that the player try to claim the given route with the given cards
      */
@@ -159,8 +170,9 @@ public final class Info {
     }
 
     /**
-     *Returns a String declaring that the player drew the 3 given additionnal cards and that it generate an additional cost of additionalCost
-     * @param drawnCards 3 Cards drew by the player
+     * Returns a String declaring that the player drew the 3 given additionnal cards and that it generate an additional cost of additionalCost
+     *
+     * @param drawnCards     3 Cards drew by the player
      * @param additionalCost additional cost generated by the drawn cards
      * @return a String declaring that the player drew the 3 given additionnal cards and that it generate an additional cost of additionalCost
      */
@@ -174,7 +186,8 @@ public final class Info {
     }
 
     /**
-     *Returns a String declaring that the player didn't claim the given tunnel
+     * Returns a String declaring that the player didn't claim the given tunnel
+     *
      * @param route Tunnel that the player tried to claim
      * @return a String declaring that the player didn't player the given tunnel
      */
@@ -184,6 +197,7 @@ public final class Info {
 
     /**
      * Returns a String declaring that the player has less than 2 cards and that the last turn begins
+     *
      * @param carCount number of remaining card
      * @return a String declaring that the player has less than 2 cards and that the last turn begins
      */
@@ -192,7 +206,8 @@ public final class Info {
     }
 
     /**
-     *Returns a String declaring that the player gets a bonus thanks to the given trail (Longest of the game)
+     * Returns a String declaring that the player gets a bonus thanks to the given trail (Longest of the game)
+     *
      * @param longestTrail longest trail of the game
      * @return a String declaring that the player gets a bonus thanks to the given trail (Longest of the game)
      */
@@ -201,10 +216,11 @@ public final class Info {
     }
 
     /**
-     *Return a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
-     * @param points number of points of the player
-     * @param loserPoints
-     * @return  a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
+     * Return a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
+     *
+     * @param points      number of points of the player
+     * @param loserPoints number of points that the opponent loose
+     * @return a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
      */
     public String won(int points, int loserPoints) {
         return String.format(StringsFr.WINS, playerName, points, plural(points), loserPoints, plural(loserPoints));

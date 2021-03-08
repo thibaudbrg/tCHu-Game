@@ -98,9 +98,7 @@ public final class CardState extends PublicCardState {
      */
     public CardState withDeckRecreatedFromDiscards(Random rng) {
         Preconditions.checkArgument(deck.isEmpty());
-        List<Card> newDefausse = this.discard.toList();
-        Collections.shuffle(newDefausse, rng);
-        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), this.deck, SortedBag.of(newDefausse));
+        return new CardState(this.faceUpCards(),Deck.of(discard,rng).size(), 0, Deck.of(discard,rng),SortedBag.of() );
     }
 
     /**
