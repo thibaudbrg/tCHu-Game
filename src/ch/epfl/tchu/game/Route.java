@@ -173,9 +173,9 @@ public final class Route {
     /**
      * Return the number of card you have to play to claim a tunnel
      *
-     * @param claimCards
-     * @param drawnCards
-     * @return the number of card you have to play to claim a tunnel
+     * @param claimCards (SortedBag<Card>) List of claimcards (cards with which one tries to take over the tunnel)
+     * @param drawnCards (SortedBag<Card>) List of drawncards (the three cards that the player has to pick)
+     * @return (int) the number of card you have to play to claim a tunnel
      */
     public int additionalClaimCardsCount(SortedBag<Card> claimCards, SortedBag<Card> drawnCards) {
         Preconditions.checkArgument(level == Level.UNDERGROUND && drawnCards.size() == 3);
