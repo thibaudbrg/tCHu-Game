@@ -126,8 +126,8 @@ public final class Route {
      * @return the station of the Route which is not given
      */
     public Station stationOpposite(Station station) {
-        Preconditions.checkArgument((station1.name().equals(station.name()) ||
-                station2.name().equals(station.name())));
+        Preconditions.checkArgument((station1.equals(station) ||
+                station2.equals(station)));
         if (station1.name().equals(station.name())) {
             return station2;
         } else {

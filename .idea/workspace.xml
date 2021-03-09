@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/RouteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/RouteTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/RouteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/RouteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/TrailTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/TrailTest.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +63,7 @@
       <recent name="$PROJECT_DIR$/test/ch/epfl/tchu/game" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RouteTest.routeStationOppositeFailsWithInvalidStation">
+  <component name="RunManager" selected="JUnit.RouteTest">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -162,9 +157,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RouteTest" />
         <item itemvalue="JUnit.RouteTest.routeStationOppositeFailsWithInvalidStation" />
         <item itemvalue="JUnit.RouteTest.routeStationOppositeReturnsOppositeStation" />
-        <item itemvalue="JUnit.RouteTest" />
         <item itemvalue="JUnit.TrailTest" />
         <item itemvalue="JUnit.InfoTest.wonMethodWorksWithPlural2" />
       </list>
@@ -186,6 +181,7 @@
       <workItem from="1615222203533" duration="255000" />
       <workItem from="1615307144458" duration="268000" />
       <workItem from="1615317694231" duration="1304000" />
+      <workItem from="1615320112389" duration="267000" />
     </task>
     <servers />
   </component>
