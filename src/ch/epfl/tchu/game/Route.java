@@ -31,12 +31,12 @@ public final class Route {
     /**
      * Route constructor
      *
-     * @param id route id
+     * @param id       route id
      * @param station1 departure station
      * @param station2 arrival station
-     * @param length length of the Route
-     * @param level level of the Route
-     * @param color color of the Route
+     * @param length   length of the Route
+     * @param level    level of the Route
+     * @param color    color of the Route
      * @throws NullPointerException
      */
     public Route(String id, Station station1, Station station2, int length, Level level, Color color) throws NullPointerException {
@@ -63,7 +63,7 @@ public final class Route {
     }
 
     /**
-     *Return the departure station of the route
+     * Return the departure station of the route
      *
      * @return the departure station of the route
      */
@@ -72,7 +72,7 @@ public final class Route {
     }
 
     /**
-     *Return the arrival station of the route
+     * Return the arrival station of the route
      *
      * @return the arrival station of the route
      */
@@ -81,7 +81,7 @@ public final class Route {
     }
 
     /**
-     *Return the length of the Route
+     * Return the length of the Route
      *
      * @return the length of the Route
      */
@@ -90,7 +90,7 @@ public final class Route {
     }
 
     /**
-     *Return the level of the Route
+     * Return the level of the Route
      *
      * @return the level of the Route
      */
@@ -126,8 +126,8 @@ public final class Route {
      * @return the station of the Route which is not given
      */
     public Station stationOpposite(Station station) {
-        Preconditions.checkArgument(station1.name().equals(station.name()) ||
-                station2.name().equals(station.name()));
+        Preconditions.checkArgument((station1.name().equals(station.name()) ||
+                station2.name().equals(station.name())));
         if (station1.name().equals(station.name())) {
             return station2;
         } else {
@@ -151,20 +151,34 @@ public final class Route {
      */
     public List<SortedBag<Card>> possibleClaimCards() {
         List<SortedBag<Card>> possibleClaim = new ArrayList();
-        if (color == null) {
-            for (int i = 0; i < length; i++) {
+        if (this.level == Level.UNDERGROUND) {
+            if (color == null) {
+                for (int i = 0; i < length; i++) {
+                    for (Card card : Card.CARS) {
+                        SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
+                        cardBuilder.add(length - i, card).add(i, Card.LOCOMOTIVE);
+                        possibleClaim.add(cardBuilder.build());
+                    }
+                }
+                SortedBag.Builder<Card> cardBuilder1 = new SortedBag.Builder<>();
+                possibleClaim.add(cardBuilder1.add(length, Card.LOCOMOTIVE).build());
+            } else for (int i = 0; i < length + 1; i++) {
+                SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
+                cardBuilder.add(length - i, Card.of(color)).add(i, Card.LOCOMOTIVE);
+                possibleClaim.add(cardBuilder.build());
+            }
+        } else {
+            if (color == null) {
                 for (Card card : Card.CARS) {
                     SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
-                    cardBuilder.add(length - i, card).add(i, Card.LOCOMOTIVE);
+                    cardBuilder.add(length, card);
                     possibleClaim.add(cardBuilder.build());
                 }
+            } else {
+                SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
+                cardBuilder.add(length, Card.of(color));
+                possibleClaim.add(cardBuilder.build());
             }
-            SortedBag.Builder<Card> cardBuilder1 = new SortedBag.Builder<>();
-            possibleClaim.add(cardBuilder1.add(length, Card.LOCOMOTIVE).build());
-        } else for (int i = 0; i < length + 1; i++) {
-            SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
-            cardBuilder.add(length - i, Card.of(color)).add(i, Card.LOCOMOTIVE);
-            possibleClaim.add(cardBuilder.build());
         }
 
         return possibleClaim;

@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/CardStateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/DeckTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/InfoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PublicCardStateTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/RouteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/RouteTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/TrailTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/RouteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/RouteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/TrailTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/TrailTest.java" afterDir="false" />
     </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
-    </list>
+    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,34 +35,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="6" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="11" end1="11" start2="10" end2="11" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="21" end1="22" start2="21" end2="23" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="30" end1="31" start2="31" end2="33" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="69" end1="70" start2="71" end2="72" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="81" end1="81" start2="83" end2="84" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="82" end1="83" start2="85" end2="86" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="91" end1="91" start2="94" end2="95" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="99" end1="99" start2="103" end2="104" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="103" end1="104" start2="108" end2="109" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="108" end1="108" start2="113" end2="114" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="115" end1="116" start2="121" end2="123" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="120" end1="121" start2="127" end2="128" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="124" end1="125" start2="131" end2="133" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="132" end1="133" start2="140" end2="142" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="141" end1="142" start2="150" end2="152" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="151" end1="153" start2="161" end2="164" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="161" end1="163" start2="172" end2="175" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="176" end1="177" start2="188" end2="190" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="186" end1="186" start2="199" end2="200" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="194" end1="195" start2="208" end2="210" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="203" end1="207" start2="218" end2="223" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -94,7 +63,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager" selected="JUnit.InfoTest.wonMethodWorksWithPlural2">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/ch/epfl/tchu/game" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RouteTest.routeStationOppositeFailsWithInvalidStation">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -104,70 +78,6 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InfoTest.wonMethodWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.InfoTest" />
-      <option name="METHOD_NAME" value="wonMethodWorks" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InfoTest.wonMethodWorksWithNotPlural" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.InfoTest" />
-      <option name="METHOD_NAME" value="wonMethodWorksWithNotPlural" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InfoTest.wonMethodWorksWithPlural1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.InfoTest" />
-      <option name="METHOD_NAME" value="wonMethodWorksWithPlural1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InfoTest.wonMethodWorksWithPlural1bis" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.InfoTest" />
-      <option name="METHOD_NAME" value="wonMethodWorksWithPlural1bis" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,13 +98,75 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RouteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RouteTest.routeStationOppositeFailsWithInvalidStation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="METHOD_NAME" value="routeStationOppositeFailsWithInvalidStation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RouteTest.routeStationOppositeReturnsOppositeStation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="METHOD_NAME" value="routeStationOppositeReturnsOppositeStation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TrailTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RouteTest.routeStationOppositeFailsWithInvalidStation" />
+        <item itemvalue="JUnit.RouteTest.routeStationOppositeReturnsOppositeStation" />
+        <item itemvalue="JUnit.RouteTest" />
+        <item itemvalue="JUnit.TrailTest" />
         <item itemvalue="JUnit.InfoTest.wonMethodWorksWithPlural2" />
-        <item itemvalue="JUnit.InfoTest.wonMethodWorksWithPlural1bis" />
-        <item itemvalue="JUnit.InfoTest.wonMethodWorksWithPlural1" />
-        <item itemvalue="JUnit.InfoTest.wonMethodWorksWithNotPlural" />
-        <item itemvalue="JUnit.InfoTest.wonMethodWorks" />
       </list>
     </recent_temporary>
   </component>
@@ -211,6 +183,9 @@
       <workItem from="1614955432496" duration="2459000" />
       <workItem from="1615206891324" duration="6351000" />
       <workItem from="1615213577047" duration="4300000" />
+      <workItem from="1615222203533" duration="255000" />
+      <workItem from="1615307144458" duration="268000" />
+      <workItem from="1615317694231" duration="1304000" />
     </task>
     <servers />
   </component>
@@ -228,5 +203,27 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1398" height="205" key="GridCell.Tab.0.bottom" timestamp="1615319012841">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1615319012841" />
+    <state width="1398" height="205" key="GridCell.Tab.0.center" timestamp="1615319012841">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state width="1398" height="205" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1615319012841" />
+    <state width="1398" height="205" key="GridCell.Tab.0.left" timestamp="1615319012840">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state width="1398" height="205" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1615319012840" />
+    <state width="1398" height="205" key="GridCell.Tab.0.right" timestamp="1615319012841">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state width="1398" height="205" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1615319012841" />
+    <state x="385" y="156" width="670" height="158" key="search.everywhere.popup" timestamp="1615222231755">
+      <screen x="0" y="25" width="1440" height="807" />
+    </state>
+    <state x="385" y="156" width="670" height="158" key="search.everywhere.popup/0.25.1440.807@0.25.1440.807" timestamp="1615222231755" />
   </component>
 </project>
