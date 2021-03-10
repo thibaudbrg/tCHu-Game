@@ -29,12 +29,13 @@ public class PublicCardState {
      * @param discardsSize (int) The number of cards on the discard
      */
     public PublicCardState(List<Card> faceUpCards, int deckSize, int discardsSize) {
+        Preconditions.checkArgument(faceUpCards.size() == 5);
+        Preconditions.checkArgument(deckSize >= 0);
+        Preconditions.checkArgument(discardsSize >= 0);
         this.faceUpCards = faceUpCards;
         this.deckSize = deckSize;
         this.discardsSize = discardsSize;
-        Preconditions.checkArgument(faceUpCards.size() == 5);
-        Preconditions.checkArgument(deckSize > 0);
-        Preconditions.checkArgument(discardsSize > 0);
+
     }
 
     /**

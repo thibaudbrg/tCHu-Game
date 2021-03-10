@@ -61,11 +61,8 @@ public final class CardState extends PublicCardState {
 
 
         List<Card> newFaceUpCards = this.faceUpCards();
-        Deck<Card> newDeck = deck.withoutTopCards(0);
-        newFaceUpCards.remove(slot);
-        newFaceUpCards.add(newDeck.topCard());
-        newDeck.withoutTopCard();
-
+        Deck<Card> newDeck = deck.withoutTopCards(1);
+        newFaceUpCards.set(slot,deck.topCard());
         return new CardState(newFaceUpCards, newDeck.size(), this.discardsSize(), newDeck, this.discard);
     }
 
@@ -111,4 +108,5 @@ public final class CardState extends PublicCardState {
     public CardState withMoreDiscardedCards(SortedBag<Card> additionalDiscards) {
         return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), this.deck, this.discard.union(additionalDiscards));
     }
+
 }
