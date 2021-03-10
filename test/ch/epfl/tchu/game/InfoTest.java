@@ -93,7 +93,7 @@ class InfoTest {
         Info i = new Info("Hughes");
         Route route = new Route("sfd", new Station(2, "ALLEMAGNE"), new Station(3, "FRANCE"),
                 2, Route.Level.OVERGROUND, Color.ORANGE);
-        assertEquals("Hughes tente de s'emparer du tunnel ALLEMAGNE – FRANCE au moyen de 1 locomotive et 1 orange !\n",
+        assertEquals("Hughes tente de s'emparer du tunnel ALLEMAGNE – FRANCE au moyen de 1 verte et 1 locomotive !\n",
                 i.attemptsTunnelClaim(route, SortedBag.of(List.of(Card.LOCOMOTIVE, Card.GREEN))));
     }
 

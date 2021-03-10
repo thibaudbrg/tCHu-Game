@@ -35,6 +35,7 @@ public final class Info {
      * @return a strings with the card's name
      */
     public static String cardName(Card card, int count) {
+        if (card.color()==null)return StringsFr.LOCOMOTIVE_CARD + plural(count);
         switch (card.color()) {
             case BLACK:
                 return StringsFr.BLACK_CARD + plural(count);
@@ -52,7 +53,7 @@ public final class Info {
                 return StringsFr.RED_CARD + plural(count);
             case WHITE:
                 return StringsFr.WHITE_CARD + plural(count);
-            default:
+            default :
                 return StringsFr.LOCOMOTIVE_CARD + plural(count);
 
         }

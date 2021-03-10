@@ -55,9 +55,10 @@ public final class CardState extends PublicCardState {
      * @return (CardState) An identical set of cards to the receiver (this) but
      * the face-up index slot card has been replaced by the card at the top of the drawer, which is itself removed.
      */
-    public CardState withDrawnFaceUpCard(int slot) throws IndexOutOfBoundsException {
+    public CardState withDrawnFaceUpCard(int slot) {
+        Objects.checkIndex(slot, Constants.FACE_UP_CARDS_COUNT);
         Preconditions.checkArgument(!deck.isEmpty());
-        Objects.checkIndex(0, Constants.FACE_UP_CARDS_COUNT);
+
 
         List<Card> newFaceUpCards = this.faceUpCards();
         Deck<Card> newDeck = deck.withoutTopCards(0);

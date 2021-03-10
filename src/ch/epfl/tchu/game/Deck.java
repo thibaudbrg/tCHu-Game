@@ -75,19 +75,19 @@ public final class Deck<C extends Comparable<C>> {
      * @return (Deck < C >) a deck without the top card
      */
     public Deck<C> withoutTopCard() {
-        return new Deck(this.cards.subList(1, cards.size() - 1));
+        return new Deck(this.cards.subList(0, cards.size() - 1));
     }
 
     /**
      * Returns the count top cards
      *
      * @param count (int) number of top cards that we want
-     * @return (SortedBag<C>) the count top cards
+     * @return (SortedBag < C >) the count top cards
      */
     public SortedBag<C> topCards(int count) {
         Preconditions.checkArgument(count >= 0 && count <= size());
         SortedBag.Builder<C> builder = new SortedBag.Builder<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 1; i < count + 1; i++) {
             builder.add(cards.get(size() - i));
         }
         return builder.build();
@@ -97,10 +97,16 @@ public final class Deck<C extends Comparable<C>> {
      * Returns a deck without the count top cards.
      *
      * @param count (int) number of top cards that we don't want in the new deck
-     * @return (Deck<C>) a deck without the count top cards.
+     * @return (Deck < C >) a deck without the count top cards.
      */
     public Deck<C> withoutTopCards(int count) {
         Preconditions.checkArgument(count >= 0 && count <= size());
         return new Deck<C>(this.cards.subList(0, size() - count));
+    }
+
+
+    @Override
+    public String toString() {
+        return this.cards.toString();
     }
 }
