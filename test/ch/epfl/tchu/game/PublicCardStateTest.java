@@ -31,11 +31,12 @@ class PublicCardStateTest {
             new PublicCardState(d, 5, -1);
         });
     }
+
     @Test
     void totalSizeTest() {
-        List<Card> d = List.of(Card.BLUE,Card.ORANGE,Card.RED,Card.WHITE,Card.LOCOMOTIVE);
-      PublicCardState s = new PublicCardState(d,8,3);
-      assertEquals(5+8+3,s.totalSize());
+        List<Card> d = List.of(Card.BLUE, Card.ORANGE, Card.RED, Card.WHITE, Card.LOCOMOTIVE);
+        PublicCardState s = new PublicCardState(d, 8, 3);
+        assertEquals(5 + 8 + 3, s.totalSize());
     }
 
     @Test
@@ -44,35 +45,42 @@ class PublicCardStateTest {
         PublicCardState s = new PublicCardState(d, 8, 3);
         assertEquals(d, s.faceUpCards());
     }
+
     @Test
     void faceUpCard() {
         List<Card> d = List.of(Card.BLUE, Card.ORANGE, Card.RED, Card.WHITE, Card.LOCOMOTIVE);
         PublicCardState s = new PublicCardState(d, 8, 3);
         assertEquals(d.get(3), s.faceUpCard(3));
     }
+
     @Test
     void faceUpCardFails() {
         List<Card> d = List.of(Card.BLUE, Card.ORANGE, Card.RED, Card.WHITE, Card.LOCOMOTIVE);
         PublicCardState s = new PublicCardState(d, 8, 3);
-        assertThrows(IndexOutOfBoundsException.class,()->{s.faceUpCard(5);});
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            s.faceUpCard(5);
+        });
     }
+
     @Test
     void deckSize() {
         List<Card> d = List.of(Card.BLUE, Card.ORANGE, Card.RED, Card.WHITE, Card.LOCOMOTIVE);
         PublicCardState s = new PublicCardState(d, 8, 3);
-        assertEquals(8,s.deckSize());
+        assertEquals(8, s.deckSize());
     }
+
     @Test
     void discardSize() {
         List<Card> d = List.of(Card.BLUE, Card.ORANGE, Card.RED, Card.WHITE, Card.LOCOMOTIVE);
         PublicCardState s = new PublicCardState(d, 8, 3);
-        assertEquals(3,s.discardsSize());
+        assertEquals(3, s.discardsSize());
     }
+
     @Test
     void isEmpty() {
         List<Card> d = List.of(Card.BLUE, Card.ORANGE, Card.RED, Card.WHITE, Card.LOCOMOTIVE);
         PublicCardState s = new PublicCardState(d, 5, 3);
-       assertFalse(s.isDeckEmpty());
+        assertFalse(s.isDeckEmpty());
     }
 }
 

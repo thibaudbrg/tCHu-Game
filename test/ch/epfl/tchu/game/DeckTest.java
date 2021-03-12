@@ -78,7 +78,7 @@ public class DeckTest {
         SortedBag.Builder<Card> builder = new SortedBag.Builder();
         SortedBag sortedBag = builder.add(2, Card.BLUE).add(Card.GREEN).add(Card.LOCOMOTIVE).add(Card.RED).add(Card.YELLOW).build();
         Deck deck = Deck.of(sortedBag, new Random(0));
-        assertEquals(List.of(Card.BLUE, Card.YELLOW, Card.LOCOMOTIVE), deck.topCards(3));
+        assertEquals("{BLUE, YELLOW, LOCOMOTIVE}", deck.topCards(3).toString());
 
     }
 

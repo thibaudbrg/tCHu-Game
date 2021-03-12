@@ -76,7 +76,7 @@ class InfoTest {
     @Test
     void drewVisibleCardsMethodWorks() {
         Info i = new Info("Hughes");
-        assertEquals("Hughes a tiré une carte LOCOMOTIVE visible.\n", i.drewVisibleCard(Card.LOCOMOTIVE));
+        assertEquals("Hughes a tiré une carte locomotive visible.\n", i.drewVisibleCard(Card.LOCOMOTIVE));
     }
 
     @Test
@@ -109,14 +109,14 @@ class InfoTest {
     @Test
     void drewAdditionalCardsMethodWorksWithNotPlural() {
         Info i = new Info("Hughes");
-        assertEquals("Les cartes supplémentaires sont {BLACK, GREEN, ORANGE}. Elles impliquent un coût additionnel de 1 carte.\n",
+        assertEquals("Les cartes supplémentaires sont 1 noire, 1 verte et 1 orange. Elles impliquent un coût additionnel de 1 carte.\n",
                 i.drewAdditionalCards(SortedBag.of(List.of(Card.ORANGE, Card.GREEN, Card.BLACK)), 1));
     }
 
     @Test
     void drewAdditionalCardsMethodWorksWithPlural() {
         Info i = new Info("Hughes");
-        assertEquals("Les cartes supplémentaires sont {BLACK, GREEN, ORANGE}. Elles impliquent un coût additionnel de 15 cartes.\n",
+        assertEquals("Les cartes supplémentaires sont 1 noire, 1 verte et 1 orange. Elles impliquent un coût additionnel de 15 cartes.\n",
                 i.drewAdditionalCards(SortedBag.of(List.of(Card.ORANGE, Card.GREEN, Card.BLACK)), 15));
     }
 

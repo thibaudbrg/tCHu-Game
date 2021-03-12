@@ -43,7 +43,6 @@ public class CardStateTest {
         });
     }
 
-
     @Test
     void withDrawnFaceUpCardWorks() {
         SortedBag.Builder<Card> builder = new SortedBag.Builder();
@@ -52,7 +51,7 @@ public class CardStateTest {
         CardState v1 = CardState.of(deck);
         CardState v2 = v1.withDrawnFaceUpCard(3);
 
-        assertEquals("[YELLOW, YELLOW, ORANGE, YELLOW, LOCOMOTIVE]", v2.faceUpCards());
+        assertEquals("[YELLOW, YELLOW, ORANGE, YELLOW, LOCOMOTIVE]", v2.faceUpCards().toString());
     }
 
     @Test
@@ -67,7 +66,6 @@ public class CardStateTest {
 
     }
 
-
     @Test
     void withDeckRecreatedFromDiscardsWorks() {
         SortedBag.Builder<Card> builder = new SortedBag.Builder();
@@ -75,16 +73,14 @@ public class CardStateTest {
         Deck<Card> deck = Deck.of(builder.build(), new Random(20));
         CardState v1 = CardState.of(deck);
         while (v1.deckSize() > 0) {
-           v1 = v1.withDrawnFaceUpCard(1);
-
+            v1 = v1.withDrawnFaceUpCard(1);
         }
-        SortedBag.Builder<Card> bder = new SortedBag.Builder();
-        SortedBag sortedBag = bder.add(2, Card.BLUE).add(Card.GREEN).add(Card.LOCOMOTIVE).add(Card.RED).add(Card.YELLOW).build();
-       CardState v2 = v1.withMoreDiscardedCards(sortedBag);
-       v2= v2.withDeckRecreatedFromDiscards(new Random(12));
-assertEquals(6,v2.deckSize());
-        assertEquals(v1.faceUpCards(),v2.faceUpCards());
-
+        SortedBag.Builder<Card> builder1 = new SortedBag.Builder();
+        SortedBag sortedBag = builder1.add(2, Card.BLUE).add(Card.GREEN).add(Card.LOCOMOTIVE).add(Card.RED).add(Card.YELLOW).build();
+        CardState v2 = v1.withMoreDiscardedCards(sortedBag);
+        v2 = v2.withDeckRecreatedFromDiscards(new Random(12));
+        assertEquals(6, v2.deckSize());
+        assertEquals(v1.faceUpCards(), v2.faceUpCards());
 
 
     }
@@ -98,8 +94,7 @@ assertEquals(6,v2.deckSize());
 
         SortedBag.Builder<Card> builder1 = new SortedBag.Builder();
         builder1.add(2, Card.GREEN).add(Card.BLACK);
-        builder1.build();
-
-        assertEquals(3, v1.discardsSize());
+        SortedBag<Card> sortedBag = builder1.build();
+        assertEquals(3, v1.withMoreDiscardedCards(builder1.build()).discardsSize());
     }
 }

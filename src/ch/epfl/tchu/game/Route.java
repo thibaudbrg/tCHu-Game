@@ -162,11 +162,12 @@ public final class Route {
                 }
                 SortedBag.Builder<Card> cardBuilder1 = new SortedBag.Builder<>();
                 possibleClaim.add(cardBuilder1.add(length, Card.LOCOMOTIVE).build());
-            } else for (int i = 0; i < length + 1; i++) {
-                SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
-                cardBuilder.add(length - i, Card.of(color)).add(i, Card.LOCOMOTIVE);
-                possibleClaim.add(cardBuilder.build());
-            }
+            } else
+                for (int i = 0; i < length + 1; i++) {
+                    SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
+                    cardBuilder.add(length - i, Card.of(color)).add(i, Card.LOCOMOTIVE);
+                    possibleClaim.add(cardBuilder.build());
+                }
         } else {
             if (color == null) {
                 for (Card card : Card.CARS) {

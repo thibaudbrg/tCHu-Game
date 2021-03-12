@@ -15,7 +15,8 @@ public final class Trail {
     private int length = 0;
 
     private Trail(List<Route> routes, Station station1, Station station2) {
-        this.routes = routes;
+        List<Route> routesCopy = new ArrayList<>(routes);
+        this.routes = routesCopy;
         this.station1 = station1;
         this.station2 = station2;
         if (!routes.isEmpty()) {

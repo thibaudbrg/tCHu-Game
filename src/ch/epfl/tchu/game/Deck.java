@@ -3,6 +3,7 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -23,7 +24,8 @@ public final class Deck<C extends Comparable<C>> {
      * @param cards (List<C>) List of cards that constitute the deck
      */
     private Deck(List<C> cards) {
-        this.cards = cards;
+        List <C> cardsCopy = new ArrayList<>(cards);
+        this.cards = cardsCopy;
     }
 
     /**
@@ -50,6 +52,8 @@ public final class Deck<C extends Comparable<C>> {
         return cards.size();
     }
 
+
+
     /**
      * Returns true if the deck is empty
      *
@@ -75,7 +79,7 @@ public final class Deck<C extends Comparable<C>> {
      * @return (Deck < C >) a deck without the top card
      */
     public Deck<C> withoutTopCard() {
-        return new Deck(this.cards.subList(0, cards.size() - 1));
+        return new Deck<C>(this.cards.subList(0, cards.size() - 1));
     }
 
     /**

@@ -2,6 +2,7 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -23,13 +24,14 @@ public final class Ticket implements Comparable<Ticket> {
      */
     public Ticket(List<Trip> trips) {
         Preconditions.checkArgument(!trips.isEmpty());
+        List<Trip> tripsCopy = new ArrayList<>(trips);
 
         for (Trip trip : trips) {
             for (Trip trip1 : trips) {
                 Preconditions.checkArgument(trip.from().name().equals(trip1.from().name()));
             }
         }
-        this.trips = trips;
+        this.trips = tripsCopy;
         stationForm = trips.get(0).from();
         Text = computeText();
     }
@@ -38,8 +40,8 @@ public final class Ticket implements Comparable<Ticket> {
     /**
      * Constructor calling the previous Constructor
      *
-     * @param from (Station) Departure station
-     * @param to (Station) Arrival station
+     * @param from   (Station) Departure station
+     * @param to     (Station) Arrival station
      * @param points (int) number of points given to the trip
      */
     public Ticket(Station from, Station to, int points) {
@@ -48,7 +50,7 @@ public final class Ticket implements Comparable<Ticket> {
     }
 
     /**
-     *  Returns the textual representation of the ticket
+     * Returns the textual representation of the ticket
      *
      * @return the textual representation of the ticket
      */
@@ -88,9 +90,9 @@ public final class Ticket implements Comparable<Ticket> {
         int minPoint = Integer.MAX_VALUE;
         for (Trip trip : trips) {
             if (connectivity.connected(stationForm, trip.to())) {
-                maxPoint = Integer.max(maxPoint,trip.points());
+                maxPoint = Integer.max(maxPoint, trip.points());
             }
-           minPoint= Integer.min(minPoint,trip.points());
+            minPoint = Integer.min(minPoint, trip.points());
         }
         if (maxPoint == 0) {
             return -minPoint;
@@ -113,7 +115,7 @@ public final class Ticket implements Comparable<Ticket> {
     }
 
     /**
-     *  Returns the textual representation of the ticket
+     * Returns the textual representation of the ticket
      *
      * @return the textual representation of the ticket
      */

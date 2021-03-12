@@ -106,7 +106,7 @@ public final class CardState extends PublicCardState {
      * @return (CardStat) a set of cards identical to the receiver (this), but with the given cards added to the discard pile.
      */
     public CardState withMoreDiscardedCards(SortedBag<Card> additionalDiscards) {
-        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize(), this.deck, this.discard.union(additionalDiscards));
+        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize()+additionalDiscards.size(), this.deck, this.discard.union(additionalDiscards));
     }
 
 }

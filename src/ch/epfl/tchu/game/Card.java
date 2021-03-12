@@ -10,7 +10,15 @@ import java.util.List;
  * @author Bourgeois Thibaud (324604)
  */
 public enum Card {
-    BLACK(Color.BLACK), VIOLET(Color.VIOLET), BLUE(Color.BLUE), GREEN(Color.GREEN), YELLOW(Color.YELLOW), ORANGE(Color.ORANGE), RED(Color.RED), WHITE(Color.WHITE), LOCOMOTIVE(null);
+    BLACK(Color.BLACK),
+    VIOLET(Color.VIOLET),
+    BLUE(Color.BLUE),
+    GREEN(Color.GREEN),
+    YELLOW(Color.YELLOW),
+    ORANGE(Color.ORANGE),
+    RED(Color.RED),
+    WHITE(Color.WHITE),
+    LOCOMOTIVE(null);
 
     private Color color;
     public final static List<Card> ALL = List.of(values());

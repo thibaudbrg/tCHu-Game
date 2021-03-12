@@ -35,7 +35,8 @@ public final class Info {
      * @return a strings with the card's name
      */
     public static String cardName(Card card, int count) {
-        if (card.color()==null)return StringsFr.LOCOMOTIVE_CARD + plural(count);
+        if (card.color() == null)
+            return StringsFr.LOCOMOTIVE_CARD + plural(count);
         switch (card.color()) {
             case BLACK:
                 return StringsFr.BLACK_CARD + plural(count);
@@ -53,7 +54,7 @@ public final class Info {
                 return StringsFr.RED_CARD + plural(count);
             case WHITE:
                 return StringsFr.WHITE_CARD + plural(count);
-            default :
+            default:
                 return StringsFr.LOCOMOTIVE_CARD + plural(count);
 
         }
@@ -85,7 +86,7 @@ public final class Info {
      *
      * @param playerNames list of the player's names
      * @param points      number of points of the players
-     * @return
+     * @return a String declaring that the game finished and that the players are ex aeqo with (points) points
      */
     public static String draw(List<String> playerNames, int points) {
         return String.format(StringsFr.DRAW, playerNames.get(0) + StringsFr.AND_SEPARATOR + playerNames.get(1), points);
@@ -145,7 +146,7 @@ public final class Info {
      * @return a String declaring that the player drew the given card from the face up cards
      */
     public String drewVisibleCard(Card card) {
-        return String.format(StringsFr.DREW_VISIBLE_CARD, playerName, card);
+        return String.format(StringsFr.DREW_VISIBLE_CARD, playerName, cardName(card, 1));
     }
 
     /**
@@ -179,10 +180,10 @@ public final class Info {
      */
     public String drewAdditionalCards(SortedBag<Card> drawnCards, int additionalCost) {
         if (additionalCost == 0) {
-            return String.format(StringsFr.ADDITIONAL_CARDS_ARE, drawnCards)
+            return String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
                     + String.format(StringsFr.NO_ADDITIONAL_COST);
         } else
-            return String.format(StringsFr.ADDITIONAL_CARDS_ARE, drawnCards)
+            return String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
                     + String.format(StringsFr.SOME_ADDITIONAL_COST, additionalCost, plural(additionalCost));
     }
 
