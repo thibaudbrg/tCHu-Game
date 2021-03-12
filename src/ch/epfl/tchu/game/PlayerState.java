@@ -3,6 +3,7 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class PlayerState extends PublicPlayerState {
@@ -49,9 +50,26 @@ public final class PlayerState extends PublicPlayerState {
         return haveTheCards && route.length() <= this.carCount();
     }
 
+public  List<SortedBag<Card>> possibleClaimCards(Route route){
+        Preconditions.checkArgument(this.carCount()>=route.length());
+        return route.possibleClaimCards();
+}
 
     public PlayerState withClaimedRoute(Route route, SortedBag<Card> claimCards) {
-        return new PlayerState(this.tickets, this.cards.difference(claimCards), this.routes());
+        List<Route> routesCopy = new ArrayList<>(this.routes());
+        routesCopy.add(route);
+
+        return new PlayerState(this.tickets, this.cards.difference(claimCards), routesCopy);
+    }
+    public int ticketPoints(){
+        int points = 0;
+        for (Ticket ticket : tickets){
+            points+=ticket.points() // TODO COMPLETE
+        }
+    }
+
+    public int finalPoints(){
+        return this.claimPoints()+ticketPoints();
     }
 
 

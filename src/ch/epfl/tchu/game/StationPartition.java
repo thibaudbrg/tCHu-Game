@@ -34,8 +34,11 @@ public final class StationPartition implements StationConnectivity {
         public Builder(int stationCount) {
             Preconditions.checkArgument(stationCount >= 0);
             builderStationLink = new Integer[stationCount];
+            for (int i = 0; i<builderStationLink.length;i++){
+                builderStationLink[i]=i;
+            }
         }
-
+// TODO COMPLETE
         public Builder connect(Station station1, Station station2) {
             if(station1.id()==representative(station1.id())&&station2.id()==representative(station2.id())){
                 builderStationLink[station1.id()]=station2.id();
@@ -48,7 +51,7 @@ public final class StationPartition implements StationConnectivity {
 
         public StationPartition build() {
 
-            return
+            return new StationPartition(builderStationLink);
         }
 
         private int representative(int stationId) {
