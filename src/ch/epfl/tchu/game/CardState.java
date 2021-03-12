@@ -3,10 +3,7 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Represents the state of the wagon/locomotive cards that are not in the players' hands.
@@ -60,7 +57,7 @@ public final class CardState extends PublicCardState {
         Preconditions.checkArgument(!deck.isEmpty());
 
 
-        List<Card> newFaceUpCards = this.faceUpCards();
+        List<Card> newFaceUpCards = new ArrayList<>(faceUpCards());
         Deck<Card> newDeck = deck.withoutTopCards(1);
         newFaceUpCards.set(slot,deck.topCard());
         return new CardState(newFaceUpCards, newDeck.size(), this.discardsSize(), newDeck, this.discard);

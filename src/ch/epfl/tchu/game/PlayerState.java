@@ -64,7 +64,7 @@ public  List<SortedBag<Card>> possibleClaimCards(Route route){
     public int ticketPoints(){
         int points = 0;
         for (Ticket ticket : tickets){
-            points+=ticket.points() // TODO COMPLETE
+             // TODO COMPLETE
         }
     }
 

@@ -21,41 +21,45 @@ public final class StationPartition implements StationConnectivity {
      */
     @Override
     public boolean connected(Station s1, Station s2) {
-        if (s1.id() > arrayStationLink.length || s2.id() > arrayStationLink.length){
-            return s1.id()==s2.id();
-        }else return arrayStationLink[s1.id()]==arrayStationLink[s2.id()];
+        if (s1.id() > arrayStationLink.length || s2.id() > arrayStationLink.length) {
+            return s1.id() == s2.id();
+        } else return arrayStationLink[s1.id()] == arrayStationLink[s2.id()];
     }
 
 
-    final static class Builder {
+   public final static class Builder {
         private Integer[] builderStationLink;
         private StationPartition stationPartition;
 
         public Builder(int stationCount) {
             Preconditions.checkArgument(stationCount >= 0);
             builderStationLink = new Integer[stationCount];
-            for (int i = 0; i<builderStationLink.length;i++){
-                builderStationLink[i]=i;
+            for (int i = 0; i < builderStationLink.length; i++) {
+                builderStationLink[i] = i;
             }
         }
-// TODO COMPLETE
-        public Builder connect(Station station1, Station station2) {
-            if(station1.id()==representative(station1.id())&&station2.id()==representative(station2.id())){
-                builderStationLink[station1.id()]=station2.id();
-            }else if (station1.id()==representative(station1.id())&&station2.id()!=representative(station2.id())){
 
-            }
+        public Builder connect(Station station1, Station station2) {
+            builderStationLink[station1.id()] = representative(station2.id());
+
             return this;
         }
 
 
         public StationPartition build() {
+            for (Integer representativeId: builderStationLink){
+                representativeId= representative(representativeId);
+            }
 
             return new StationPartition(builderStationLink);
         }
 
         private int representative(int stationId) {
-            return builderStationLink[stationId];
+            int intermediatStationId;
+            do {
+                intermediatStationId = builderStationLink[stationId];
+            } while (intermediatStationId != builderStationLink[intermediatStationId]);
+            return intermediatStationId;
         }
     }
 }

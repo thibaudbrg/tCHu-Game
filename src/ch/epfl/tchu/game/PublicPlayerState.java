@@ -13,7 +13,7 @@ public class PublicPlayerState {
     private int claimPoints;
 
 
-    PublicPlayerState(int ticketCount, int cardCount, List<Route> routes) {
+    public PublicPlayerState(int ticketCount, int cardCount, List<Route> routes) {
         Preconditions.checkArgument(ticketCount >= 0);
         Preconditions.checkArgument(cardCount >= 0);
         List<Route> routesCopy = new ArrayList<>(routes);

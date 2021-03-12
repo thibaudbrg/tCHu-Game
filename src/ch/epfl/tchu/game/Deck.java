@@ -107,10 +107,4 @@ public final class Deck<C extends Comparable<C>> {
         Preconditions.checkArgument(count >= 0 && count <= size());
         return new Deck<C>(this.cards.subList(0, size() - count));
     }
-
-
-    @Override
-    public String toString() {
-        return this.cards.toString();
-    }
 }
