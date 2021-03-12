@@ -47,17 +47,19 @@ public final class StationPartition implements StationConnectivity {
 
 
         public StationPartition build() {
+            int i = 0;
             for (Integer representativeId: builderStationLink){
-                representativeId= representative(representativeId);
+                builderStationLink[i] = representative(representativeId);
+                i++;
             }
 
             return new StationPartition(builderStationLink);
         }
 
         private int representative(int stationId) {
-            int intermediatStationId;
+            int intermediatStationId = stationId;
             do {
-                intermediatStationId = builderStationLink[stationId];
+                intermediatStationId = builderStationLink[intermediatStationId];
             } while (intermediatStationId != builderStationLink[intermediatStationId]);
             return intermediatStationId;
         }

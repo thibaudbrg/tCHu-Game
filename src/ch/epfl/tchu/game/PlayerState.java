@@ -79,10 +79,21 @@ public final class PlayerState extends PublicPlayerState {
     }
 
     public int ticketPoints() {
+        int maxId = 0;
+        for (Route route: this.routes()){
+            maxId=Integer.max(maxId,route.station1().id());
+            maxId=Integer.max(maxId,route.station2().id());
+        }
+        StationPartition.Builder builder = new StationPartition.Builder(maxId+1);
+        for(Route route: this.routes()){
+            builder.connect(route.station1(),route.station2());
+        }
+        StationPartition playerPartition = builder.build();
         int points = 0;
         for (Ticket ticket : tickets) {
-            // TODO COMPLETE
+            points+= ticket.points(playerPartition);
         }
+        return points;
     }
 
     public int finalPoints() {
