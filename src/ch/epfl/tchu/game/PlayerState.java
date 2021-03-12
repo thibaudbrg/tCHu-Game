@@ -4,6 +4,7 @@ import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public final class PlayerState extends PublicPlayerState {
@@ -50,10 +51,25 @@ public final class PlayerState extends PublicPlayerState {
         return haveTheCards && route.length() <= this.carCount();
     }
 
-public  List<SortedBag<Card>> possibleClaimCards(Route route){
-        Preconditions.checkArgument(this.carCount()>=route.length());
+    public List<SortedBag<Card>> possibleClaimCards(Route route) {
+        Preconditions.checkArgument(this.carCount() >= route.length());
         return route.possibleClaimCards();
-}
+    }
+
+    public List<SortedBag<Card>> possibleAdditionalCards(int additionalCardsCount, SortedBag<Card> initialCards, SortedBag<Card> drawnCards) {
+        Preconditions.checkArgument(additionalCardsCount >= 1 && additionalCardsCount <= 3);
+        Preconditions.checkArgument(initialCards.isEmpty());
+        Preconditions.checkArgument(drawnCards.size() == 3);
+        Preconditions.checkArgument(initialCards.toSet().size() <= 2);
+        SortedBag.Builder<Card> builder = new SortedBag.Builder();
+        SortedBag<Card> remainingUsableCard = builder.add(cards.countOf(Card.LOCOMOTIVE), Card.LOCOMOTIVE).
+                add(cards.countOf(Card.of(initialCards.get(0).color())), Card.of(initialCards.get(0).color())).build().difference(initialCards);
+        List<SortedBag<Card>> possibleAddCards = new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
+        possibleAddCards.sort(Comparator.comparingInt(cs -> cs.countOf(Card.LOCOMOTIVE)));
+        return possibleAddCards;
+
+
+    }
 
     public PlayerState withClaimedRoute(Route route, SortedBag<Card> claimCards) {
         List<Route> routesCopy = new ArrayList<>(this.routes());
@@ -61,15 +77,16 @@ public  List<SortedBag<Card>> possibleClaimCards(Route route){
 
         return new PlayerState(this.tickets, this.cards.difference(claimCards), routesCopy);
     }
-    public int ticketPoints(){
+
+    public int ticketPoints() {
         int points = 0;
-        for (Ticket ticket : tickets){
-             // TODO COMPLETE
+        for (Ticket ticket : tickets) {
+            // TODO COMPLETE
         }
     }
 
-    public int finalPoints(){
-        return this.claimPoints()+ticketPoints();
+    public int finalPoints() {
+        return this.claimPoints() + ticketPoints();
     }
 
 
