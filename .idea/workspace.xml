@@ -5,25 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicPlayerState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardStateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/CardStateTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/CardStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/CardStateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/DeckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/DeckTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/InfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/InfoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PublicCardStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PublicCardStateTest.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +21,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -47,26 +36,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java">
-      <ranges>
-        <range start1="37" end1="38" start2="37" end2="39" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="55" end1="56" start2="56" end2="57" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="87" end1="88" start2="88" end2="89" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="147" end1="148" start2="148" end2="149" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="181" end1="182" start2="182" end2="183" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="184" end1="185" start2="185" end2="186" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java">
-      <ranges>
-        <range start1="5" end1="5" start2="5" end2="6" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="25" end1="26" start2="26" end2="28" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="52" end1="52" start2="54" end2="56" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="77" end1="78" start2="81" end2="82" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -103,15 +72,13 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TripTest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -221,7 +188,9 @@
       <workItem from="1615386761865" duration="1327000" />
       <workItem from="1615388108502" duration="5541000" />
       <workItem from="1615393716533" duration="3741000" />
-      <workItem from="1615534156421" duration="6361000" />
+      <workItem from="1615534156421" duration="6504000" />
+      <workItem from="1615541879485" duration="1070000" />
+      <workItem from="1615542983438" duration="3662000" />
     </task>
     <servers />
   </component>

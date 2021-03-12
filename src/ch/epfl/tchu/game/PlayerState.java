@@ -1,0 +1,58 @@
+package ch.epfl.tchu.game;
+
+import ch.epfl.tchu.Preconditions;
+import ch.epfl.tchu.SortedBag;
+
+import java.util.List;
+
+public final class PlayerState extends PublicPlayerState {
+
+    private SortedBag<Ticket> tickets;
+    private SortedBag<Card> cards;
+
+    public PlayerState(SortedBag<Ticket> tickets, SortedBag<Card> cards, List<Route> routes) {
+        super(tickets.size(), cards.size(), routes);
+        this.tickets = tickets;
+        this.cards = cards;
+    }
+
+    public static PlayerState initial(SortedBag<Card> initialCards) {
+        Preconditions.checkArgument(initialCards.size() == 4);
+        return new PlayerState(SortedBag.of(), initialCards, List.of());
+    }
+
+    public SortedBag<Ticket> tickets() {
+        return tickets;
+    }
+
+    public PlayerState withAddedTickets(SortedBag<Ticket> newTickets) {
+        return new PlayerState(this.tickets.union(newTickets), this.cards, this.routes());
+    }
+
+    public SortedBag<Card> cards() {
+        return this.cards;
+    }
+
+    public PlayerState withAddedCard(Card card) {
+        return new PlayerState(this.tickets, this.cards.union(SortedBag.of(card)), this.routes());
+    }
+
+    public PlayerState withAddedCards(SortedBag<Card> additionalCards) {
+        return new PlayerState(this.tickets, this.cards.union(additionalCards), this.routes());
+    }
+
+    public boolean canClaimRoute(Route route) {
+        boolean haveTheCards = false;
+        for (SortedBag s : route.possibleClaimCards()) {
+            if (cards.contains(s)) haveTheCards = true;
+        }
+        return haveTheCards && route.length() <= this.carCount();
+    }
+
+
+    public PlayerState withClaimedRoute(Route route, SortedBag<Card> claimCards) {
+        return new PlayerState(this.tickets, this.cards.difference(claimCards), this.routes());
+    }
+
+
+}
