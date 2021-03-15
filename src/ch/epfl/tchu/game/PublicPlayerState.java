@@ -13,11 +13,11 @@ import java.util.List;
  * @author Bourgeois Thibaud (324604)
  */
 public class PublicPlayerState {
-    private int ticketCount;
-    private int cardCount;
-    private int carCount;
-    private int claimPoints;
-    private List<Route> routes;
+    private final int ticketCount;
+    private final int cardCount;
+    private final int carCount;
+    private final int claimPoints;
+    private final List<Route> routes;
 
     /**
      * Constructs the public state of a player who has the given number of tickets and cards,
@@ -30,8 +30,7 @@ public class PublicPlayerState {
     public PublicPlayerState(int ticketCount, int cardCount, List<Route> routes) {
         Preconditions.checkArgument(ticketCount >= 0);
         Preconditions.checkArgument(cardCount >= 0);
-        List<Route> routesCopy = new ArrayList<>(routes);
-        this.routes = routesCopy;
+        this.routes = new ArrayList<>(routes);
         this.ticketCount = ticketCount;
         this.cardCount = cardCount;
         carCount = Constants.INITIAL_CAR_COUNT - scanRouteList(false);

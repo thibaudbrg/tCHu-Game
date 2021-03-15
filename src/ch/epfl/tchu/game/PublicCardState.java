@@ -32,8 +32,7 @@ public class PublicCardState {
         Preconditions.checkArgument(faceUpCards.size() == 5);
         Preconditions.checkArgument(deckSize >= 0);
         Preconditions.checkArgument(discardsSize >= 0);
-        List<Card> faceUpCardsCopy = new ArrayList<>(faceUpCards);
-        this.faceUpCards = faceUpCardsCopy;
+        this.faceUpCards =  new ArrayList<>(faceUpCards);
         this.deckSize = deckSize;
         this.discardsSize = discardsSize;
 
@@ -55,8 +54,7 @@ public class PublicCardState {
      * @return (List < Card >) the 5 cards face up, in the form of a list with exactly 5 elements
      */
     public List<Card> faceUpCards() {
-        List<Card> faceUpCopy = new ArrayList<>(faceUpCards);
-        return faceUpCopy;
+        return new ArrayList<>(faceUpCards);
     }
 
     /**

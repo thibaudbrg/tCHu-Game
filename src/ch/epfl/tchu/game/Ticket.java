@@ -24,14 +24,13 @@ public final class Ticket implements Comparable<Ticket> {
      */
     public Ticket(List<Trip> trips) {
         Preconditions.checkArgument(!trips.isEmpty());
-        List<Trip> tripsCopy = new ArrayList<>(trips);
 
         for (Trip trip : trips) {
             for (Trip trip1 : trips) {
                 Preconditions.checkArgument(trip.from().name().equals(trip1.from().name()));
             }
         }
-        this.trips = tripsCopy;
+        this.trips = new ArrayList<>(trips);
         stationForm = trips.get(0).from();
         Text = computeText();
     }

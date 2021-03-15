@@ -15,8 +15,8 @@ import java.util.List;
  */
 public final class PlayerState extends PublicPlayerState {
 
-    private SortedBag<Ticket> tickets;
-    private SortedBag<Card> cards;
+    private final SortedBag<Ticket> tickets;
+    private final SortedBag<Card> cards;
 
     /**
      * Constructs the state of a player with the given tickets, cards and routes

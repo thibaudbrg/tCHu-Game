@@ -9,7 +9,7 @@ import ch.epfl.tchu.Preconditions;
  * @author Bourgeois Thibaud (324604)
  */
 public final class StationPartition implements StationConnectivity {
-    private Integer[] arrayStationLink;
+    private final Integer[] arrayStationLink;
 
     private StationPartition(Integer[] arrayStationLink) {
         this.arrayStationLink = arrayStationLink;
@@ -37,8 +37,7 @@ public final class StationPartition implements StationConnectivity {
      * The Builder of StationPartition
      */
    public final static class Builder {
-        private Integer[] builderStationLink;
-        private StationPartition stationPartition;
+        private final Integer[] builderStationLink;
 
         /**
          * The constructor of the Builder of StationPartition
