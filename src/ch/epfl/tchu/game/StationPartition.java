@@ -2,8 +2,12 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
-import java.util.ArrayList;
-
+/**
+ * Represents a partition of Stations
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public final class StationPartition implements StationConnectivity {
     private Integer[] arrayStationLink;
 
@@ -13,11 +17,11 @@ public final class StationPartition implements StationConnectivity {
 
 
     /**
-     * Return if two stations are connected with card to each other
+     * Gives a boolean of if two stations are connected with card to each other
      *
      * @param s1 (Station) Station 1
      * @param s2 (Station) Station 2
-     * @return
+     * @return (boolean) If two stations are connected with card to each other
      */
     @Override
     public boolean connected(Station s1, Station s2) {
@@ -27,10 +31,20 @@ public final class StationPartition implements StationConnectivity {
     }
 
 
+
+
+    /**
+     * The Builder of StationPartition
+     */
    public final static class Builder {
         private Integer[] builderStationLink;
         private StationPartition stationPartition;
 
+        /**
+         * The constructor of the Builder of StationPartition
+         *
+         * @param stationCount number of stations that is given
+         */
         public Builder(int stationCount) {
             Preconditions.checkArgument(stationCount >= 0);
             builderStationLink = new Integer[stationCount];
@@ -39,22 +53,37 @@ public final class StationPartition implements StationConnectivity {
             }
         }
 
+        /**
+         * Joins the subsets containing the two stations passed as arguments, by "electing" one of
+         * the two representatives as representative of the joined subset
+         *
+         * @param station1 Station 1
+         * @param station2 Station 2
+         * @return (Builder) The builder (this)
+         */
         public Builder connect(Station station1, Station station2) {
-            builderStationLink[station1.id()] = representative(station2.id());
-
+            if (station1.id()!=builderStationLink[station1.id()]){
+                builderStationLink[station2.id()] = representative(station1.id());}
+            else  builderStationLink[station1.id()] = representative(station2.id());
             return this;
         }
 
-
+        /**
+         * Gives the flattened partition of the stations corresponding to the deep partition
+         * being built by this builder
+         *
+         * @return (StationPartition) the flattened partition of the stations corresponding to the deep partition
+         * being built by this builder
+         */
         public StationPartition build() {
             int i = 0;
             for (Integer representativeId: builderStationLink){
                 builderStationLink[i] = representative(representativeId);
                 i++;
             }
-
             return new StationPartition(builderStationLink);
         }
+
 
         private int representative(int stationId) {
             int intermediatStationId = stationId;

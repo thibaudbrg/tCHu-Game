@@ -40,7 +40,7 @@ public final class Route {
      * @throws NullPointerException
      */
     public Route(String id, Station station1, Station station2, int length, Level level, Color color) throws NullPointerException {
-        Preconditions.checkArgument((!(station1.name().equals(station2.name()))) &&
+        Preconditions.checkArgument((!(station1.id()==(station2.id()))) &&
                 (length >= Constants.MIN_ROUTE_LENGTH) && (length <= Constants.MAX_ROUTE_LENGTH));
         if (id == null || station1 == null || station2 == null || level == null) {
             throw new NullPointerException();

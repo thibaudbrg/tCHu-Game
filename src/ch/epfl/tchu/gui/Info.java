@@ -7,6 +7,7 @@ import ch.epfl.tchu.game.Trail;
 
 import java.util.List;
 
+import static ch.epfl.tchu.gui.StringsFr.EN_DASH_SEPARATOR;
 import static ch.epfl.tchu.gui.StringsFr.plural;
 
 /**
@@ -214,7 +215,7 @@ public final class Info {
      * @return a String declaring that the player gets a bonus thanks to the given trail (Longest of the game)
      */
     public String getsLongestTrailBonus(Trail longestTrail) {
-        return String.format(StringsFr.GETS_BONUS, playerName, longestTrail);
+        return String.format(StringsFr.GETS_BONUS, playerName, longestTrail.station1() + EN_DASH_SEPARATOR + longestTrail.station2());
     }
 
     /**

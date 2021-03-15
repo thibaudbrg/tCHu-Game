@@ -5,42 +5,81 @@ import ch.epfl.tchu.Preconditions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the public part of a player's state, i.e. the number of tickets, cards and wagons he owns,
+ * the roads he has taken, and the number of building points he has obtained
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public class PublicPlayerState {
     private int ticketCount;
     private int cardCount;
-    private List<Route> routes;
-    private int carCount ;
+    private int carCount;
     private int claimPoints;
+    private List<Route> routes;
 
-
+    /**
+     * Constructs the public state of a player who has the given number of tickets and cards,
+     * and has seized the given routes
+     *
+     * @param ticketCount (int) The number of tickets the player owns
+     * @param cardCount   (int) The number of cards the player owns
+     * @param routes      (List<Route>) The roads that the player has taken over
+     */
     public PublicPlayerState(int ticketCount, int cardCount, List<Route> routes) {
         Preconditions.checkArgument(ticketCount >= 0);
         Preconditions.checkArgument(cardCount >= 0);
         List<Route> routesCopy = new ArrayList<>(routes);
-        routes = routesCopy;
+        this.routes = routesCopy;
         this.ticketCount = ticketCount;
         this.cardCount = cardCount;
-        carCount = Constants.INITIAL_CAR_COUNT -scanRouteList(false);
+        carCount = Constants.INITIAL_CAR_COUNT - scanRouteList(false);
         claimPoints = scanRouteList(true);
 
     }
 
+    /**
+     * Returns the number of tickets of the player
+     *
+     * @return the number of tickets of the player
+     */
     public int ticketCount() {
         return ticketCount;
     }
 
+    /**
+     * Returns the number of cards of the player
+     *
+     * @return the number of cards of the player
+     */
     public int cardCount() {
         return cardCount;
     }
 
+    /**
+     * Returns a list of all the roads claimed by the player
+     *
+     * @return a list of all the roads claimed by the player
+     */
     public List<Route> routes() {
         return routes;
     }
 
+    /**
+     * Returns the number of cars owned by the player
+     *
+     * @return the number of cars owned by the player
+     */
     public int carCount() {
         return carCount;
     }
 
+    /**
+     * Returns the number of points claimed by the player
+     *
+     * @return the number of points claimed by the player
+     */
     public int claimPoints() {
         return claimPoints;
     }
