@@ -61,9 +61,12 @@ public final class StationPartition implements StationConnectivity {
          * @return (Builder) The builder (this)
          */
         public Builder connect(Station station1, Station station2) {
-            if (station1.id()!=builderStationLink[station1.id()]){
-                builderStationLink[station2.id()] = representative(station1.id());}
-            else  builderStationLink[station1.id()] = representative(station2.id());
+           /* if (station1.id()!=builderStationLink[station1.id()]&&station2.id()!=builderStationLink[station2.id()]){
+                builderStationLink[representative(station1.id())]=representative(station2.id());
+                builderStationLink[station1.id()]=representative(station2.id());}
+            else if(station2.id()!=builderStationLink[station2.id()]){builderStationLink[station1.id()]=representative(station2.id());}
+            else builderStationLink[station2.id()]=representative(station1.id());*/
+             builderStationLink[representative(station1.id())] = builderStationLink[representative(station2.id())];
             return this;
         }
 

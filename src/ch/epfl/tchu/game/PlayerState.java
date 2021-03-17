@@ -123,18 +123,21 @@ public final class PlayerState extends PublicPlayerState {
      * to lay down additionalCardsCount cards
      *
      * @param additionalCardsCount (int) The number of additional cards that the player must lay down
-     * @param initialCards (SortedBag<Card>) The initial Cards
-     * @param drawnCards (SortedBag<Card>) The drawn Cards
+     * @param initialCards         (SortedBag<Card>) The initial Cards
+     * @param drawnCards           (SortedBag<Card>) The drawn Cards
      * @return a list of all the sets of cards the player could use to take over a tunnel
      */
     public List<SortedBag<Card>> possibleAdditionalCards(int additionalCardsCount, SortedBag<Card> initialCards, SortedBag<Card> drawnCards) {
         Preconditions.checkArgument(additionalCardsCount >= 1 && additionalCardsCount <= 3);
-        Preconditions.checkArgument(initialCards.isEmpty());
+        Preconditions.checkArgument(!initialCards.isEmpty());
         Preconditions.checkArgument(drawnCards.size() == 3);
         Preconditions.checkArgument(initialCards.toSet().size() <= 2);
 
         SortedBag.Builder<Card> builder = new SortedBag.Builder();
-if (initialCards.get(0).color()!=null){builder.add(cards.countOf(Card.of(initialCards.get(0).color())), Card.of(initialCards.get(0).color()));}
+        if (initialCards.get(0).color() != null) {
+            builder.add(cards.countOf(Card.of(initialCards.get(0).color())), Card.of(initialCards.get(0).color()));
+        }
+
         SortedBag<Card> remainingUsableCard = builder.add(cards.countOf(Card.LOCOMOTIVE), Card.LOCOMOTIVE).build().difference(initialCards);
         List<SortedBag<Card>> possibleAddCards = new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
         possibleAddCards.sort(Comparator.comparingInt(cs -> cs.countOf(Card.LOCOMOTIVE)));
@@ -147,7 +150,7 @@ if (initialCards.get(0).color()!=null){builder.add(cards.countOf(Card.of(initial
      * Returns an identical state to the receiver,
      * except that the player has additionally seized the given route with the given cards
      *
-     * @param route (Route) The given Route
+     * @param route      (Route) The given Route
      * @param claimCards (SortedBag<Card>) The cards that enable the player to own the route
      * @return an identical state to the receiver,
      * except that the player has additionally seized the given route with the given cards
