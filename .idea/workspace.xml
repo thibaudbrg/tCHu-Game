@@ -24,9 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationPartition$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationPartition$Builder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerStateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerStateTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
@@ -99,19 +97,21 @@
       <recent name="$PROJECT_DIR$/test/ch/epfl/tchu/game" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerStateTest.possibleAdditionalCardsWorks">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PlayerStateTest.possibleClaimCardsFails">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerStateTest.possibleAdditionalCardsThrowsWhenAdditionalCardsCountIsNotWell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayerStateTest.canClaimCardsWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -121,7 +121,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.PlayerStateTest" />
-      <option name="METHOD_NAME" value="possibleAdditionalCardsThrowsWhenAdditionalCardsCountIsNotWell" />
+      <option name="METHOD_NAME" value="canClaimCardsWorks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -143,22 +143,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerStateTest.possibleAdditionalCardsThrowsWhenInitialCardsIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.PlayerStateTest" />
-      <option name="METHOD_NAME" value="possibleAdditionalCardsThrowsWhenInitialCardsIsEmpty" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PlayerStateTest.possibleAdditionalCardsWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
@@ -170,6 +154,22 @@
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.PlayerStateTest" />
       <option name="METHOD_NAME" value="possibleAdditionalCardsWorks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerStateTest.possibleClaimCardsFails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.PlayerStateTest" />
+      <option name="METHOD_NAME" value="possibleClaimCardsFails" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -193,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerStateTest.possibleClaimCardsFails" />
+        <item itemvalue="JUnit.PlayerStateTest.canClaimCardsWorks" />
         <item itemvalue="JUnit.PlayerStateTest.possibleAdditionalCardsWorks" />
         <item itemvalue="JUnit.PlayerStateTest.ticketPointsWorks" />
         <item itemvalue="JUnit.PlayerStateTest.possibleAdditionalCardsThrowsWhenDrawnCardsIsNot3" />
-        <item itemvalue="JUnit.PlayerStateTest.possibleAdditionalCardsThrowsWhenInitialCardsIsEmpty" />
-        <item itemvalue="JUnit.PlayerStateTest.possibleAdditionalCardsThrowsWhenAdditionalCardsCountIsNotWell" />
       </list>
     </recent_temporary>
   </component>
@@ -231,6 +231,7 @@
       <workItem from="1615973951036" duration="4510000" />
       <workItem from="1615978492456" duration="782000" />
       <workItem from="1615979538612" duration="305000" />
+      <workItem from="1616009071680" duration="755000" />
     </task>
     <servers />
   </component>
@@ -253,22 +254,22 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom" timestamp="1615979843646">
+    <state width="1398" height="204" key="GridCell.Tab.0.bottom" timestamp="1616009816565">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1615979843646" />
-    <state width="1398" height="255" key="GridCell.Tab.0.center" timestamp="1615979843645">
+    <state width="1398" height="204" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1616009816565" />
+    <state width="1398" height="204" key="GridCell.Tab.0.center" timestamp="1616009816564">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1615979843645" />
-    <state width="1398" height="255" key="GridCell.Tab.0.left" timestamp="1615979843644">
+    <state width="1398" height="204" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1616009816564" />
+    <state width="1398" height="204" key="GridCell.Tab.0.left" timestamp="1616009816564">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1615979843644" />
-    <state width="1398" height="255" key="GridCell.Tab.0.right" timestamp="1615979843646">
+    <state width="1398" height="204" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1616009816564" />
+    <state width="1398" height="204" key="GridCell.Tab.0.right" timestamp="1616009816565">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
-    <state width="1398" height="255" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1615979843646" />
+    <state width="1398" height="204" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1616009816565" />
     <state width="1398" height="255" key="GridCell.Tab.1.bottom" timestamp="1615979843648">
       <screen x="0" y="25" width="1440" height="807" />
     </state>
@@ -296,14 +297,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java</url>
-          <line>129</line>
-          <properties class="ch.epfl.tchu.game.PlayerState" method="possibleAdditionalCards">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java</url>
