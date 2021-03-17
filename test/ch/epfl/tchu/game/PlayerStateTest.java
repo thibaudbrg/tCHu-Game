@@ -361,7 +361,7 @@ public class PlayerStateTest {
 
         //The SortedBag of the initialCards
         SortedBag.Builder<Card> cardBuilderInitialCards = new SortedBag.Builder<>();
-        cardBuilderInitialCards.add(2, Card.YELLOW);
+        cardBuilderInitialCards.add(1, Card.GREEN);
 
         //The SortedBag of the drawnCards
         SortedBag.Builder<Card> cardBuilderDrawnCards = new SortedBag.Builder<>();
@@ -376,7 +376,7 @@ public class PlayerStateTest {
         boolean statement = true;
 
         List<SortedBag> liste = new ArrayList<>(playerstate.possibleAdditionalCards(2, cardBuilderInitialCards.build(), cardBuilderDrawnCards.build()));
-        for (int i = 0; i < listAComparer.size(); ++i) {
+        for (int i = 0; i < liste.size(); ++i) {
             if (!listAComparer.get(i).equals(liste.get(i))) statement = false;
         }
         assertTrue(statement);

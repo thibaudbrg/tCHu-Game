@@ -66,7 +66,7 @@ public final class StationPartition implements StationConnectivity {
                 builderStationLink[station1.id()]=representative(station2.id());}
             else if(station2.id()!=builderStationLink[station2.id()]){builderStationLink[station1.id()]=representative(station2.id());}
             else builderStationLink[station2.id()]=representative(station1.id());*/
-             builderStationLink[representative(station1.id())] = builderStationLink[representative(station2.id())];
+             builderStationLink[representative(station1.id())] = representative(station2.id());
             return this;
         }
 
