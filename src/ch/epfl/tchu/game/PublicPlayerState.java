@@ -62,7 +62,7 @@ public class PublicPlayerState {
      * @return a list of all the roads claimed by the player
      */
     public List<Route> routes() {
-        return routes;
+        return new ArrayList<>(routes);
     }
 
     /**

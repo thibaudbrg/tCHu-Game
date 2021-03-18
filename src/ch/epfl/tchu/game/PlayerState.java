@@ -139,6 +139,7 @@ public final class PlayerState extends PublicPlayerState {
         }
 
         SortedBag<Card> remainingUsableCard = builder.add(cards.countOf(Card.LOCOMOTIVE), Card.LOCOMOTIVE).build().difference(initialCards);
+        if(remainingUsableCard.size()<additionalCardsCount){return List.of();}
         List<SortedBag<Card>> possibleAddCards = new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
         possibleAddCards.sort(Comparator.comparingInt(cs -> cs.countOf(Card.LOCOMOTIVE)));
         return possibleAddCards;

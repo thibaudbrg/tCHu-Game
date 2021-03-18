@@ -271,7 +271,7 @@ public class PlayerStateTest {
         SortedBag.Builder<Card> cardBuilder = new SortedBag.Builder<>();
         cardBuilder.add(3, Card.GREEN)
                 .add(2, Card.BLUE)
-                .add(2, Card.LOCOMOTIVE).add(5, Card.WHITE);
+               .add(5, Card.WHITE);
 
         //The List of the Routes
         var s1 = new Station(0, "Lausanne");
@@ -332,20 +332,28 @@ public class PlayerStateTest {
 
         List<SortedBag> listAComparer = List.of(Verte2, Loco1Vert, Loco2);
         List<SortedBag> listAComparer2 = List.of(white3, white2Loco1, white1Loco2);
+        List<SortedBag> list3= List.of();
 
         boolean statement = true;
         boolean statement2 = true;
-        SortedBag<Card> init = SortedBag.of(2, Card.WHITE);
-        List<SortedBag> liste = new ArrayList<>(playerstate.possibleAdditionalCards(2, cardBuilderInitialCards.build(), cardBuilderDrawnCards.build()));
+        boolean statement3 = true;
+        SortedBag<Card> init = SortedBag.of(5, Card.WHITE);
+        /*List<SortedBag> liste = new ArrayList<>(playerstate.possibleAdditionalCards(2, cardBuilderInitialCards.build(), cardBuilderDrawnCards.build()));
         for (int i = 0; i < listAComparer.size(); ++i) {
             if (!listAComparer.get(i).equals(liste.get(i))) statement = false;
         }
         List<SortedBag> liste2 = new ArrayList<>(playerstate.possibleAdditionalCards(3, init, cardBuilderDrawnCards.build()));
         for (int i = 0; i < listAComparer2.size(); ++i) {
             if (!listAComparer2.get(i).equals(liste2.get(i))) statement2 = false;
+        }*/
+        List<SortedBag> liste3 = new ArrayList<>(playerstate.possibleAdditionalCards(3, init, cardBuilderDrawnCards.build()));
+        for (int i = 0; i < list3.size(); ++i) {
+            if (!list3.get(i).equals(liste3.get(i))) statement3 = false;
         }
+
         //assertTrue(statement);
-        assertTrue(statement2);
+      //  assertTrue(statement2);
+assertTrue(statement3);
     }
 
 
