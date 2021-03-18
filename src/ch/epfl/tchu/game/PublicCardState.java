@@ -32,7 +32,7 @@ public class PublicCardState {
         Preconditions.checkArgument(faceUpCards.size() == 5);
         Preconditions.checkArgument(deckSize >= 0);
         Preconditions.checkArgument(discardsSize >= 0);
-        this.faceUpCards =  new ArrayList<>(faceUpCards);
+        this.faceUpCards = new ArrayList<>(faceUpCards);
         this.deckSize = deckSize;
         this.discardsSize = discardsSize;
 
@@ -82,7 +82,8 @@ public class PublicCardState {
      *
      * @return (boolean) true iff the deck is empty
      */
-    public boolean isDeckEmpty() { return deckSize == 0;
+    public boolean isDeckEmpty() {
+        return deckSize == 0;
     }
 
     /**

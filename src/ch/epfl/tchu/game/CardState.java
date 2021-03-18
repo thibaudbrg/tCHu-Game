@@ -59,7 +59,7 @@ public final class CardState extends PublicCardState {
 
         List<Card> newFaceUpCards = new ArrayList<>(faceUpCards());
         Deck<Card> newDeck = deck.withoutTopCards(1);
-        newFaceUpCards.set(slot,deck.topCard());
+        newFaceUpCards.set(slot, deck.topCard());
         return new CardState(newFaceUpCards, newDeck.size(), this.discardsSize(), newDeck, this.discard);
     }
 
@@ -93,7 +93,7 @@ public final class CardState extends PublicCardState {
      */
     public CardState withDeckRecreatedFromDiscards(Random rng) {
         Preconditions.checkArgument(deck.isEmpty());
-        return new CardState(this.faceUpCards(),Deck.of(discard,rng).size(), 0, Deck.of(discard,rng),SortedBag.of() );
+        return new CardState(this.faceUpCards(), Deck.of(discard, rng).size(), 0, Deck.of(discard, rng), SortedBag.of());
     }
 
     /**
@@ -103,7 +103,7 @@ public final class CardState extends PublicCardState {
      * @return (CardStat) a set of cards identical to the receiver (this), but with the given cards added to the discard pile.
      */
     public CardState withMoreDiscardedCards(SortedBag<Card> additionalDiscards) {
-        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize()+additionalDiscards.size(), this.deck, this.discard.union(additionalDiscards));
+        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize() + additionalDiscards.size(), this.deck, this.discard.union(additionalDiscards));
     }
 
 }

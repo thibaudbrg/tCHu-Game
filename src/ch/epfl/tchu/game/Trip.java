@@ -20,8 +20,8 @@ public final class Trip {
     /**
      * Build a Trip
      *
-     * @param from (Station) departure station
-     * @param to (Station) arrival station
+     * @param from   (Station) departure station
+     * @param to     (Station) arrival station
      * @param points (int) number of points given to the trip
      */
     public Trip(Station from, Station to, int points) {

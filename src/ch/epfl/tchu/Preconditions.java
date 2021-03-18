@@ -8,7 +8,8 @@ package ch.epfl.tchu;
  */
 public final class Preconditions {
 
-    private Preconditions() {}
+    private Preconditions() {
+    }
 
     /**
      * Throws an exception if the given parameter is false

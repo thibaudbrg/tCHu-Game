@@ -24,7 +24,7 @@ public final class Deck<C extends Comparable<C>> {
      * @param cards (List<C>) List of cards that constitute the deck
      */
     private Deck(List<C> cards) {
-        List <C> cardsCopy = new ArrayList<>(cards);
+        List<C> cardsCopy = new ArrayList<>(cards);
         this.cards = cardsCopy;
     }
 
@@ -51,7 +51,6 @@ public final class Deck<C extends Comparable<C>> {
     public int size() {
         return cards.size();
     }
-
 
 
     /**

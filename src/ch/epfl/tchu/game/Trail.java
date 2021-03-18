@@ -85,75 +85,75 @@ public final class Trail {
         return cs;
     }
 
-        /**
-         * Lists all the stations of a trail
-         *
-         * @param trail (Trail) The Trail concerned
-         * @return (List < String >) A list of all the stations of the Trail
-         */
-        public List<String> listStation (Trail trail){
-            ArrayList<String> listStation = new ArrayList();
-            Station opposite = trail.station1;
-            for (Route route : trail.routes) {
-                listStation.add(opposite.toString());
-                opposite = route.stationOpposite(opposite);
+    /**
+     * Lists all the stations of a trail
+     *
+     * @param trail (Trail) The Trail concerned
+     * @return (List < String >) A list of all the stations of the Trail
+     */
+    public List<String> listStation(Trail trail) {
+        ArrayList<String> listStation = new ArrayList();
+        Station opposite = trail.station1;
+        for (Route route : trail.routes) {
+            listStation.add(opposite.toString());
+            opposite = route.stationOpposite(opposite);
 
-            }
-            listStation.add(trail.station2().toString());
-            return listStation;
         }
-
-
-        /**
-         * Method that instantiates any Trail for unit tests --Not Definite--.
-         *
-         * @param routes   (List<Route>) the List of the Trail
-         * @param station1 (Station) the depart Station of the Trail
-         * @param station2 (Station) The arrival Station of the Trail
-         * @return the Trail
-         */
-        public static Trail newTrailForTests (List < Route > routes, Station station1, Station station2){
-            return new Trail(routes, station1, station2);
-        }
-
-
-        /**
-         * Returns the length of the Trail
-         *
-         * @return the length of the Trail
-         */
-        public int length () {
-            return length;
-        }
-
-        /**
-         * Returns the depart Station of the Trail of null if there is any Station
-         *
-         * @return the depart Station of the Trail of null if there is any Station
-         */
-        public Station station1 () {
-            if (this.length() == 0) return null;
-            else return station1;
-        }
-
-        /**
-         * Returns the arrival Station of the Trail of null if there is any Station
-         *
-         * @return the arrival Station of the Trail of null if there is any Station
-         */
-        public Station station2 () {
-            if (this.length() == 0) return null;
-            return station2;
-        }
-
-        /**
-         * Returns the list provided by all Trail stations followed by the length of the Trail.
-         *
-         * @return the list provided by all Trail stations followed by the length of the Trail.
-         */
-        @Override
-        public String toString () {
-            List<String> listStation = listStation(this);
-            return String.join(" - ", listStation) + " " + "(" + (this.length() + ")");
-        }
+        listStation.add(trail.station2().toString());
+        return listStation;
     }
+
+
+    /**
+     * Method that instantiates any Trail for unit tests --Not Definite--.
+     *
+     * @param routes   (List<Route>) the List of the Trail
+     * @param station1 (Station) the depart Station of the Trail
+     * @param station2 (Station) The arrival Station of the Trail
+     * @return the Trail
+     */
+    public static Trail newTrailForTests(List<Route> routes, Station station1, Station station2) {
+        return new Trail(routes, station1, station2);
+    }
+
+
+    /**
+     * Returns the length of the Trail
+     *
+     * @return the length of the Trail
+     */
+    public int length() {
+        return length;
+    }
+
+    /**
+     * Returns the depart Station of the Trail of null if there is any Station
+     *
+     * @return the depart Station of the Trail of null if there is any Station
+     */
+    public Station station1() {
+        if (this.length() == 0) return null;
+        else return station1;
+    }
+
+    /**
+     * Returns the arrival Station of the Trail of null if there is any Station
+     *
+     * @return the arrival Station of the Trail of null if there is any Station
+     */
+    public Station station2() {
+        if (this.length() == 0) return null;
+        return station2;
+    }
+
+    /**
+     * Returns the list provided by all Trail stations followed by the length of the Trail.
+     *
+     * @return the list provided by all Trail stations followed by the length of the Trail.
+     */
+    @Override
+    public String toString() {
+        List<String> listStation = listStation(this);
+        return String.join(" - ", listStation) + " " + "(" + (this.length() + ")");
+    }
+}

@@ -31,12 +31,10 @@ public final class StationPartition implements StationConnectivity {
     }
 
 
-
-
     /**
      * The Builder of StationPartition
      */
-   public final static class Builder {
+    public final static class Builder {
         private final Integer[] builderStationLink;
 
         /**
@@ -61,12 +59,7 @@ public final class StationPartition implements StationConnectivity {
          * @return (Builder) The builder (this)
          */
         public Builder connect(Station station1, Station station2) {
-           /* if (station1.id()!=builderStationLink[station1.id()]&&station2.id()!=builderStationLink[station2.id()]){
-                builderStationLink[representative(station1.id())]=representative(station2.id());
-                builderStationLink[station1.id()]=representative(station2.id());}
-            else if(station2.id()!=builderStationLink[station2.id()]){builderStationLink[station1.id()]=representative(station2.id());}
-            else builderStationLink[station2.id()]=representative(station1.id());*/
-             builderStationLink[representative(station1.id())] = representative(station2.id());
+            builderStationLink[representative(station1.id())] = representative(station2.id());
             return this;
         }
 
@@ -79,7 +72,7 @@ public final class StationPartition implements StationConnectivity {
          */
         public StationPartition build() {
             int i = 0;
-            for (Integer representativeId: builderStationLink){
+            for (Integer representativeId : builderStationLink) {
                 builderStationLink[i] = representative(representativeId);
                 i++;
             }
@@ -88,11 +81,11 @@ public final class StationPartition implements StationConnectivity {
 
 
         private int representative(int stationId) {
-            int intermediatStationId = stationId;
+            int intermediateStationId = stationId;
             do {
-                intermediatStationId = builderStationLink[intermediatStationId];
-            } while (intermediatStationId != builderStationLink[intermediatStationId]);
-            return intermediatStationId;
+                intermediateStationId = builderStationLink[intermediateStationId];
+            } while (intermediateStationId != builderStationLink[intermediateStationId]);
+            return intermediateStationId;
         }
     }
 }

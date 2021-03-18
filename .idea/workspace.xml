@@ -25,9 +25,13 @@
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerStateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerStateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/StationPartitionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/StationPartitionTest.java" afterDir="false" />
+    </list>
+    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
       <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" afterDir="false" />
     </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,6 +56,21 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java">
+      <ranges>
+        <range start1="11" end1="41" start2="11" end2="11" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="42" end1="59" start2="12" end2="12" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="320" end1="321" start2="273" end2="274" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="345" end1="346" start2="298" end2="299" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="373" end1="373" start2="326" end2="333" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="374" end1="374" start2="334" end2="335" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="376" end1="377" start2="337" end2="339" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="381" end1="382" start2="343" end2="349" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="436" end1="437" start2="403" end2="404" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -97,16 +116,14 @@
       <recent name="$PROJECT_DIR$/test/ch/epfl/tchu/game" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerStateTest.possibleClaimCardsFails">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PlayerStateTest.possibleAdditionalCardsWorks">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -193,9 +210,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerStateTest.possibleAdditionalCardsWorks" />
         <item itemvalue="JUnit.PlayerStateTest.possibleClaimCardsFails" />
         <item itemvalue="JUnit.PlayerStateTest.canClaimCardsWorks" />
-        <item itemvalue="JUnit.PlayerStateTest.possibleAdditionalCardsWorks" />
         <item itemvalue="JUnit.PlayerStateTest.ticketPointsWorks" />
         <item itemvalue="JUnit.PlayerStateTest.possibleAdditionalCardsThrowsWhenDrawnCardsIsNot3" />
       </list>
@@ -232,6 +249,7 @@
       <workItem from="1615978492456" duration="782000" />
       <workItem from="1615979538612" duration="305000" />
       <workItem from="1616009071680" duration="755000" />
+      <workItem from="1616072481267" duration="1672000" />
     </task>
     <servers />
   </component>
@@ -252,61 +270,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1398" height="204" key="GridCell.Tab.0.bottom" timestamp="1616009816565">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="204" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1616009816565" />
-    <state width="1398" height="204" key="GridCell.Tab.0.center" timestamp="1616009816564">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="204" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1616009816564" />
-    <state width="1398" height="204" key="GridCell.Tab.0.left" timestamp="1616009816564">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="204" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1616009816564" />
-    <state width="1398" height="204" key="GridCell.Tab.0.right" timestamp="1616009816565">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="204" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1616009816565" />
-    <state width="1398" height="255" key="GridCell.Tab.1.bottom" timestamp="1615979843648">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.bottom/0.25.1440.807@0.25.1440.807" timestamp="1615979843648" />
-    <state width="1398" height="255" key="GridCell.Tab.1.center" timestamp="1615979843647">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.center/0.25.1440.807@0.25.1440.807" timestamp="1615979843647" />
-    <state width="1398" height="255" key="GridCell.Tab.1.left" timestamp="1615979843647">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.left/0.25.1440.807@0.25.1440.807" timestamp="1615979843647" />
-    <state width="1398" height="255" key="GridCell.Tab.1.right" timestamp="1615979843648">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="255" key="GridCell.Tab.1.right/0.25.1440.807@0.25.1440.807" timestamp="1615979843648" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/StationPartitionTest.java</url>
-          <line>8</line>
-          <properties class="ch.epfl.tchu.game.StationPartitionTest" method="works">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java</url>
-          <line>315</line>
-          <properties class="ch.epfl.tchu.game.PlayerStateTest" method="possibleAdditionalCardsWorks">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -15,7 +15,7 @@ public enum PlayerId {
     public final static int COUNT = ALL.size();
 
     /**
-     *Returns the identity of the player who follows the one to whom it is applied
+     * Returns the identity of the player who follows the one to whom it is applied
      *
      * @return (PlayerId) The identity of the player who follows the one to whom it is applied
      */
