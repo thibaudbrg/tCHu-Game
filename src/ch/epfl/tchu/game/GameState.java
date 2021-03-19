@@ -5,6 +5,12 @@ import ch.epfl.tchu.SortedBag;
 
 import java.util.*;
 
+/**
+ * Represents the state of the game tChu
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public final class GameState extends PublicGameState {
     private final CardState completeCardState;
     private final Deck<Ticket> ticketsDeck;
@@ -20,58 +26,125 @@ public final class GameState extends PublicGameState {
 
     }
 
+    /**
+     * Converts a map with a playerState to a map with a publicPlayerState
+     *
+     * @param playerState (Map<PlayerId, PlayerState>) The map to adapt
+     * @return (Map < PlayerId, PublicPlayerState >) The new map with the PublicPlayerState
+     */
     public static Map<PlayerId, PublicPlayerState> makePublic(Map<PlayerId, PlayerState> playerState) {
         Map<PlayerId, PublicPlayerState> publicPlayerState = Map.copyOf(playerState);
         return publicPlayerState;
     }
 
-    public static GameState initial(SortedBag<Ticket> tickets, Random rng) {
+    /**
+     * Returns the initial state of a game of tCHu in which the ticket deck contains the given tickets
+     * and the card deck contains all the cards in the game without the top 8 (those dealt to the player).
+     * These cards are shuffled by a random generator, which is also used to randomly
+     * select the identity of the first player
+     *
+     * @param tickets (SortedBag<Ticket>) The tickets for the ticket deck.
+     * @param rng     (Random) The random generator
+     * @return (GameState) The initial state of a game of tCHu in which the ticket deck contains the given tickets
+     * and the card deck contains all the cards in the game without the top 8
+     */
+    public static GameState initial(SortedBag<Ticket> tickets, Random rng) { //TODO en fonction de ce que rep Michel
         Deck<Card> cardDeckWithOutTop8 = Deck.of(Constants.ALL_CARDS, rng);
 
         PlayerId firstPlayer = PlayerId.ALL.get(rng.nextInt(1));
+        SortedBag<Card> player1Card = cardDeckWithOutTop8.topCards(4);
+        cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(4);
 
-        Map<PlayerId, PlayerState> map = Map.of(firstPlayer, new PlayerState(SortedBag.of(), SortedBag.of(), List.of()),
-                firstPlayer.next(), new PlayerState(SortedBag.of(), SortedBag.of(), List.of()));
+        SortedBag<Card> player2Card = cardDeckWithOutTop8.topCards(4);
+        cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(4);
+
+        Map<PlayerId, PlayerState> map = Map.of(firstPlayer, PlayerState.initial(SortedBag.of(player1Card)),
+                firstPlayer.next(), PlayerState.initial(SortedBag.of(player2Card)));
         return new GameState(CardState.of(cardDeckWithOutTop8), firstPlayer, map, Deck.of(tickets, rng), null);
     }
 
 
+    /**
+     * Returns all part of the player state of the given player
+     *
+     * @param playerId (PlayerState) The given player Id
+     * @return (PlayerState) The all part of the player state of the given player
+     */
     @Override
     public PlayerState playerState(PlayerId playerId) {
         return completePlayerState.get(playerId);
     }
 
+    /**
+     * Returns the all part of the current player's state
+     *
+     * @return (PlayerState) The all part of the current player's state
+     */
     @Override
     public PlayerState currentPlayerState() {
         return completePlayerState.get(currentPlayerId());
     }
 
+    /**
+     * Return the count tickets from the top of the deck
+     *
+     * @param count (int) The number of tickets
+     * @return (SortedBag < Ticket >) The count notes from the top of the deck
+     */
     public SortedBag<Ticket> topTickets(int count) {
         Preconditions.checkArgument(0 <= count && count >= ticketsDeck.size());
         return ticketsDeck.topCards(count);
     }
 
+    /**
+     * Returns an identical state to the receiver, but without the count tickets from the top of the deck
+     *
+     * @param count (int) the number of tickets
+     * @return (GameState) An identical state to the receiver, but without the count tickets from the top of the deck
+     */
     public GameState withoutTopTickets(int count) {
         Preconditions.checkArgument(0 <= count && count >= ticketsDeck.size());
         return new GameState(completeCardState, currentPlayerId(), completePlayerState,
                 ticketsDeck.withoutTopCards(count), null);
     }
 
+    /**
+     * Returns the card to the top of the deck
+     *
+     * @return (Card) The card to the top of the deck
+     */
     public Card topCard() {
         Preconditions.checkArgument(!completeCardState.isDeckEmpty());
         return completeCardState.topDeckCard();
     }
 
+    /**
+     * Returns a state identical to the receiver but without the top card of the deck
+     *
+     * @return (GameState) A state identical to the receiver but without the top card of the deck
+     */
     public GameState withoutTopCard() {
         Preconditions.checkArgument(!completeCardState.isDeckEmpty());
         return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(), completePlayerState, ticketsDeck, null);
     }
 
+    /**
+     * Returns a state identical to the receiver but with the data cards added to the discard pile
+     *
+     * @param discardedCards (SortedBag<Card>) The discarded cards
+     * @return (GameState) A state identical to the receiver but with the data cards added to the discard pile
+     */
     public GameState withMoreDiscardedCards(SortedBag<Card> discardedCards) {
-        return new GameState(completeCardState.withMoreDiscardedCards(discardedCards), currentPlayerId(), completePlayerState, ticketsDeck
-                , null);
+        return new GameState(completeCardState.withMoreDiscardedCards(discardedCards), currentPlayerId(), completePlayerState, ticketsDeck, null);
     }
 
+    /**
+     * Returns a state identical to the receiver unless the deck is empty,
+     * in which case it is recreated from the discard pile, shuffled using the given random generator
+     *
+     * @param rng (Random) The random generator
+     * @return (GameState) A state identical to the receiver unless the deck is empty
+     */
     public GameState withCardsDeckRecreatedIfNeeded(Random rng) {
         if (!completeCardState.isDeckEmpty()) {
             return this;
@@ -79,6 +152,13 @@ public final class GameState extends PublicGameState {
             return new GameState(completeCardState.withDeckRecreatedFromDiscards(rng), currentPlayerId(), completePlayerState, ticketsDeck, null);
     }
 
+    /**
+     * Returns  a state identical to the receiver but in which the given tickets have been added to the given player's hand
+     *
+     * @param playerId      given player Id
+     * @param chosenTickets Tickets that the player chose to keep.
+     * @return a state identical to the receiver but in which the given tickets have been added to the given player's hand
+     */
     public GameState withInitiallyChosenTickets(PlayerId playerId, SortedBag<Ticket> chosenTickets) {
         Preconditions.checkArgument(playerState(playerId).tickets().isEmpty());
         Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
@@ -86,6 +166,14 @@ public final class GameState extends PublicGameState {
         return new GameState(completeCardState, playerId, newPlayerState, ticketsDeck, null);
     }
 
+    /**
+     * Returns a state identical to the receiver, but in which the current player has drawn the drawnTickets
+     * from the top of the deck, and chosen to keep those contained in chosenTicket
+     *
+     * @param drawnTickets  drawn Tickets from the top of the deck
+     * @param chosenTickets Tickets chosen to keep by the player
+     * @return a state identical to the receiver, but in which the current player has drawn the drawnTickets from the top of the deck, and chosen to keep those contained in chosenTicket
+     */
     public GameState withChosenAdditionalTickets(SortedBag<Ticket> drawnTickets, SortedBag<Ticket> chosenTickets) {
         Preconditions.checkArgument(drawnTickets.contains(chosenTickets));
         Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
@@ -93,6 +181,13 @@ public final class GameState extends PublicGameState {
         return new GameState(completeCardState, currentPlayerId(), newPlayerState, ticketsDeck.withoutTopCards(chosenTickets.size()), null);
     }
 
+    /**
+     * Returns a state identical to the receiver except that the face-up card at the given location has been placed in the current player's hand,
+     * and replaced by the one at the top of the deck
+     *
+     * @param slot location of the card to place in the player's hand
+     * @return a state identical to the receiver except that the face-up card at the given location has been placed in the current player's hand, and replaced by the one at the top of the deck
+     */
     public GameState withDrawnFaceUpCard(int slot) {
         Preconditions.checkArgument(canDrawCards());
         Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
@@ -100,6 +195,11 @@ public final class GameState extends PublicGameState {
         return new GameState(completeCardState.withDrawnFaceUpCard(slot), currentPlayerId(), newPlayerState, ticketsDeck, null);
     }
 
+    /**
+     * Returns a state identical to the receiver except that the top card of the deck has been placed in the current player's hand
+     *
+     * @return a state identical to the receiver except that the top card of the deck has been placed in the current player's hand
+     */
     public GameState withBlindlyDrawnCard() {
         Preconditions.checkArgument(canDrawCards());
         Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
@@ -108,6 +208,13 @@ public final class GameState extends PublicGameState {
 
     }
 
+    /**
+     * returns a identical state to the receiver but in which the current player has seized the given route using the given cards.
+     *
+     * @param route claimed route
+     * @param cards cards used to the claim the route
+     * @return returns a identical state to the receiver but in which the current player has seized the given route using the given cards.
+     */
     public GameState withClaimedRoute(Route route, SortedBag<Card> cards) {
         //Verifier que les cartes sont dans la main du joueur apres rendu inter
         Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
@@ -115,10 +222,23 @@ public final class GameState extends PublicGameState {
         return new GameState(completeCardState.withMoreDiscardedCards(cards), currentPlayerId(), newPlayerState, ticketsDeck, null); // Pas sur qu il fasse mettre cartes dans defausse
     }
 
+    /**
+     * returns true if the last turn begins,
+     * i.e. if the identity of the last player is currently unknown but the current player has only two or fewer cars left
+     *
+     * @return true if the last turn begins
+     */
     public boolean lastTurnBegins() {
         return lastPlayer() == null && currentPlayerState().carCount() <= 2;
     }
 
+    /**
+     * Ends the turn of the current player,
+     * i.e. returns a state identical to the receiver except that the current player is the one following the current player;
+     * moreover, if lastTurnBegins returns true, the current player becomes the last player.
+     *
+     * @return a state identical to the receiver except that the current player is the one following the current player
+     */
     public GameState forNextTurn() {
         if (lastTurnBegins()) {
             return new GameState(completeCardState, currentPlayerId().next(), completePlayerState, ticketsDeck, currentPlayerId());
