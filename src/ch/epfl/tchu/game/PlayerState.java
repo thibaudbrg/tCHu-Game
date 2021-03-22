@@ -113,7 +113,11 @@ public final class PlayerState extends PublicPlayerState {
      */
     public List<SortedBag<Card>> possibleClaimCards(Route route) {
         Preconditions.checkArgument(this.carCount() >= route.length());
-        return route.possibleClaimCards();
+        List<SortedBag<Card>> possibleClaimCards = new ArrayList<>();
+        for (SortedBag s : route.possibleClaimCards()) {
+            if (cards.contains(s)) possibleClaimCards.add(s);
+        }
+        return possibleClaimCards;
     }
 
     /**
@@ -174,7 +178,7 @@ public final class PlayerState extends PublicPlayerState {
             maxId = Integer.max(maxId, route.station1().id());
             maxId = Integer.max(maxId, route.station2().id());
         }
-        StationPartition.Builder builder = new StationPartition.Builder(maxId + 1);
+        StationPartition.Builder builder = new StationPartition.Builder(maxId+1);
         for (Route route : this.routes()) {
             builder.connect(route.station1(), route.station2());
         }

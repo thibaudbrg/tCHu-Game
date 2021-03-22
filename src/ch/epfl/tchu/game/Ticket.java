@@ -85,19 +85,14 @@ public final class Ticket implements Comparable<Ticket> {
      * @return (int) returns the number of points the ticket is worth
      */
     public int points(StationConnectivity connectivity) {
-        int maxPoint = 0;
+        int Point = Integer.MIN_VALUE;
         int minPoint = Integer.MAX_VALUE;
         for (Trip trip : trips) {
-            if (connectivity.connected(stationForm, trip.to())) {
-                maxPoint = Integer.max(maxPoint, trip.points());
-            }
-            minPoint = Integer.min(minPoint, trip.points());
+                Point = Integer.max(Point, trip.points(connectivity));
         }
-        if (maxPoint == 0) {
-            return -minPoint;
-        } else return maxPoint;
-    }
+        return Point;
 
+    }
 
     /**
      * Compares the this and that banknotes in alphabetical order of their textual representation
