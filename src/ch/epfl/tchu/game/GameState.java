@@ -50,16 +50,12 @@ public final class GameState extends PublicGameState {
      */
     public static GameState initial(SortedBag<Ticket> tickets, Random rng) { //TODO en fonction de ce que rep Michel
         Deck<Card> cardDeckWithOutTop8 = Deck.of(Constants.ALL_CARDS, rng);
-
         PlayerId firstPlayer = PlayerId.ALL.get(rng.nextInt(1));
-        SortedBag<Card> player1Card = cardDeckWithOutTop8.topCards(4);
-        cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(4);
-
-        SortedBag<Card> player2Card = cardDeckWithOutTop8.topCards(4);
-        cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(4);
-
-        Map<PlayerId, PlayerState> map = Map.of(firstPlayer, PlayerState.initial(SortedBag.of(player1Card)),
-                firstPlayer.next(), PlayerState.initial(SortedBag.of(player2Card)));
+        Map<PlayerId, PlayerState> map = new HashMap<>();
+        for (PlayerId id : PlayerId.ALL){
+            map.put(id,PlayerState.initial(cardDeckWithOutTop8.topCards(4)));
+            cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(4);
+        }
         return new GameState(CardState.of(cardDeckWithOutTop8), firstPlayer, map, Deck.of(tickets, rng), null);
     }
 
@@ -92,7 +88,7 @@ public final class GameState extends PublicGameState {
      * @return (SortedBag < Ticket >) The count notes from the top of the deck
      */
     public SortedBag<Ticket> topTickets(int count) {
-        Preconditions.checkArgument(0 <= count && count >= ticketsDeck.size());
+        Preconditions.checkArgument(0 <= count && count <= ticketsDeck.size());
         return ticketsDeck.topCards(count);
     }
 
@@ -103,7 +99,7 @@ public final class GameState extends PublicGameState {
      * @return (GameState) An identical state to the receiver, but without the count tickets from the top of the deck
      */
     public GameState withoutTopTickets(int count) {
-        Preconditions.checkArgument(0 <= count && count >= ticketsDeck.size());
+        Preconditions.checkArgument(0 <= count && count <= ticketsDeck.size());
         return new GameState(completeCardState, currentPlayerId(), completePlayerState,
                 ticketsDeck.withoutTopCards(count), null);
     }
@@ -135,7 +131,8 @@ public final class GameState extends PublicGameState {
      * @return (GameState) A state identical to the receiver but with the data cards added to the discard pile
      */
     public GameState withMoreDiscardedCards(SortedBag<Card> discardedCards) {
-        return new GameState(completeCardState.withMoreDiscardedCards(discardedCards), currentPlayerId(), completePlayerState, ticketsDeck, null);
+        return new GameState(completeCardState.withMoreDiscardedCards(discardedCards), currentPlayerId(),
+                completePlayerState, ticketsDeck, null);
     }
 
     /**

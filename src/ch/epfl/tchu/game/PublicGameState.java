@@ -59,7 +59,7 @@ public class PublicGameState {
      * @return true if the tickets deck isn't empty
      */
     public boolean canDrawTickets() {
-        return ticketsCount != 0;
+        return ticketsCount > 0;
     }
 
     /**
