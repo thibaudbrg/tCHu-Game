@@ -118,7 +118,7 @@ public class PublicGameState {
         claimedRoutes.addAll(0, currentPlayerState().routes());
         claimedRoutes.addAll(claimedRoutes.size(), playerState(currentPlayerId.next()).routes());
         return claimedRoutes;
-    }// Pas sur de ca TODO
+    }
 
     /**
      * Returns the last player Id

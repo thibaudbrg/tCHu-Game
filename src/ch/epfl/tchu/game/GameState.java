@@ -18,7 +18,7 @@ public final class GameState extends PublicGameState {
 
     private GameState(CardState cardState, PlayerId currentPlayerId, Map<PlayerId,
             PlayerState> playerState, Deck<Ticket> ticketsDeck, PlayerId lastPlayer) {
-        super(ticketsDeck.size(), cardState, currentPlayerId, makePublic(playerState), null);
+        super(ticketsDeck.size(), cardState, currentPlayerId, Map.copyOf(playerState), null);
         this.ticketsDeck = ticketsDeck;
         completePlayerState = playerState;
         completeCardState = cardState;
@@ -26,16 +26,6 @@ public final class GameState extends PublicGameState {
 
     }
 
-    /**
-     * Converts a map with a playerState to a map with a publicPlayerState
-     *
-     * @param playerState (Map<PlayerId, PlayerState>) The map to adapt
-     * @return (Map < PlayerId, PublicPlayerState >) The new map with the PublicPlayerState
-     */
-    public static Map<PlayerId, PublicPlayerState> makePublic(Map<PlayerId, PlayerState> playerState) {
-        Map<PlayerId, PublicPlayerState> publicPlayerState = Map.copyOf(playerState);
-        return publicPlayerState;
-    }
 
     /**
      * Returns the initial state of a game of tCHu in which the ticket deck contains the given tickets
@@ -150,15 +140,15 @@ public final class GameState extends PublicGameState {
     }
 
     /**
-     * Returns  a state identical to the receiver but in which the given tickets have been added to the given player's hand
+     * Returns a state identical to the receiver but in which the given tickets have been added to the given player's hand
      *
-     * @param playerId      given player Id
+     * @param playerId      The given player Id
      * @param chosenTickets Tickets that the player chose to keep.
      * @return a state identical to the receiver but in which the given tickets have been added to the given player's hand
      */
     public GameState withInitiallyChosenTickets(PlayerId playerId, SortedBag<Ticket> chosenTickets) {
         Preconditions.checkArgument(playerState(playerId).tickets().isEmpty());
-        Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
+        Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(playerId, completePlayerState.get(playerId).withAddedTickets(chosenTickets));
         return new GameState(completeCardState, playerId, newPlayerState, ticketsDeck, null);
     }
@@ -169,25 +159,27 @@ public final class GameState extends PublicGameState {
      *
      * @param drawnTickets  drawn Tickets from the top of the deck
      * @param chosenTickets Tickets chosen to keep by the player
-     * @return a state identical to the receiver, but in which the current player has drawn the drawnTickets from the top of the deck, and chosen to keep those contained in chosenTicket
+     * @return a state identical to the receiver, but in which the current player has drawn the drawnTickets from
+     * the top of the deck, and chosen to keep those contained in chosenTicket
      */
     public GameState withChosenAdditionalTickets(SortedBag<Ticket> drawnTickets, SortedBag<Ticket> chosenTickets) {
         Preconditions.checkArgument(drawnTickets.contains(chosenTickets));
-        Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
+        Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withAddedTickets(chosenTickets));
         return new GameState(completeCardState, currentPlayerId(), newPlayerState, ticketsDeck.withoutTopCards(chosenTickets.size()), null);
     }
 
     /**
-     * Returns a state identical to the receiver except that the face-up card at the given location has been placed in the current player's hand,
-     * and replaced by the one at the top of the deck
+     * Returns a state identical to the receiver except that the face-up card at the given location has been placed
+     * in the current player's hand, and replaced by the one at the top of the deck
      *
      * @param slot location of the card to place in the player's hand
-     * @return a state identical to the receiver except that the face-up card at the given location has been placed in the current player's hand, and replaced by the one at the top of the deck
+     * @return a state identical to the receiver except that the face-up card at the given location has been placed
+     * in the current player's hand, and replaced by the one at the top of the deck
      */
     public GameState withDrawnFaceUpCard(int slot) {
         Preconditions.checkArgument(canDrawCards());
-        Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
+        Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withAddedCard(completeCardState.faceUpCard(slot)));
         return new GameState(completeCardState.withDrawnFaceUpCard(slot), currentPlayerId(), newPlayerState, ticketsDeck, null);
     }
@@ -199,7 +191,7 @@ public final class GameState extends PublicGameState {
      */
     public GameState withBlindlyDrawnCard() {
         Preconditions.checkArgument(canDrawCards());
-        Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
+        Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withAddedCard(completeCardState.topDeckCard()));
         return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(), newPlayerState, ticketsDeck, null);
 
@@ -214,9 +206,10 @@ public final class GameState extends PublicGameState {
      */
     public GameState withClaimedRoute(Route route, SortedBag<Card> cards) {
         //Verifier que les cartes sont dans la main du joueur apres rendu inter
-        Map<PlayerId, PlayerState> newPlayerState = Map.copyOf(completePlayerState);
+        Map<PlayerId, PlayerState> newPlayerState =new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withClaimedRoute(route, cards));
-        return new GameState(completeCardState.withMoreDiscardedCards(cards), currentPlayerId(), newPlayerState, ticketsDeck, null); // Pas sur qu il fasse mettre cartes dans defausse
+        return new GameState(completeCardState.withMoreDiscardedCards(cards), currentPlayerId(), newPlayerState, ticketsDeck, null);
+
     }
 
     /**
@@ -226,7 +219,7 @@ public final class GameState extends PublicGameState {
      * @return true if the last turn begins
      */
     public boolean lastTurnBegins() {
-        return lastPlayer() == null && currentPlayerState().carCount() <= 2;
+        return (lastPlayer() == null && currentPlayerState().carCount() <= 2);
     }
 
     /**
