@@ -363,9 +363,9 @@ class GameStateTest {
         b.add(ChMap.ZUR_C);
         b.add(ChMap.FR_C);
         GameState gameState = GameState.initial(b.build(), new Random(32));
-       GameState gameState1 = gameState.withBlindlyDrawnCard();
+        GameState gameState1 = gameState.withBlindlyDrawnCard();
         assertTrue(gameState1.currentPlayerState().cards().contains(gameState.topCard()));
-       assertFalse(gameState1.topCard().equals(gameState.topCard()));
+        assertFalse(gameState1.topCard().equals(gameState.topCard()));
     }
 
     @Test
@@ -384,9 +384,9 @@ class GameStateTest {
         b.add(ChMap.ZUR_C);
         b.add(ChMap.FR_C);
         GameState gameState = GameState.initial(b.build(), new Random(32));
-        GameState ga2 = gameState.withClaimedRoute(ChMap.AT2_VAD_1,SortedBag.of(2,Card.BLUE,4,Card.LOCOMOTIVE));
+        GameState ga2 = gameState.withClaimedRoute(ChMap.AT2_VAD_1, SortedBag.of(2, Card.BLUE, 4, Card.LOCOMOTIVE));
         assertTrue(ga2.currentPlayerState().routes().contains(ChMap.AT2_VAD_1));
-        assertTrue(ga2.cardState().discardsSize()==6);
+        assertTrue(ga2.cardState().discardsSize() == 6);
     }
 
     private static final class ChMap {
