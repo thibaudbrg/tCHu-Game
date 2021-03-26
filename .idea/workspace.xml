@@ -23,15 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java" afterDir="false" />
     </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java" afterDir="false" />
-    </list>
+    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,8 +38,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,43 +53,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java">
-      <ranges>
-        <range start1="55" end1="56" start2="55" end2="56" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="74" end1="75" start2="74" end2="75" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="95" end1="96" start2="95" end2="96" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="185" end1="187" start2="185" end2="205" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="189" end1="189" start2="207" end2="231" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="190" end1="191" start2="232" end2="252" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="192" end1="192" start2="253" end2="276" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="194" end1="195" start2="278" end2="301" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="196" end1="196" start2="302" end2="321" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="198" end1="199" start2="323" end2="347" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="200" end1="200" start2="348" end2="369" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="203" end1="203" start2="372" end2="389" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="205" end1="213" start2="391" end2="391" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java">
-      <ranges>
-        <range start1="20" end1="21" start2="20" end2="21" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="28" end1="38" start2="28" end2="28" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="152" end1="153" start2="142" end2="143" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="154" end1="155" start2="144" end2="145" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="160" end1="161" start2="150" end2="151" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="171" end1="172" start2="161" end2="163" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="175" end1="176" start2="166" end2="167" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="181" end1="183" start2="172" end2="174" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="185" end1="186" start2="176" end2="178" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="189" end1="190" start2="181" end2="182" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="201" end1="202" start2="193" end2="194" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="216" end1="217" start2="208" end2="209" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="218" end1="219" start2="210" end2="212" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="228" end1="229" start2="221" end2="222" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -232,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GameStateTest" />
-        <item itemvalue="JUnit.GameStateTest.withClaimedRoute" />
-        <item itemvalue="JUnit.GameStateTest.withBlindlyDrawnCard" />
         <item itemvalue="JUnit.GameStateTest.withDrawnFaceUpCardWorks" />
         <item itemvalue="JUnit.GameStateTest.withDrawnFaceUpCardFailsWhenCannotDrawnCards" />
+        <item itemvalue="JUnit.GameStateTest.withClaimedRoute" />
+        <item itemvalue="JUnit.GameStateTest.withBlindlyDrawnCard" />
+        <item itemvalue="JUnit.GameStateTest" />
       </list>
     </recent_temporary>
   </component>
@@ -279,6 +238,8 @@
       <workItem from="1616407992685" duration="1247000" />
       <workItem from="1616409575568" duration="199000" />
       <workItem from="1616416216299" duration="6843000" />
+      <workItem from="1616749733623" duration="117000" />
+      <workItem from="1616749879205" duration="2036000" />
     </task>
     <servers />
   </component>
