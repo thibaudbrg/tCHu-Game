@@ -43,8 +43,8 @@ public final class GameState extends PublicGameState {
         PlayerId firstPlayer = PlayerId.ALL.get(rng.nextInt(1));
         Map<PlayerId, PlayerState> map = new HashMap<>();
         for (PlayerId id : PlayerId.ALL){
-            map.put(id,PlayerState.initial(cardDeckWithOutTop8.topCards(4)));
-            cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(4);
+            map.put(id,PlayerState.initial(cardDeckWithOutTop8.topCards(Constants.INITIAL_CARDS_COUNT)));
+            cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(Constants.INITIAL_CARDS_COUNT);
         }
         return new GameState(CardState.of(cardDeckWithOutTop8), firstPlayer, map, Deck.of(tickets, rng), null);
     }

@@ -25,6 +25,11 @@
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,15 +103,13 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.GameStateTest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -241,6 +244,7 @@
       <workItem from="1616416216299" duration="6843000" />
       <workItem from="1616749733623" duration="117000" />
       <workItem from="1616749879205" duration="2036000" />
+      <workItem from="1616765023904" duration="8514000" />
     </task>
     <servers />
   </component>
@@ -307,10 +311,11 @@
     </state>
     <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.809@0.25.1440.809" timestamp="1616759845293" />
     <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
-    <state x="415" y="158" width="670" height="676" key="search.everywhere.popup" timestamp="1616757932358">
-      <screen x="0" y="25" width="1440" height="809" />
+    <state x="415" y="159" width="670" height="680" key="search.everywhere.popup" timestamp="1616768554101">
+      <screen x="0" y="25" width="1440" height="813" />
     </state>
-    <state x="415" y="158" width="670" height="676" key="search.everywhere.popup/0.25.1440.809@0.25.1440.809" timestamp="1616757932358" />
+    <state x="415" y="158" width="670" height="676" key="search.everywhere.popup/0.25.1440.809@0.25.1440.809" timestamp="1616768080970" />
+    <state x="415" y="159" width="670" height="680" key="search.everywhere.popup/0.25.1440.813@0.25.1440.813" timestamp="1616768554101" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

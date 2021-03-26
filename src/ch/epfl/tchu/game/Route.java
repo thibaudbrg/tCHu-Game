@@ -5,6 +5,7 @@ import ch.epfl.tchu.SortedBag;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Represents a Route
@@ -42,14 +43,11 @@ public final class Route {
     public Route(String id, Station station1, Station station2, int length, Level level, Color color) throws NullPointerException {
         Preconditions.checkArgument((!(station1.id() == (station2.id()))) &&
                 (length >= Constants.MIN_ROUTE_LENGTH) && (length <= Constants.MAX_ROUTE_LENGTH));
-        if (id == null || station1 == null || station2 == null || level == null) {
-            throw new NullPointerException();
-        }
-        this.id = id;
-        this.station1 = station1;
-        this.station2 = station2;
+        this.id = Objects.requireNonNull(id);
+        this.station1 =Objects.requireNonNull(station1);
+        this.station2 = Objects.requireNonNull(station2);
         this.length = length;
-        this.level = level;
+        this.level = Objects.requireNonNull(level);
         this.color = color;
     }
 
@@ -193,7 +191,7 @@ public final class Route {
      * @return (int) the number of card you have to play to claim a tunnel
      */
     public int additionalClaimCardsCount(SortedBag<Card> claimCards, SortedBag<Card> drawnCards) {
-        Preconditions.checkArgument(level == Level.UNDERGROUND && drawnCards.size() == 3);
+        Preconditions.checkArgument(level == Level.UNDERGROUND && drawnCards.size() == Constants.ADDITIONAL_TUNNEL_CARDS);
         int i = 0;
         Card card = claimCards.get(0);
 

@@ -4,6 +4,7 @@ import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.gui.Info;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -12,26 +13,78 @@ public final class Game {
     static void play(Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, SortedBag<Ticket> tickets, Random rng) {
         Preconditions.checkArgument(playerNames.size() == 2);
         Preconditions.checkArgument(players.size() == 2);
+
         players.forEach((Id, p) -> {
             p.initPlayers(Id, playerNames);
         });
+
         GameState gameState = GameState.initial(tickets, rng);
-        Game.sendInfoToBothPlayers(players, );
 
-
-        players.forEach((Id, p) -> {
-            p.setInitialTicketChoice(tickets);
-            p.chooseInitialTickets();
-        });
+        sendInfoToBothPlayers(players, new Info(playerNames.get(gameState.currentPlayerId())).willPlayFirst());
 
         players.forEach((Id, p) -> {
-            sendInfoToBothPlayers(p, );
+            p.setInitialTicketChoice(gameState.topTickets(Constants.INITIAL_TICKETS_COUNT));
+            gameState = gameState.withoutTopTickets(Constants.INITIAL_TICKETS_COUNT);
+//TODO JSP SI IL FAUT ENLEVER LES TICKETS A CHAQUE FOIS OU SI IL FAUT FAIRE QQCH
+        });
+        players.forEach((Id, p) -> {
+            //TODO UPDATE STATE
+            gameState = gameState.withInitiallyChosenTickets(Id, p.chooseInitialTickets());
+        });
+        players.forEach((Id, p) -> {
+            sendInfoToBothPlayers(players, new Info(playerNames.get(Id)).keptTickets(gameState.playerState(Id).ticketCount()));
         });
 
+        do {
+            Player actualPlayer = players.get(gameState.currentPlayerId());
+            String actualPlayerName = playerNames.get(gameState.currentPlayerId());
+            PlayerState actualPlayerState = gameState.currentPlayerState();
+            Info currentInfoPlayer = new Info(actualPlayerName);
+            sendInfoToBothPlayers(players, currentInfoPlayer.canPlay());
 
-        //The Game starts
-        gameState.
+            switch (players.get(gameState.currentPlayerId()).nextTurn()) {
+                case DRAW_TICKETS:
+                    sendInfoToBothPlayers(players, currentInfoPlayer.drewTickets(Constants.IN_GAME_TICKETS_COUNT));
+                    SortedBag choosenTickets = actualPlayer.chooseTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT));
+                    gameState = gameState.withChosenAdditionalTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT), choosenTickets);
+                    sendInfoToBothPlayers(players, currentInfoPlayer.keptTickets(choosenTickets.size()));
+                case DRAW_CARDS:
+                    for (int i = 0; i < 2; i++) {
+                        int slot = actualPlayer.drawSlot();
+                        if (slot == Constants.DECK_SLOT) {
+                            gameState = gameState.withBlindlyDrawnCard();
+                            sendInfoToBothPlayers(players, currentInfoPlayer.drewBlindCard());
+                        } else { sendInfoToBothPlayers(players,currentInfoPlayer.drewVisibleCard(gameState.cardState().faceUpCard(slot)));
+                            gameState = gameState.withDrawnFaceUpCard(slot);}
+                       updateStateBothPlayers(players, gameState);
+                    }
+
+                case CLAIM_ROUTE:
+                    if (
+                            actualPlayer.claimedRoute().level().equals(Route.Level.UNDERGROUND) &&
+                                    actualPlayer.claimedRoute().additionalClaimCardsCount(actualPlayer.initialClaimCards(), threeOnTheTopDeckCards(gameState, rng)) >= 1 &&
+                                    actualPlayerState.canClaimRoute(actualPlayer.claimedRoute())) {
+                        actualPlayer.chooseAdditionalCards(actualPlayerState.possibleClaimCards(actualPlayer.claimedRoute()));
+                    }
+            }
+        }while (gameState.lastPlayer()==null);
+
+
     }
+
+
+    private static SortedBag<Card> threeOnTheTopDeckCards(GameState gameState, Random rng) {
+        SortedBag.Builder builder = new SortedBag.Builder<>();
+        for (int i = 0; i < 3; ++i) {
+            gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
+            builder.add(gameState.topCard());
+            gameState = gameState.withoutTopCard();
+
+        }
+        return builder.build();
+
+    }
+
 
     private static void sendInfoToBothPlayers(Map<PlayerId, Player> players, String s) {
         players.forEach((Id, p) -> {
@@ -39,11 +92,10 @@ public final class Game {
         });
     }
 
-    private static void updateStateBothPlayers(Map<PlayerId, Player> players, PublicGameState newState) {
+    private static void updateStateBothPlayers(Map<PlayerId, Player> players, GameState newState) {
         players.forEach((Id, p) -> {
-            p.updateState(newState, );
+            p.updateState(newState, newState.playerState(Id));
         });
     }
-    //TODO updateState
 
 }

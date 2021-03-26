@@ -134,7 +134,7 @@ public final class PlayerState extends PublicPlayerState {
     public List<SortedBag<Card>> possibleAdditionalCards(int additionalCardsCount, SortedBag<Card> initialCards, SortedBag<Card> drawnCards) {
         Preconditions.checkArgument(additionalCardsCount >= 1 && additionalCardsCount <= 3);
         Preconditions.checkArgument(!initialCards.isEmpty());
-        Preconditions.checkArgument(drawnCards.size() == 3);
+        Preconditions.checkArgument(drawnCards.size() == Constants.ADDITIONAL_TUNNEL_CARDS);
         Preconditions.checkArgument(initialCards.toSet().size() <= 2);
 
         SortedBag.Builder<Card> builder = new SortedBag.Builder();
