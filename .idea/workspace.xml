@@ -23,9 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,13 +100,15 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.GameStateTest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -191,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GameStateTest" />
         <item itemvalue="JUnit.GameStateTest.withDrawnFaceUpCardWorks" />
         <item itemvalue="JUnit.GameStateTest.withDrawnFaceUpCardFailsWhenCannotDrawnCards" />
         <item itemvalue="JUnit.GameStateTest.withClaimedRoute" />
         <item itemvalue="JUnit.GameStateTest.withBlindlyDrawnCard" />
-        <item itemvalue="JUnit.GameStateTest" />
       </list>
     </recent_temporary>
   </component>
@@ -261,6 +264,44 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="130" y="125" width="1240" height="607" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1616756757665">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state x="130" y="125" width="1240" height="607" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.813@0.25.1440.813" timestamp="1616756757665" />
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom" timestamp="1616756434364">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1616756434364" />
+    <state width="1398" height="254" key="GridCell.Tab.0.center" timestamp="1616756434362">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1616756434362" />
+    <state width="1398" height="254" key="GridCell.Tab.0.left" timestamp="1616756434359">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1616756434359" />
+    <state width="1398" height="254" key="GridCell.Tab.0.right" timestamp="1616756434363">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1616756434363" />
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1616756435325">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
+    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1616756435325">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
+    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1616756435324">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.813@0.25.1440.813" timestamp="1616756435324" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1616756435325">
+      <screen x="0" y="25" width="1440" height="813" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -279,6 +320,38 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java</url>
+          <line>255</line>
+          <properties class="ch.epfl.tchu.game.GameStateTest" method="withChosenAdditionalTicketWorks">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java</url>
+          <line>350</line>
+          <properties class="ch.epfl.tchu.game.GameStateTest" method="withBlindlyDrawnCardWorks">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java</url>
+          <line>371</line>
+          <properties class="ch.epfl.tchu.game.GameStateTest" method="withClaimedRoute">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java</url>
+          <line>140</line>
+          <properties class="ch.epfl.tchu.game.GameStateTest" method="withCardsDeckRecreatedIfNeededIfNotEmpty">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

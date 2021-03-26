@@ -9,7 +9,7 @@ final class SignatureChecks_6 {
     private SignatureChecks_6() {}
 
     void checkGame() {
-        ch.epfl.tchu.game.Game.play(v01, v02, v03, v04);
+      //  ch.epfl.tchu.game.Game.play(v01, v02, v03, v04);
     }
 
     java.util.Map<ch.epfl.tchu.game.PlayerId, ch.epfl.tchu.game.Player> v01;

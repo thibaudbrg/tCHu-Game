@@ -38,7 +38,7 @@ public final class GameState extends PublicGameState {
      * @return (GameState) The initial state of a game of tCHu in which the ticket deck contains the given tickets
      * and the card deck contains all the cards in the game without the top 8
      */
-    public static GameState initial(SortedBag<Ticket> tickets, Random rng) { //TODO en fonction de ce que rep Michel
+    public static GameState initial(SortedBag<Ticket> tickets, Random rng) {
         Deck<Card> cardDeckWithOutTop8 = Deck.of(Constants.ALL_CARDS, rng);
         PlayerId firstPlayer = PlayerId.ALL.get(rng.nextInt(1));
         Map<PlayerId, PlayerState> map = new HashMap<>();
@@ -91,7 +91,7 @@ public final class GameState extends PublicGameState {
     public GameState withoutTopTickets(int count) {
         Preconditions.checkArgument(0 <= count && count <= ticketsDeck.size());
         return new GameState(completeCardState, currentPlayerId(), completePlayerState,
-                ticketsDeck.withoutTopCards(count), null);
+                ticketsDeck.withoutTopCards(count), lastPlayer());
     }
 
     /**
@@ -111,7 +111,7 @@ public final class GameState extends PublicGameState {
      */
     public GameState withoutTopCard() {
         Preconditions.checkArgument(!completeCardState.isDeckEmpty());
-        return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(), completePlayerState, ticketsDeck, null);
+        return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(), completePlayerState, ticketsDeck, lastPlayer());
     }
 
     /**
@@ -122,7 +122,7 @@ public final class GameState extends PublicGameState {
      */
     public GameState withMoreDiscardedCards(SortedBag<Card> discardedCards) {
         return new GameState(completeCardState.withMoreDiscardedCards(discardedCards), currentPlayerId(),
-                completePlayerState, ticketsDeck, null);
+                completePlayerState, ticketsDeck, lastPlayer());
     }
 
     /**
@@ -134,9 +134,9 @@ public final class GameState extends PublicGameState {
      */
     public GameState withCardsDeckRecreatedIfNeeded(Random rng) {
         if (!completeCardState.isDeckEmpty()) {
-            return this;
+            return new GameState(completeCardState, currentPlayerId(), completePlayerState, ticketsDeck, lastPlayer());
         } else
-            return new GameState(completeCardState.withDeckRecreatedFromDiscards(rng), currentPlayerId(), completePlayerState, ticketsDeck, null);
+            return new GameState(completeCardState.withDeckRecreatedFromDiscards(rng), currentPlayerId(), completePlayerState, ticketsDeck, lastPlayer());
     }
 
     /**
@@ -150,7 +150,7 @@ public final class GameState extends PublicGameState {
         Preconditions.checkArgument(playerState(playerId).tickets().isEmpty());
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(playerId, completePlayerState.get(playerId).withAddedTickets(chosenTickets));
-        return new GameState(completeCardState, playerId, newPlayerState, ticketsDeck, null);
+        return new GameState(completeCardState, currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
     }
 
     /**
@@ -166,7 +166,7 @@ public final class GameState extends PublicGameState {
         Preconditions.checkArgument(drawnTickets.contains(chosenTickets));
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withAddedTickets(chosenTickets));
-        return new GameState(completeCardState, currentPlayerId(), newPlayerState, ticketsDeck.withoutTopCards(chosenTickets.size()), null);
+        return new GameState(completeCardState, currentPlayerId(), newPlayerState, ticketsDeck.withoutTopCards(drawnTickets.size()), lastPlayer());
     }
 
     /**
@@ -181,7 +181,7 @@ public final class GameState extends PublicGameState {
         Preconditions.checkArgument(canDrawCards());
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withAddedCard(completeCardState.faceUpCard(slot)));
-        return new GameState(completeCardState.withDrawnFaceUpCard(slot), currentPlayerId(), newPlayerState, ticketsDeck, null);
+        return new GameState(completeCardState.withDrawnFaceUpCard(slot), currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
     }
 
     /**
@@ -193,7 +193,7 @@ public final class GameState extends PublicGameState {
         Preconditions.checkArgument(canDrawCards());
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withAddedCard(completeCardState.topDeckCard()));
-        return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(), newPlayerState, ticketsDeck, null);
+        return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
 
     }
 
@@ -208,7 +208,7 @@ public final class GameState extends PublicGameState {
         //Verifier que les cartes sont dans la main du joueur apres rendu inter
         Map<PlayerId, PlayerState> newPlayerState =new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withClaimedRoute(route, cards));
-        return new GameState(completeCardState.withMoreDiscardedCards(cards), currentPlayerId(), newPlayerState, ticketsDeck, null);
+        return new GameState(completeCardState.withMoreDiscardedCards(cards), currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
 
     }
 
@@ -233,6 +233,6 @@ public final class GameState extends PublicGameState {
         if (lastTurnBegins()) {
             return new GameState(completeCardState, currentPlayerId().next(), completePlayerState, ticketsDeck, currentPlayerId());
         } else
-            return new GameState(completeCardState, currentPlayerId().next(), completePlayerState, ticketsDeck, null);
+            return new GameState(completeCardState, currentPlayerId().next(), completePlayerState, ticketsDeck, lastPlayer());
     }
 }

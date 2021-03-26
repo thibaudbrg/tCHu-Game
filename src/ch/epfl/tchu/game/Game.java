@@ -14,7 +14,6 @@ public final class Game {
         Preconditions.checkArgument(players.size() == 2);
 
 
-        initPlayer;
 
     }
 
