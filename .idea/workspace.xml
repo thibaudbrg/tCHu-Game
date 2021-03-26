@@ -24,9 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_6.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -269,38 +267,50 @@
       <screen x="0" y="25" width="1440" height="813" />
     </state>
     <state x="130" y="125" width="1240" height="607" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.813@0.25.1440.813" timestamp="1616756757665" />
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom" timestamp="1616756434364">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="203" key="GridCell.Tab.0.bottom" timestamp="1616759845301">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1616759845301" />
     <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1616756434364" />
-    <state width="1398" height="254" key="GridCell.Tab.0.center" timestamp="1616756434362">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="203" key="GridCell.Tab.0.center" timestamp="1616759845301">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1616759845301" />
     <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1616756434362" />
-    <state width="1398" height="254" key="GridCell.Tab.0.left" timestamp="1616756434359">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="203" key="GridCell.Tab.0.left" timestamp="1616759845300">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1616759845300" />
     <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1616756434359" />
-    <state width="1398" height="254" key="GridCell.Tab.0.right" timestamp="1616756434363">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="203" key="GridCell.Tab.0.right" timestamp="1616759845301">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1616759845301" />
     <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1616756434363" />
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1616756435325">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1616759845293">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.809@0.25.1440.809" timestamp="1616759845293" />
     <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
-    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1616756435325">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1616759845292">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.809@0.25.1440.809" timestamp="1616759845292" />
     <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
-    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1616756435324">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1616759845292">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.809@0.25.1440.809" timestamp="1616759845292" />
     <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.813@0.25.1440.813" timestamp="1616756435324" />
-    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1616756435325">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1616759845293">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.809@0.25.1440.809" timestamp="1616759845293" />
     <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
+    <state x="415" y="158" width="670" height="676" key="search.everywhere.popup" timestamp="1616757932358">
+      <screen x="0" y="25" width="1440" height="809" />
+    </state>
+    <state x="415" y="158" width="670" height="676" key="search.everywhere.popup/0.25.1440.809@0.25.1440.809" timestamp="1616757932358" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
