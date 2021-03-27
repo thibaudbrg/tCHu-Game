@@ -22,41 +22,48 @@ public final class Game {
 
         sendInfoToBothPlayers(players, new Info(playerNames.get(gameState.currentPlayerId())).willPlayFirst());
 
-        players.forEach((Id, p) -> {
-            p.setInitialTicketChoice(gameState.topTickets(Constants.INITIAL_TICKETS_COUNT));
+        for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
+            e.getValue().setInitialTicketChoice(gameState.topTickets(Constants.INITIAL_TICKETS_COUNT));
             gameState = gameState.withoutTopTickets(Constants.INITIAL_TICKETS_COUNT);
 //TODO JSP SI IL FAUT ENLEVER LES TICKETS A CHAQUE FOIS OU SI IL FAUT FAIRE QQCH
-        });
-        players.forEach((Id, p) -> {
-            //TODO UPDATE STATE
-            gameState = gameState.withInitiallyChosenTickets(Id, p.chooseInitialTickets());
-        });
-        players.forEach((Id, p) -> {
-            sendInfoToBothPlayers(players, new Info(playerNames.get(Id)).keptTickets(gameState.playerState(Id).ticketCount()));
-        });
+        }
+        for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
+          updateStateBothPlayers(players,gameState);
+            gameState = gameState.withInitiallyChosenTickets(e.getKey(), e.getValue().chooseInitialTickets());
+        }
+        for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
+            sendInfoToBothPlayers(players, new Info(playerNames.get(e.getKey())).keptTickets(gameState.playerState(e.getKey()).ticketCount()));
+        }
 
         do {
             Player actualPlayer = players.get(gameState.currentPlayerId());
             String actualPlayerName = playerNames.get(gameState.currentPlayerId());
             PlayerState actualPlayerState = gameState.currentPlayerState();
             Info currentInfoPlayer = new Info(actualPlayerName);
+
             sendInfoToBothPlayers(players, currentInfoPlayer.canPlay());
+            updateStateBothPlayers(players, gameState);
 
             switch (players.get(gameState.currentPlayerId()).nextTurn()) {
                 case DRAW_TICKETS:
                     sendInfoToBothPlayers(players, currentInfoPlayer.drewTickets(Constants.IN_GAME_TICKETS_COUNT));
+
                     SortedBag choosenTickets = actualPlayer.chooseTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT));
-                    gameState = gameState.withChosenAdditionalTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT), choosenTickets);
                     sendInfoToBothPlayers(players, currentInfoPlayer.keptTickets(choosenTickets.size()));
+
+                    gameState = gameState.withChosenAdditionalTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT), choosenTickets).forNextTurn();
+
                 case DRAW_CARDS:
                     for (int i = 0; i < 2; i++) {
                         int slot = actualPlayer.drawSlot();
                         if (slot == Constants.DECK_SLOT) {
-                            gameState = gameState.withBlindlyDrawnCard();
                             sendInfoToBothPlayers(players, currentInfoPlayer.drewBlindCard());
-                        } else { sendInfoToBothPlayers(players,currentInfoPlayer.drewVisibleCard(gameState.cardState().faceUpCard(slot)));
-                            gameState = gameState.withDrawnFaceUpCard(slot);}
-                       updateStateBothPlayers(players, gameState);
+                            gameState = gameState.withBlindlyDrawnCard().forNextTurn();
+                        } else {
+                            sendInfoToBothPlayers(players, currentInfoPlayer.drewVisibleCard(gameState.cardState().faceUpCard(slot)));
+                            gameState = gameState.withDrawnFaceUpCard(slot).forNextTurn();
+                        }
+                       if(i==0) updateStateBothPlayers(players, gameState);
                     }
 
                 case CLAIM_ROUTE:
@@ -67,7 +74,8 @@ public final class Game {
                         actualPlayer.chooseAdditionalCards(actualPlayerState.possibleClaimCards(actualPlayer.claimedRoute()));
                     }
             }
-        }while (gameState.lastPlayer()==null);
+if (gameState.lastTurnBegins()) sendInfoToBothPlayers(players,currentInfoPlayer.lastTurnBegins(actualPlayerState.carCount()));
+        } while (gameState.lastPlayer() == null);
 
 
     }
