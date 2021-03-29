@@ -1,392 +1,505 @@
 package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.SortedBag;
+import ch.epfl.test.TestRandomizer;
 import org.junit.jupiter.api.Test;
-
 
 import java.util.*;
 
+import static ch.epfl.tchu.game.PlayerId.PLAYER_1;
+import static ch.epfl.tchu.game.PlayerId.PLAYER_2;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameStateTest {
+    private static final int INITIAL_CARD_DECK_SIZE =
+            (8 * 12 + 14) - 5 - 2 * 4;
 
     @Test
-    void topTicketsFailsWhenCountIsNotAsExpected0() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertThrows(IllegalArgumentException.class, () -> {
-            gameState.topTickets(-1);
-        });
-    }
+    void gameStateInitialCreatesCorrectInitialState() {
+        var allCards = allCards();
+        var allTickets = SortedBag.of(new ChMap().ALL_TICKETS);
 
-    @Test
-    void topTicketsFailsWhenCountIsNotAsExpected1() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertThrows(IllegalArgumentException.class, () -> {
-            gameState.topTickets(12);
-        });
-    }
+        var rng = TestRandomizer.newRandom();
+        for (int i = 0; i < 10; i++) {
+            var gameState = GameState.initial(allTickets, rng);
 
-    @Test
-    void withoutTopTicketsWorks() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertFalse(gameState.withoutTopTickets(3).topTickets(8).contains(gameState.topTickets(3)));
-    }
+            var allGameCardsB = new SortedBag.Builder<Card>();
+            for (int slot : List.of(0, 1, 2, 3, 4))
+                allGameCardsB.add(gameState.cardState().faceUpCard(slot));
+            for (var gs = gameState; !gs.cardState().isDeckEmpty(); gs = gs.withoutTopCard())
+                allGameCardsB.add(gs.topCard());
+            allGameCardsB.add(gameState.playerState(PLAYER_1).cards());
+            allGameCardsB.add(gameState.playerState(PLAYER_2).cards());
+            var allGameCards = allGameCardsB.build();
 
-    @Test
-    void withoutTopTickets1Fails() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertThrows(IllegalArgumentException.class, () -> {
-            gameState.withoutTopTickets(-1);
-        });
-    }
-
-    @Test
-    void withoutTopTickets2Fails() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertThrows(IllegalArgumentException.class, () -> {
-            gameState.withoutTopTickets(12);
-        });
-    }
-
-    @Test
-    void withMoreDiscardedCardsWorks() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        SortedBag.Builder c = new SortedBag.Builder<>();
-        c.add(Card.BLUE);
-        c.add(Card.GREEN);
-        c.add(Card.LOCOMOTIVE);
-        SortedBag<Card> discardedCards = c.build();
-        assertEquals(3, gameState.withMoreDiscardedCards(discardedCards).cardState().discardsSize());
-    }
-
-    @Test
-    void withCardsDeckRecreatedIfNeededIfNotEmpty() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertEquals(gameState, gameState.withCardsDeckRecreatedIfNeeded(new Random(2)));
-    }
-
-    @Test
-    void withCardsDeckRecreatedIfNeeded() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        GameState gameState2 = GameState.initial(b.build(), new Random(32));
-        for (int i = 0; i < gameState2.cardState().deckSize(); i++) {
-            gameState = gameState.withoutTopCard();
+            assertEquals(allCards, allGameCards);
+            assertEquals(allTickets, gameState.topTickets(allTickets.size()));
+            assertEquals(INITIAL_CARD_DECK_SIZE, gameState.cardState().deckSize());
+            assertEquals(0, gameState.cardState().discardsSize());
+            assertEquals(List.of(), gameState.claimedRoutes());
+            assertNull(gameState.lastPlayer());
+            assertNotNull(gameState.currentPlayerId());
+            for (PlayerId id : PlayerId.values()) {
+                var playerState = gameState.playerState(id);
+                assertEquals(List.of(), playerState.routes());
+                assertEquals(SortedBag.of(), playerState.tickets());
+                assertEquals(0, playerState.ticketCount());
+                assertEquals(4, playerState.cardCount());
+                assertEquals(40, playerState.carCount());
+                assertEquals(0, playerState.claimPoints());
+            }
         }
-        gameState = gameState.withMoreDiscardedCards(SortedBag.of(4, Card.BLUE, 6, Card.YELLOW));
-        GameState gameState1 = gameState.withCardsDeckRecreatedIfNeeded(new Random(2));
-        assertEquals(0, gameState1.cardState().discardsSize());
-        assertEquals(10, gameState1.cardState().deckSize());
     }
 
     @Test
-    void withInitiallyChosenTicketsFailsWhenPlayerStateIsNotEmpty() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        gameState = gameState.withInitiallyChosenTickets(PlayerId.PLAYER_1, SortedBag.of(ChMap.FRI_LUC));
-        GameState finalGameState = gameState;
-        assertThrows(IllegalArgumentException.class, () -> {
-            finalGameState.withInitiallyChosenTickets(PlayerId.PLAYER_1, SortedBag.of(ChMap.BER_LUG));
-        });
-    }
+    void gameStateInitialChoosesFirstPlayerRandomly() {
+        var allTickets = SortedBag.of(new ChMap().ALL_TICKETS);
 
-    @Test
-    void withInitiallyChosenTicketsWorks() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        int finalGameState = gameState.withInitiallyChosenTickets(
-                PlayerId.PLAYER_1, SortedBag.of(1, ChMap.FRI_LUC, 2, ChMap.LAU_LUC))
-                .currentPlayerState()
-                .tickets()
-                .size();
-        assertEquals(3, finalGameState);
-    }
-
-    @Test
-    void withChosenAdditionalTicketFails() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertThrows(IllegalArgumentException.class, () -> {
-            gameState.withChosenAdditionalTickets(SortedBag.of(1, ChMap.INT_WIN, 1, ChMap.BER_C), SortedBag.of(ChMap.BAL_BER));
-        });
-
-
-    }
-
-    @Test
-    void withChosenAdditionalTicketWorks() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        GameState gameState1 = gameState.withChosenAdditionalTickets(gameState.topTickets(3), gameState.topTickets(2));
-        assertFalse(gameState1.topTickets(3).equals(gameState.topTickets(3)));
-        assertTrue(gameState1.currentPlayerState().tickets().contains(gameState.topTickets(2)));
-
-
-    }
-
-    @Test
-    void withDrawnFaceUpCardFailsWhenCannotDrawnCards() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        int maxSize = gameState.cardState().deckSize();
-        for (int i = 0; i < maxSize - 3; i++) {
-            gameState = gameState.withoutTopCard();
+        var rng = TestRandomizer.newRandom();
+        var firstPlayers = EnumSet.noneOf(PlayerId.class);
+        for (int i = 0; i < 100; i++) {
+            var gameState = GameState.initial(allTickets, rng);
+            firstPlayers.add(gameState.currentPlayerId());
         }
-        GameState finalGameState = gameState;
-        assertThrows(IllegalArgumentException.class, () -> {
-            finalGameState.withDrawnFaceUpCard(2);
-        });
+        assertEquals(Set.of(PLAYER_1, PLAYER_2), firstPlayers);
     }
 
     @Test
-    void withDrawnFaceUpCardWorks() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        assertEquals(5, gameState.withDrawnFaceUpCard(2).currentPlayerState().cards().size());
-    }
+    void gameStateInitialShufflesTickets() {
+        var allTickets = SortedBag.of(new ChMap().ALL_TICKETS);
+        var ticketsPermutations = new HashSet<List<Ticket>>();
+        var iterations = 10;
 
-    @Test
-    void withBlindlyDrawnCardFails() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        int size = gameState.cardState().deckSize();
+        var rng = TestRandomizer.newRandom();
+        for (int i = 0; i < iterations; i++) {
+            var gameState = GameState.initial(allTickets, rng);
 
-        for (int i = 0; i < size - 3; i++) {
-            gameState = gameState.withoutTopCard();
+            var tickets = new ArrayList<Ticket>(allTickets.size());
+            var prevTopTickets = SortedBag.<Ticket>of();
+            for (int j = 0; j <= allTickets.size(); j++) {
+                var topTickets = gameState.topTickets(j);
+                tickets.addAll(topTickets.difference(prevTopTickets).toList());
+                prevTopTickets = topTickets;
+            }
+            ticketsPermutations.add(Collections.unmodifiableList(tickets));
         }
-        GameState game2 = gameState;
-        assertThrows(IllegalArgumentException.class, () -> {
-            game2.withBlindlyDrawnCard();
-        });
+
+        assertEquals(iterations, ticketsPermutations.size());
     }
 
     @Test
-    void withBlindlyDrawnCardWorks() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        GameState gameState1 = gameState.withBlindlyDrawnCard();
-        assertTrue(gameState1.currentPlayerState().cards().contains(gameState.topCard()));
-        assertFalse(gameState1.topCard().equals(gameState.topCard()));
+    void gameStateCurrentPlayerStateReturnsCurrentPlayerState() {
+        var allTickets = SortedBag.of(new ChMap().ALL_TICKETS);
+
+        var rng = TestRandomizer.newRandom();
+        for (int i = 0; i < 100; i++) {
+            var gameState = GameState.initial(allTickets, rng);
+            var currentPlayer = gameState.currentPlayerId();
+            assertEquals(gameState.playerState(currentPlayer), gameState.currentPlayerState());
+        }
     }
 
     @Test
-    void withClaimedRoute() {
-        var ChMap = new ChMap();
-        SortedBag.Builder b = new SortedBag.Builder<>();
-        b.add(ChMap.BAL_BER);
-        b.add(ChMap.BAL_BRI);
-        b.add(ChMap.BAL_STG);
-        b.add(ChMap.BER_COI);
-        b.add(ChMap.BER_LUG);
-        b.add(ChMap.BER_SCZ);
-        b.add(ChMap.BER_C);
-        b.add(ChMap.COI_C);
-        b.add(ChMap.LUG_C);
-        b.add(ChMap.ZUR_C);
-        b.add(ChMap.FR_C);
-        GameState gameState = GameState.initial(b.build(), new Random(32));
-        GameState ga2 = gameState.withClaimedRoute(ChMap.AT2_VAD_1, SortedBag.of(2, Card.BLUE, 4, Card.LOCOMOTIVE));
-        assertTrue(ga2.currentPlayerState().routes().contains(ChMap.AT2_VAD_1));
-        assertTrue(ga2.cardState().discardsSize() == 6);
+    void gameStateTopTicketsFailsWithIncorrectNumberOfTickets() {
+        var allTickets = SortedBag.of(new ChMap().ALL_TICKETS);
+        var ticketsCount = allTickets.size();
+        var gameState = GameState.initial(allTickets, TestRandomizer.newRandom());
+
+        for (var c : List.of(-1, ticketsCount + 1, ticketsCount + 2, ticketsCount + 3)) {
+            assertThrows(IllegalArgumentException.class, () -> {
+                gameState.topTickets(c);
+            });
+        }
+    }
+
+    @Test
+    void gameStateTopTicketsReturnsTopTickets() {
+        var allTickets = new ArrayList<>(new ChMap().ALL_TICKETS);
+        Collections.shuffle(allTickets, TestRandomizer.newRandom());
+
+        var rng = TestRandomizer.newRandom();
+        for (int lastI = 1; lastI <= allTickets.size(); lastI++) {
+            var partialTickets = SortedBag.of(allTickets.subList(0, lastI));
+            var gameState = GameState.initial(partialTickets, rng);
+
+            var tickets = new SortedBag.Builder<Ticket>();
+            var prevTopTickets = SortedBag.<Ticket>of();
+            for (int i = 1; i <= lastI; i++) {
+                var topTickets = gameState.topTickets(i);
+                tickets.add(topTickets.difference(prevTopTickets));
+                prevTopTickets = topTickets;
+            }
+            assertEquals(partialTickets, tickets.build());
+        }
+    }
+
+    @Test
+    void gameStateWithoutTopTicketsFailsWithIncorrectNumberOfTickets() {
+        var allTickets = SortedBag.of(new ChMap().ALL_TICKETS);
+        var ticketsCount = allTickets.size();
+        var gameState = GameState.initial(allTickets, TestRandomizer.newRandom());
+
+        for (var c : List.of(-1, ticketsCount + 1, ticketsCount + 2, ticketsCount + 3)) {
+            assertThrows(IllegalArgumentException.class, () -> {
+                gameState.withoutTopTickets(c);
+            });
+        }
+    }
+
+    @Test
+    void gameStateWithoutTopTicketsRemovesTopTickets() {
+        var allTickets = new ArrayList<>(new ChMap().ALL_TICKETS);
+
+        var rng = TestRandomizer.newRandom();
+        for (int i = 0; i <= 5; i++) {
+            Collections.shuffle(allTickets, rng);
+            var subTickets = SortedBag.of(allTickets.subList(0, 32));
+            var gameState = GameState.initial(subTickets, rng);
+
+            var batchSize = 1 << i;
+            var ticketsB = new SortedBag.Builder<Ticket>();
+            for (int j = 0; j < 32; j += batchSize) {
+                ticketsB.add(gameState.topTickets(batchSize));
+                gameState = gameState.withoutTopTickets(batchSize);
+            }
+            assertEquals(subTickets, ticketsB.build());
+        }
+    }
+
+    @Test
+    void gameStateTopCardFailsWhenDeckIsEmpty() {
+        var gameState = GameState.initial(SortedBag.of(), TestRandomizer.newRandom());
+        for (int i = 0; i < INITIAL_CARD_DECK_SIZE; i++) gameState = gameState.withoutTopCard();
+        var gameStateWithNoCards = gameState;
+        assertThrows(IllegalArgumentException.class, gameStateWithNoCards::topCard);
+    }
+
+    @Test
+    void gameStateWithoutTopCardFailsWhenDeckIsEmpty() {
+        var gameState = GameState.initial(SortedBag.of(), TestRandomizer.newRandom());
+        for (int i = 0; i < INITIAL_CARD_DECK_SIZE; i++) gameState = gameState.withoutTopCard();
+        var gameStateWithNoCards = gameState;
+        assertThrows(IllegalArgumentException.class, gameStateWithNoCards::withoutTopCard);
+    }
+
+    @Test
+    void gameStateWithMoreDiscardedCardsWorks() {
+        var gameState = GameState.initial(SortedBag.of(), TestRandomizer.newRandom());
+        assertEquals(0, gameState.cardState().discardsSize());
+        gameState = gameState.withMoreDiscardedCards(SortedBag.of(1, Card.RED));
+        assertEquals(1, gameState.cardState().discardsSize());
+        gameState = gameState.withMoreDiscardedCards(SortedBag.of(2, Card.BLUE));
+        assertEquals(3, gameState.cardState().discardsSize());
+        gameState = gameState.withMoreDiscardedCards(SortedBag.of(4, Card.WHITE));
+        assertEquals(7, gameState.cardState().discardsSize());
+        gameState = gameState.withMoreDiscardedCards(SortedBag.of(8, Card.LOCOMOTIVE));
+        assertEquals(15, gameState.cardState().discardsSize());
+    }
+
+    @Test
+    void gameStateWithCardDeckRecreatedIfNeededWorks() {
+        var rng = TestRandomizer.newRandom();
+        var gameState = GameState.initial(SortedBag.of(), rng);
+        for (int i = 0; i < INITIAL_CARD_DECK_SIZE; i++) {
+            var topCard = gameState.topCard();
+            gameState = gameState
+                    .withCardsDeckRecreatedIfNeeded(rng) // deck not empty, shouldn't do anything
+                    .withoutTopCard()
+                    .withMoreDiscardedCards(SortedBag.of(topCard));
+        }
+        assertTrue(gameState.cardState().isDeckEmpty());
+        assertEquals(INITIAL_CARD_DECK_SIZE, gameState.cardState().discardsSize());
+
+        gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
+        assertEquals(INITIAL_CARD_DECK_SIZE, gameState.cardState().deckSize());
+        assertEquals(0, gameState.cardState().discardsSize());
+
+        var allGameCardsB = new SortedBag.Builder<Card>();
+        for (int slot : List.of(0, 1, 2, 3, 4))
+            allGameCardsB.add(gameState.cardState().faceUpCard(slot));
+        for (var gs = gameState; !gs.cardState().isDeckEmpty(); gs = gs.withoutTopCard())
+            allGameCardsB.add(gs.topCard());
+        allGameCardsB.add(gameState.playerState(PLAYER_1).cards());
+        allGameCardsB.add(gameState.playerState(PLAYER_2).cards());
+        assertEquals(allCards(), allGameCardsB.build());
+    }
+
+    @Test
+    void gameStateWithInitiallyChosenTicketsFailsIfPlayerAlreadyHasTickets() {
+        var tickets = new ChMap().ALL_TICKETS;
+        var ticketsBag = SortedBag.of(tickets.subList(20, tickets.size()));
+        var gameState = GameState.initial(ticketsBag, TestRandomizer.newRandom());
+        for (PlayerId id : List.of(PLAYER_1, PLAYER_2)) {
+            var i = id.ordinal();
+            var playerTickets = SortedBag.of(tickets.subList(i * 5, (i + 1) * 5));
+            gameState = gameState.withInitiallyChosenTickets(id, playerTickets);
+        }
+        var initialGameState = gameState;
+        for (PlayerId id : List.of(PLAYER_1, PLAYER_2)) {
+            var i = 2 + id.ordinal();
+            var playerTickets = SortedBag.of(tickets.subList(i * 5, (i + 1) * 5));
+            assertThrows(IllegalArgumentException.class, () -> {
+                initialGameState.withInitiallyChosenTickets(id, playerTickets);
+            });
+        }
+    }
+
+    @Test
+    void gameStateWithInitiallyChosenTicketsWorks() {
+        var tickets = new ChMap().ALL_TICKETS;
+        var tickets1 = SortedBag.of(tickets.subList(0, 5));
+        var tickets2 = SortedBag.of(tickets.subList(5, 10));
+        var ticketsBag = SortedBag.of(tickets.subList(10, tickets.size()));
+        var gameState = GameState.initial(ticketsBag, TestRandomizer.newRandom());
+
+        gameState = gameState.withInitiallyChosenTickets(PLAYER_1, tickets1);
+        gameState = gameState.withInitiallyChosenTickets(PLAYER_2, tickets2);
+
+        assertEquals(tickets1, gameState.playerState(PLAYER_1).tickets());
+        assertEquals(tickets2, gameState.playerState(PLAYER_2).tickets());
+        assertEquals(ticketsBag, gameState.topTickets(gameState.ticketsCount()));
+    }
+
+    @Test
+    void gameStateWithChosenAdditionalTicketsFailsIfDrawnTicketsDoesNotContainChosenOnes() {
+        var rng = TestRandomizer.newRandom();
+        var tickets = new ArrayList<>(new ChMap().ALL_TICKETS);
+        var gameState = GameState.initial(SortedBag.of(tickets), rng);
+        for (var id : List.of(PLAYER_1, PLAYER_2)) {
+            Collections.shuffle(tickets, rng);
+            var initialTickets = SortedBag.of(tickets.subList(0, 5));
+            var gameState1 = gameState.withInitiallyChosenTickets(id, initialTickets);
+            var drawn = SortedBag.of(tickets.subList(5, 8));
+            var chosen = SortedBag.of(tickets.subList(8, 9));
+            assertThrows(IllegalArgumentException.class, () -> {
+                gameState1.withChosenAdditionalTickets(drawn, chosen);
+            });
+        }
+    }
+
+    @Test
+    void gameStateWithChosenAdditionalTicketsWorks() {
+        var rng = TestRandomizer.newRandom();
+        var tickets = new ArrayList<>(new ChMap().ALL_TICKETS);
+        for (int i = 0; i < TestRandomizer.RANDOM_ITERATIONS; i++) {
+            Collections.shuffle(tickets, rng);
+            var drawableTickets = SortedBag.of(tickets.subList(10, tickets.size()));
+            var gameState = GameState.initial(drawableTickets, rng);
+            var initialTickets1 = SortedBag.of(tickets.subList(0, 5));
+            var initialTickets2 = SortedBag.of(tickets.subList(5, 10));
+            gameState = gameState
+                    .withInitiallyChosenTickets(PLAYER_1, initialTickets1)
+                    .withInitiallyChosenTickets(PLAYER_2, initialTickets2);
+            var top3Tickets = gameState.topTickets(3);
+            var chosenTicketsCount = 1 + rng.nextInt(3);
+            var candidateTickets = new ArrayList<>(top3Tickets.toList());
+            Collections.shuffle(candidateTickets, rng);
+            var chosenTickets = SortedBag.of(candidateTickets.subList(0, chosenTicketsCount));
+            gameState = gameState.withChosenAdditionalTickets(top3Tickets, chosenTickets);
+
+            var expectedPlayerTickets = gameState.currentPlayerId() == PLAYER_1
+                    ? initialTickets1
+                    : initialTickets2;
+            expectedPlayerTickets = expectedPlayerTickets.union(chosenTickets);
+            assertEquals(expectedPlayerTickets, gameState.currentPlayerState().tickets());
+            assertEquals(drawableTickets.size() - 3, gameState.ticketsCount());
+        }
+    }
+
+    @Test
+    void gameStateWithDrawnFaceUpCardWorks() {
+        var rng = TestRandomizer.newRandom();
+        var allCards = allCards();
+        var playersToTest = EnumSet.of(PLAYER_1, PLAYER_2);
+        for (int i = 0; i < TestRandomizer.RANDOM_ITERATIONS; i++) {
+            var gameState = GameState.initial(SortedBag.of(), rng);
+
+            var drawableCardsCount = INITIAL_CARD_DECK_SIZE - 4;
+            for (int j = 0; j < drawableCardsCount; j++) {
+                var slot = j % 5;
+                gameState = gameState.withDrawnFaceUpCard(slot);
+            }
+            var finalGameState = gameState;
+            for (var slot : List.of(0, 1, 2, 3, 4)) {
+                assertThrows(IllegalArgumentException.class, () -> {
+                    finalGameState.withDrawnFaceUpCard(slot);
+                });
+            }
+            var allCardsB = new SortedBag.Builder<Card>();
+            for (var slot : List.of(0, 1, 2, 3, 4))
+                allCardsB.add(finalGameState.cardState().faceUpCard(slot));
+            for (int j = 0; j < 4; j++) {
+                allCardsB.add(gameState.topCard());
+                gameState = gameState.withoutTopCard();
+            }
+            allCardsB.add(finalGameState.playerState(PLAYER_1).cards());
+            allCardsB.add(finalGameState.playerState(PLAYER_2).cards());
+            assertEquals(allCards, allCardsB.build());
+
+            playersToTest.remove(gameState.currentPlayerId());
+            if (playersToTest.isEmpty()) break;
+        }
+        assertTrue(playersToTest.isEmpty());
+    }
+
+    @Test
+    void gameStateWithBlindlyDrawnCardWorks() {
+        var rng = TestRandomizer.newRandom();
+        var allCards = allCards();
+        var playersToTest = EnumSet.of(PLAYER_1, PLAYER_2);
+        for (int i = 0; i < TestRandomizer.RANDOM_ITERATIONS; i++) {
+            var gameState = GameState.initial(SortedBag.of(), rng);
+
+            var drawableCardsCount = INITIAL_CARD_DECK_SIZE - 4;
+            for (int j = 0; j < drawableCardsCount; j++)
+                gameState = gameState.withBlindlyDrawnCard();
+            var finalGameState = gameState;
+            assertThrows(IllegalArgumentException.class, finalGameState::withBlindlyDrawnCard);
+            var allCardsB = new SortedBag.Builder<Card>();
+            for (var slot : List.of(0, 1, 2, 3, 4))
+                allCardsB.add(finalGameState.cardState().faceUpCard(slot));
+            for (int j = 0; j < 4; j++) {
+                allCardsB.add(gameState.topCard());
+                gameState = gameState.withoutTopCard();
+            }
+            allCardsB.add(finalGameState.playerState(PLAYER_1).cards());
+            allCardsB.add(finalGameState.playerState(PLAYER_2).cards());
+            assertEquals(allCards, allCardsB.build());
+
+            playersToTest.remove(gameState.currentPlayerId());
+            if (playersToTest.isEmpty()) break;
+        }
+        assertTrue(playersToTest.isEmpty());
+    }
+
+    @Test
+    void gameStateWithClaimedRouteWorks() {
+        var rng = TestRandomizer.newRandom();
+        var allRoutes = new ArrayList<>(new ChMap().ALL_ROUTES);
+        var playersToTest = EnumSet.of(PLAYER_1, PLAYER_2);
+        for (int i = 0; i < TestRandomizer.RANDOM_ITERATIONS; i++) {
+            Collections.shuffle(allRoutes, rng);
+            var gameState = GameState.initial(SortedBag.of(), rng);
+
+            var drawableCardsCount = INITIAL_CARD_DECK_SIZE - 4;
+            for (int j = 0; j < drawableCardsCount; j++)
+                gameState = gameState.withBlindlyDrawnCard();
+
+            var discardedCardsCount = 0;
+            var allRoutes2 = new HashSet<>();
+            for (var route : allRoutes) {
+                if (gameState.currentPlayerState().canClaimRoute(route)) {
+                    var claimCards = gameState.currentPlayerState()
+                            .possibleClaimCards(route)
+                            .get(0);
+                    gameState = gameState.withClaimedRoute(route, claimCards);
+                    discardedCardsCount += claimCards.size();
+                } else {
+                    allRoutes2.add(route);
+                }
+            }
+
+            assertTrue(gameState.currentPlayerState().routes().size() >= 6);
+            assertEquals(discardedCardsCount, gameState.cardState().discardsSize());
+            allRoutes2.addAll(gameState.currentPlayerState().routes());
+            assertEquals(new HashSet<>(allRoutes), allRoutes2);
+
+            playersToTest.remove(gameState.currentPlayerId());
+            if (playersToTest.isEmpty()) break;
+        }
+        assertTrue(playersToTest.isEmpty());
+    }
+
+    @Test
+    void gameStateLastTurnBeginsWorks() {
+        var rng = TestRandomizer.newRandom();
+        var allRoutes = new ArrayList<>(new ChMap().ALL_ROUTES);
+        var playersToTest = EnumSet.of(PLAYER_1, PLAYER_2);
+        for (int i = 0; i < TestRandomizer.RANDOM_ITERATIONS; i++) {
+            Collections.shuffle(allRoutes, rng);
+            var gameState = GameState.initial(SortedBag.of(), rng);
+
+            var drawableCardsCount = INITIAL_CARD_DECK_SIZE - 4;
+            for (int j = 0; j < drawableCardsCount; j++)
+                gameState = gameState.withBlindlyDrawnCard();
+
+            var remainingCarsCount = 40;
+            for (var route : allRoutes) {
+                if (gameState.currentPlayerState().canClaimRoute(route)) {
+                    var lastTurnShouldBegin =
+                            remainingCarsCount > 2
+                                    && remainingCarsCount - route.length() <= 2;
+                    var claimCards = gameState.currentPlayerState()
+                            .possibleClaimCards(route)
+                            .get(0);
+                    remainingCarsCount -= route.length();
+                    gameState = gameState.withClaimedRoute(route, claimCards);
+                    assertEquals(lastTurnShouldBegin, gameState.lastTurnBegins());
+                    if (lastTurnShouldBegin) break;
+                }
+            }
+
+            playersToTest.remove(gameState.currentPlayerId());
+            if (playersToTest.isEmpty()) break;
+        }
+        assertTrue(playersToTest.isEmpty());
+    }
+
+    @Test
+    void gameStateForNextTurnWorks() {
+        var rng = TestRandomizer.newRandom();
+        var allRoutes = new ArrayList<>(new ChMap().ALL_ROUTES);
+        var playersToTest = EnumSet.of(PLAYER_1, PLAYER_2);
+        for (int i = 0; i < TestRandomizer.RANDOM_ITERATIONS; i++) {
+            Collections.shuffle(allRoutes, rng);
+            var gameState = GameState.initial(SortedBag.of(), rng);
+            var testedPlayer = gameState.currentPlayerId();
+            var otherPlayer = testedPlayer.next();
+
+            var drawableCardsCount = INITIAL_CARD_DECK_SIZE - 4;
+            for (int j = 0; j < drawableCardsCount; j++) {
+                gameState = gameState.withBlindlyDrawnCard();
+                assertEquals(testedPlayer, gameState.currentPlayerId());
+                gameState = gameState.forNextTurn();
+                assertEquals(otherPlayer, gameState.currentPlayerId());
+                gameState = gameState.forNextTurn();
+            }
+
+            var remainingCarsCount = 40;
+            for (var route : allRoutes) {
+                if (gameState.currentPlayerState().canClaimRoute(route)) {
+                    var lastTurnShouldBegin =
+                            remainingCarsCount > 2
+                                    && remainingCarsCount - route.length() <= 2;
+                    var claimCards = gameState.currentPlayerState()
+                            .possibleClaimCards(route)
+                            .get(0);
+                    remainingCarsCount -= route.length();
+                    gameState = gameState.withClaimedRoute(route, claimCards);
+                    assertEquals(testedPlayer, gameState.currentPlayerId());
+                    gameState = gameState.forNextTurn();
+                    assertEquals(otherPlayer, gameState.currentPlayerId());
+                    gameState = gameState.forNextTurn();
+
+                    if (lastTurnShouldBegin) {
+                        assertEquals(testedPlayer, gameState.lastPlayer());
+                        break;
+                    }
+                }
+            }
+
+            playersToTest.remove(testedPlayer);
+            if (playersToTest.isEmpty()) break;
+        }
+        assertTrue(playersToTest.isEmpty());
+    }
+
+    private static SortedBag<Card> allCards() {
+        var cardsBuilder = new SortedBag.Builder<Card>();
+        cardsBuilder.add(14, Card.LOCOMOTIVE);
+        for (Card card : Card.CARS)
+            cardsBuilder.add(12, card);
+        return cardsBuilder.build();
     }
 
     private static final class ChMap {
@@ -610,8 +723,13 @@ class GameStateTest {
 
         final List<Ticket> ALL_TICKETS = List.of(
                 BAL_BER, BAL_BRI, BAL_STG, BER_COI, BER_LUG, BER_SCZ,
+                BER_ZUR, FRI_LUC, GEN_BAL, GEN_BER, GEN_SIO, GEN_ZUR,
+                INT_WIN, KRE_ZUR, LAU_INT, LAU_LUC, LAU_STG, LCF_BER,
+                LCF_LUC, LCF_ZUR, LUC_VAD, LUC_ZUR, LUG_COI, NEU_WIN,
+                OLT_SCE, SCE_MAR, SCE_STG, SCE_ZOU, STG_BRU, WIN_SCZ,
+                ZUR_BAL, ZUR_BRU, ZUR_LUG, ZUR_VAD,
                 BER_C, COI_C, LUG_C, ZUR_C,
-                FR_C);
+                DE_C, DE_C, AT_C, AT_C, IT_C, IT_C, FR_C, FR_C);
 
         private Ticket ticketToNeighbors(List<Station> from, int de, int at, int it, int fr) {
             var trips = new ArrayList<Trip>();

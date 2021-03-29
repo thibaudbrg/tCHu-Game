@@ -18,7 +18,7 @@ public final class GameState extends PublicGameState {
 
     private GameState(CardState cardState, PlayerId currentPlayerId, Map<PlayerId,
             PlayerState> playerState, Deck<Ticket> ticketsDeck, PlayerId lastPlayer) {
-        super(ticketsDeck.size(), cardState, currentPlayerId, Map.copyOf(playerState), null);
+        super(ticketsDeck.size(), cardState, currentPlayerId, Map.copyOf(playerState), lastPlayer);
         this.ticketsDeck = ticketsDeck;
         completePlayerState = playerState;
         completeCardState = cardState;
@@ -40,7 +40,7 @@ public final class GameState extends PublicGameState {
      */
     public static GameState initial(SortedBag<Ticket> tickets, Random rng) {
         Deck<Card> cardDeckWithOutTop8 = Deck.of(Constants.ALL_CARDS, rng);
-        PlayerId firstPlayer = PlayerId.ALL.get(rng.nextInt(1));
+        PlayerId firstPlayer = PlayerId.ALL.get(rng.nextInt(2));
         Map<PlayerId, PlayerState> map = new HashMap<>();
         for (PlayerId id : PlayerId.ALL){
             map.put(id,PlayerState.initial(cardDeckWithOutTop8.topCards(Constants.INITIAL_CARDS_COUNT)));
