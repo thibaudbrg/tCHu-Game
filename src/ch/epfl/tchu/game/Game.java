@@ -9,9 +9,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * Represents a game of tChu
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public final class Game {
 
-    static void play(Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, SortedBag<Ticket> tickets, Random rng) {
+    /**
+     * Plays a game of tCHu to the given players, whose names are listed in the playerNames table;
+     * the tickets available for this game are those of tickets, and the random generator rng is used to create
+     * the initial state of the game and to shuffle the cards from the discard pile into a new deck when necessary
+     *
+     * @param players     (Map<PlayerId, Player>) The two players
+     * @param playerNames (Map<PlayerId, String>) The two playernames
+     * @param tickets     (SortedBag<Ticket>) All available tickets
+     * @param rng         (Random) The random generator
+     */
+    public static void play(Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, SortedBag<Ticket> tickets, Random rng) {
         Preconditions.checkArgument(playerNames.size() == 2);
         Preconditions.checkArgument(players.size() == 2);
 
@@ -50,10 +66,8 @@ public final class Game {
             switch (players.get(gameState.currentPlayerId()).nextTurn()) {
                 case DRAW_TICKETS:
                     sendInfoToBothPlayers(players, currentInfoPlayer.drewTickets(Constants.IN_GAME_TICKETS_COUNT));
-
                     SortedBag chosenTickets = actualPlayer.chooseTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT));
                     sendInfoToBothPlayers(players, currentInfoPlayer.keptTickets(chosenTickets.size()));
-
                     gameState = gameState.withChosenAdditionalTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT), chosenTickets);
 
                 case DRAW_CARDS:
@@ -66,7 +80,10 @@ public final class Game {
                             sendInfoToBothPlayers(players, currentInfoPlayer.drewVisibleCard(gameState.cardState().faceUpCard(slot)));
                             gameState = gameState.withDrawnFaceUpCard(slot);
                         }
-                        if (i == 0) updateStateBothPlayers(players, gameState);
+
+                        if (i == 0) {
+                            updateStateBothPlayers(players, gameState);
+                        }
                     }
 
                 case CLAIM_ROUTE:
@@ -78,7 +95,6 @@ public final class Game {
                         SortedBag<Card> drawnCard = threeOnTheTopDeckCards(gameState, rng);
                         int additionalCost = route.additionalClaimCardsCount(initialClaimCards, drawnCard);
                         sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
-
 
                         if (additionalCost >= 1) {
                             List<SortedBag<Card>> possibleAdditionalCards = actualPlayerState.possibleAdditionalCards(additionalCost, initialClaimCards, drawnCard);
@@ -98,6 +114,7 @@ public final class Game {
                             sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                         }
                         gameState = gameState.withMoreDiscardedCards(drawnCard);
+
                     } else {
                         gameState = gameState.withClaimedRoute(route, initialClaimCards);
                         sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
@@ -129,6 +146,8 @@ public final class Game {
             player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
         }
+
+
         if (player1Points < player2Points) {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).won(player2Points, player1Points));
         } else if (player1Points > player2Points) {
@@ -138,7 +157,6 @@ public final class Game {
             playerNames.forEach((k, s) -> {
                 playerNamesList.add(s);
             });
-
             sendInfoToBothPlayers(players, Info.draw(playerNamesList, player1Points));
         }
     }

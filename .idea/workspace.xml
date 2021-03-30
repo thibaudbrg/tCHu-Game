@@ -23,21 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicCardState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicCardState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicGameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicGameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route$Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route$Level.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Route.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameStateTest$ChMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameStateTest$ChMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameStateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameStateTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicGameStateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicGameStateTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameStateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PublicGameStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PublicGameStateTest.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +98,7 @@
       <recent name="$PROJECT_DIR$/src/ch/epfl/sigcheck" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameStateTest">
+  <component name="RunManager" selected="JUnit.GameTest.playFailsWhenPlayerNotEquals2">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -118,53 +106,6 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameStateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameStateTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameStateTest.gameStateForNextTurnWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameStateTest" />
-      <option name="METHOD_NAME" value="gameStateForNextTurnWorks" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameStateTest.gameStateInitialChoosesFirstPlayerRandomly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameStateTest" />
-      <option name="METHOD_NAME" value="gameStateInitialChoosesFirstPlayerRandomly" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -180,6 +121,54 @@
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameStateTest" />
       <option name="METHOD_NAME" value="withDrawnFaceUpCardWorks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTest.playFailsWhenPlayerNamesNotEquals2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameTest" />
+      <option name="METHOD_NAME" value="playFailsWhenPlayerNamesNotEquals2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTest.playFailsWhenPlayerNotEquals2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameTest" />
+      <option name="METHOD_NAME" value="playFailsWhenPlayerNotEquals2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTest.threeOnTheTopDeckCardsWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameTest" />
+      <option name="METHOD_NAME" value="threeOnTheTopDeckCardsWorks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -202,9 +191,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GameStateTest" />
-        <item itemvalue="JUnit.GameStateTest.gameStateForNextTurnWorks" />
-        <item itemvalue="JUnit.GameStateTest.gameStateInitialChoosesFirstPlayerRandomly" />
+        <item itemvalue="JUnit.GameTest.playFailsWhenPlayerNotEquals2" />
+        <item itemvalue="JUnit.GameTest.playFailsWhenPlayerNamesNotEquals2" />
+        <item itemvalue="JUnit.GameTest.threeOnTheTopDeckCardsWorks" />
         <item itemvalue="JUnit.RouteTest" />
         <item itemvalue="JUnit.GameStateTest.withDrawnFaceUpCardWorks" />
       </list>
@@ -256,6 +245,8 @@
       <workItem from="1617005662690" duration="40000" />
       <workItem from="1617012815253" duration="400000" />
       <workItem from="1617017392553" duration="7146000" />
+      <workItem from="1617091655599" duration="518000" />
+      <workItem from="1617092212395" duration="4217000" />
     </task>
     <servers />
   </component>
@@ -276,67 +267,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="130" y="124" width="1240" height="603" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1617017763458">
-      <screen x="0" y="25" width="1440" height="805" />
-    </state>
-    <state x="130" y="124" width="1240" height="603" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.805@0.25.1440.805" timestamp="1617017763458" />
-    <state x="130" y="125" width="1240" height="607" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.25.1440.813@0.25.1440.813" timestamp="1616756757665" />
-    <state width="1398" height="241" key="GridCell.Tab.0.bottom" timestamp="1617023800376">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1617023800376" />
-    <state width="1398" height="202" key="GridCell.Tab.0.bottom/0.25.1440.805@0.25.1440.805" timestamp="1617017948853" />
-    <state width="1398" height="203" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1616759845301" />
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1616756434364" />
-    <state width="1398" height="241" key="GridCell.Tab.0.center" timestamp="1617023800373">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1617023800373" />
-    <state width="1398" height="202" key="GridCell.Tab.0.center/0.25.1440.805@0.25.1440.805" timestamp="1617017948852" />
-    <state width="1398" height="203" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1616759845301" />
-    <state width="1398" height="254" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1616756434362" />
-    <state width="1398" height="241" key="GridCell.Tab.0.left" timestamp="1617023800372">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1617023800372" />
-    <state width="1398" height="202" key="GridCell.Tab.0.left/0.25.1440.805@0.25.1440.805" timestamp="1617017948851" />
-    <state width="1398" height="203" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1616759845300" />
-    <state width="1398" height="254" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1616756434359" />
-    <state width="1398" height="241" key="GridCell.Tab.0.right" timestamp="1617023800375">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1617023800375" />
-    <state width="1398" height="202" key="GridCell.Tab.0.right/0.25.1440.805@0.25.1440.805" timestamp="1617017948852" />
-    <state width="1398" height="203" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1616759845301" />
-    <state width="1398" height="254" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1616756434363" />
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1616759845293">
-      <screen x="0" y="25" width="1440" height="809" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.809@0.25.1440.809" timestamp="1616759845293" />
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
-    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1616759845292">
-      <screen x="0" y="25" width="1440" height="809" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.809@0.25.1440.809" timestamp="1616759845292" />
-    <state width="1398" height="254" key="GridCell.Tab.1.center/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
-    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1616759845292">
-      <screen x="0" y="25" width="1440" height="809" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.809@0.25.1440.809" timestamp="1616759845292" />
-    <state width="1398" height="254" key="GridCell.Tab.1.left/0.25.1440.813@0.25.1440.813" timestamp="1616756435324" />
-    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1616759845293">
-      <screen x="0" y="25" width="1440" height="809" />
-    </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.809@0.25.1440.809" timestamp="1616759845293" />
-    <state width="1398" height="254" key="GridCell.Tab.1.right/0.25.1440.813@0.25.1440.813" timestamp="1616756435325" />
-    <state x="415" y="148" width="670" height="753" key="search.everywhere.popup" timestamp="1617023146813">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="415" y="148" width="670" height="753" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1617023146813" />
-    <state x="415" y="158" width="670" height="676" key="search.everywhere.popup/0.25.1440.809@0.25.1440.809" timestamp="1616768080970" />
-    <state x="415" y="159" width="670" height="680" key="search.everywhere.popup/0.25.1440.813@0.25.1440.813" timestamp="1616768554101" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
