@@ -5,6 +5,7 @@ import ch.epfl.tchu.SortedBag;
 import ch.epfl.test.TestRandomizer;
 import org.junit.jupiter.api.Test;
 
+import static ch.epfl.test.TestRandomizer.newRandom;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
@@ -17,20 +18,17 @@ class GameTest {
 
 // TODO VOIR SI ON PEUT PAS ENLEVER LES NULL
         Map<PlayerId, Player> players = new HashMap<>();
-        players.put(PlayerId.PLAYER_1, null);
-        players.put(PlayerId.PLAYER_2, null);
+        players.put(PlayerId.PLAYER_1, new TestPlayer(newRandom().nextInt(2021), new GameTest.ChMap().ALL_ROUTES));
+        players.put(PlayerId.PLAYER_2, new TestPlayer(newRandom().nextInt(2021), new GameTest.ChMap().ALL_ROUTES));
 
         Map<PlayerId, String> playerNames = new HashMap<>();
         playerNames.put(PlayerId.PLAYER_1, "Tibo");
-        playerNames.put(PlayerId.PLAYER_2, "Mat");
-        // The extra one
-        playerNames.put(null, "Clothilde");
-
+        //One is missing
 
         var tickets = new GameTest.ChMap().ALL_TICKETS;
         var ticketsBag = SortedBag.of(tickets);
 
-        var rng = TestRandomizer.newRandom();
+        var rng = newRandom();
 
         var gameState = GameState.initial(ticketsBag, rng);
 
@@ -41,13 +39,9 @@ class GameTest {
 
     @Test
     void playFailsWhenPlayerNotEquals2() {
-// TODO VOIR SI ON PEUT PAS ENLEVER LES NULL
         Map<PlayerId, Player> players = new HashMap<>();
-        players.put(PlayerId.PLAYER_1, null);
-        players.put(PlayerId.PLAYER_2, null);
-        // The extra one
-        players.put(null, null);
-
+        players.put(PlayerId.PLAYER_1, new TestPlayer(newRandom().nextInt(2021), new GameTest.ChMap().ALL_ROUTES));
+        // One is missing
 
         Map<PlayerId, String> playerNames = new HashMap<>();
         playerNames.put(PlayerId.PLAYER_1, "Tibo");
@@ -56,7 +50,7 @@ class GameTest {
         var tickets = new GameTest.ChMap().ALL_TICKETS;
         var ticketsBag = SortedBag.of(tickets);
 
-        var rng = TestRandomizer.newRandom();
+        var rng = newRandom();
 
         var gameState = GameState.initial(ticketsBag, rng);
 
@@ -68,8 +62,8 @@ class GameTest {
     @Test
     void playInitPlayersWorks() {
         Map<PlayerId, Player> players = new HashMap<>();
-        players.put(PlayerId.PLAYER_1, null);
-        players.put(PlayerId.PLAYER_2, null);
+        players.put(PlayerId.PLAYER_1, new TestPlayer(newRandom().nextInt(2021), new GameTest.ChMap().ALL_ROUTES));
+        players.put(PlayerId.PLAYER_2, new TestPlayer(newRandom().nextInt(2021), new GameTest.ChMap().ALL_ROUTES));
 
         Map<PlayerId, String> playerNames = new HashMap<>();
         playerNames.put(PlayerId.PLAYER_1, "Tibo");
@@ -78,7 +72,7 @@ class GameTest {
         var tickets = new GameTest.ChMap().ALL_TICKETS;
         var ticketsBag = SortedBag.of(tickets);
 
-        var rng = TestRandomizer.newRandom();
+        var rng = newRandom();
 
         var gameState = GameState.initial(ticketsBag, rng);
 
@@ -89,15 +83,210 @@ class GameTest {
     void playWorksWhenPlayerWantsToDrawTickets() {
 
     }
+
     @Test
     void playWorksWhenPlayerWantsDrawCards() {
 
     }
 
-    @Test void playWorksWhenPlayerWantsToClaimRoute() {
+    @Test
+    void playWorksWhenPlayerWantsToClaimRoute() {
 
     }
 
+    @Test
+    void gameWorks() {
+        Map<PlayerId, Player> players = new HashMap<>();
+
+        players.put(PlayerId.PLAYER_1, new TestPlayer(254, new GameTest.ChMap().ALL_ROUTES));
+        players.put(PlayerId.PLAYER_2, new TestPlayer(324, new GameTest.ChMap().ALL_ROUTES));
+
+        Map<PlayerId, String> playerNames = new HashMap<>();
+        playerNames.put(PlayerId.PLAYER_1, "Tibo");
+        playerNames.put(PlayerId.PLAYER_2, "Mat");
+
+        var tickets = new GameTest.ChMap().ALL_TICKETS;
+        var ticketsBag = SortedBag.of(tickets);
+
+        var rng = new Random(14);
+
+        var gameState = GameState.initial(ticketsBag, rng);
+
+        Game.play(players, playerNames, ticketsBag, rng);
+        assertEquals(((TestPlayer) players.get(PlayerId.PLAYER_1)).getReceiveInfoCounter(),((TestPlayer) players.get(PlayerId.PLAYER_2)).getReceiveInfoCounter());
+        assertEquals(((TestPlayer) players.get(PlayerId.PLAYER_1)).getUpdateStateCounter(),((TestPlayer) players.get(PlayerId.PLAYER_2)).getUpdateStateCounter());
+
+    }
+
+
+    private static final class TestPlayer implements Player {
+        private static final int TURN_LIMIT = 1000;
+        private final Random rng;
+        // Toutes les routes de la carte
+        private final List<Route> allRoutes;
+        private int receiveInfoCounter = 0;
+        private int updateStateCounter = 0;
+        private int turnCounter;
+        private PlayerState ownState;
+        private GameState gameState;
+        private SortedBag<Ticket> InitialTicket;
+        // Lorsque nextTurn retourne CLAIM_ROUTE
+        private Route routeToClaim;
+        private SortedBag<Card> initialClaimCards;
+
+        public TestPlayer(long randomSeed, List<Route> allRoutes) {
+            this.rng = new Random(randomSeed);
+            this.allRoutes = List.copyOf(allRoutes);
+            this.turnCounter = 0;
+        }
+
+        /**
+         * Called at the beginning of the game to give the player his ownId identity,
+         * as well as the names of the different players, including his own, which are in playerNames
+         *
+         * @param ownId       (PlayerId) The own identity to the player
+         * @param playerNames (Map<PlayerId, String>) The names of the players
+         */
+        @Override
+        public void initPlayers(PlayerId ownId, Map<PlayerId, String> playerNames) {
+
+        }
+
+        /**
+         * Called each time a piece of information must be communicated to the player during the game;
+         * this information is given in the form of a character string, usually produced by the Info
+         *
+         * @param info (String) The information
+         */
+        @Override
+        public void receiveInfo(String info) {
+            receiveInfoCounter++;
+            System.out.println(info);
+        }
+
+        @Override
+        public void updateState(PublicGameState newState, PlayerState ownState) {
+            this.gameState = (GameState) newState;
+            this.ownState = ownState;
+            ++updateStateCounter;
+
+        }
+
+        /**
+         * Called at the beginning of the game to give the player the five tickets that have been dealt to him
+         *
+         * @param tickets (SortedBag<Ticket>) The tickets
+         */
+        @Override
+        public void setInitialTicketChoice(SortedBag<Ticket> tickets) {
+            InitialTicket = tickets;
+        }
+
+        /**
+         * Called at the beginning of the game to ask the player which of the tickets they were initially dealt to keep
+         *
+         * @return (SortedBag < Ticket >) The tickets that the player keeps
+         */
+        @Override
+        public SortedBag<Ticket> chooseInitialTickets() {
+            return SortedBag.of(InitialTicket.get(1));
+        }
+
+        @Override
+        public TurnKind nextTurn() {
+            turnCounter += 1;
+            if (turnCounter > TURN_LIMIT)
+                throw new Error("Trop de tours joués !");
+
+
+            List<Route> claimableRoutes = new ArrayList<>();
+            allRoutes.forEach(r -> {
+                if (ownState.canClaimRoute(r)) claimableRoutes.add(r);
+            });
+            if (claimableRoutes.isEmpty()|| rng.nextInt(50)==1) {
+                return TurnKind.DRAW_CARDS;
+            } else {
+                int routeIndex = rng.nextInt(claimableRoutes.size());
+                Route route = claimableRoutes.get(routeIndex);
+                List<SortedBag<Card>> cards = ownState.possibleClaimCards(route);
+
+                routeToClaim = route;
+                initialClaimCards = cards.get(0);
+                return TurnKind.CLAIM_ROUTE;
+            }
+        }
+
+        /**
+         * Called when the player has decided to draw additional tickets during the game,
+         * in order to inform him of the tickets drawn and which ones he keeps
+         *
+         * @param options (SortedBad<Ticket>) the option tickets
+         * @return
+         */
+        @Override
+        public SortedBag<Ticket> chooseTickets(SortedBag<Ticket> options) {
+            return null;
+        }
+
+        /**
+         * Called when the player has decided to draw railcar/locomotive cards,
+         * so that he knows where he wants to draw them from: from one of the slots containing a face-up card or the deck
+         *
+         * @return (int) The value is between 0 and 4 if it comes from a slot containin a face-up card,
+         * or the dummy slot number designating the deck of cards
+         */
+        @Override
+        public int drawSlot() {
+            return 0;
+        }
+
+        /**
+         * Called when the player has decided to (try to) seize a road, in order to know which road it is
+         *
+         * @return (Route) The Route the player wants to seize
+         */
+        @Override
+        public Route claimedRoute() {
+            return routeToClaim;
+        }
+
+        /**
+         * Called when the player has decided to (try to) seize a road,
+         * in order to know which card(s) he initially wants to use for this
+         *
+         * @return (SortedBag < Card >) The Cards he initially wants to use
+         */
+        @Override
+        public SortedBag<Card> initialClaimCards() {
+            return initialClaimCards;
+        }
+
+        /**
+         * Called when the player has decided to try to claim a tunnel and additional cards are needed,
+         * in order to know which card(s) he wants to use for this, the possibilities being passed to him as an argument;
+         * if the returned multiset is empty, it means that the player does not want to (or cannot) choose one of these possibilities
+         *
+         * @param options (List<SortedBag<Card>>) The possibilities to claim a tunnel
+         * @return (SortedBag < Card >) The cards the player choose
+         */
+        @Override
+        public SortedBag<Card> chooseAdditionalCards(List<SortedBag<Card>> options) {
+            return options.get(0);
+        }
+
+
+        public int getReceiveInfoCounter() {
+            return receiveInfoCounter;
+        }
+
+        public int getUpdateStateCounter(){
+            return updateStateCounter;
+        }
+
+        public PlayerState getOwnState() {
+            return ownState;
+        }
+    }
 
 
     private static final class ChMap {

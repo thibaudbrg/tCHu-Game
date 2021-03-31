@@ -54,7 +54,7 @@ public final class Game {
             sendInfoToBothPlayers(players, new Info(playerNames.get(e.getKey())).keptTickets(gameState.playerState(e.getKey()).ticketCount()));
         }
 
-        do {
+        while(gameState.lastPlayer()!= gameState.currentPlayerId()) {
             Player actualPlayer = players.get(gameState.currentPlayerId());
             String actualPlayerName = playerNames.get(gameState.currentPlayerId());
             PlayerState actualPlayerState = gameState.currentPlayerState();
@@ -120,11 +120,12 @@ public final class Game {
                         sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                     }
 
-
             }
             if (gameState.lastTurnBegins())
                 sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(actualPlayerState.carCount()));
-        } while (gameState.lastPlayer() == null); //TODO Voir si c la bonne condition
+
+            gameState=gameState.forNextTurn();
+        }
 
 
         Trail longestPlayer1Trail = Trail.longest(gameState.playerState(PlayerId.PLAYER_1).routes());
@@ -142,7 +143,7 @@ public final class Game {
             player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
         } else {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).getsLongestTrailBonus(longestPlayer1Trail));
-            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).getsLongestTrailBonus(longestPlayer2Trail));
+            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).getsLongestTrailBonus(longestPlayer2Trail));
             player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
         }
