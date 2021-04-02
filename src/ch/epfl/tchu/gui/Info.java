@@ -199,10 +199,10 @@ public final class Info {
     }
 
     /**
-     * Returns a String declaring that the player has less than 2 cards and that the last turn begins
+     * Returns a String declaring that the player has less than 2 cars and that the last turn begins
      *
      * @param carCount number of remaining card
-     * @return a String declaring that the player has less than 2 cards and that the last turn begins
+     * @return a String declaring that the player has less than 2 cars and that the last turn begins
      */
     public String lastTurnBegins(int carCount) {
         return String.format(StringsFr.LAST_TURN_BEGINS, playerName, carCount, plural(carCount));

@@ -24,10 +24,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,20 +58,30 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java">
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java">
       <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="19" end1="21" start2="20" end2="22" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="24" end1="28" start2="25" end2="26" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="32" end1="33" start2="30" end2="31" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="43" end1="44" start2="41" end2="41" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="45" end1="50" start2="42" end2="44" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="58" end1="59" start2="52" end2="53" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="70" end1="72" start2="64" end2="66" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="80" end1="81" start2="74" end2="75" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="91" end1="91" start2="85" end2="86" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="96" end1="97" start2="91" end2="93" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="100" end1="100" start2="96" end2="289" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="33" end1="33" start2="33" end2="36" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="37" end1="37" start2="40" end2="43" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="38" end1="39" start2="44" end2="44" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="41" end1="41" start2="46" end2="49" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="44" end1="45" start2="52" end2="52" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="47" end1="47" start2="54" end2="57" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="52" end1="52" start2="62" end2="65" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="55" end1="55" start2="68" end2="69" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="56" end1="57" start2="70" end2="72" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="59" end1="60" start2="74" end2="74" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="66" end1="66" start2="80" end2="81" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="72" end1="72" start2="87" end2="88" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="82" end1="83" start2="98" end2="98" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="88" end1="88" start2="103" end2="104" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="92" end1="92" start2="108" end2="109" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="99" end1="100" start2="116" end2="117" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="111" end1="112" start2="128" end2="131" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="121" end1="122" start2="140" end2="143" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="124" end1="125" start2="145" end2="146" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="126" end1="127" start2="147" end2="148" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="129" end1="162" start2="150" end2="152" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="164" end1="164" start2="154" end2="207" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
       </ranges>
     </file>
   </component>
@@ -118,14 +129,16 @@
       <recent name="$PROJECT_DIR$/src/ch/epfl/sigcheck" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameTest (4)">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.GameTest.gameWorks">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -208,11 +221,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GameTest.gameWorks" />
+        <item itemvalue="JUnit.GameTest (1)" />
         <item itemvalue="JUnit.GameTest (4)" />
         <item itemvalue="JUnit.GameTest (3)" />
         <item itemvalue="JUnit.GameTest (2)" />
-        <item itemvalue="JUnit.GameTest.gameWorks" />
-        <item itemvalue="JUnit.GameTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -266,6 +279,7 @@
       <workItem from="1617092212395" duration="4268000" />
       <workItem from="1617190463123" duration="610000" />
       <workItem from="1617191574134" duration="4149000" />
+      <workItem from="1617368521896" duration="3733000" />
     </task>
     <servers />
   </component>

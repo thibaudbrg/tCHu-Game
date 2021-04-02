@@ -115,7 +115,6 @@ class GameTest {
         Game.play(players, playerNames, ticketsBag, rng);
         assertEquals(((TestPlayer) players.get(PlayerId.PLAYER_1)).getReceiveInfoCounter(),((TestPlayer) players.get(PlayerId.PLAYER_2)).getReceiveInfoCounter());
         assertEquals(((TestPlayer) players.get(PlayerId.PLAYER_1)).getUpdateStateCounter(),((TestPlayer) players.get(PlayerId.PLAYER_2)).getUpdateStateCounter());
-
     }
 
 
@@ -285,6 +284,10 @@ class GameTest {
 
         public PlayerState getOwnState() {
             return ownState;
+        }
+
+        public GameState getGameState(){
+            return gameState;
         }
     }
 

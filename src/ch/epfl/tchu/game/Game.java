@@ -31,45 +31,61 @@ public final class Game {
         Preconditions.checkArgument(playerNames.size() == 2);
         Preconditions.checkArgument(players.size() == 2);
 
+        /**
+         * Initialise playerNames
+         */
         players.forEach((Id, p) -> {
             p.initPlayers(Id, playerNames);
         });
 
+        /**
+         * Create the gameState and inform the players of who will start playing first
+         */
         GameState gameState = GameState.initial(tickets, rng);
-
         sendInfoToBothPlayers(players, new Info(playerNames.get(gameState.currentPlayerId())).willPlayFirst());
 
+        /**
+         * Give to the players the five tickets that have been dealt to them
+         */
         for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
             e.getValue().setInitialTicketChoice(gameState.topTickets(Constants.INITIAL_TICKETS_COUNT));
             gameState = gameState.withoutTopTickets(Constants.INITIAL_TICKETS_COUNT);
-//TODO JSP SI IL FAUT ENLEVER LES TICKETS A CHAQUE FOIS OU SI IL FAUT FAIRE QQCH
         }
 
+        /**
+         * The given tickets have been added to the given player's hand
+         */
         for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
             updateStateBothPlayers(players, gameState);
             gameState = gameState.withInitiallyChosenTickets(e.getKey(), e.getValue().chooseInitialTickets());
         }
 
+        /**
+         * Informs the players how many tickets each has kept
+         */
         for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
             sendInfoToBothPlayers(players, new Info(playerNames.get(e.getKey())).keptTickets(gameState.playerState(e.getKey()).ticketCount()));
         }
+boolean endGame=false;
 
-        while(gameState.lastPlayer()!= gameState.currentPlayerId()) {
+        while (gameState.lastPlayer() != gameState.currentPlayerId().next()|| endGame) {
+            endGame= false;
             Player actualPlayer = players.get(gameState.currentPlayerId());
             String actualPlayerName = playerNames.get(gameState.currentPlayerId());
-            PlayerState actualPlayerState = gameState.currentPlayerState();
             Info currentInfoPlayer = new Info(actualPlayerName);
 
             sendInfoToBothPlayers(players, currentInfoPlayer.canPlay());
             updateStateBothPlayers(players, gameState);
 
             switch (players.get(gameState.currentPlayerId()).nextTurn()) {
+                // If the actualPlayer wants to draw some tickets
                 case DRAW_TICKETS:
                     sendInfoToBothPlayers(players, currentInfoPlayer.drewTickets(Constants.IN_GAME_TICKETS_COUNT));
                     SortedBag chosenTickets = actualPlayer.chooseTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT));
                     sendInfoToBothPlayers(players, currentInfoPlayer.keptTickets(chosenTickets.size()));
                     gameState = gameState.withChosenAdditionalTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT), chosenTickets);
 
+                    // If the actualPlayer wants to draw a card
                 case DRAW_CARDS:
                     for (int i = 0; i < 2; i++) {
                         int slot = actualPlayer.drawSlot();
@@ -80,16 +96,17 @@ public final class Game {
                             sendInfoToBothPlayers(players, currentInfoPlayer.drewVisibleCard(gameState.cardState().faceUpCard(slot)));
                             gameState = gameState.withDrawnFaceUpCard(slot);
                         }
-
                         if (i == 0) {
                             updateStateBothPlayers(players, gameState);
                         }
                     }
 
+                    // If the actualPlayer wants to claim a route
                 case CLAIM_ROUTE:
                     Route route = actualPlayer.claimedRoute();
                     SortedBag<Card> initialClaimCards = actualPlayer.initialClaimCards();
 
+                    // If the claim route is a tunnel
                     if (route.level().equals(Route.Level.UNDERGROUND)) {
                         sendInfoToBothPlayers(players, currentInfoPlayer.attemptsTunnelClaim(route, initialClaimCards));
                         SortedBag<Card> drawnCard = threeOnTheTopDeckCards(gameState, rng);
@@ -97,7 +114,7 @@ public final class Game {
                         sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
 
                         if (additionalCost >= 1) {
-                            List<SortedBag<Card>> possibleAdditionalCards = actualPlayerState.possibleAdditionalCards(additionalCost, initialClaimCards, drawnCard);
+                            List<SortedBag<Card>> possibleAdditionalCards = gameState.currentPlayerState().possibleAdditionalCards(additionalCost, initialClaimCards, drawnCard);
                             if (possibleAdditionalCards.isEmpty()) {
                                 sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
                             } else {
@@ -109,7 +126,9 @@ public final class Game {
                                     sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, theCardToTake.union(initialClaimCards)));
                                 }
                             }
-                        } else {
+                        }
+                        // If the claim route is not a tunnel
+                        else {
                             gameState = gameState.withClaimedRoute(route, initialClaimCards);
                             sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                         }
@@ -119,21 +138,34 @@ public final class Game {
                         gameState = gameState.withClaimedRoute(route, initialClaimCards);
                         sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                     }
-
+                    if (gameState.lastTurnBegins()) {
+                        endGame = true;
+                    }
             }
             if (gameState.lastTurnBegins())
-                sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(actualPlayerState.carCount()));
+                sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(gameState.currentPlayerState().carCount()));
 
-            gameState=gameState.forNextTurn();
+            gameState = gameState.forNextTurn();
         }
 
+        Integer[] playerPoints = whichPlayerHasTheLongest(gameState, players, playerNames);
+        whoWonTheGame(gameState, players, playerNames, playerPoints);
+    }
 
+    /**
+     * Awarding of the longest route bonus
+     *
+     * @param gameState (GameState) The gameState
+     * @param players (Map<PlayerId, Player>) The players
+     * @param playerNames (Map<PlayerId, String>) The playerNames
+     * @return (Integer[]) The both playerPoints
+     */
+
+    private static Integer[] whichPlayerHasTheLongest(GameState gameState, Map<PlayerId, Player> players, Map<PlayerId, String> playerNames) {
         Trail longestPlayer1Trail = Trail.longest(gameState.playerState(PlayerId.PLAYER_1).routes());
         Trail longestPlayer2Trail = Trail.longest(gameState.playerState(PlayerId.PLAYER_2).routes());
         int player1Points = gameState.playerState(PlayerId.PLAYER_1).finalPoints();
         int player2Points = gameState.playerState(PlayerId.PLAYER_2).finalPoints();
-
-
         if (longestPlayer1Trail.length() < longestPlayer2Trail.length()) {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).getsLongestTrailBonus(longestPlayer2Trail));
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
@@ -147,19 +179,30 @@ public final class Game {
             player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
         }
+        return new Integer[]{ player1Points, player2Points };
+    }
 
-
-        if (player1Points < player2Points) {
-            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).won(player2Points, player1Points));
-        } else if (player1Points > player2Points) {
-            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).won(player1Points, player2Points));
+    /**
+     * Determine who won the game
+     *
+     * @param gameState (GameState) The gameState
+     * @param players (Map<PlayerId, Player>) The players
+     * @param playerNames (Map<PlayerId, String>) The playerNames
+     * @param playerPoints (Integer[]) The both playerPoints
+     */
+    private static void whoWonTheGame(GameState gameState, Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, Integer[] playerPoints) {
+        if (playerPoints[0] < playerPoints[1]) {
+            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).won(playerPoints[1], playerPoints[0]));
+        } else if (playerPoints[0] > playerPoints[1]) {
+            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).won(playerPoints[0], playerPoints[1]));
         } else {
             List<String> playerNamesList = new ArrayList<>();
             playerNames.forEach((k, s) -> {
                 playerNamesList.add(s);
             });
-            sendInfoToBothPlayers(players, Info.draw(playerNamesList, player1Points));
+            sendInfoToBothPlayers(players, Info.draw(playerNamesList, playerPoints[0]));
         }
+        System.out.println(gameState.lastPlayer() + " " + gameState.currentPlayerId());
     }
 
 
