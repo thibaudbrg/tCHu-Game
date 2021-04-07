@@ -9,6 +9,7 @@ import ch.epfl.tchu.Preconditions;
  * @author Bourgeois Thibaud (324604)
  */
 public final class Station {
+
     private final int id;
     private final String name;
 

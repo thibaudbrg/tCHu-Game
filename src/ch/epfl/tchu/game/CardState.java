@@ -3,7 +3,11 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
+
 
 /**
  * Represents the state of the wagon/locomotive cards that are not in the players' hands.
@@ -39,9 +43,10 @@ public final class CardState extends PublicCardState {
      */
     public static CardState of(Deck<Card> deck) {
         Preconditions.checkArgument(deck.size() >= Constants.FACE_UP_CARDS_COUNT);
+
         Deck<Card> deck1 = deck.withoutTopCards(Constants.FACE_UP_CARDS_COUNT);
         SortedBag<Card> discard1 = SortedBag.of();
-        return new CardState(deck.topCards(Constants.FACE_UP_CARDS_COUNT).toList(), deck1.size(), 0, deck1, discard1);
+        return new CardState(deck.topCards(Constants.FACE_UP_CARDS_COUNT).toList(), deck1.size(), discard1.size(), deck1, discard1);
     }
 
     /**
@@ -58,7 +63,7 @@ public final class CardState extends PublicCardState {
 
 
         List<Card> newFaceUpCards = new ArrayList<>(faceUpCards());
-        Deck<Card> newDeck = deck.withoutTopCards(1);
+        Deck<Card> newDeck = deck.withoutTopCard();
         newFaceUpCards.set(slot, deck.topCard());
         return new CardState(newFaceUpCards, newDeck.size(), this.discardsSize(), newDeck, this.discard);
     }
@@ -80,7 +85,8 @@ public final class CardState extends PublicCardState {
      */
     public CardState withoutTopDeckCard() {
         Preconditions.checkArgument(!deck.isEmpty());
-        return new CardState(this.faceUpCards(), deck.size() - 1, this.discardsSize(), deck.withoutTopCard(), this.discard);
+        Deck<Card> newDeck = deck.withoutTopCard();
+        return new CardState(this.faceUpCards(), newDeck.size(), this.discardsSize(), newDeck, this.discard);
     }
 
     /**
@@ -93,7 +99,9 @@ public final class CardState extends PublicCardState {
      */
     public CardState withDeckRecreatedFromDiscards(Random rng) {
         Preconditions.checkArgument(deck.isEmpty());
-        return new CardState(this.faceUpCards(), Deck.of(discard, rng).size(), 0, Deck.of(discard, rng), SortedBag.of());
+        Deck<Card> newDeck = Deck.of(discard, rng);
+        SortedBag<Card> newDiscard = SortedBag.of();
+        return new CardState(this.faceUpCards(), newDeck.size(), newDiscard.size(), newDeck, newDiscard);
     }
 
     /**
@@ -103,7 +111,8 @@ public final class CardState extends PublicCardState {
      * @return (CardStat) a set of cards identical to the receiver (this), but with the given cards added to the discard pile.
      */
     public CardState withMoreDiscardedCards(SortedBag<Card> additionalDiscards) {
-        return new CardState(this.faceUpCards(), this.deckSize(), this.discardsSize() + additionalDiscards.size(), this.deck, this.discard.union(additionalDiscards));
+        SortedBag<Card> newDiscard = this.discard.union(additionalDiscards);
+        return new CardState(this.faceUpCards(), this.deckSize(), newDiscard.size(), this.deck, newDiscard);
     }
 
 }

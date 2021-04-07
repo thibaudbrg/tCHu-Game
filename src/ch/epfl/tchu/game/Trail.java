@@ -1,6 +1,7 @@
 package ch.epfl.tchu.game;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Class that represents a trail in a player's network.
@@ -12,17 +13,20 @@ public final class Trail {
     private final List<Route> routes;
     private final Station station1;
     private final Station station2;
-    private int length = 0;
+    private final int length;
 
     private Trail(List<Route> routes, Station station1, Station station2) {
         this.routes = new ArrayList<>(routes);
         this.station1 = station1;
         this.station2 = station2;
+
+        int lengthConstructor = 0 ;
         if (!routes.isEmpty()) {
             for (Route route : routes) {
-                length += route.length();
+                lengthConstructor += route.length();
             }
         }
+        length = lengthConstructor;
     }
 
     /**
@@ -33,7 +37,7 @@ public final class Trail {
      */
     public static Trail longest(List<Route> routes) {
         if (routes.isEmpty()) {
-            return new Trail(new ArrayList<Route>(), null, null);
+            return new Trail(new ArrayList<>(), null, null);
         } else {
             List<Trail> cs = findCS(routes);
             Trail longestTrail = cs.get(0);
@@ -77,10 +81,9 @@ public final class Trail {
         for (Route route : routes) {
             ArrayList<Route> singleRoute = new ArrayList<>();
             singleRoute.add(route);
-            Trail t1 = new Trail(singleRoute, route.station1(), route.station2());
-            Trail t2 = new Trail(singleRoute, route.station2(), route.station1());
-            cs.add(t1);
-            cs.add(t2);
+            for(Station station : route.stations()){
+                cs.add(new Trail(singleRoute,station, route.stationOpposite(station)));
+            }
         }
         return cs;
     }
@@ -93,29 +96,16 @@ public final class Trail {
      */
     public List<String> listStation(Trail trail) {
         ArrayList<String> listStation = new ArrayList();
+
         Station opposite = trail.station1;
         for (Route route : trail.routes) {
             listStation.add(opposite.toString());
             opposite = route.stationOpposite(opposite);
-
         }
         listStation.add(trail.station2().toString());
+
         return listStation;
     }
-
-
-    /**
-     * Method that instantiates any Trail for unit tests --Not Definite--.
-     *
-     * @param routes   (List<Route>) the List of the Trail
-     * @param station1 (Station) the depart Station of the Trail
-     * @param station2 (Station) The arrival Station of the Trail
-     * @return the Trail
-     */
-    public static Trail newTrailForTests(List<Route> routes, Station station1, Station station2) {
-        return new Trail(routes, station1, station2);
-    }
-
 
     /**
      * Returns the length of the Trail
@@ -132,8 +122,7 @@ public final class Trail {
      * @return the depart Station of the Trail of null if there is any Station
      */
     public Station station1() {
-        if (this.length() == 0) return null;
-        else return station1;
+        return this.length() == 0 ? null :station1;
     }
 
     /**
@@ -142,8 +131,7 @@ public final class Trail {
      * @return the arrival Station of the Trail of null if there is any Station
      */
     public Station station2() {
-        if (this.length() == 0) return null;
-        return station2;
+        return this.length() == 0 ? null :station2;
     }
 
     /**

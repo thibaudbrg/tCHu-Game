@@ -3,7 +3,9 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Represents the state of the game tChu
@@ -42,8 +44,8 @@ public final class GameState extends PublicGameState {
         Deck<Card> cardDeckWithOutTop8 = Deck.of(Constants.ALL_CARDS, rng);
         PlayerId firstPlayer = PlayerId.ALL.get(rng.nextInt(2));
         Map<PlayerId, PlayerState> map = new HashMap<>();
-        for (PlayerId id : PlayerId.ALL){
-            map.put(id,PlayerState.initial(cardDeckWithOutTop8.topCards(Constants.INITIAL_CARDS_COUNT)));
+        for (PlayerId id : PlayerId.ALL) {
+            map.put(id, PlayerState.initial(cardDeckWithOutTop8.topCards(Constants.INITIAL_CARDS_COUNT)));
             cardDeckWithOutTop8 = cardDeckWithOutTop8.withoutTopCards(Constants.INITIAL_CARDS_COUNT);
         }
         return new GameState(CardState.of(cardDeckWithOutTop8), firstPlayer, map, Deck.of(tickets, rng), null);
@@ -206,7 +208,7 @@ public final class GameState extends PublicGameState {
      */
     public GameState withClaimedRoute(Route route, SortedBag<Card> cards) {
         //Verifier que les cartes sont dans la main du joueur apres rendu inter
-        Map<PlayerId, PlayerState> newPlayerState =new HashMap<>(completePlayerState);
+        Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.get(currentPlayerId()).withClaimedRoute(route, cards));
         return new GameState(completeCardState.withMoreDiscardedCards(cards), currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
 

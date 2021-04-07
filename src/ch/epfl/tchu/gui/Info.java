@@ -82,6 +82,7 @@ public final class Info {
         return result.toString();
     }
 
+
     /**
      * Returns a string, declaring that the game finished and that the players are ex aeqo with (points) points.
      *
@@ -180,12 +181,13 @@ public final class Info {
      * @return a String declaring that the player drew the 3 given additionnal cards and that it generate an additional cost of additionalCost
      */
     public String drewAdditionalCards(SortedBag<Card> drawnCards, int additionalCost) {
-        if (additionalCost == 0) {
-            return String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
-                    + String.format(StringsFr.NO_ADDITIONAL_COST);
-        } else
-            return String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
-                    + String.format(StringsFr.SOME_ADDITIONAL_COST, additionalCost, plural(additionalCost));
+        return additionalCost == 0 ?
+                String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
+                        + String.format(StringsFr.NO_ADDITIONAL_COST)
+                :
+                String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
+                        + String.format(StringsFr.SOME_ADDITIONAL_COST, additionalCost, plural(additionalCost));
+
     }
 
     /**

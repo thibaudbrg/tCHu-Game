@@ -14,8 +14,8 @@ import java.util.TreeSet;
  */
 public final class Ticket implements Comparable<Ticket> {
     private final String Text;
-    private List<Trip> trips;
-    private final Station stationForm;
+    private final Station stationFrom;
+    private final List<Trip> trips;
 
     /**
      * Built a ticket
@@ -24,14 +24,13 @@ public final class Ticket implements Comparable<Ticket> {
      */
     public Ticket(List<Trip> trips) {
         Preconditions.checkArgument(!trips.isEmpty());
+        stationFrom = trips.get(0).from();
 
         for (Trip trip : trips) {
-            for (Trip trip1 : trips) {
-                Preconditions.checkArgument(trip.from().name().equals(trip1.from().name()));
-            }
+            Preconditions.checkArgument(stationFrom.name().equals(trip.from().name()));
         }
+
         this.trips = new ArrayList<>(trips);
-        stationForm = trips.get(0).from();
         Text = computeText();
     }
 
@@ -48,15 +47,6 @@ public final class Ticket implements Comparable<Ticket> {
 
     }
 
-    /**
-     * Returns the textual representation of the ticket
-     *
-     * @return the textual representation of the ticket
-     */
-    public String text() {
-        return Text;
-    }
-
 
     /**
      * Compute the text corresponding to the ticket
@@ -70,9 +60,9 @@ public final class Ticket implements Comparable<Ticket> {
 
         }
         if (stationTo.size() == 1) {
-            return stationForm + " - " + String.join(", ", stationTo);
+            return stationFrom + " - " + String.join(", ", stationTo);
         } else {
-            return stationForm + " - " + "{" + String.join(", ", stationTo) + "}";
+            return stationFrom + " - " + "{" + String.join(", ", stationTo) + "}";
         }
 
     }
@@ -86,13 +76,23 @@ public final class Ticket implements Comparable<Ticket> {
      */
     public int points(StationConnectivity connectivity) {
         int Point = Integer.MIN_VALUE;
-        int minPoint = Integer.MAX_VALUE;
+
         for (Trip trip : trips) {
-                Point = Integer.max(Point, trip.points(connectivity));
+            Point = Integer.max(Point, trip.points(connectivity));
         }
         return Point;
 
     }
+
+    /**
+     * Returns the textual representation of the ticket
+     *
+     * @return the textual representation of the ticket
+     */
+    public String text() {
+        return Text;
+    }
+
 
     /**
      * Compares the this and that banknotes in alphabetical order of their textual representation

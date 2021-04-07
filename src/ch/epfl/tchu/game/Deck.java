@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Iterator;
 
 /**
  * Represents a deck of cards.
@@ -43,24 +44,6 @@ public final class Deck<C extends Comparable<C>> {
 
     }
 
-    /**
-     * Returns the size of the deck
-     *
-     * @return (int) the size of the deck
-     */
-    public int size() {
-        return cards.size();
-    }
-
-
-    /**
-     * Returns true if the deck is empty
-     *
-     * @return (boolean) true if the deck is empty
-     */
-    public boolean isEmpty() {
-        return cards.isEmpty();
-    }
 
     /**
      * Returns the top card of the deck
@@ -90,8 +73,8 @@ public final class Deck<C extends Comparable<C>> {
     public SortedBag<C> topCards(int count) {
         Preconditions.checkArgument(count >= 0 && count <= size());
         SortedBag.Builder<C> builder = new SortedBag.Builder<>();
-        for (int i = 1; i < count + 1; i++) {
-            builder.add(cards.get(size() - i));
+        for (int i = cards.size() - 1; i >= (cards.size() - count); i--) {
+            builder.add(cards.get(i));
         }
         return builder.build();
     }
@@ -106,4 +89,24 @@ public final class Deck<C extends Comparable<C>> {
         Preconditions.checkArgument(count >= 0 && count <= size());
         return new Deck<C>(this.cards.subList(0, size() - count));
     }
+
+    /**
+     * Returns the size of the deck
+     *
+     * @return (int) the size of the deck
+     */
+    public int size() {
+        return cards.size();
+    }
+
+
+    /**
+     * Returns true if the deck is empty
+     *
+     * @return (boolean) true if the deck is empty
+     */
+    public boolean isEmpty() {
+        return cards.isEmpty();
+    }
+
 }

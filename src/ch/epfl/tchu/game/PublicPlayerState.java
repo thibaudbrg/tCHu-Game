@@ -33,8 +33,8 @@ public class PublicPlayerState {
         this.routes = new ArrayList<>(routes);
         this.ticketCount = ticketCount;
         this.cardCount = cardCount;
-        carCount = Constants.INITIAL_CAR_COUNT - scanRouteList(false);
-        claimPoints = scanRouteList(true);
+        carCount = Constants.INITIAL_CAR_COUNT - routeListLength();
+        claimPoints = routeListPoints();
 
     }
 
@@ -83,13 +83,19 @@ public class PublicPlayerState {
         return claimPoints;
     }
 
-    private int scanRouteList(boolean type) {
+    private int routeListPoints() {
         int points = 0;
-        int length = 0;
         for (Route road : routes) {
             points += road.claimPoints();
+        }
+        return points;
+    }
+
+    private int routeListLength() {
+        int length = 0;
+        for (Route road : routes) {
             length += road.length();
         }
-        return (type ? points : length);
+        return length;
     }
 }

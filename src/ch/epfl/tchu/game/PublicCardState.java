@@ -64,7 +64,7 @@ public class PublicCardState {
      * @return (Card) the card face up at the given index
      */
     public Card faceUpCard(int slot) {
-        Objects.checkIndex(0, faceUpCards.size());
+        Objects.checkIndex(0, Constants.FACE_UP_CARDS_COUNT);
         return faceUpCards.get(slot);
     }
 

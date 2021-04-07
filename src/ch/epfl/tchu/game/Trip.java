@@ -13,6 +13,7 @@ import java.util.Objects;
  * @author Bourgeois Thibaud (324604)
  */
 public final class Trip {
+
     private final Station from;
     private final Station to;
     private final int points;

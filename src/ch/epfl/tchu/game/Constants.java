@@ -78,6 +78,7 @@ public final class Constants {
      */
     public static final int DISCARDABLE_TICKETS_COUNT = 2;
 
+    //TODO VOIR POURQUOI ON NE L4A PAS ENCORE UTILISE
     /**
      * Nombre de cartes à tirer lors de la construction d'un tunnel.
      */
