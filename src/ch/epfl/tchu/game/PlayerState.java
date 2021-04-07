@@ -43,14 +43,6 @@ public final class PlayerState extends PublicPlayerState {
         return new PlayerState(SortedBag.of(), initialCards, List.of());
     }
 
-    /**
-     * Returns all the tickets owned by the player
-     *
-     * @return all the tickets owned by the player
-     */
-    public SortedBag<Ticket> tickets() {
-        return tickets;
-    }
 
     /**
      * Returns a state identical to the receiver, except that the player also has the given tickets
@@ -59,17 +51,9 @@ public final class PlayerState extends PublicPlayerState {
      * @return a state identical to the receiver, except that the player also has the given tickets
      */
     public PlayerState withAddedTickets(SortedBag<Ticket> newTickets) {
-        return new PlayerState(this.tickets.union(newTickets), this.cards, this.routes());
+        return new PlayerState(tickets.union(newTickets), cards, routes());
     }
 
-    /**
-     * Returns all the cards owned by the player
-     *
-     * @return all the cards owned by the player
-     */
-    public SortedBag<Card> cards() {
-        return this.cards;
-    }
 
     /**
      * Returns a state identical to the receiver, except that the player also has the given card
@@ -78,7 +62,7 @@ public final class PlayerState extends PublicPlayerState {
      * @return a state identical to the receiver, except that the player also has the given card
      */
     public PlayerState withAddedCard(Card card) {
-        return new PlayerState(this.tickets, this.cards.union(SortedBag.of(card)), this.routes());
+        return new PlayerState(tickets,cards.union(SortedBag.of(card)), routes());
     }
 
     /**
@@ -88,7 +72,7 @@ public final class PlayerState extends PublicPlayerState {
      * @return a state identical to the receiver, except that the player also has the given cards
      */
     public PlayerState withAddedCards(SortedBag<Card> additionalCards) {
-        return new PlayerState(this.tickets, this.cards.union(additionalCards), this.routes());
+        return new PlayerState(tickets,cards.union(additionalCards), routes());
     }
 
     /**
@@ -139,13 +123,22 @@ public final class PlayerState extends PublicPlayerState {
 
         SortedBag.Builder<Card> builder = new SortedBag.Builder();
         if (initialCards.get(0).color() != null) {
-            builder.add(cards.countOf(Card.of(initialCards.get(0).color())), Card.of(initialCards.get(0).color()));
+            builder.add(cards.countOf(Card.of(initialCards.get(0).color())),
+                    Card.of(initialCards.get(0).color()));
         }
 
-        SortedBag<Card> remainingUsableCard = builder.add(cards.countOf(Card.LOCOMOTIVE), Card.LOCOMOTIVE).build().difference(initialCards);
-        if(remainingUsableCard.size()<additionalCardsCount){return List.of();}
-        List<SortedBag<Card>> possibleAddCards = new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
+        SortedBag<Card> remainingUsableCard =
+                builder.add(cards.countOf(Card.LOCOMOTIVE),
+                        Card.LOCOMOTIVE).build().difference(initialCards);
+        if (remainingUsableCard.size() < additionalCardsCount) {
+            return List.of();
+        }
+
+        List<SortedBag<Card>> possibleAddCards =
+                new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
+
         possibleAddCards.sort(Comparator.comparingInt(cs -> cs.countOf(Card.LOCOMOTIVE)));
+
         return possibleAddCards;
 
 
@@ -164,7 +157,7 @@ public final class PlayerState extends PublicPlayerState {
         List<Route> routesCopy = new ArrayList<>(this.routes());
         routesCopy.add(route);
 
-        return new PlayerState(this.tickets, this.cards.difference(claimCards), routesCopy);
+        return new PlayerState(tickets, cards.difference(claimCards), routesCopy);
     }
 
     /**
@@ -174,15 +167,19 @@ public final class PlayerState extends PublicPlayerState {
      */
     public int ticketPoints() {
         int maxId = 0;
+
         for (Route route : this.routes()) {
-            maxId = Integer.max(maxId, route.station1().id());
-            maxId = Integer.max(maxId, route.station2().id());
+            for (Station station : route.stations()){
+                maxId = Integer.max(maxId,station.id());
+            }
         }
-        StationPartition.Builder builder = new StationPartition.Builder(maxId+1);
+        StationPartition.Builder builder = new StationPartition.Builder(maxId + 1);
+
         for (Route route : this.routes()) {
             builder.connect(route.station1(), route.station2());
         }
         StationPartition playerPartition = builder.build();
+
         int points = 0;
         for (Ticket ticket : tickets) {
             points += ticket.points(playerPartition);
@@ -197,6 +194,25 @@ public final class PlayerState extends PublicPlayerState {
      */
     public int finalPoints() {
         return this.claimPoints() + ticketPoints();
+    }
+
+
+    /**
+     * Returns all the cards owned by the player
+     *
+     * @return all the cards owned by the player
+     */
+    public SortedBag<Card> cards() {
+        return cards;
+    }
+
+    /**
+     * Returns all the tickets owned by the player
+     *
+     * @return all the tickets owned by the player
+     */
+    public SortedBag<Ticket> tickets() {
+        return tickets;
     }
 
 

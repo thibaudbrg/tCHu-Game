@@ -38,7 +38,7 @@ public class PublicGameState {
         this.ticketsCount = ticketsCount;
         this.cardState = Objects.requireNonNull(cardState);
         this.currentPlayerId = Objects.requireNonNull(currentPlayerId);
-        this.playerState = new TreeMap<PlayerId, PublicPlayerState>(playerState);
+        this.playerState = new TreeMap<>(playerState);
         this.lastPlayer = lastPlayer;
     }
 

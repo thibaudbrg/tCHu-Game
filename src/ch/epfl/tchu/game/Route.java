@@ -19,7 +19,7 @@ public final class Route {
      * Enum of Level
      */
     public enum Level {
-        OVERGROUND, UNDERGROUND;
+        OVERGROUND, UNDERGROUND
     }
 
     private final String id;
@@ -38,9 +38,8 @@ public final class Route {
      * @param length   length of the Route
      * @param level    level of the Route
      * @param color    color of the Route
-     * @throws NullPointerException
      */
-    public Route(String id, Station station1, Station station2, int length, Level level, Color color) throws NullPointerException {
+    public Route(String id, Station station1, Station station2, int length, Level level, Color color) {
         Preconditions.checkArgument(!(station1.id() == (station2.id())));
         Preconditions.checkArgument(length >= Constants.MIN_ROUTE_LENGTH);
         Preconditions.checkArgument(length <= Constants.MAX_ROUTE_LENGTH);
@@ -54,14 +53,13 @@ public final class Route {
     }
 
 
-
     /**
      * Return a list with the two stations in the order of the constructor
      *
      * @return a list with the two stations in the order of the constructor
      */
     public List<Station> stations() {
-        List<Station> a = new ArrayList<Station>();
+        List<Station> a = new ArrayList<>();
         a.add(station1);
         a.add(station2);
 
@@ -143,22 +141,17 @@ public final class Route {
         Preconditions.checkArgument(level == Level.UNDERGROUND);
         Preconditions.checkArgument(drawnCards.size() == Constants.ADDITIONAL_TUNNEL_CARDS);
 
-        int additionalClaimCardsCount = 0;
+        int additonalCardsCount = 0;
+        Card card = claimCards.get(0);
 
-        for (Card dCards : drawnCards) {
-            if (dCards.color() == null) {
-                ++additionalClaimCardsCount;
-            } else for (Card claimedCards : claimCards) {
-                if (claimedCards.color() == dCards.color()) {
-                    ++additionalClaimCardsCount;
-                    break;
-                }
-
+        for (Card card1 : drawnCards) {
+            if (card1.color() == null || card1.color().equals(card.color())) {
+                additonalCardsCount++;
             }
-
         }
-        return additionalClaimCardsCount;
+        return additonalCardsCount;
     }
+
 
     /**
      * Return the id of the route

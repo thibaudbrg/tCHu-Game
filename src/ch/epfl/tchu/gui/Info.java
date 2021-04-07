@@ -183,7 +183,7 @@ public final class Info {
     public String drewAdditionalCards(SortedBag<Card> drawnCards, int additionalCost) {
         return additionalCost == 0 ?
                 String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
-                        + String.format(StringsFr.NO_ADDITIONAL_COST)
+                        + StringsFr.NO_ADDITIONAL_COST
                 :
                 String.format(StringsFr.ADDITIONAL_CARDS_ARE, cardDescription(drawnCards))
                         + String.format(StringsFr.SOME_ADDITIONAL_COST, additionalCost, plural(additionalCost));

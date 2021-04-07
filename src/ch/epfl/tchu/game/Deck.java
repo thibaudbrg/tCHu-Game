@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Iterator;
 
 /**
  * Represents a deck of cards.
@@ -25,8 +24,7 @@ public final class Deck<C extends Comparable<C>> {
      * @param cards (List<C>) List of cards that constitute the deck
      */
     private Deck(List<C> cards) {
-        List<C> cardsCopy = new ArrayList<>(cards);
-        this.cards = cardsCopy;
+        this.cards = new ArrayList<>(cards);
     }
 
     /**
@@ -40,7 +38,7 @@ public final class Deck<C extends Comparable<C>> {
     public static <C extends Comparable<C>> Deck<C> of(SortedBag<C> cards, Random rng) {
         List<C> shuffledCards = cards.toList();
         Collections.shuffle(shuffledCards, rng);
-        return new Deck<C>(shuffledCards);
+        return new Deck<>(shuffledCards);
 
     }
 
@@ -61,7 +59,7 @@ public final class Deck<C extends Comparable<C>> {
      * @return (Deck < C >) a deck without the top card
      */
     public Deck<C> withoutTopCard() {
-        return new Deck<C>(this.cards.subList(0, cards.size() - 1));
+        return new Deck<>(this.cards.subList(0, cards.size() - 1));
     }
 
     /**
@@ -87,7 +85,7 @@ public final class Deck<C extends Comparable<C>> {
      */
     public Deck<C> withoutTopCards(int count) {
         Preconditions.checkArgument(count >= 0 && count <= size());
-        return new Deck<C>(this.cards.subList(0, size() - count));
+        return new Deck<>(this.cards.subList(0, size() - count));
     }
 
     /**

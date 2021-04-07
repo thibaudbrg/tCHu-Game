@@ -40,11 +40,11 @@ public final class Trip {
      * @param from   (Station) departure station
      * @param to     (Station) arrival station
      * @param points (int) number of points given to the trip
-     * @return
+     * @return (List<Trip>) returns a list of all possible Trip between the given departure and arrival stations
      */
     public static List<Trip> all(List<Station> from, List<Station> to, int points) {
         Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
-        List<Trip> allList = new ArrayList<Trip>();
+        List<Trip> allList = new ArrayList<>();
         for (Station stationFrom : from) {
             for (Station stationTo : to) {
                 allList.add(new Trip(stationFrom, stationTo, points));

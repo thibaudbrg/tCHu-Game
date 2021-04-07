@@ -2,6 +2,7 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
+
 /**
  * Represents a partition of Stations
  *
@@ -12,7 +13,7 @@ public final class StationPartition implements StationConnectivity {
     private final Integer[] arrayStationLink;
 
     private StationPartition(Integer[] arrayStationLink) {
-        this.arrayStationLink = arrayStationLink;
+        this.arrayStationLink = arrayStationLink.clone();
     }
 
 
@@ -27,7 +28,7 @@ public final class StationPartition implements StationConnectivity {
     public boolean connected(Station s1, Station s2) {
         if (s1.id() >= arrayStationLink.length || s2.id() >= arrayStationLink.length) {
             return s1.id() == s2.id();
-        } else return arrayStationLink[s1.id()] == arrayStationLink[s2.id()];
+        } else return arrayStationLink[s1.id()].equals(arrayStationLink[s2.id()]);
     }
 
 
@@ -45,6 +46,7 @@ public final class StationPartition implements StationConnectivity {
         public Builder(int stationCount) {
             Preconditions.checkArgument(stationCount >= 0);
             builderStationLink = new Integer[stationCount];
+
             for (int i = 0; i < builderStationLink.length; i++) {
                 builderStationLink[i] = i;
             }
