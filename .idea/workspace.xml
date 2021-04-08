@@ -24,17 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/Preconditions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/Preconditions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationConnectivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationConnectivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,16 +98,14 @@
       <recent name="$PROJECT_DIR$/src/ch/epfl/sigcheck" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StationPartitionTest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.GameTest.gameWorks">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,7 +140,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RouteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -160,8 +149,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.RouteTest" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTest.gameWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameTest" />
+      <option name="METHOD_NAME" value="gameWorks" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,28 +186,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TicketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TicketTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GameTest.gameWorks" />
+        <item itemvalue="JUnit.GameTest" />
         <item itemvalue="JUnit.StationPartitionTest" />
         <item itemvalue="JUnit.CardStateTest" />
         <item itemvalue="JUnit.DeckTest" />
-        <item itemvalue="JUnit.RouteTest" />
-        <item itemvalue="JUnit.TicketTest" />
       </list>
     </recent_temporary>
   </component>
@@ -259,6 +249,8 @@
       <workItem from="1617368521896" duration="3733000" />
       <workItem from="1617783717584" duration="6997000" />
       <workItem from="1617795945309" duration="3953000" />
+      <workItem from="1617821067319" duration="17000" />
+      <workItem from="1617871676356" duration="1119000" />
     </task>
     <servers />
   </component>
@@ -281,45 +273,63 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="201" key="GridCell.Tab.0.bottom" timestamp="1617799914186">
+    <state width="1398" height="253" key="GridCell.Tab.0.bottom" timestamp="1617872796887">
       <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.0.bottom/0.25.1440.806@0.25.1440.806" timestamp="1617791125640" />
-    <state width="1398" height="201" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1617799914186" />
-    <state width="1398" height="201" key="GridCell.Tab.0.center" timestamp="1617799914186">
+    <state width="1398" height="253" key="GridCell.Tab.0.bottom/0.25.1440.809@0.25.1440.809" timestamp="1617872796887" />
+    <state width="1398" height="253" key="GridCell.Tab.0.center" timestamp="1617872796886">
       <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.0.center/0.25.1440.806@0.25.1440.806" timestamp="1617791125640" />
-    <state width="1398" height="201" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1617799914186" />
-    <state width="1398" height="201" key="GridCell.Tab.0.left" timestamp="1617799914186">
+    <state width="1398" height="253" key="GridCell.Tab.0.center/0.25.1440.809@0.25.1440.809" timestamp="1617872796886" />
+    <state width="1398" height="253" key="GridCell.Tab.0.left" timestamp="1617872796886">
       <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.0.left/0.25.1440.806@0.25.1440.806" timestamp="1617791125639" />
-    <state width="1398" height="201" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1617799914186" />
-    <state width="1398" height="201" key="GridCell.Tab.0.right" timestamp="1617799914186">
+    <state width="1398" height="253" key="GridCell.Tab.0.left/0.25.1440.809@0.25.1440.809" timestamp="1617872796886" />
+    <state width="1398" height="253" key="GridCell.Tab.0.right" timestamp="1617872796886">
       <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.0.right/0.25.1440.806@0.25.1440.806" timestamp="1617791125640" />
-    <state width="1398" height="201" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1617799914186" />
-    <state width="1398" height="253" key="GridCell.Tab.1.bottom" timestamp="1617791125641">
-      <screen x="0" y="25" width="1440" height="806" />
+    <state width="1398" height="253" key="GridCell.Tab.0.right/0.25.1440.809@0.25.1440.809" timestamp="1617872796886" />
+    <state width="1398" height="253" key="GridCell.Tab.1.bottom" timestamp="1617872796888">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.1.bottom/0.25.1440.806@0.25.1440.806" timestamp="1617791125641" />
-    <state width="1398" height="253" key="GridCell.Tab.1.center" timestamp="1617791125641">
-      <screen x="0" y="25" width="1440" height="806" />
+    <state width="1398" height="253" key="GridCell.Tab.1.bottom/0.25.1440.809@0.25.1440.809" timestamp="1617872796888" />
+    <state width="1398" height="253" key="GridCell.Tab.1.center" timestamp="1617872796887">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.1.center/0.25.1440.806@0.25.1440.806" timestamp="1617791125641" />
-    <state width="1398" height="253" key="GridCell.Tab.1.left" timestamp="1617791125641">
-      <screen x="0" y="25" width="1440" height="806" />
+    <state width="1398" height="253" key="GridCell.Tab.1.center/0.25.1440.809@0.25.1440.809" timestamp="1617872796887" />
+    <state width="1398" height="253" key="GridCell.Tab.1.left" timestamp="1617872796887">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.1.left/0.25.1440.806@0.25.1440.806" timestamp="1617791125641" />
-    <state width="1398" height="253" key="GridCell.Tab.1.right" timestamp="1617791125641">
-      <screen x="0" y="25" width="1440" height="806" />
+    <state width="1398" height="253" key="GridCell.Tab.1.left/0.25.1440.809@0.25.1440.809" timestamp="1617872796887" />
+    <state width="1398" height="253" key="GridCell.Tab.1.right" timestamp="1617872796887">
+      <screen x="0" y="25" width="1440" height="809" />
     </state>
     <state width="1398" height="253" key="GridCell.Tab.1.right/0.25.1440.806@0.25.1440.806" timestamp="1617791125641" />
+    <state width="1398" height="253" key="GridCell.Tab.1.right/0.25.1440.809@0.25.1440.809" timestamp="1617872796887" />
     <state x="385" y="155" width="670" height="676" key="search.everywhere.popup" timestamp="1617790028964">
       <screen x="0" y="25" width="1440" height="806" />
     </state>
     <state x="385" y="155" width="670" height="676" key="search.everywhere.popup/0.25.1440.806@0.25.1440.806" timestamp="1617790028964" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java</url>
+          <line>29</line>
+          <properties class="ch.epfl.tchu.game.Game" method="play">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -108,7 +108,7 @@ class GameTest {
         var tickets = new GameTest.ChMap().ALL_TICKETS;
         var ticketsBag = SortedBag.of(tickets);
 
-        var rng = new Random(14);
+        var rng = new Random(800);
 
         var gameState = GameState.initial(ticketsBag, rng);
 

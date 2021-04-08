@@ -53,7 +53,7 @@ public final class Game {
         }
 
         /**
-         * The given tickets have been added to the given player's hand
+         * The chosen tickets have been added to the given player's hand
          */
         for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
             updateStateBothPlayers(players, gameState);
@@ -149,6 +149,7 @@ boolean endGame=false;
         }
 
         Integer[] playerPoints = whichPlayerHasTheLongest(gameState, players, playerNames);
+        updateStateBothPlayers(players,gameState);
         whoWonTheGame(gameState, players, playerNames, playerPoints);
     }
 
@@ -202,7 +203,6 @@ boolean endGame=false;
             });
             sendInfoToBothPlayers(players, Info.draw(playerNamesList, playerPoints[0]));
         }
-        System.out.println(gameState.lastPlayer() + " " + gameState.currentPlayerId());
     }
 
 
