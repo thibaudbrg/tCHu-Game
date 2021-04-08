@@ -223,11 +223,11 @@ public final class Info {
     /**
      * Return a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
      *
-     * @param points      number of points of the player
+     * @param winnerPoints      number of points of the player
      * @param loserPoints number of points that the opponent loose
      * @return a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
      */
-    public String won(int points, int loserPoints) {
-        return String.format(StringsFr.WINS, playerName, points, plural(points), loserPoints, plural(loserPoints));
+    public String won(int winnerPoints, int loserPoints) {
+        return String.format(StringsFr.WINS, playerName, winnerPoints, plural(winnerPoints), loserPoints, plural(loserPoints));
     }
 }

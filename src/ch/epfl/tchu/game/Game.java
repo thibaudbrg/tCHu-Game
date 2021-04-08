@@ -31,45 +31,33 @@ public final class Game {
         Preconditions.checkArgument(playerNames.size() == 2);
         Preconditions.checkArgument(players.size() == 2);
 
-        /**
-         * Initialise playerNames
-         */
-        players.forEach((Id, p) -> {
-            p.initPlayers(Id, playerNames);
-        });
+        // Initialise playerNames
+        players.forEach((id, player) -> player.initPlayers(id, playerNames));
 
-        /**
-         * Create the gameState and inform the players of who will start playing first
-         */
+       // Create the gameState and inform the players of who will start playing first
         GameState gameState = GameState.initial(tickets, rng);
         sendInfoToBothPlayers(players, new Info(playerNames.get(gameState.currentPlayerId())).willPlayFirst());
 
-        /**
-         * Give to the players the five tickets that have been dealt to them
-         */
-        for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
-            e.getValue().setInitialTicketChoice(gameState.topTickets(Constants.INITIAL_TICKETS_COUNT));
+        // Give to the players the five tickets that have been dealt to them
+        for (Map.Entry<PlayerId, Player> player : players.entrySet()) {
+            player.getValue().setInitialTicketChoice(gameState.topTickets(Constants.INITIAL_TICKETS_COUNT));
             gameState = gameState.withoutTopTickets(Constants.INITIAL_TICKETS_COUNT);
         }
 
-        /**
-         * The chosen tickets have been added to the given player's hand
-         */
-        for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
+        // The chosen tickets have been added to the given player's hand
+        for (Map.Entry<PlayerId, Player> player : players.entrySet()) {
             updateStateBothPlayers(players, gameState);
-            gameState = gameState.withInitiallyChosenTickets(e.getKey(), e.getValue().chooseInitialTickets());
+            gameState = gameState.withInitiallyChosenTickets(player.getKey(), player.getValue().chooseInitialTickets());
         }
 
-        /**
-         * Informs the players how many tickets each has kept
-         */
-        for (Map.Entry<PlayerId, Player> e : players.entrySet()) {
-            sendInfoToBothPlayers(players, new Info(playerNames.get(e.getKey())).keptTickets(gameState.playerState(e.getKey()).ticketCount()));
+        // Informs the players how many tickets each has kept
+        for (Map.Entry<PlayerId, Player> player : players.entrySet()) {
+            sendInfoToBothPlayers(players, new Info(playerNames.get(player.getKey())).keptTickets(gameState.playerState(player.getKey()).ticketCount()));
         }
-boolean endGame=false;
 
-        while (gameState.lastPlayer() != gameState.currentPlayerId().next()|| endGame) {
-            endGame= false;
+        boolean endGame = false;
+        while (gameState.lastPlayer() != gameState.currentPlayerId().next() || endGame) {
+            endGame = false;
             Player actualPlayer = players.get(gameState.currentPlayerId());
             String actualPlayerName = playerNames.get(gameState.currentPlayerId());
             Info currentInfoPlayer = new Info(actualPlayerName);
@@ -77,11 +65,12 @@ boolean endGame=false;
             sendInfoToBothPlayers(players, currentInfoPlayer.canPlay());
             updateStateBothPlayers(players, gameState);
 
-            switch (players.get(gameState.currentPlayerId()).nextTurn()) {
+            switch (actualPlayer.nextTurn()) {
+
                 // If the actualPlayer wants to draw some tickets
                 case DRAW_TICKETS:
                     sendInfoToBothPlayers(players, currentInfoPlayer.drewTickets(Constants.IN_GAME_TICKETS_COUNT));
-                    SortedBag chosenTickets = actualPlayer.chooseTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT));
+                    SortedBag<Ticket> chosenTickets = actualPlayer.chooseTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT));
                     sendInfoToBothPlayers(players, currentInfoPlayer.keptTickets(chosenTickets.size()));
                     gameState = gameState.withChosenAdditionalTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT), chosenTickets);
 
@@ -126,38 +115,37 @@ boolean endGame=false;
                                     sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, theCardToTake.union(initialClaimCards)));
                                 }
                             }
-                        }
-                        // If the claim route is not a tunnel
-                        else {
+                        } else {
                             gameState = gameState.withClaimedRoute(route, initialClaimCards);
                             sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                         }
                         gameState = gameState.withMoreDiscardedCards(drawnCard);
-
-                    } else {
+                    }
+                    // If the claim route is not a tunnel
+                    else {
                         gameState = gameState.withClaimedRoute(route, initialClaimCards);
                         sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                     }
-                    if (gameState.lastTurnBegins()) {
-                        endGame = true;
-                    }
+
             }
-            if (gameState.lastTurnBegins())
+            if (gameState.lastTurnBegins()) {
+                endGame = true;
                 sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(gameState.currentPlayerState().carCount()));
+            }
 
             gameState = gameState.forNextTurn();
         }
 
         Integer[] playerPoints = whichPlayerHasTheLongest(gameState, players, playerNames);
-        updateStateBothPlayers(players,gameState);
-        whoWonTheGame(gameState, players, playerNames, playerPoints);
+        updateStateBothPlayers(players, gameState);
+        whoWonTheGame(players, playerNames, playerPoints);
     }
 
     /**
      * Awarding of the longest route bonus
      *
-     * @param gameState (GameState) The gameState
-     * @param players (Map<PlayerId, Player>) The players
+     * @param gameState   (GameState) The gameState
+     * @param players     (Map<PlayerId, Player>) The players
      * @param playerNames (Map<PlayerId, String>) The playerNames
      * @return (Integer[]) The both playerPoints
      */
@@ -165,8 +153,10 @@ boolean endGame=false;
     private static Integer[] whichPlayerHasTheLongest(GameState gameState, Map<PlayerId, Player> players, Map<PlayerId, String> playerNames) {
         Trail longestPlayer1Trail = Trail.longest(gameState.playerState(PlayerId.PLAYER_1).routes());
         Trail longestPlayer2Trail = Trail.longest(gameState.playerState(PlayerId.PLAYER_2).routes());
+
         int player1Points = gameState.playerState(PlayerId.PLAYER_1).finalPoints();
         int player2Points = gameState.playerState(PlayerId.PLAYER_2).finalPoints();
+
         if (longestPlayer1Trail.length() < longestPlayer2Trail.length()) {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).getsLongestTrailBonus(longestPlayer2Trail));
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
@@ -180,27 +170,24 @@ boolean endGame=false;
             player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
         }
-        return new Integer[]{ player1Points, player2Points };
+        return new Integer[]{player1Points, player2Points};
     }
 
     /**
      * Determine who won the game
      *
-     * @param gameState (GameState) The gameState
-     * @param players (Map<PlayerId, Player>) The players
-     * @param playerNames (Map<PlayerId, String>) The playerNames
+     * @param players      (Map<PlayerId, Player>) The players
+     * @param playerNames  (Map<PlayerId, String>) The playerNames
      * @param playerPoints (Integer[]) The both playerPoints
      */
-    private static void whoWonTheGame(GameState gameState, Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, Integer[] playerPoints) {
+    private static void whoWonTheGame(Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, Integer[] playerPoints) {
         if (playerPoints[0] < playerPoints[1]) {
-            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).won(playerPoints[1], playerPoints[0]));
+            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).won(playerPoints[1], playerPoints[0]));
         } else if (playerPoints[0] > playerPoints[1]) {
-            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).won(playerPoints[0], playerPoints[1]));
+            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).won(playerPoints[0], playerPoints[1]));
         } else {
             List<String> playerNamesList = new ArrayList<>();
-            playerNames.forEach((k, s) -> {
-                playerNamesList.add(s);
-            });
+            playerNames.forEach((k, s) -> playerNamesList.add(s));
             sendInfoToBothPlayers(players, Info.draw(playerNamesList, playerPoints[0]));
         }
     }
@@ -212,22 +199,17 @@ boolean endGame=false;
             gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
             builder.add(gameState.topCard());
             gameState = gameState.withoutTopCard();
-
         }
         return builder.build();
     }
 
 
     private static void sendInfoToBothPlayers(Map<PlayerId, Player> players, String s) {
-        players.forEach((Id, p) -> {
-            p.receiveInfo(s);
-        });
+        players.forEach((Id, p) -> p.receiveInfo(s));
     }
 
     private static void updateStateBothPlayers(Map<PlayerId, Player> players, GameState newState) {
-        players.forEach((Id, p) -> {
-            p.updateState(newState, newState.playerState(Id));
-        });
+        players.forEach((Id, p) -> p.updateState(newState, newState.playerState(Id)));
     }
 
 }
