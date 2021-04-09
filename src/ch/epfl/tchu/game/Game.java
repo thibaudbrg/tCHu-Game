@@ -77,6 +77,7 @@ public final class Game {
                     // If the actualPlayer wants to draw a card
                 case DRAW_CARDS:
                     for (int i = 0; i < 2; i++) {
+                        gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
                         int slot = actualPlayer.drawSlot();
                         if (slot == Constants.DECK_SLOT) {
                             sendInfoToBothPlayers(players, currentInfoPlayer.drewBlindCard());
