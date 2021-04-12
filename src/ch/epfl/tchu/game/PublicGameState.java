@@ -2,11 +2,7 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.Objects;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Represents the public state of the game Tchu.
@@ -32,13 +28,13 @@ public class PublicGameState {
      * @param lastPlayer      the last player id
      * @throws NullPointerException if currentPlayerId or cardState is null
      */
-    public PublicGameState(int ticketsCount, PublicCardState cardState, PlayerId currentPlayerId, Map<PlayerId, PublicPlayerState> playerState, PlayerId lastPlayer) throws NullPointerException {
+    public PublicGameState(int ticketsCount, PublicCardState cardState, PlayerId currentPlayerId, Map<PlayerId, PublicPlayerState> playerState, PlayerId lastPlayer) {
         Preconditions.checkArgument(ticketsCount >= 0 && playerState.size() == 2);
 
         this.ticketsCount = ticketsCount;
         this.cardState = Objects.requireNonNull(cardState);
         this.currentPlayerId = Objects.requireNonNull(currentPlayerId);
-        this.playerState = new TreeMap<>(playerState);
+        this.playerState = new HashMap<>(playerState);
         this.lastPlayer = lastPlayer;
     }
 

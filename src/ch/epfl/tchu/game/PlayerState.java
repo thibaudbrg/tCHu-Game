@@ -6,6 +6,7 @@ import ch.epfl.tchu.SortedBag;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Represents the complete state of a player
@@ -62,7 +63,7 @@ public final class PlayerState extends PublicPlayerState {
      * @return a state identical to the receiver, except that the player also has the given card
      */
     public PlayerState withAddedCard(Card card) {
-        return new PlayerState(tickets,cards.union(SortedBag.of(card)), routes());
+        return new PlayerState(tickets, cards.union(SortedBag.of(card)), routes());
     }
 
     /**
@@ -72,7 +73,7 @@ public final class PlayerState extends PublicPlayerState {
      * @return a state identical to the receiver, except that the player also has the given cards
      */
     public PlayerState withAddedCards(SortedBag<Card> additionalCards) {
-        return new PlayerState(tickets,cards.union(additionalCards), routes());
+        return new PlayerState(tickets, cards.union(additionalCards), routes());
     }
 
     /**
@@ -82,10 +83,9 @@ public final class PlayerState extends PublicPlayerState {
      * @return true if the player can take the given road, i.e. if he has enough wagons left and if he has the necessary cards
      */
     public boolean canClaimRoute(Route route) {
-        boolean haveTheCards = false;
-        for (SortedBag s : route.possibleClaimCards()) {
-            if (cards.contains(s)) haveTheCards = true;
-        }
+        Boolean haveTheCards = route.possibleClaimCards().stream()
+                .anyMatch(s -> cards.contains(s));
+
         return haveTheCards && (route.length() <= this.carCount());
     }
 
@@ -97,10 +97,10 @@ public final class PlayerState extends PublicPlayerState {
      */
     public List<SortedBag<Card>> possibleClaimCards(Route route) {
         Preconditions.checkArgument(this.carCount() >= route.length());
-        List<SortedBag<Card>> possibleClaimCards = new ArrayList<>();
-        for (SortedBag s : route.possibleClaimCards()) {
-            if (cards.contains(s)) possibleClaimCards.add(s);
-        }
+        List<SortedBag<Card>> possibleClaimCards = route.possibleClaimCards().stream()
+                .filter(s -> cards.contains(s))
+                .collect(Collectors.toList());
+
         return possibleClaimCards;
     }
 
@@ -130,16 +130,13 @@ public final class PlayerState extends PublicPlayerState {
         SortedBag<Card> remainingUsableCard =
                 builder.add(cards.countOf(Card.LOCOMOTIVE),
                         Card.LOCOMOTIVE).build().difference(initialCards);
-        if (remainingUsableCard.size() < additionalCardsCount) {
-            return List.of();
-        }
 
         List<SortedBag<Card>> possibleAddCards =
                 new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
 
         possibleAddCards.sort(Comparator.comparingInt(cs -> cs.countOf(Card.LOCOMOTIVE)));
 
-        return possibleAddCards;
+        return (remainingUsableCard.size()<additionalCardsCount)? List.of(): possibleAddCards;
 
 
     }
@@ -169,21 +166,20 @@ public final class PlayerState extends PublicPlayerState {
         int maxId = 0;
 
         for (Route route : this.routes()) {
-            for (Station station : route.stations()){
-                maxId = Integer.max(maxId,station.id());
+            for (Station station : route.stations()) {
+                maxId = Integer.max(maxId, station.id());
             }
         }
-        StationPartition.Builder builder = new StationPartition.Builder(maxId + 1);
 
-        for (Route route : this.routes()) {
-            builder.connect(route.station1(), route.station2());
-        }
+        StationPartition.Builder builder = new StationPartition.Builder(maxId + 1);
+        this.routes().forEach(r -> builder.connect(r.station1(), r.station2()));
         StationPartition playerPartition = builder.build();
 
         int points = 0;
         for (Ticket ticket : tickets) {
             points += ticket.points(playerPartition);
         }
+
         return points;
     }
 

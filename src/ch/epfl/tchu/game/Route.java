@@ -4,6 +4,7 @@ import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -59,11 +60,11 @@ public final class Route {
      * @return a list with the two stations in the order of the constructor
      */
     public List<Station> stations() {
-        List<Station> a = new ArrayList<>();
-        a.add(station1);
-        a.add(station2);
+        List<Station> stationList = new ArrayList<>();
+        stationList.add(station1);
+        stationList.add(station2);
 
-        return a;
+        return stationList;
     }
 
     /**
@@ -73,8 +74,7 @@ public final class Route {
      * @return the station of the Route which is not given
      */
     public Station stationOpposite(Station station) {
-        Preconditions.checkArgument((station1.equals(station) ||
-                station2.equals(station)));
+        Preconditions.checkArgument((station1.equals(station) || station2.equals(station)));
 
         return station1.name().equals(station.name()) ? station2 : station1;
     }
@@ -94,7 +94,7 @@ public final class Route {
      * @return a list of all possible combination of cards that allow you to claim the Route
      */
     public List<SortedBag<Card>> possibleClaimCards() {
-        List<SortedBag<Card>> possibleClaim = new ArrayList();
+        List<SortedBag<Card>> possibleClaim = new LinkedList();
 
         if (this.level == Level.UNDERGROUND) {
             if (color == null) {
@@ -141,15 +141,15 @@ public final class Route {
         Preconditions.checkArgument(level == Level.UNDERGROUND);
         Preconditions.checkArgument(drawnCards.size() == Constants.ADDITIONAL_TUNNEL_CARDS);
 
-        int additonalCardsCount = 0;
+        int additionalCardsCount = 0;
         Card card = claimCards.get(0);
 
         for (Card card1 : drawnCards) {
             if (card1.color() == null || card1.color().equals(card.color())) {
-                additonalCardsCount++;
+                ++additionalCardsCount;
             }
         }
-        return additonalCardsCount;
+        return additionalCardsCount;
     }
 
 

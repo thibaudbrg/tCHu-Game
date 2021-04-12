@@ -33,6 +33,7 @@ public class PublicPlayerState {
         this.routes = new ArrayList<>(routes);
         this.ticketCount = ticketCount;
         this.cardCount = cardCount;
+
         carCount = Constants.INITIAL_CAR_COUNT - routeListLength();
         claimPoints = routeListPoints();
 

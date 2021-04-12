@@ -21,14 +21,10 @@ public final class GameState extends PublicGameState {
     private GameState(CardState cardState, PlayerId currentPlayerId, Map<PlayerId,
             PlayerState> playerState, Deck<Ticket> ticketsDeck, PlayerId lastPlayer) {
         super(ticketsDeck.size(), cardState, currentPlayerId, Map.copyOf(playerState), lastPlayer);
-
         this.ticketsDeck = ticketsDeck;
         completePlayerState = playerState;
         completeCardState = cardState;
-
-
     }
-
 
     /**
      * Returns the initial state of a game of tCHu in which the ticket deck contains the given tickets
@@ -46,6 +42,7 @@ public final class GameState extends PublicGameState {
 
         Deck<Card> cardsDeck = Deck.of(Constants.ALL_CARDS, rng);
         Map<PlayerId, PlayerState> map = new HashMap<>();
+
         for (PlayerId id : PlayerId.ALL) {
             map.put(id, PlayerState.initial(cardsDeck.topCards(Constants.INITIAL_CARDS_COUNT)));
             cardsDeck = cardsDeck.withoutTopCards(Constants.INITIAL_CARDS_COUNT);
@@ -139,11 +136,11 @@ public final class GameState extends PublicGameState {
      * @return (GameState) A state identical to the receiver unless the deck is empty
      */
     public GameState withCardsDeckRecreatedIfNeeded(Random rng) {
-        if (!completeCardState.isDeckEmpty()) {
-            return new GameState(completeCardState, currentPlayerId(),
-                    completePlayerState, ticketsDeck, lastPlayer());
-        } else
-            return new GameState(completeCardState.withDeckRecreatedFromDiscards(rng),
+        return (!completeCardState.isDeckEmpty()) ?
+            new GameState(completeCardState, currentPlayerId(),
+                    completePlayerState, ticketsDeck, lastPlayer())
+        :
+            new GameState(completeCardState.withDeckRecreatedFromDiscards(rng),
                     currentPlayerId(), completePlayerState, ticketsDeck, lastPlayer());
     }
 
@@ -159,6 +156,7 @@ public final class GameState extends PublicGameState {
 
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(playerId, completePlayerState.get(playerId).withAddedTickets(chosenTickets));
+
         return new GameState(completeCardState, currentPlayerId(),
                 newPlayerState, ticketsDeck, lastPlayer());
     }
@@ -178,6 +176,7 @@ public final class GameState extends PublicGameState {
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(),
                 completePlayerState.get(currentPlayerId()).withAddedTickets(chosenTickets));
+
         return new GameState(completeCardState, currentPlayerId(),
                 newPlayerState, ticketsDeck.withoutTopCards(drawnTickets.size()), lastPlayer());
     }
@@ -211,6 +210,7 @@ public final class GameState extends PublicGameState {
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(),
                 completePlayerState.get(currentPlayerId()).withAddedCard(completeCardState.topDeckCard()));
+
         return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(),
                 newPlayerState, ticketsDeck, lastPlayer());
 
@@ -224,10 +224,10 @@ public final class GameState extends PublicGameState {
      * @return returns a identical state to the receiver but in which the current player has seized the given route using the given cards.
      */
     public GameState withClaimedRoute(Route route, SortedBag<Card> cards) {
-        //Verifier que les cartes sont dans la main du joueur apres rendu inter
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(), completePlayerState.
                 get(currentPlayerId()).withClaimedRoute(route, cards));
+
         return new GameState(completeCardState.withMoreDiscardedCards(cards),
                 currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
 

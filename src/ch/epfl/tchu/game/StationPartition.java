@@ -2,6 +2,13 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 
 /**
  * Represents a partition of Stations
@@ -26,9 +33,10 @@ public final class StationPartition implements StationConnectivity {
      */
     @Override
     public boolean connected(Station s1, Station s2) {
-        if (s1.id() >= arrayStationLink.length || s2.id() >= arrayStationLink.length) {
-            return s1.id() == s2.id();
-        } else return arrayStationLink[s1.id()].equals(arrayStationLink[s2.id()]);
+        return (s1.id() >= arrayStationLink.length || s2.id() >= arrayStationLink.length) ?
+                s1.id() == s2.id()
+                :
+                arrayStationLink[s1.id()].equals(arrayStationLink[s2.id()]);
     }
 
 
@@ -73,21 +81,20 @@ public final class StationPartition implements StationConnectivity {
          * being built by this builder
          */
         public StationPartition build() {
-            int i = 0;
-            for (Integer representativeId : builderStationLink) {
-                builderStationLink[i] = representative(representativeId);
-                i++;
-            }
-            return new StationPartition(builderStationLink);
+
+            List<Integer> stationLink = Arrays.stream(builderStationLink)
+                    .map(this::representative)
+                    .collect(Collectors.toList());
+
+            return new StationPartition(stationLink.toArray(new Integer[0]));
         }
 
 
         private int representative(int stationId) {
-            int intermediateStationId = stationId;
             do {
-                intermediateStationId = builderStationLink[intermediateStationId];
-            } while (intermediateStationId != builderStationLink[intermediateStationId]);
-            return intermediateStationId;
+                stationId = builderStationLink[stationId];
+            } while (stationId != builderStationLink[stationId]);
+            return stationId;
         }
     }
 }

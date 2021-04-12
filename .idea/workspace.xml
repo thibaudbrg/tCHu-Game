@@ -23,9 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
     </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
+    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicPlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicPlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +64,58 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java">
+      <ranges>
+        <range start1="8" end1="8" start2="8" end2="9" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="64" end1="65" start2="65" end2="66" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="74" end1="75" start2="75" end2="76" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="84" end1="88" start2="85" end2="88" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="99" end1="103" start2="99" end2="103" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="132" end1="135" start2="132" end2="132" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="141" end1="142" start2="138" end2="139" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="171" end1="173" start2="168" end2="170" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="175" end1="175" start2="172" end2="173" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="176" end1="180" start2="174" end2="175" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="186" end1="186" start2="181" end2="182" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java">
+      <ranges>
+        <range start1="3" end1="3" start2="3" end2="10" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="28" end1="31" start2="35" end2="39" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="75" end1="81" start2="83" end2="89" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="85" end1="86" start2="93" end2="93" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="87" end1="90" start2="94" end2="97" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java">
+      <ranges>
+        <range start1="6" end1="6" start2="6" end2="7" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="61" end1="64" start2="62" end2="65" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="65" end1="66" start2="66" end2="67" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="75" end1="77" start2="76" end2="77" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="96" end1="97" start2="96" end2="97" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="143" end1="144" start2="143" end2="144" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="148" end1="149" start2="148" end2="149" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="151" end1="152" start2="151" end2="152" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java">
+      <ranges>
+        <range start1="23" end1="24" start2="23" end2="23" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="27" end1="29" start2="26" end2="26" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="30" end1="31" start2="27" end2="27" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="48" end1="48" start2="44" end2="45" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="141" end1="146" start2="138" end2="143" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="161" end1="161" start2="158" end2="159" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="180" end1="180" start2="178" end2="179" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="213" end1="213" start2="212" end2="213" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="226" end1="227" start2="226" end2="226" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="230" end1="230" start2="229" end2="230" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -96,17 +161,13 @@
       <recent name="$PROJECT_DIR$/src/ch/epfl/sigcheck" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameTest.gameWorks">
-    <configuration name="CardStateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.CardStateTest" />
+  <component name="RunManager" selected="JUnit.StationPartitionTest">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,6 +219,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PlayerStateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.PlayerStateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StationPartitionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
@@ -175,11 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GameTest.gameWorks" />
-        <item itemvalue="JUnit.GameTest" />
         <item itemvalue="JUnit.StationPartitionTest" />
-        <item itemvalue="JUnit.CardStateTest" />
+        <item itemvalue="JUnit.PlayerStateTest" />
         <item itemvalue="JUnit.DeckTest" />
+        <item itemvalue="JUnit.GameTest" />
+        <item itemvalue="JUnit.GameTest.gameWorks" />
       </list>
     </recent_temporary>
   </component>
@@ -239,6 +315,7 @@
       <workItem from="1617821067319" duration="17000" />
       <workItem from="1617871676356" duration="1119000" />
       <workItem from="1617956389891" duration="434000" />
+      <workItem from="1618213510933" duration="9226000" />
     </task>
     <servers />
   </component>
@@ -259,6 +336,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java</url>
+          <line>98</line>
+          <properties class="ch.epfl.tchu.game.GameTest" method="gamePlayCallsUpdateStateOftenEnough">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

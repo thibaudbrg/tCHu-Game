@@ -34,7 +34,7 @@ public final class Game {
         // Initialise playerNames
         players.forEach((id, player) -> player.initPlayers(id, playerNames));
 
-       // Create the gameState and inform the players of who will start playing first
+        // Create the gameState and inform the players of who will start playing first
         GameState gameState = GameState.initial(tickets, rng);
         sendInfoToBothPlayers(players, new Info(playerNames.get(gameState.currentPlayerId())).willPlayFirst());
 
@@ -87,7 +87,7 @@ public final class Game {
                             gameState = gameState.withDrawnFaceUpCard(slot);
                         }
                         if (i == 0) {
-                            updateStateBothPlayers(players, gameState);
+                           updateStateBothPlayers(players, gameState);
                         }
                     }
 
@@ -97,37 +97,39 @@ public final class Game {
                     SortedBag<Card> initialClaimCards = actualPlayer.initialClaimCards();
 
                     // If the claim route is a tunnel
-                    if (route.level().equals(Route.Level.UNDERGROUND)) {
-                        sendInfoToBothPlayers(players, currentInfoPlayer.attemptsTunnelClaim(route, initialClaimCards));
-                        SortedBag<Card> drawnCard = threeOnTheTopDeckCards(gameState, rng);
-                        int additionalCost = route.additionalClaimCardsCount(initialClaimCards, drawnCard);
-                        sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
+                    if (route != null) {
+                        if (route.level().equals(Route.Level.UNDERGROUND)) {
+                            sendInfoToBothPlayers(players, currentInfoPlayer.attemptsTunnelClaim(route, initialClaimCards));
+                            SortedBag<Card> drawnCard = threeOnTheTopDeckCards(gameState, rng);
+                            int additionalCost = route.additionalClaimCardsCount(initialClaimCards, drawnCard);
+                            sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
 
-                        if (additionalCost >= 1) {
-                            List<SortedBag<Card>> possibleAdditionalCards = gameState.currentPlayerState().possibleAdditionalCards(additionalCost, initialClaimCards, drawnCard);
-                            if (possibleAdditionalCards.isEmpty()) {
-                                sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
-                            } else {
-                                SortedBag<Card> theCardToTake = actualPlayer.chooseAdditionalCards(possibleAdditionalCards);
-                                if (theCardToTake.isEmpty()) {
+                            if (additionalCost >= 1) {
+                                List<SortedBag<Card>> possibleAdditionalCards = gameState.currentPlayerState().possibleAdditionalCards(additionalCost, initialClaimCards, drawnCard);
+                                if (possibleAdditionalCards.isEmpty()) {
                                     sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
                                 } else {
-                                    gameState = gameState.withClaimedRoute(route, theCardToTake);
-                                    sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, theCardToTake.union(initialClaimCards)));
+                                    SortedBag<Card> theCardToTake = actualPlayer.chooseAdditionalCards(possibleAdditionalCards);
+                                    if (theCardToTake.isEmpty()) {
+                                        sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
+                                    } else {
+                                        gameState = gameState.withClaimedRoute(route, theCardToTake);
+                                        sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, theCardToTake.union(initialClaimCards)));
+                                    }
                                 }
+                            } else {
+                                gameState = gameState.withClaimedRoute(route, initialClaimCards);
+                                sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                             }
-                        } else {
+                            gameState = gameState.withMoreDiscardedCards(drawnCard);
+                        }
+                        // If the claim route is not a tunnel
+                        else {
                             gameState = gameState.withClaimedRoute(route, initialClaimCards);
                             sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                         }
-                        gameState = gameState.withMoreDiscardedCards(drawnCard);
-                    }
-                    // If the claim route is not a tunnel
-                    else {
-                        gameState = gameState.withClaimedRoute(route, initialClaimCards);
-                        sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
-                    }
 
+                    }
             }
             if (gameState.lastTurnBegins()) {
                 endGame = true;
