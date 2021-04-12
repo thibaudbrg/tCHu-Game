@@ -361,6 +361,7 @@ class GameTest {
 
             var turn = doNextTurn();
             allTurns.addLast(turn);
+            //System.out.printf("%s %d %n", ownId, allTurns.size());
             return turn;
         }
 

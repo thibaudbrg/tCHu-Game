@@ -131,12 +131,13 @@ public final class PlayerState extends PublicPlayerState {
                 builder.add(cards.countOf(Card.LOCOMOTIVE),
                         Card.LOCOMOTIVE).build().difference(initialCards);
 
+        if (remainingUsableCard.size() < additionalCardsCount) return List.of();
         List<SortedBag<Card>> possibleAddCards =
                 new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
 
         possibleAddCards.sort(Comparator.comparingInt(cs -> cs.countOf(Card.LOCOMOTIVE)));
 
-        return (remainingUsableCard.size()<additionalCardsCount)? List.of(): possibleAddCards;
+        return possibleAddCards;
 
 
     }
@@ -163,15 +164,9 @@ public final class PlayerState extends PublicPlayerState {
      * @return all the points obtained by the player with its tickets
      */
     public int ticketPoints() {
-        int maxId = 0;
 
-        for (Route route : this.routes()) {
-            for (Station station : route.stations()) {
-                maxId = Integer.max(maxId, station.id());
-            }
-        }
 
-        StationPartition.Builder builder = new StationPartition.Builder(maxId + 1);
+        StationPartition.Builder builder = new StationPartition.Builder(maxId() + 1);
         this.routes().forEach(r -> builder.connect(r.station1(), r.station2()));
         StationPartition playerPartition = builder.build();
 
@@ -211,5 +206,16 @@ public final class PlayerState extends PublicPlayerState {
         return tickets;
     }
 
+    private int maxId(){
+        int maxId = 0;
+
+        for (Route route : this.routes()) {
+            for (Station station : route.stations()) {
+                maxId = Integer.max(maxId, station.id());
+            }
+        }
+        return maxId;
+
+    }
 
 }

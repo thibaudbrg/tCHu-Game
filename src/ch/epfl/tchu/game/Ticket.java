@@ -54,17 +54,24 @@ public final class Ticket implements Comparable<Ticket> {
      * @return (String) the text corresponding to the ticket
      */
     private String computeText() {
+        StringBuilder stringBuilder = new StringBuilder();
         TreeSet<String> stationTo = new TreeSet<>();
         for (Trip trip : trips) {
             stationTo.add(String.format("%s (%s)", trip.to().name(), trip.points()));
 
         }
-        if (stationTo.size() == 1) {
-            return stationFrom + " - " + String.join(", ", stationTo);
-        } else {
-            return stationFrom + " - " + "{" + String.join(", ", stationTo) + "}";
-        }
-
+        return (stationTo.size() == 1) ?
+                stringBuilder.append(stationFrom).
+                        append(" - ").
+                        append(String.join(", ", stationTo)).
+                        toString()
+                :
+                stringBuilder.append(stationFrom)
+                        .append(" - ").
+                        append("{").
+                        append(String.join(", ", stationTo)).
+                        append("}").
+                        toString();
     }
 
 
@@ -75,12 +82,12 @@ public final class Ticket implements Comparable<Ticket> {
      * @return (int) returns the number of points the ticket is worth
      */
     public int points(StationConnectivity connectivity) {
-        int Point = Integer.MIN_VALUE;
+        int point = Integer.MIN_VALUE;
 
         for (Trip trip : trips) {
-            Point = Integer.max(Point, trip.points(connectivity));
+            point = Integer.max(point, trip.points(connectivity));
         }
-        return Point;
+        return point;
 
     }
 

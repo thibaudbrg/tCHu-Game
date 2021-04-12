@@ -19,14 +19,7 @@ public final class Trail {
         this.routes = new ArrayList<>(routes);
         this.station1 = station1;
         this.station2 = station2;
-
-        int lengthConstructor = 0 ;
-        if (!routes.isEmpty()) {
-            for (Route route : routes) {
-                lengthConstructor += route.length();
-            }
-        }
-        length = lengthConstructor;
+        length = trailLength(routes);
     }
 
     /**
@@ -70,23 +63,7 @@ public final class Trail {
     }
 
 
-    /**
-     * List of possible Trails consisting of a single Route
-     *
-     * @param routes (Route) All Routes that belong to the player
-     * @return (List < Trail >) List of all possible Trails consisting of a single Route
-     */
-    private static List<Trail> findCS(List<Route> routes) {
-        ArrayList<Trail> cs = new ArrayList<>();
-        for (Route route : routes) {
-            ArrayList<Route> singleRoute = new ArrayList<>();
-            singleRoute.add(route);
-            for(Station station : route.stations()){
-                cs.add(new Trail(singleRoute,station, route.stationOpposite(station)));
-            }
-        }
-        return cs;
-    }
+
 
     /**
      * Lists all the stations of a trail
@@ -94,7 +71,7 @@ public final class Trail {
      * @param trail (Trail) The Trail concerned
      * @return (List < String >) A list of all the stations of the Trail
      */
-    public List<String> listStation(Trail trail) {
+    private List<String> listStation(Trail trail) {
         ArrayList<String> listStation = new ArrayList();
 
         Station opposite = trail.station1;
@@ -143,5 +120,34 @@ public final class Trail {
     public String toString() {
         List<String> listStation = listStation(this);
         return String.join(" - ", listStation) + " " + "(" + (this.length() + ")");
+    }
+
+    private int trailLength(List<Route>routes){
+        int lengthConstructor = 0 ;
+        if (!routes.isEmpty()) {
+            for (Route route : routes) {
+                lengthConstructor += route.length();
+            }
+        }
+        return lengthConstructor;
+    }
+    /**
+     * List of possible Trails consisting of a single Route
+     *
+     * @param routes (Route) All Routes that belong to the player
+     * @return (List < Trail >) List of all possible Trails consisting of a single Route
+     */
+    private static List<Trail> findCS(List<Route> routes) {
+        ArrayList<Trail> cs = new ArrayList<>();
+
+        for (Route route : routes) {
+            ArrayList<Route> singleRoute = new ArrayList<>();
+            singleRoute.add(route);
+
+            for(Station station : route.stations()){
+                cs.add(new Trail(singleRoute,station, route.stationOpposite(station)));
+            }
+        }
+        return cs;
     }
 }

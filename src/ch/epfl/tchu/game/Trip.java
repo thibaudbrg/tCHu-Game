@@ -40,7 +40,7 @@ public final class Trip {
      * @param from   (Station) departure station
      * @param to     (Station) arrival station
      * @param points (int) number of points given to the trip
-     * @return (List<Trip>) returns a list of all possible Trip between the given departure and arrival stations
+     * @return (List < Trip >) returns a list of all possible Trip between the given departure and arrival stations
      */
     public static List<Trip> all(List<Station> from, List<Station> to, int points) {
         Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
@@ -90,8 +90,7 @@ public final class Trip {
      * @return (int) The number of points in the path for the given connectivity
      */
     public int points(StationConnectivity connectivity) {
-        if (connectivity.connected(from, to)) {
-            return points;
-        } else return -points;
+
+        return (connectivity.connected(from, to)) ? points : -points;
     }
 }
