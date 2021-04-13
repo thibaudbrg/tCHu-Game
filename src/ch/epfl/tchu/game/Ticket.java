@@ -2,9 +2,7 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Represents a ticket
@@ -49,33 +47,6 @@ public final class Ticket implements Comparable<Ticket> {
 
 
     /**
-     * Compute the text corresponding to the ticket
-     *
-     * @return (String) the text corresponding to the ticket
-     */
-    private String computeText() {
-        StringBuilder stringBuilder = new StringBuilder();
-        TreeSet<String> stationTo = new TreeSet<>();
-        for (Trip trip : trips) {
-            stationTo.add(String.format("%s (%s)", trip.to().name(), trip.points()));
-
-        }
-        return (stationTo.size() == 1) ?
-                stringBuilder.append(stationFrom).
-                        append(" - ").
-                        append(String.join(", ", stationTo)).
-                        toString()
-                :
-                stringBuilder.append(stationFrom)
-                        .append(" - ").
-                        append("{").
-                        append(String.join(", ", stationTo)).
-                        append("}").
-                        toString();
-    }
-
-
-    /**
      * Connectivity of the player holding the corresponding ticket
      *
      * @param connectivity (StationConnectivity) the connectivity given is that of the player holding the ticket
@@ -83,7 +54,6 @@ public final class Ticket implements Comparable<Ticket> {
      */
     public int points(StationConnectivity connectivity) {
         int point = Integer.MIN_VALUE;
-
         for (Trip trip : trips) {
             point = Integer.max(point, trip.points(connectivity));
         }
@@ -124,4 +94,30 @@ public final class Ticket implements Comparable<Ticket> {
     public String toString() {
         return Text;
     }
+
+    /**
+     * Compute the text corresponding to the ticket
+     *
+     * @return (String) the text corresponding to the ticket
+     */
+    private String computeText() {
+        StringBuilder stringBuilder = new StringBuilder();
+        Set<String> stationTo = new HashSet<>();
+        for (Trip trip : trips) {
+            stationTo.add(String.format("%s (%s)", trip.to().name(), trip.points()));
+
+        }
+        return (stationTo.size() == 1) ?
+                stringBuilder.append(stationFrom)
+                        .append(" - ")
+                        .append(String.join(", ", stationTo))
+                        .toString()
+                :
+                stringBuilder.append(stationFrom)
+                        .append(" - {")
+                        .append(String.join(", ", stationTo))
+                        .append("}")
+                        .toString();
+    }
+
 }

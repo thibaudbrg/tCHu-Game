@@ -1,6 +1,7 @@
 package ch.epfl.tchu.game;
 
 import java.util.List;
+import java.util.LinkedList;
 import java.util.ArrayList;
 
 /**
@@ -35,12 +36,12 @@ public final class Trail {
             List<Trail> cs = findCS(routes);
             Trail longestTrail = cs.get(0);
             while (!cs.isEmpty()) {
-                ArrayList<Trail> emptyCS = new ArrayList<>();
+                List<Trail> emptyCS = new LinkedList<>();
                 for (Trail c : cs) {
                     if (c.length > longestTrail.length) {
                         longestTrail = c;
                     }
-                    List<Route> rs = new ArrayList<>();
+                    List<Route> rs = new LinkedList<>();
                     for (Route playerRoute : routes) {
                         if (!c.routes.contains(playerRoute) && (playerRoute.station1().id() == c.station2.id()
                                 || playerRoute.station2().id() == c.station2.id())) {
@@ -49,7 +50,7 @@ public final class Trail {
                     }
                     if (!rs.isEmpty()) {
                         for (Route r : rs) {
-                            List<Route> road = new ArrayList<>(c.routes);
+                            List<Route> road = new LinkedList<>(c.routes);
                             road.add(r);
                             Trail t = new Trail(road, c.station1, r.stationOpposite(c.station2));
                             emptyCS.add(t);
@@ -62,26 +63,24 @@ public final class Trail {
         }
     }
 
-
-
-
     /**
-     * Lists all the stations of a trail
+     * List of possible Trails consisting of a single Route
      *
-     * @param trail (Trail) The Trail concerned
-     * @return (List < String >) A list of all the stations of the Trail
+     * @param routes (Route) All Routes that belong to the player
+     * @return (List < Trail >) List of all possible Trails consisting of a single Route
      */
-    private List<String> listStation(Trail trail) {
-        ArrayList<String> listStation = new ArrayList();
+    private static List<Trail> findCS(List<Route> routes) {
+        List<Trail> cs = new LinkedList<>();
 
-        Station opposite = trail.station1;
-        for (Route route : trail.routes) {
-            listStation.add(opposite.toString());
-            opposite = route.stationOpposite(opposite);
+        for (Route route : routes) {
+            List<Route> singleRoute = new LinkedList<>();
+            singleRoute.add(route);
+
+            for (Station station : route.stations()) {
+                cs.add(new Trail(singleRoute, station, route.stationOpposite(station)));
+            }
         }
-        listStation.add(trail.station2().toString());
-
-        return listStation;
+        return cs;
     }
 
     /**
@@ -99,7 +98,7 @@ public final class Trail {
      * @return the depart Station of the Trail of null if there is any Station
      */
     public Station station1() {
-        return this.length() == 0 ? null :station1;
+        return this.length() == 0 ? null : station1;
     }
 
     /**
@@ -108,7 +107,7 @@ public final class Trail {
      * @return the arrival Station of the Trail of null if there is any Station
      */
     public Station station2() {
-        return this.length() == 0 ? null :station2;
+        return this.length() == 0 ? null : station2;
     }
 
     /**
@@ -122,8 +121,8 @@ public final class Trail {
         return String.join(" - ", listStation) + " " + "(" + (this.length() + ")");
     }
 
-    private int trailLength(List<Route>routes){
-        int lengthConstructor = 0 ;
+    private int trailLength(List<Route> routes) {
+        int lengthConstructor = 0;
         if (!routes.isEmpty()) {
             for (Route route : routes) {
                 lengthConstructor += route.length();
@@ -131,23 +130,24 @@ public final class Trail {
         }
         return lengthConstructor;
     }
+
     /**
-     * List of possible Trails consisting of a single Route
+     * Lists all the stations of a trail
      *
-     * @param routes (Route) All Routes that belong to the player
-     * @return (List < Trail >) List of all possible Trails consisting of a single Route
+     * @param trail (Trail) The Trail concerned
+     * @return (List < String >) A list of all the stations of the Trail
      */
-    private static List<Trail> findCS(List<Route> routes) {
-        ArrayList<Trail> cs = new ArrayList<>();
+    private List<String> listStation(Trail trail) {
+        List<String> listStation = new LinkedList<>();
 
-        for (Route route : routes) {
-            ArrayList<Route> singleRoute = new ArrayList<>();
-            singleRoute.add(route);
-
-            for(Station station : route.stations()){
-                cs.add(new Trail(singleRoute,station, route.stationOpposite(station)));
-            }
+        Station opposite = trail.station1;
+        for (Route route : trail.routes) {
+            listStation.add(opposite.toString());
+            opposite = route.stationOpposite(opposite);
         }
-        return cs;
+        listStation.add(trail.station2().toString());
+
+        return listStation;
     }
+
 }

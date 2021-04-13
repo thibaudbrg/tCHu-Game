@@ -24,27 +24,31 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PlayerState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationPartition$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/StationPartition$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicGameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/PublicGameState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Ticket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameTest$ChMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameTest$ChMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameTest$TestPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameTest$TestPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/Trip.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" afterDir="false" />
+    </list>
+    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
+    <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
+    <list id="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" name="Changes by Thibaud" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Valid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serdes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" afterDir="false" />
-    </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
-    <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/GameTest.java" afterDir="false" />
-    </list>
-    <list id="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" name="Changes by Thibaud" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/MessageId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/MessageId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/MessageId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +60,8 @@
       <list>
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,16 +77,36 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java">
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java">
       <ranges>
-        <range start1="68" end1="69" start2="68" end2="68" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="75" end1="77" start2="74" end2="76" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="89" end1="90" start2="88" end2="89" changelist="07858d4e-d584-4aac-81f6-619a576349b0" />
-        <range start1="92" end1="94" start2="91" end2="93" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="99" end1="105" start2="98" end2="104" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="106" end1="130" start2="105" end2="130" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="131" end1="132" start2="131" end2="131" changelist="07858d4e-d584-4aac-81f6-619a576349b0" />
-        <range start1="133" end1="133" start2="132" end2="133" changelist="07858d4e-d584-4aac-81f6-619a576349b0" />
+        <range start1="3" end1="3" start2="3" end2="4" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="4" end1="4" start2="5" end2="7" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="18" end1="19" start2="21" end2="22" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="35" end1="36" start2="38" end2="39" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="41" end1="41" start2="44" end2="45" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="48" end1="51" start2="52" end2="53" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="53" end1="57" start2="55" end2="61" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="61" end1="66" start2="65" end2="70" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="69" end1="69" start2="73" end2="114" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java">
+      <ranges>
+        <range start1="7" end1="7" start2="7" end2="8" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="62" end1="62" start2="63" end2="74" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="72" end1="73" start2="84" end2="88" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="74" end1="75" start2="89" end2="93" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="76" end1="77" start2="94" end2="97" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="79" end1="80" start2="99" end2="99" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="85" end1="95" start2="104" end2="105" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java">
+      <ranges>
+        <range start1="4" end1="7" start2="4" end2="5" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="49" end1="76" start2="47" end2="47" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="85" end1="86" start2="56" end2="56" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
+        <range start1="126" end1="126" start2="96" end2="122" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
       </ranges>
     </file>
   </component>
@@ -130,7 +154,7 @@
       <recent name="$PROJECT_DIR$/src/ch/epfl/sigcheck" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TicketTest">
+  <component name="RunManager" selected="JUnit.GameTest">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -157,7 +181,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameTest.gamePlayCallsChooseTicketsWhenPlayerDrawsTickets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PublicGameStateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -166,25 +190,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameTest" />
-      <option name="METHOD_NAME" value="gamePlayCallsChooseTicketsWhenPlayerDrawsTickets" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameTest.gamePlayCallsUpdateStateOftenEnough" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.GameTest" />
-      <option name="METHOD_NAME" value="gamePlayCallsUpdateStateOftenEnough" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.PublicGameStateTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,7 +211,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TripTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TrailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -213,19 +220,35 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TripTest" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TrailTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrailTest.trailLongestWorksOnGivenExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TrailTest" />
+      <option name="METHOD_NAME" value="trailLongestWorksOnGivenExample" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TicketTest" />
         <item itemvalue="JUnit.GameTest" />
-        <item itemvalue="JUnit.GameTest.gamePlayCallsChooseTicketsWhenPlayerDrawsTickets" />
-        <item itemvalue="JUnit.GameTest.gamePlayCallsUpdateStateOftenEnough" />
-        <item itemvalue="JUnit.TripTest" />
+        <item itemvalue="JUnit.TrailTest.trailLongestWorksOnGivenExample" />
+        <item itemvalue="JUnit.TrailTest" />
+        <item itemvalue="JUnit.PublicGameStateTest" />
+        <item itemvalue="JUnit.TicketTest" />
       </list>
     </recent_temporary>
   </component>
@@ -288,6 +311,8 @@
       <workItem from="1618213510933" duration="9226000" />
       <workItem from="1618227400594" duration="2720000" />
       <workItem from="1618230292769" duration="8243000" />
+      <workItem from="1618238647528" duration="217000" />
+      <workItem from="1618298790209" duration="8612000" />
     </task>
     <servers />
   </component>

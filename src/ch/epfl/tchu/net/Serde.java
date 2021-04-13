@@ -1,7 +1,10 @@
 package ch.epfl.tchu.net;
 
 import ch.epfl.tchu.Preconditions;
+import ch.epfl.tchu.SortedBag;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Function;
 import java.util.List;
@@ -16,7 +19,7 @@ public interface Serde<E> {
     E deserialize(String s);
 
     static <T> Serde<T> of(Function<T, String> s, Function<String, T> ds) {
-        return new Serde<T>() {
+        return new Serde<>() {
             @Override
             public String serialize(T t) {
                 return s.apply(t);
@@ -33,12 +36,13 @@ public interface Serde<E> {
         return new Serde<T>() {
             @Override
             public String serialize(T t) {
-                Preconditions.checkArgument(list.indexOf(t) != -1);
+                Preconditions.checkArgument(list.contains(t));
                 return String.valueOf(list.indexOf(t));
             }
 
             @Override
             public T deserialize(String s) {
+
                 Preconditions.checkArgument(Integer.parseInt(s) < list.size());
                 return list.get(Integer.parseInt(s));
             }
@@ -46,25 +50,66 @@ public interface Serde<E> {
     }
 
     static <T> Serde<List<T>> listOf(Serde<T> se, String sep) {
-        return new Serde<List<T>>() {
-
-
+        return new Serde<>() {
             @Override
             public String serialize(List<T> ts) {
-                List<String> serializedList = ts.stream().map(t -> {
-                    return se.serialize(t);
-                }).collect(Collectors.toList());
-                return String.join("+", serializedList);
+                if (ts.isEmpty()) return new String();
+
+                List<String> serializedList = ts.stream()
+                        .map(se::serialize)
+                        .collect(Collectors.toList());
+                return String.join(sep, serializedList);
             }
 
             @Override
             public List<T> deserialize(String s) {
-                String[] serializedArray = s.split(Pattern.quote("+"), -1);
-                List<T> deserializedList = Arrays.stream(serializedArray).map(t -> {
-                    return se.deserialize(t);
-                }).collect(Collectors.toList());
-                return deserializedList;
+
+                String[] serializedArray = s.split(Pattern.quote(sep), -1);
+                return Arrays.stream(serializedArray)
+                        .map(se::deserialize)
+                        .collect(Collectors.toList());
             }
         };
     }
+
+    static <T extends Comparable<T>> Serde<SortedBag<T>> bagOf(Serde<T> se, String sep) {
+        return new Serde<>() {
+            @Override
+            public String serialize(SortedBag<T> ts) {
+                List<String> serializedList = ts.stream()
+                        .map(se::serialize)
+                        .collect(Collectors.toList());
+                return String.join(sep, serializedList);
+            }
+
+            @Override
+            public SortedBag<T> deserialize(String s) {
+                String[] serializedArray = s.split(Pattern.quote(sep), -1);
+                List<T> deserializedList = Arrays.stream(serializedArray)
+                        .map(se::deserialize)
+                        .collect(Collectors.toList());
+
+                return SortedBag.of(deserializedList);
+            }
+        };
+    }
+
+    static <T> Serde<T> stateOf(T t, List<Serde> list, String sep) {
+        return new Serde<T>() {
+            @Override
+            public String serialize(List<Serde> list) {
+                String s ="";
+                for (Serde e : list) {
+                    s += e.oneOf()
+                            s += sep;
+                }
+
+                return null;
+            }
+
+            @Override
+            public List<T> deserialize(String s) {
+                return ;
+            }
+        };
 }

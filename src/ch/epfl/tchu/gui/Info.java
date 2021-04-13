@@ -5,6 +5,7 @@ import ch.epfl.tchu.game.Card;
 import ch.epfl.tchu.game.Route;
 import ch.epfl.tchu.game.Trail;
 
+import java.util.Iterator;
 import java.util.List;
 
 import static ch.epfl.tchu.gui.StringsFr.EN_DASH_SEPARATOR;
@@ -61,28 +62,6 @@ public final class Info {
         }
     }
 
-    private static String routeName(Route route) {
-        return route.station1() + StringsFr.EN_DASH_SEPARATOR + route.station2();
-    }
-
-    private static String cardDescription(SortedBag<Card> cards) {
-        StringBuilder result = new StringBuilder();
-        int index = 1;
-        for (Card c : cards.toSet()) {
-            if (index < cards.toSet().size() - 1) {
-                result.append(cards.countOf(c)).append(" ").append(cardName(c, cards.countOf(c))).append(", ");
-            } else if (index == cards.toSet().size() - 1) {
-                result.append(cards.countOf(c)).append(" ").append(cardName(c, cards.countOf(c))).append(" et ");
-            } else {
-                result.append(cards.countOf(c)).append(" ").append(cardName(c, cards.countOf(c)));
-            }
-            index++;
-
-        }
-        return result.toString();
-    }
-
-
     /**
      * Returns a string, declaring that the game finished and that the players are ex aeqo with (points) points.
      *
@@ -93,6 +72,37 @@ public final class Info {
     public static String draw(List<String> playerNames, int points) {
         return String.format(StringsFr.DRAW, playerNames.get(0) + StringsFr.AND_SEPARATOR + playerNames.get(1), points);
     }
+
+    private static String routeName(Route route) {
+        return route.station1() + StringsFr.EN_DASH_SEPARATOR + route.station2();
+    }
+
+    private static String cardDescription(SortedBag<Card> cards) {
+        StringBuilder result = new StringBuilder();
+        int index = 1;
+        for (Card c : cards.toSet()) {
+            if (index < cards.toSet().size() - 1) {
+                result.append(cards.countOf(c))
+                        .append(" ")
+                        .append(cardName(c, cards.countOf(c)))
+                        .append(", ");
+            } else if (index == cards.toSet().size() - 1) {
+                result.append(cards.countOf(c))
+                        .append(" ")
+                        .append(cardName(c, cards.countOf(c)))
+                        .append(" et ");
+            } else {
+                result.append(cards.countOf(c))
+                        .append(" ")
+                        .append(cardName(c, cards.countOf(c)));
+            }
+            index++;
+        }
+        return result.toString();
+    }
+
+
+
 
     /**
      * Returns a String declaring which player plays first

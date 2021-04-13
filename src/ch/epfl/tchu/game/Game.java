@@ -55,9 +55,7 @@ public final class Game {
             sendInfoToBothPlayers(players, new Info(playerNames.get(player.getKey())).keptTickets(gameState.playerState(player.getKey()).ticketCount()));
         }
 
-        boolean endGame = false;
-        while (gameState.lastPlayer() != gameState.currentPlayerId().next() || endGame) {
-            endGame = false;
+        while (true) {
             Player actualPlayer = players.get(gameState.currentPlayerId());
             String actualPlayerName = playerNames.get(gameState.currentPlayerId());
             Info currentInfoPlayer = new Info(actualPlayerName);
@@ -131,10 +129,9 @@ public final class Game {
 
             }
 
-            if (gameState.lastTurnBegins()) {
-                endGame = true;
-                sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(gameState.currentPlayerState().carCount()));
-            }
+            if (gameState.lastTurnBegins()) sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(gameState.currentPlayerState().carCount()));
+
+            if (gameState.lastPlayer() == gameState.currentPlayerId()) break;
 
             gameState = gameState.forNextTurn();
         }

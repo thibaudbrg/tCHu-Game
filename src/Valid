@@ -1,0 +1,11 @@
+/**********************CHECK IF OUR OBJECTS ARE DONE***********************\
+
+Card
+CardState
+Color
+Deck
+Game
+GameState
+Player
+PlayerId
+PlayerState

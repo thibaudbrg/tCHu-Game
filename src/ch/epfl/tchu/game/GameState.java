@@ -20,6 +20,7 @@ public final class GameState extends PublicGameState {
 
     private GameState(CardState cardState, PlayerId currentPlayerId, Map<PlayerId,
             PlayerState> playerState, Deck<Ticket> ticketsDeck, PlayerId lastPlayer) {
+
         super(ticketsDeck.size(), cardState, currentPlayerId, Map.copyOf(playerState), lastPlayer);
         this.ticketsDeck = ticketsDeck;
         completePlayerState = playerState;

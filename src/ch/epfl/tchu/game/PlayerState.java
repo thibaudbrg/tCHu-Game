@@ -5,6 +5,7 @@ import ch.epfl.tchu.SortedBag;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,18 +20,7 @@ public final class PlayerState extends PublicPlayerState {
     private final SortedBag<Ticket> tickets;
     private final SortedBag<Card> cards;
 
-    /**
-     * Constructs the state of a player with the given tickets, cards and routes
-     *
-     * @param tickets (SortedBag<Tickets>) The tickets of the player
-     * @param cards   (SortedBag<Card>) The cards of the player
-     * @param routes  (List<Routes>) The roads that the player has taken over
-     */
-    public PlayerState(SortedBag<Ticket> tickets, SortedBag<Card> cards, List<Route> routes) {
-        super(tickets.size(), cards.size(), routes);
-        this.tickets = tickets;
-        this.cards = cards;
-    }
+
 
     /**
      * Returns the initial state of a player to whom the given initial cards have been dealt;
@@ -42,6 +32,19 @@ public final class PlayerState extends PublicPlayerState {
     public static PlayerState initial(SortedBag<Card> initialCards) {
         Preconditions.checkArgument(initialCards.size() == 4);
         return new PlayerState(SortedBag.of(), initialCards, List.of());
+    }
+
+    /**
+     * Constructs the state of a player with the given tickets, cards and routes
+     *
+     * @param tickets (SortedBag<Tickets>) The tickets of the player
+     * @param cards   (SortedBag<Card>) The cards of the player
+     * @param routes  (List<Routes>) The roads that the player has taken over
+     */
+    public PlayerState(SortedBag<Ticket> tickets, SortedBag<Card> cards, List<Route> routes) {
+        super(tickets.size(), cards.size(), routes);
+        this.tickets = tickets;
+        this.cards = cards;
     }
 
 
@@ -83,8 +86,8 @@ public final class PlayerState extends PublicPlayerState {
      * @return true if the player can take the given road, i.e. if he has enough wagons left and if he has the necessary cards
      */
     public boolean canClaimRoute(Route route) {
-        Boolean haveTheCards = route.possibleClaimCards().stream()
-                .anyMatch(s -> cards.contains(s));
+        boolean haveTheCards = route.possibleClaimCards().stream()
+                .anyMatch(cards::contains);
 
         return haveTheCards && (route.length() <= this.carCount());
     }
@@ -98,7 +101,7 @@ public final class PlayerState extends PublicPlayerState {
     public List<SortedBag<Card>> possibleClaimCards(Route route) {
         Preconditions.checkArgument(this.carCount() >= route.length());
         List<SortedBag<Card>> possibleClaimCards = route.possibleClaimCards().stream()
-                .filter(s -> cards.contains(s))
+                .filter(cards::contains)
                 .collect(Collectors.toList());
 
         return possibleClaimCards;
@@ -132,6 +135,7 @@ public final class PlayerState extends PublicPlayerState {
                         Card.LOCOMOTIVE).build().difference(initialCards);
 
         if (remainingUsableCard.size() < additionalCardsCount) return List.of();
+
         List<SortedBag<Card>> possibleAddCards =
                 new ArrayList<>(remainingUsableCard.subsetsOfSize(additionalCardsCount));
 
@@ -152,7 +156,7 @@ public final class PlayerState extends PublicPlayerState {
      * except that the player has additionally seized the given route with the given cards
      */
     public PlayerState withClaimedRoute(Route route, SortedBag<Card> claimCards) {
-        List<Route> routesCopy = new ArrayList<>(this.routes());
+        List<Route> routesCopy = new LinkedList<>(this.routes());
         routesCopy.add(route);
 
         return new PlayerState(tickets, cards.difference(claimCards), routesCopy);
@@ -164,9 +168,8 @@ public final class PlayerState extends PublicPlayerState {
      * @return all the points obtained by the player with its tickets
      */
     public int ticketPoints() {
-
-
         StationPartition.Builder builder = new StationPartition.Builder(maxId() + 1);
+
         this.routes().forEach(r -> builder.connect(r.station1(), r.station2()));
         StationPartition playerPartition = builder.build();
 

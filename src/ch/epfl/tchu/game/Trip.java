@@ -2,7 +2,7 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,7 +44,7 @@ public final class Trip {
      */
     public static List<Trip> all(List<Station> from, List<Station> to, int points) {
         Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
-        List<Trip> allList = new ArrayList<>();
+        List<Trip> allList = new LinkedList<>();
         for (Station stationFrom : from) {
             for (Station stationTo : to) {
                 allList.add(new Trip(stationFrom, stationTo, points));
