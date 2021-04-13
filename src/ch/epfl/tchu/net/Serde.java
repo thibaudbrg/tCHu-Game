@@ -36,12 +36,15 @@ public interface Serde<E> {
         return new Serde<T>() {
             @Override
             public String serialize(T t) {
+                if (t==null) return new String();
+
                 Preconditions.checkArgument(list.contains(t));
                 return String.valueOf(list.indexOf(t));
             }
 
             @Override
             public T deserialize(String s) {
+                if(s.isEmpty()) return null;
 
                 Preconditions.checkArgument(Integer.parseInt(s) < list.size());
                 return list.get(Integer.parseInt(s));
@@ -63,6 +66,7 @@ public interface Serde<E> {
 
             @Override
             public List<T> deserialize(String s) {
+                if(s.isEmpty()) return null;
 
                 String[] serializedArray = s.split(Pattern.quote(sep), -1);
                 return Arrays.stream(serializedArray)
@@ -76,6 +80,8 @@ public interface Serde<E> {
         return new Serde<>() {
             @Override
             public String serialize(SortedBag<T> ts) {
+                if (ts.isEmpty()) return new String();
+
                 List<String> serializedList = ts.stream()
                         .map(se::serialize)
                         .collect(Collectors.toList());
@@ -84,6 +90,7 @@ public interface Serde<E> {
 
             @Override
             public SortedBag<T> deserialize(String s) {
+                if(s.isEmpty()) return null;
                 String[] serializedArray = s.split(Pattern.quote(sep), -1);
                 List<T> deserializedList = Arrays.stream(serializedArray)
                         .map(se::deserialize)
@@ -93,23 +100,4 @@ public interface Serde<E> {
             }
         };
     }
-
-    static <T> Serde<T> stateOf(T t, List<Serde> list, String sep) {
-        return new Serde<T>() {
-            @Override
-            public String serialize(List<Serde> list) {
-                String s ="";
-                for (Serde e : list) {
-                    s += e.oneOf()
-                            s += sep;
-                }
-
-                return null;
-            }
-
-            @Override
-            public List<T> deserialize(String s) {
-                return ;
-            }
-        };
 }
