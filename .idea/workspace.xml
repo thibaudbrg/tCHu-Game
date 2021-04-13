@@ -29,9 +29,7 @@
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
-    <list id="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" name="Changes by Thibaud" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serdes.java" afterDir="false" />
-    </list>
+    <list id="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" name="Changes by Thibaud" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,26 +55,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serdes.java">
-      <ranges>
-        <range start1="6" end1="10" start2="6" end2="7" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="16" end1="20" start2="13" end2="17" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="33" end1="35" start2="30" end2="30" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="46" end1="51" start2="41" end2="48" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="55" end1="58" start2="52" end2="52" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="63" end1="64" start2="57" end2="58" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="65" end1="66" start2="59" end2="60" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="72" end1="74" start2="66" end2="68" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="76" end1="77" start2="70" end2="71" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="88" end1="89" start2="82" end2="83" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="95" end1="97" start2="89" end2="91" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="99" end1="100" start2="93" end2="94" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="104" end1="104" start2="98" end2="131" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="106" end1="108" start2="133" end2="133" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -271,6 +249,8 @@
       <workItem from="1618238647528" duration="217000" />
       <workItem from="1618298790209" duration="8612000" />
       <workItem from="1618307848685" duration="739000" />
+      <workItem from="1618308898929" duration="73000" />
+      <workItem from="1618309094006" duration="563000" />
     </task>
     <servers />
   </component>
