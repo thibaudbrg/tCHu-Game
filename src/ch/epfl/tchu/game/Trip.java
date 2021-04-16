@@ -44,6 +44,7 @@ public final class Trip {
      */
     public static List<Trip> all(List<Station> from, List<Station> to, int points) {
         Preconditions.checkArgument((!(from.isEmpty() && to.isEmpty())) && points > 0);
+
         List<Trip> allList = new LinkedList<>();
         for (Station stationFrom : from) {
             for (Station stationTo : to) {
@@ -57,7 +58,7 @@ public final class Trip {
     /**
      * Return the departure Station
      *
-     * @return the departure Station
+     * @return (Station) the departure Station
      */
     public Station from() {
         return from;
@@ -66,7 +67,7 @@ public final class Trip {
     /**
      * Return the arrival Station
      *
-     * @return the arrival Station
+     * @return (Station) the arrival Station
      */
     public Station to() {
         return to;
@@ -75,7 +76,7 @@ public final class Trip {
     /**
      * Return the number of points given to the trip
      *
-     * @return the number of points given to the trip
+     * @return (int) the number of points given to the trip
      */
     public int points() {
         return points;

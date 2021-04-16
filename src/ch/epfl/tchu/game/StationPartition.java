@@ -49,7 +49,7 @@ public final class StationPartition implements StationConnectivity {
         /**
          * The constructor of the Builder of StationPartition
          *
-         * @param stationCount number of stations that is given
+         * @param stationCount (int) number of stations that is given
          */
         public Builder(int stationCount) {
             Preconditions.checkArgument(stationCount >= 0);
@@ -64,8 +64,8 @@ public final class StationPartition implements StationConnectivity {
          * Joins the subsets containing the two stations passed as arguments, by "electing" one of
          * the two representatives as representative of the joined subset
          *
-         * @param station1 Station 1
-         * @param station2 Station 2
+         * @param station1 (Station) Station 1
+         * @param station2 (Station) Station 2
          * @return (Builder) The builder (this)
          */
         public Builder connect(Station station1, Station station2) {

@@ -42,7 +42,7 @@ public class PublicPlayerState {
     /**
      * Returns the number of tickets of the player
      *
-     * @return the number of tickets of the player
+     * @return (int) the number of tickets of the player
      */
     public int ticketCount() {
         return ticketCount;
@@ -51,7 +51,7 @@ public class PublicPlayerState {
     /**
      * Returns the number of cards of the player
      *
-     * @return the number of cards of the player
+     * @return (int) the number of cards of the player
      */
     public int cardCount() {
         return cardCount;
@@ -60,7 +60,7 @@ public class PublicPlayerState {
     /**
      * Returns a list of all the roads claimed by the player
      *
-     * @return a list of all the roads claimed by the player
+     * @return (List<Route>) a list of all the roads claimed by the player
      */
     public List<Route> routes() {
         return new ArrayList<>(routes);
@@ -69,7 +69,7 @@ public class PublicPlayerState {
     /**
      * Returns the number of cars owned by the player
      *
-     * @return the number of cars owned by the player
+     * @return (int) the number of cars owned by the player
      */
     public int carCount() {
         return carCount;
@@ -78,7 +78,7 @@ public class PublicPlayerState {
     /**
      * Returns the number of points claimed by the player
      *
-     * @return the number of points claimed by the player
+     * @return (int) the number of points claimed by the player
      */
     public int claimPoints() {
         return claimPoints;

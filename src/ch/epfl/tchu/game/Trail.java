@@ -27,7 +27,7 @@ public final class Trail {
      * Determines the longest Trail of the network made up of the given Routes
      *
      * @param routes (Route) All Routes that belong to the player
-     * @return One of the longest Trail
+     * @return (Trail) One of the longest Trail
      */
     public static Trail longest(List<Route> routes) {
         if (routes.isEmpty()) {
@@ -86,7 +86,7 @@ public final class Trail {
     /**
      * Returns the length of the Trail
      *
-     * @return the length of the Trail
+     * @return (int) the length of the Trail
      */
     public int length() {
         return length;
@@ -95,7 +95,7 @@ public final class Trail {
     /**
      * Returns the depart Station of the Trail of null if there is any Station
      *
-     * @return the depart Station of the Trail of null if there is any Station
+     * @return (Station) the depart Station of the Trail of null if there is any Station
      */
     public Station station1() {
         return this.length() == 0 ? null : station1;
@@ -104,7 +104,7 @@ public final class Trail {
     /**
      * Returns the arrival Station of the Trail of null if there is any Station
      *
-     * @return the arrival Station of the Trail of null if there is any Station
+     * @return (Station) the arrival Station of the Trail of null if there is any Station
      */
     public Station station2() {
         return this.length() == 0 ? null : station2;
@@ -113,12 +113,15 @@ public final class Trail {
     /**
      * Returns the list provided by all Trail stations followed by the length of the Trail.
      *
-     * @return the list provided by all Trail stations followed by the length of the Trail.
+     * @return (String) the list provided by all Trail stations followed by the length of the Trail.
      */
     @Override
     public String toString() {
         List<String> listStation = listStation(this);
-        return String.join(" - ", listStation) + " " + "(" + (this.length() + ")");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(String.join(" - ", listStation) )
+                .append(" (").append(length()).append(")");
+        return stringBuilder.toString();
     }
 
     private int trailLength(List<Route> routes) {

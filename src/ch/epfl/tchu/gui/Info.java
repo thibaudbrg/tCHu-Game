@@ -32,9 +32,9 @@ public final class Info {
     /**
      * Returns a strings with the card's name
      *
-     * @param card  given card
+     * @param card  (Card) given card
      * @param count (int) indicates if we use the plural or not
-     * @return a strings with the card's name
+     * @return (String) a strings with the card's name
      */
     public static String cardName(Card card, int count) {
         if (card.color() == null)
@@ -65,9 +65,9 @@ public final class Info {
     /**
      * Returns a string, declaring that the game finished and that the players are ex aeqo with (points) points.
      *
-     * @param playerNames list of the player's names
-     * @param points      number of points of the players
-     * @return a String declaring that the game finished and that the players are ex aeqo with (points) points
+     * @param playerNames (List<String>) list of the player's names
+     * @param points      (int) number of points of the players
+     * @return (String) a String declaring that the game finished and that the players are ex aeqo with (points) points
      */
     public static String draw(List<String> playerNames, int points) {
         return String.format(StringsFr.DRAW, playerNames.get(0) + StringsFr.AND_SEPARATOR + playerNames.get(1), points);
@@ -107,7 +107,7 @@ public final class Info {
     /**
      * Returns a String declaring which player plays first
      *
-     * @return a String declaring which player plays first
+     * @return (String) a String declaring which player plays first
      */
     public String willPlayFirst() {
         return String.format(StringsFr.WILL_PLAY_FIRST, playerName);
@@ -116,8 +116,8 @@ public final class Info {
     /**
      * Returns a String declaring that the player kept count ticket(s)
      *
-     * @param count number of ticket kept
-     * @return a String declaring that the player kept count ticket(s)
+     * @param count (int) number of ticket kept
+     * @return (String) a String declaring that the player kept count ticket(s)
      */
     public String keptTickets(int count) {
         return String.format(StringsFr.KEPT_N_TICKETS, playerName, count, plural(count));
@@ -126,7 +126,7 @@ public final class Info {
     /**
      * Returns a String declaring that the player can play
      *
-     * @return a String declaring that the player can play
+     * @return (String) a String declaring that the player can play
      */
     public String canPlay() {
         return String.format(StringsFr.CAN_PLAY, playerName);
@@ -135,8 +135,8 @@ public final class Info {
     /**
      * Returns a String declaring that the player drew count ticket(s)
      *
-     * @param count number of drew ticket
-     * @return a String declaring that the player drew count ticket(s)
+     * @param count (int) number of drew ticket
+     * @return (String) a String declaring that the player drew count ticket(s)
      */
     public String drewTickets(int count) {
         return String.format(StringsFr.DREW_TICKETS, playerName, count, plural(count));
@@ -145,7 +145,7 @@ public final class Info {
     /**
      * Returns a String declaring that the player drew a card from the deck
      *
-     * @return a String declaring that the player drew a card from the deck
+     * @return (String) a String declaring that the player drew a card from the deck
      */
     public String drewBlindCard() {
         return String.format(StringsFr.DREW_BLIND_CARD, playerName);
@@ -154,7 +154,7 @@ public final class Info {
     /**
      * Returns a String declaring that the player drew the given card from the face up cards
      *
-     * @param card drew by the player
+     * @param card (String) drew by the player
      * @return a String declaring that the player drew the given card from the face up cards
      */
     public String drewVisibleCard(Card card) {
@@ -164,9 +164,9 @@ public final class Info {
     /**
      * Returns a String declaring that the player claimed the given route with the given cards
      *
-     * @param route Route claimed by the player
-     * @param cards Cards used by the player to claim the route
-     * @return a String declaring that the player claimed the given route with the given cards
+     * @param route (Route) Route claimed by the player
+     * @param cards (SortedBag<Card>) Cards used by the player to claim the route
+     * @return (String) a String declaring that the player claimed the given route with the given cards
      */
     public String claimedRoute(Route route, SortedBag<Card> cards) {
         return String.format(StringsFr.CLAIMED_ROUTE, playerName, routeName(route), cardDescription(cards));
@@ -175,9 +175,9 @@ public final class Info {
     /**
      * Returns a String declaring that the player try to claim the given route with the given cards
      *
-     * @param route        Route that the player try to claim
-     * @param initialCards Cards used by the player to try to claim the route
-     * @return a String declaring that the player try to claim the given route with the given cards
+     * @param route (Route) Route that the player try to claim
+     * @param initialCards (SortedBag<Card>) Cards used by the player to try to claim the route
+     * @return (String) a String declaring that the player try to claim the given route with the given cards
      */
     public String attemptsTunnelClaim(Route route, SortedBag<Card> initialCards) {
         return String.format(StringsFr.ATTEMPTS_TUNNEL_CLAIM, playerName, routeName(route), cardDescription(initialCards));
@@ -186,9 +186,9 @@ public final class Info {
     /**
      * Returns a String declaring that the player drew the 3 given additionnal cards and that it generate an additional cost of additionalCost
      *
-     * @param drawnCards     3 Cards drew by the player
-     * @param additionalCost additional cost generated by the drawn cards
-     * @return a String declaring that the player drew the 3 given additionnal cards and that it generate an additional cost of additionalCost
+     * @param drawnCards (SortedBag<Card>) 3 Cards drew by the player
+     * @param additionalCost (int) additional cost generated by the drawn cards
+     * @return (String) a String declaring that the player drew the 3 given additionnal cards and that it generate an additional cost of additionalCost
      */
     public String drewAdditionalCards(SortedBag<Card> drawnCards, int additionalCost) {
         return additionalCost == 0 ?
@@ -203,8 +203,8 @@ public final class Info {
     /**
      * Returns a String declaring that the player didn't claim the given tunnel
      *
-     * @param route Tunnel that the player tried to claim
-     * @return a String declaring that the player didn't player the given tunnel
+     * @param route (Route) Tunnel that the player tried to claim
+     * @return (String) a String declaring that the player didn't player the given tunnel
      */
     public String didNotClaimRoute(Route route) {
         return String.format(StringsFr.DID_NOT_CLAIM_ROUTE, playerName, routeName(route));
@@ -213,8 +213,8 @@ public final class Info {
     /**
      * Returns a String declaring that the player has less than 2 cars and that the last turn begins
      *
-     * @param carCount number of remaining card
-     * @return a String declaring that the player has less than 2 cars and that the last turn begins
+     * @param carCount (int) number of remaining card
+     * @return (String) a String declaring that the player has less than 2 cars and that the last turn begins
      */
     public String lastTurnBegins(int carCount) {
         return String.format(StringsFr.LAST_TURN_BEGINS, playerName, carCount, plural(carCount));
@@ -223,8 +223,8 @@ public final class Info {
     /**
      * Returns a String declaring that the player gets a bonus thanks to the given trail (Longest of the game)
      *
-     * @param longestTrail longest trail of the game
-     * @return a String declaring that the player gets a bonus thanks to the given trail (Longest of the game)
+     * @param longestTrail (Trail) longest trail of the game
+     * @return (String) a String declaring that the player gets a bonus thanks to the given trail (Longest of the game)
      */
     public String getsLongestTrailBonus(Trail longestTrail) {
         return String.format(StringsFr.GETS_BONUS, playerName, longestTrail.station1() + EN_DASH_SEPARATOR + longestTrail.station2());
@@ -233,9 +233,9 @@ public final class Info {
     /**
      * Return a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
      *
-     * @param winnerPoints      number of points of the player
-     * @param loserPoints number of points that the opponent loose
-     * @return a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
+     * @param winnerPoints (int) number of points of the player
+     * @param loserPoints (int) number of points that the opponent loose
+     * @return (String) a String declaring that the player won the game with (points) points and that its opponent has (loserPoints) points
      */
     public String won(int winnerPoints, int loserPoints) {
         return String.format(StringsFr.WINS, playerName, winnerPoints, plural(winnerPoints), loserPoints, plural(loserPoints));

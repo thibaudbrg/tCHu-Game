@@ -64,7 +64,7 @@ public final class Ticket implements Comparable<Ticket> {
     /**
      * Returns the textual representation of the ticket
      *
-     * @return the textual representation of the ticket
+     * @return (String) the textual representation of the ticket
      */
     public String text() {
         return Text;
@@ -88,7 +88,7 @@ public final class Ticket implements Comparable<Ticket> {
     /**
      * Returns the textual representation of the ticket
      *
-     * @return the textual representation of the ticket
+     * @return (String) the textual representation of the ticket
      */
     @Override
     public String toString() {
@@ -119,5 +119,4 @@ public final class Ticket implements Comparable<Ticket> {
                         .append("}")
                         .toString();
     }
-
 }

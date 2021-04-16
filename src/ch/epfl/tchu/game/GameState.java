@@ -148,9 +148,9 @@ public final class GameState extends PublicGameState {
     /**
      * Returns a state identical to the receiver but in which the given tickets have been added to the given player's hand
      *
-     * @param playerId      The given player Id
-     * @param chosenTickets Tickets that the player chose to keep.
-     * @return a state identical to the receiver but in which the given tickets have been added to the given player's hand
+     * @param playerId (PlayerId) The given player Id
+     * @param chosenTickets (SortedBag<Tickets>) Tickets that the player chose to keep.
+     * @return (GameState) a state identical to the receiver but in which the given tickets have been added to the given player's hand
      */
     public GameState withInitiallyChosenTickets(PlayerId playerId, SortedBag<Ticket> chosenTickets) {
         Preconditions.checkArgument(playerState(playerId).tickets().isEmpty());
@@ -166,9 +166,9 @@ public final class GameState extends PublicGameState {
      * Returns a state identical to the receiver, but in which the current player has drawn the drawnTickets
      * from the top of the deck, and chosen to keep those contained in chosenTicket
      *
-     * @param drawnTickets  drawn Tickets from the top of the deck
-     * @param chosenTickets Tickets chosen to keep by the player
-     * @return a state identical to the receiver, but in which the current player has drawn the drawnTickets from
+     * @param drawnTickets  (SortedBag<Ticket>) drawn Tickets from the top of the deck
+     * @param chosenTickets (SortedBag<Ticket>) Tickets chosen to keep by the player
+     * @return (GameState) a state identical to the receiver, but in which the current player has drawn the drawnTickets from
      * the top of the deck, and chosen to keep those contained in chosenTicket
      */
     public GameState withChosenAdditionalTickets(SortedBag<Ticket> drawnTickets, SortedBag<Ticket> chosenTickets) {
@@ -186,8 +186,8 @@ public final class GameState extends PublicGameState {
      * Returns a state identical to the receiver except that the face-up card at the given location has been placed
      * in the current player's hand, and replaced by the one at the top of the deck
      *
-     * @param slot location of the card to place in the player's hand
-     * @return a state identical to the receiver except that the face-up card at the given location has been placed
+     * @param slot (int) location of the card to place in the player's hand
+     * @return (GameState) a state identical to the receiver except that the face-up card at the given location has been placed
      * in the current player's hand, and replaced by the one at the top of the deck
      */
     public GameState withDrawnFaceUpCard(int slot) {
@@ -204,7 +204,7 @@ public final class GameState extends PublicGameState {
     /**
      * Returns a state identical to the receiver except that the top card of the deck has been placed in the current player's hand
      *
-     * @return a state identical to the receiver except that the top card of the deck has been placed in the current player's hand
+     * @return (GameState) a state identical to the receiver except that the top card of the deck has been placed in the current player's hand
      */
     public GameState withBlindlyDrawnCard() {
         Preconditions.checkArgument(canDrawCards());
@@ -220,9 +220,9 @@ public final class GameState extends PublicGameState {
     /**
      * returns a identical state to the receiver but in which the current player has seized the given route using the given cards.
      *
-     * @param route claimed route
-     * @param cards cards used to the claim the route
-     * @return returns a identical state to the receiver but in which the current player has seized the given route using the given cards.
+     * @param route (Route) claimed route
+     * @param cards (SortedBag<Cards>) cards used to the claim the route
+     * @return (GameState) returns a identical state to the receiver but in which the current player has seized the given route using the given cards.
      */
     public GameState withClaimedRoute(Route route, SortedBag<Card> cards) {
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
@@ -238,7 +238,7 @@ public final class GameState extends PublicGameState {
      * returns true if the last turn begins,
      * i.e. if the identity of the last player is currently unknown but the current player has only two or fewer cars left
      *
-     * @return true if the last turn begins
+     * @return (boolean) true if the last turn begins
      */
     public boolean lastTurnBegins() {
         return (lastPlayer() == null && currentPlayerState().carCount() <= 2);
@@ -249,7 +249,7 @@ public final class GameState extends PublicGameState {
      * i.e. returns a state identical to the receiver except that the current player is the one following the current player;
      * moreover, if lastTurnBegins returns true, the current player becomes the last player.
      *
-     * @return a state identical to the receiver except that the current player is the one following the current player
+     * @return (GameState) a state identical to the receiver except that the current player is the one following the current player
      */
     public GameState forNextTurn() {
         return lastTurnBegins() ?
@@ -258,7 +258,5 @@ public final class GameState extends PublicGameState {
                 :
                 new GameState(completeCardState, currentPlayerId().next(),
                         completePlayerState, ticketsDeck, lastPlayer());
-
-
     }
 }

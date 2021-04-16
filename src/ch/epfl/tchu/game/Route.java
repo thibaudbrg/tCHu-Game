@@ -33,12 +33,12 @@ public final class Route {
     /**
      * Route constructor
      *
-     * @param id       route id
-     * @param station1 first station
-     * @param station2 second station
-     * @param length   length of the Route
-     * @param level    level of the Route
-     * @param color    color of the Route
+     * @param id       (String) route id
+     * @param station1 (Station) first station
+     * @param station2 (Station) second station
+     * @param length   (int) length of the Route
+     * @param level    (Level) level of the Route
+     * @param color    (Color) color of the Route
      */
     public Route(String id, Station station1, Station station2, int length, Level level, Color color) {
         Preconditions.checkArgument(!(station1.id() == (station2.id())));
@@ -57,7 +57,7 @@ public final class Route {
     /**
      * Return a list with the two stations in the order of the constructor
      *
-     * @return a list with the two stations in the order of the constructor
+     * @return (List<Station>) a list with the two stations in the order of the constructor
      */
     public List<Station> stations() {
         List<Station> stationList = new ArrayList<>();
@@ -70,8 +70,8 @@ public final class Route {
     /**
      * Return the station of the Route which is not given
      *
-     * @param station Given station
-     * @return the station of the Route which is not given
+     * @param station (Station) Given station
+     * @return (Station) the station of the Route which is not given
      */
     public Station stationOpposite(Station station) {
         Preconditions.checkArgument((station1.equals(station) || station2.equals(station)));
@@ -82,7 +82,7 @@ public final class Route {
     /**
      * Return the number of points which is given when you claim the Route
      *
-     * @return the number of points which is given when you claim the Route
+     * @return (int) the number of points which is given when you claim the Route
      */
     public int claimPoints() {
         return Constants.ROUTE_CLAIM_POINTS.get(length);
@@ -91,7 +91,7 @@ public final class Route {
     /**
      * Return a list of all possible combination of cards that allow you to claim the Route
      *
-     * @return a list of all possible combination of cards that allow you to claim the Route
+     * @return (List<SortedBag<Card>>) a list of all possible combination of cards that allow you to claim the Route
      */
     public List<SortedBag<Card>> possibleClaimCards() {
         List<SortedBag<Card>> possibleClaim = new LinkedList();
@@ -156,7 +156,7 @@ public final class Route {
     /**
      * Return the id of the route
      *
-     * @return the id of the course
+     * @return (String) the id of the course
      */
     public String id() {
         return id;
@@ -165,7 +165,7 @@ public final class Route {
     /**
      * Return the departure station of the route
      *
-     * @return the departure station of the route
+     * @return (Station) the departure station of the route
      */
     public Station station1() {
         return station1;
@@ -174,7 +174,7 @@ public final class Route {
     /**
      * Return the arrival station of the route
      *
-     * @return the arrival station of the route
+     * @return (Station) the arrival station of the route
      */
     public Station station2() {
         return station2;
@@ -183,7 +183,7 @@ public final class Route {
     /**
      * Return the length of the Route
      *
-     * @return the length of the Route
+     * @return (int) the length of the Route
      */
     public int length() {
         return length;
@@ -192,7 +192,7 @@ public final class Route {
     /**
      * Return the level of the Route
      *
-     * @return the level of the Route
+     * @return (Level) the level of the Route
      */
     public Level level() {
         return level;
@@ -201,7 +201,7 @@ public final class Route {
     /**
      * Return the color of the Route
      *
-     * @return the color of the Route
+     * @return (Color) the color of the Route
      */
     public Color color() {
         return color;

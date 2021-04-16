@@ -29,7 +29,7 @@ public final class Station {
     /**
      * Return the id of the Station
      *
-     * @return the id of the Station
+     * @return (int) the id of the Station
      */
     public int id() {
         return id;
@@ -38,7 +38,7 @@ public final class Station {
     /**
      * Return rhe name of the Station
      *
-     * @return the name of the Station
+     * @return (String) the name of the Station
      */
     public String name() {
         return name;
@@ -47,7 +47,7 @@ public final class Station {
     /**
      * Write the name of the Station
      *
-     * @return the String of the name of the Station
+     * @return (String) the String of the name of the Station
      */
     @Override
     public String toString() {

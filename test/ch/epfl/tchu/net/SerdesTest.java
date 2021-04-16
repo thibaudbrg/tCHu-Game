@@ -17,41 +17,42 @@ class SerdesTest {
         Serde<Integer> i = Serdes.INTEGER_SERDE;
         String serde = i.serialize(2021);
         Integer deserde = i.deserialize(serde);
-        assertEquals(2021,deserde);
-        assertEquals("2021",serde);
+        assertEquals(2021, deserde);
+        assertEquals("2021", serde);
 
     }
+
     @Test
-    void stringTest(){
+    void stringTest() {
         Serde<String> i = Serdes.STRING_SERDE;
         String serde = i.serialize("Charles");
-        String deserde =i.deserialize(serde);
-        assertEquals("Charles",deserde);
-        assertEquals("Q2hhcmxlcw==",serde);
+        String deserde = i.deserialize(serde);
+        assertEquals("Charles", deserde);
+        assertEquals("Q2hhcmxlcw==", serde);
     }
 
     @Test
-    void EnumTypeSerdeTest(){
+    void EnumTypeSerdeTest() {
         Serde<Card> i = Serdes.CARD_SERDE;
         List<String> ser = new ArrayList<>();
         int a = 0;
-        for (Card c : Card.ALL){
+        for (Card c : Card.ALL) {
             ser.add(i.serialize(c));
-        assertEquals(String.valueOf(a),i.serialize(c));
-        a++;
+            assertEquals(String.valueOf(a), i.serialize(c));
+            a++;
 
         }
-        int b =0;
-        for (String s : ser){
-           assertEquals(Card.ALL.get(b),i.deserialize(s));
-           b++;
+        int b = 0;
+        for (String s : ser) {
+            assertEquals(Card.ALL.get(b), i.deserialize(s));
+            b++;
         }
 
 
     }
 
     @Test
-    void SerdeListTest(){
+    void SerdeListTest() {
 
     }
 }

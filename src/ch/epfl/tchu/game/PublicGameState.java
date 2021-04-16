@@ -21,11 +21,11 @@ public class PublicGameState {
     /**
      * Constructor the public state of a game of tChu
      *
-     * @param ticketsCount    number of tickets in the deck
-     * @param cardState       the public state of the car/locomotive cards
-     * @param currentPlayerId current player
-     * @param playerState     public player states of the players
-     * @param lastPlayer      the last player id
+     * @param ticketsCount    (int) number of tickets in the deck
+     * @param cardState       (PublicCardState) the public state of the car/locomotive cards
+     * @param currentPlayerId (PlayerId) current player
+     * @param playerState     (Map<PlayerId, PublicPlayerState>) public player states of the players
+     * @param lastPlayer      (PlayerId) the last player id
      * @throws NullPointerException if currentPlayerId or cardState is null
      */
     public PublicGameState(int ticketsCount, PublicCardState cardState, PlayerId currentPlayerId, Map<PlayerId, PublicPlayerState> playerState, PlayerId lastPlayer) {
@@ -41,7 +41,7 @@ public class PublicGameState {
     /**
      * Returns the number of tickets in the deck
      *
-     * @return the number of tickets in the deck
+     * @return (int) the number of tickets in the deck
      */
     public int ticketsCount() {
         return ticketsCount;
@@ -50,7 +50,7 @@ public class PublicGameState {
     /**
      * Returns true if the tickets deck isn't empty
      *
-     * @return true if the tickets deck isn't empty
+     * @return (boolean) true if the tickets deck isn't empty
      */
     public boolean canDrawTickets() {
         return ticketsCount > 0;
@@ -59,7 +59,7 @@ public class PublicGameState {
     /**
      * Returns the public state of the car/locomotive cards
      *
-     * @return the public state of the car/locomotive cards
+     * @return (PublicCardState) the public state of the car/locomotive cards
      */
     public PublicCardState cardState() {
         return cardState;
@@ -68,7 +68,7 @@ public class PublicGameState {
     /**
      * Returns true iff the deck and the discards contains at least 5 cards.
      *
-     * @return true iff the deck and the discards contains at least 5 cards.
+     * @return (boolean) true iff the deck and the discards contains at least 5 cards.
      */
     public boolean canDrawCards() {
         return cardState.deckSize() + cardState.discardsSize() >= 5;
@@ -77,7 +77,7 @@ public class PublicGameState {
     /**
      * Returns the current player Id
      *
-     * @return the current player Id
+     * @return (PlayerState) the current player Id
      */
     public PlayerId currentPlayerId() {
         return currentPlayerId;
@@ -86,8 +86,8 @@ public class PublicGameState {
     /**
      * Returns the public part of the player state of the given player
      *
-     * @param playerId given player Id
-     * @return the public part of the player state of the given player
+     * @param playerId (PlayerId) given player Id
+     * @return (PublicPlayerState) the public part of the player state of the given player
      */
     public PublicPlayerState playerState(PlayerId playerId) {
         return playerState.get(playerId);
@@ -96,7 +96,7 @@ public class PublicGameState {
     /**
      * Returns the public part of the current player's state
      *
-     * @return the public part of the current player's state
+     * @return (PublicPlayerState) the public part of the current player's state
      */
     public PublicPlayerState currentPlayerState() {
         return playerState.get(currentPlayerId);
@@ -105,7 +105,7 @@ public class PublicGameState {
     /**
      * Returns all the claimed road of the game
      *
-     * @return all the claimed road of the game
+     * @return (List<Route>) all the claimed road of the game
      */
     public List<Route> claimedRoutes() {
         List<Route> claimedRoutes = new ArrayList<>();
@@ -117,7 +117,7 @@ public class PublicGameState {
     /**
      * Returns the last player Id
      *
-     * @return the last player Id
+     * @return (PlayerId) the last player Id
      */
     public PlayerId lastPlayer() {
         return lastPlayer;

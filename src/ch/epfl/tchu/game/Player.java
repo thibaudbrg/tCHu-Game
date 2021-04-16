@@ -72,7 +72,7 @@ public interface Player {
      * in order to inform him of the tickets drawn and which ones he keeps
      *
      * @param options (SortedBad<Ticket>) the option tickets
-     * @return SortedBag<Ticket> chosen Tickets
+     * @return (SortedBag<Ticket>) chosen Tickets
      */
     SortedBag<Ticket> chooseTickets(SortedBag<Ticket> options);
 
