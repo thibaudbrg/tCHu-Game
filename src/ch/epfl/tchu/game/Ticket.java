@@ -102,7 +102,7 @@ public final class Ticket implements Comparable<Ticket> {
      */
     private String computeText() {
         StringBuilder stringBuilder = new StringBuilder();
-        Set<String> stationTo = new HashSet<>();
+        Set<String> stationTo = new TreeSet<>();
         for (Trip trip : trips) {
             stationTo.add(String.format("%s (%s)", trip.to().name(), trip.points()));
 
