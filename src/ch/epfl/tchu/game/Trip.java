@@ -94,4 +94,19 @@ public final class Trip {
 
         return (connectivity.connected(from, to)) ? points : -points;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trip trip = (Trip) o;
+        return points == trip.points
+                && from.equals(trip.from)
+                && to.equals(trip.to);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(from, to, points);
+    }
 }

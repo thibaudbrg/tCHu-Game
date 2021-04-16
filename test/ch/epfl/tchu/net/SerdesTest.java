@@ -1,16 +1,20 @@
 package ch.epfl.tchu.net;
 
+import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
 import org.junit.jupiter.api.Test;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.SplittableRandom;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SerdesTest {
-ChMap chmap = new ChMap();
+    ChMap chmap = new ChMap();
+
     @Test
     void IntTest() {
         Serde<Integer> i = Serdes.INTEGER_SERDE;
@@ -32,38 +36,135 @@ ChMap chmap = new ChMap();
 
     @Test
     void EnumTypeSerdeTest() {
-        Serde<Card> i = Serdes.CARD_SERDE;
+        Serde<Ticket> i = Serdes.TICKET_SERDE;
         List<String> ser = new ArrayList<>();
         int a = 0;
-        for (Card c : Card.ALL) {
-            ser.add(i.serialize(c));
-            assertEquals(String.valueOf(a), i.serialize(c));
+
+        assertEquals(String.valueOf(2), i.serialize(chmap.ALL_TICKETS.get(2)));
+        assertEquals(chmap.ALL_TICKETS.get(2), i.deserialize(i.serialize(chmap.ALL_TICKETS.get(2))));
+
+    }
+    @Test
+    void EnumClassic(){
+        Serde<Card> i = Serdes.CARD_SERDE;
+        assertEquals(String.valueOf(3),i.serialize(Card.ALL.get(3)));
+        assertEquals(Card.ALL.get(3),i.deserialize(i.serialize(Card.ALL.get(3))));
+    }
+@Test
+void ListEnumC(){
+        Serde<List<Card>> i = Serdes.LIST_CARD_SERDE;
+        List<Card> initial = List.of(Card.BLUE,Card.RED,Card.YELLOW,Card.WHITE,Card.WHITE,Card.LOCOMOTIVE);
+    String ser = i.serialize(initial);
+    List<Card> deser = i.deserialize(ser);
+    assertEquals(initial,deser);
+    assertEquals("2,6,4,7,7,9",ser);
+}
+
+    @Test
+    void SerdeListTest() {
+        Serde<List<Route>> i = Serdes.LIST_ROUTE_SERDE;
+        List<Route> initial = List.of(chmap.ALL_ROUTES.get(2), chmap.ALL_ROUTES.get(4), chmap.ALL_ROUTES.get(4), chmap.ALL_ROUTES.get(11), chmap.ALL_ROUTES.get(22), chmap.ALL_ROUTES.get(2), chmap.ALL_ROUTES.get(1), chmap.ALL_ROUTES.get(0));
+        String ser = i.serialize(initial);
+        List<Route> deser = i.deserialize(ser);
+        assertEquals("2,4,4,11,22,2,1,0", ser);
+        int a = 0;
+        for (Route r : deser) {
+            assertEquals(initial.get(a), r);
             a++;
-
         }
-        int b = 0;
-        for (String s : ser) {
-            assertEquals(Card.ALL.get(b), i.deserialize(s));
-            b++;
-        }
+    }
 
+    @Test
+    void SerdeSortedBagTest() {
+        Serde<SortedBag<Card>> i = Serdes.SORTEDBAG_CARD_SERDE;
+        SortedBag.Builder builder = new SortedBag.Builder();
+        builder.add(1, Card.BLACK);
+        builder.add(8, Card.LOCOMOTIVE);
+        builder.add(2, Card.BLUE);
+        builder.add(3, Card.GREEN);
+        SortedBag<Card> cards = builder.build();
+
+        String ser = i.serialize(cards);
+        SortedBag<Card> deser = i.deserialize(ser);
+
+        assertEquals("0,2,2,3,3,3,8,8,8,8,8,8,8,8", ser);
+
+        int a = 0;
+        for (Card c : deser) {
+            assertEquals(cards.get(a), c);
+            a++;
+        }
+    }
+
+    @Test
+    void PublicGameStateTest() {
+        Serde<PublicGameState> i = Serdes.PUBLIC_GAME_STATE_SERDE;
+        List<Card> fu = List.of(Card.RED, Card.WHITE, Card.BLUE, Card.BLACK, Card.RED);
+        PublicCardState cs = new PublicCardState(fu, 30, 31);
+        List<Route> rs1 = chmap.ALL_ROUTES.subList(0, 2);
+        Map<PlayerId, PublicPlayerState> ps = Map.of(
+                PlayerId.PLAYER_1, new PublicPlayerState(10, 11, rs1),
+                PlayerId.PLAYER_2, new PublicPlayerState(20, 21, List.of()));
+        PublicGameState gs =
+                new PublicGameState(40, cs, PlayerId.PLAYER_2, ps, null);
+        assertEquals("40:6,7,2,0,6;30;31:1:10;11;0,1:20;21;:", i.serialize(gs));
+        PublicGameState s = i.deserialize(i.serialize(gs));
 
     }
 
     @Test
-    void SerdeListTest() {
-        Serde<List<Route>> i =Serdes.LIST_ROUTE_SERDE;
-        List<Route> initial = List.of(chmap.ALL_ROUTES.get(2),chmap.ALL_ROUTES.get(4),chmap.ALL_ROUTES.get(4),chmap.ALL_ROUTES.get(11),chmap.ALL_ROUTES.get(22),chmap.ALL_ROUTES.get(2),chmap.ALL_ROUTES.get(1),chmap.ALL_ROUTES.get(0));
-      String ser =  i.serialize(initial);
-      List<Route> deser = i.deserialize(ser);
-      assertEquals("2,4,4,11,22,2,1,0",ser);
-      int a = 0;
-      for (Route r : deser){
-          assertEquals(initial.get(a),r);
-          a++;
-      }
+    void PlayerStateTest() {
+        Serde<PlayerState> i = Serdes.PLAYER_STATE_SERDE;
 
+        SortedBag.Builder builder1 = new SortedBag.Builder();
+        builder1.add(1, chmap.BAL_BRI);
+        builder1.add(8, chmap.SCE_MAR);
+        builder1.add(2, chmap.WIN_SCZ);
+        builder1.add(8, chmap.SCE_STG);
+        builder1.add(2, chmap.ZUR_VAD);
+        builder1.add(3, chmap.BAL_BRI);
+        SortedBag<Ticket> tickets = builder1.build();
+
+        SortedBag.Builder builder2 = new SortedBag.Builder();
+        builder2.add(1, Card.BLACK);
+        builder2.add(8, Card.LOCOMOTIVE);
+        builder2.add(2, Card.BLUE);
+        builder2.add(3, Card.GREEN);
+        SortedBag<Card> cards = builder2.build();
+        //         1,1,1,1,25,25,25,25,25,25,25,25,26,26,26,26,26,26,26,26,29,29,33,33;0,2,2,3,3,3,8,8,8,8,8,8,8,8;47,11,32,32,21
+
+        List<Route> routes = List.of(chmap.GEN_LAU_2, chmap.BEL_WAS_1, chmap.DAV_IT1_1, chmap.DAV_IT1_1, chmap.BRI_IT5_1);
+
+        PlayerState playerState = new PlayerState(tickets, cards, routes);
+
+        String ser = i.serialize(playerState);
+        PlayerState deser = i.deserialize(ser);
+
+        assertEquals("1,1,1,1,25,25,25,25,25,25,25,25,26,26,26,26,26,26,26,26,29,29,33,33;" +
+                "0,2,2,3,3,3,8,8,8,8,8,8,8,8;" +
+                "47,11,32,32,21", ser);
+
+
+        int a = 0;
+        for (Ticket d : deser.tickets()) {
+            assertEquals(tickets.get(a), d);
+            a++;
+        }
+
+        int b = 0;
+        for (Card d : deser.cards()) {
+            assertEquals(cards.get(b), d);
+            b++;
+        }
+
+        int c = 0;
+        for (Route d : deser.routes()) {
+            assertEquals(routes.get(c), d);
+            c++;
+        }
     }
+
+
     private static final class ChMap {
         //region Stations
         final Station BAD = new Station(0, "Baden");

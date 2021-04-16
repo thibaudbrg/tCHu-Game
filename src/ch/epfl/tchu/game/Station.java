@@ -2,6 +2,8 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
+import java.util.Objects;
+
 /**
  * Represents a train station
  *
@@ -52,5 +54,19 @@ public final class Station {
     @Override
     public String toString() {
         return name;
+    }
+//TODO ATTENTION PEUT CREER PB AVANT COMPARAISON PAR REF
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Station station = (Station) o;
+        return id == station.id
+                && name.equals(station.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

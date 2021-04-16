@@ -119,4 +119,18 @@ public final class Ticket implements Comparable<Ticket> {
                         .append("}")
                         .toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return stationFrom.equals(ticket.stationFrom)
+                && trips.equals(ticket.trips);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stationFrom, trips);
+    }
 }

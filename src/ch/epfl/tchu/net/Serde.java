@@ -55,16 +55,13 @@ public interface Serde<E> {
             @Override
             public String serialize(List<T> ts) {
                 if (ts.isEmpty()) return new String();
-
-                List<String> serializedList = ts.stream()
-                        .map(se::serialize)
-                        .collect(Collectors.toList());
+                List<String> serializedList = ts.stream().map(se::serialize).collect(Collectors.toList());
                 return String.join(sep, serializedList);
             }
 
             @Override
             public List<T> deserialize(String s) {
-                if(s.isEmpty()) return null;
+                if(s.isEmpty()) return List.of();
 
                 String[] serializedArray = s.split(Pattern.quote(sep), -1);
                 return Arrays.stream(serializedArray)

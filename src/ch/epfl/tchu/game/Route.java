@@ -206,4 +206,22 @@ public final class Route {
     public Color color() {
         return color;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Route route = (Route) o;
+        return length == route.length
+                && id.equals(route.id)
+                && station1.equals(route.station1)
+                && station2.equals(route.station2)
+                && level == route.level
+                && color == route.color;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, station1, station2, length, level, color);
+    }
 }

@@ -29,7 +29,7 @@ public final class Serdes {
     /**
      *
      */
-    public final static Serde<SortedBag<Card>> SORTEDBAG_CARD_SERDE = Serde.bagOf(CARD_SERDE, ";");
+    public final static Serde<SortedBag<Card>> SORTEDBAG_CARD_SERDE = Serde.bagOf(CARD_SERDE, ",");
 
     public final static Serde<PublicCardState> PUBLIC_CARD_STATE_SERDE = new Serde<>() {
         @Override
@@ -125,6 +125,9 @@ public final class Serdes {
             PublicPlayerState player1 = PUBLIC_PLAYER_STATE_SERDE.deserialize(serializedArray[3]);
             PublicPlayerState player2 = PUBLIC_PLAYER_STATE_SERDE.deserialize(serializedArray[4]);
             Map<PlayerId, PublicPlayerState> playerState = Map.of(PlayerId.PLAYER_1, player1, PlayerId.PLAYER_2, player2);
+            if ( PLAYER_ID_SERDE.deserialize(serializedArray[5])==null){
+                return new PublicGameState(ticketsCount, cardState, currentPlayerId, playerState,null);
+            }
             PlayerId lastPlayer = PLAYER_ID_SERDE.deserialize(serializedArray[5]);
 
             return new PublicGameState(ticketsCount, cardState, currentPlayerId, playerState, lastPlayer);
