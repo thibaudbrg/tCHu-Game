@@ -148,7 +148,9 @@ public final class Trail {
             listStation.add(opposite.toString());
             opposite = route.stationOpposite(opposite);
         }
-        listStation.add(trail.station2().toString());
+        if (trail.station2() != null) {
+            listStation.add(trail.station2().toString());
+        }
 
         return listStation;
     }

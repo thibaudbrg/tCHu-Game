@@ -5,7 +5,6 @@ import ch.epfl.tchu.game.Card;
 import ch.epfl.tchu.game.Route;
 import ch.epfl.tchu.game.Trail;
 
-import java.util.Iterator;
 import java.util.List;
 
 import static ch.epfl.tchu.gui.StringsFr.EN_DASH_SEPARATOR;

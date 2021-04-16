@@ -23,7 +23,7 @@ public final class GameState extends PublicGameState {
 
         super(ticketsDeck.size(), cardState, currentPlayerId, Map.copyOf(playerState), lastPlayer);
         this.ticketsDeck = ticketsDeck;
-        completePlayerState = playerState;
+        completePlayerState = Map.copyOf(playerState);
         completeCardState = cardState;
     }
 

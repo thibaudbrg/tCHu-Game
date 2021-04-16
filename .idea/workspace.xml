@@ -24,27 +24,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Valid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/CardState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicPlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicPlayerState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" afterDir="false" />
     </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" afterDir="false" />
-    </list>
+    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" name="Changes by Thibaud" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,26 +59,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java">
-      <ranges>
-        <range start1="46" end1="46" start2="46" end2="47" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-        <range start1="59" end1="60" start2="60" end2="61" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="68" end1="69" start2="69" end2="70" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="77" end1="78" start2="78" end2="79" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java">
-      <ranges>
-        <range start1="29" end1="30" start2="29" end2="30" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="88" end1="89" start2="88" end2="89" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="97" end1="98" start2="97" end2="98" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="106" end1="107" start2="106" end2="107" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="115" end1="116" start2="115" end2="116" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="120" end1="121" start2="120" end2="124" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -139,16 +106,62 @@
       <recent name="ch.epfl.tchu.game" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TrailTest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SerdesTest">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardStateTest and 16 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="ch.epfl.tchu.game.CardStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.CardTest" />
+        <pattern testClass="ch.epfl.tchu.game.ColorTest" />
+        <pattern testClass="ch.epfl.tchu.game.DeckTest" />
+        <pattern testClass="ch.epfl.tchu.game.GameStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.GameTest" />
+        <pattern testClass="ch.epfl.tchu.game.PlayerIdTest" />
+        <pattern testClass="ch.epfl.tchu.game.PlayerStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicCardStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicGameStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicPlayerStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.RouteTest" />
+        <pattern testClass="ch.epfl.tchu.game.StationPartitionTest" />
+        <pattern testClass="ch.epfl.tchu.game.StationTest" />
+        <pattern testClass="ch.epfl.tchu.game.TicketTest" />
+        <pattern testClass="ch.epfl.tchu.game.TrailTest" />
+        <pattern testClass="ch.epfl.tchu.game.TripTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameStateTest and 12 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="ch.epfl.tchu.game.GameStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.GameTest" />
+        <pattern testClass="ch.epfl.tchu.game.PlayerIdTest" />
+        <pattern testClass="ch.epfl.tchu.game.PlayerStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicCardStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicGameStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicPlayerStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.RouteTest" />
+        <pattern testClass="ch.epfl.tchu.game.StationPartitionTest" />
+        <pattern testClass="ch.epfl.tchu.game.StationTest" />
+        <pattern testClass="ch.epfl.tchu.game.TicketTest" />
+        <pattern testClass="ch.epfl.tchu.game.TrailTest" />
+        <pattern testClass="ch.epfl.tchu.game.TripTest" />
+      </patterns>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,6 +176,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.gui" />
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.InfoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PreconditionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.PreconditionsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -183,52 +211,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TicketTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TicketTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TrailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TrailTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TripTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TripTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TrailTest" />
-        <item itemvalue="JUnit.TicketTest (1)" />
         <item itemvalue="JUnit.SerdesTest" />
+        <item itemvalue="JUnit.PreconditionsTest" />
         <item itemvalue="JUnit.InfoTest" />
-        <item itemvalue="JUnit.TripTest" />
+        <item itemvalue="JUnit.CardStateTest and 16 more" />
+        <item itemvalue="JUnit.GameStateTest and 12 more" />
       </list>
     </recent_temporary>
   </component>

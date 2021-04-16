@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 /**
  * Represents a deck of cards.
@@ -72,7 +72,6 @@ public final class Deck<C extends Comparable<C>> {
      */
     public SortedBag<C> topCards(int count) {
         Preconditions.checkArgument(count >= 0 && count <= size());
-        SortedBag.Builder<C> builder = new SortedBag.Builder<>();
         List<C> s = cards.stream()
                 .skip(cards.size() - count)
                 .collect(Collectors.toList());
