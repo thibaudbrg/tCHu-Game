@@ -44,21 +44,23 @@ class SerdesTest {
         assertEquals(chmap.ALL_TICKETS.get(2), i.deserialize(i.serialize(chmap.ALL_TICKETS.get(2))));
 
     }
+
     @Test
-    void EnumClassic(){
+    void EnumClassic() {
         Serde<Card> i = Serdes.CARD_SERDE;
-        assertEquals(String.valueOf(3),i.serialize(Card.ALL.get(3)));
-        assertEquals(Card.ALL.get(3),i.deserialize(i.serialize(Card.ALL.get(3))));
+        assertEquals(String.valueOf(3), i.serialize(Card.ALL.get(3)));
+        assertEquals(Card.ALL.get(3), i.deserialize(i.serialize(Card.ALL.get(3))));
     }
-@Test
-void ListEnumC(){
+
+    @Test
+    void ListEnumC() {
         Serde<List<Card>> i = Serdes.LIST_CARD_SERDE;
-        List<Card> initial = List.of(Card.BLUE,Card.RED,Card.YELLOW,Card.WHITE,Card.WHITE,Card.LOCOMOTIVE);
-    String ser = i.serialize(initial);
-    List<Card> deser = i.deserialize(ser);
-    assertEquals(initial,deser);
-    assertEquals("2,6,4,7,7,9",ser);
-}
+        List<Card> initial = List.of(Card.BLUE, Card.RED, Card.YELLOW, Card.WHITE, Card.WHITE, Card.LOCOMOTIVE);
+        String ser = i.serialize(initial);
+        List<Card> deser = i.deserialize(ser);
+        assertEquals(initial, deser);
+        assertEquals("2,6,4,7,7,8", ser);
+    }
 
     @Test
     void SerdeListTest() {

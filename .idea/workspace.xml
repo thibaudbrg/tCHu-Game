@@ -128,7 +128,7 @@
       <recent name="ch.epfl.tchu.game" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SerdesTest.PlayerStateTest">
+  <component name="RunManager" selected="JUnit.SerdesTest.ListEnumC">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -140,7 +140,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CardStateTest and 16 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CardStateTest and 22 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <option name="TEST_OBJECT" value="pattern" />
       <patterns>
@@ -161,12 +161,18 @@
         <pattern testClass="ch.epfl.tchu.game.TicketTest" />
         <pattern testClass="ch.epfl.tchu.game.TrailTest" />
         <pattern testClass="ch.epfl.tchu.game.TripTest" />
+        <pattern testClass="ch.epfl.tchu.gui.*" />
+        <pattern testClass="ch.epfl.tchu.gui.InfoTest" />
+        <pattern testClass="ch.epfl.tchu.net.*" />
+        <pattern testClass="ch.epfl.tchu.net.SerdesTest" />
+        <pattern testClass="ch.epfl.tchu.PreconditionsTest" />
+        <pattern testClass="ch.epfl.test.*" />
       </patterns>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SerdesTest.EnumTypeSerdeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SerdesTest.ListEnumC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -176,7 +182,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="ch.epfl.tchu.net" />
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.net.SerdesTest" />
-      <option name="METHOD_NAME" value="EnumTypeSerdeTest" />
+      <option name="METHOD_NAME" value="ListEnumC" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -232,11 +238,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SerdesTest.ListEnumC" />
+        <item itemvalue="JUnit.CardStateTest and 22 more" />
         <item itemvalue="JUnit.SerdesTest.PlayerStateTest" />
         <item itemvalue="JUnit.SerdesTest.SerdeSortedBagTest" />
         <item itemvalue="JUnit.SerdesTest.PublicGameStateTest" />
-        <item itemvalue="JUnit.CardStateTest and 16 more" />
-        <item itemvalue="JUnit.SerdesTest.EnumTypeSerdeTest" />
       </list>
     </recent_temporary>
   </component>
