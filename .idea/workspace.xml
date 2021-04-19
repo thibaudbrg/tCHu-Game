@@ -24,20 +24,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/MessageId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/MessageId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serdes.java" afterDir="false" />
+    </list>
+    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/StringsFr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/StringsFr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" afterDir="false" />
     </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="" />
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
-    <list id="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" name="Changes by Thibaud" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" afterDir="false" />
-    </list>
+    <list id="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" name="Changes by Thibaud" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,8 +45,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -63,24 +60,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="5" end1="5" start2="6" end2="7" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="6" end1="6" start2="8" end2="9" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="7" end1="8" start2="10" end2="11" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="12" end1="13" start2="15" end2="17" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="34" end1="35" start2="38" end2="39" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="37" end1="41" start2="41" end2="41" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="42" end1="49" start2="42" end2="44" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="51" end1="51" start2="46" end2="61" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="54" end1="65" start2="64" end2="74" changelist="09bda4a2-1751-4b44-8bf8-5ab7e069a5a7" />
-        <range start1="66" end1="66" start2="75" end2="167" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="306" end1="306" start2="407" end2="408" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -129,13 +108,15 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.SerdesTest.ListEnumC">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -314,6 +295,7 @@
       <workItem from="1618425793082" duration="12000" />
       <workItem from="1618565568498" duration="2275000" />
       <workItem from="1618568740651" duration="1627000" />
+      <workItem from="1618831362564" duration="4156000" />
     </task>
     <servers />
   </component>
@@ -334,20 +316,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/net/Serdes.java</url>
-          <line>118</line>
-          <properties method="deserialize">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

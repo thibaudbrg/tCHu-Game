@@ -2,6 +2,12 @@ package ch.epfl.tchu.net;
 
 import java.util.List;
 
+/**
+ * Lists the types of messages that the server can send to clients
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public enum MessageId {
     INIT_PLAYERS,
     RECEIVE_INFO,

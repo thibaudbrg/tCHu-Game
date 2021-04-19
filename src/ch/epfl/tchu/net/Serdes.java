@@ -9,10 +9,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * Contains all the useful serdes for the project
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public final class Serdes {
 
     public final static Serde<Integer> INTEGER_SERDE = Serde.of(Object::toString, Integer::valueOf);
-    //TODO tester avec Charles
     public final static Serde<String> STRING_SERDE = Serde.of(s -> (Base64.getEncoder().encodeToString(s.getBytes(StandardCharsets.UTF_8))),
             s -> (new String(Base64.getDecoder().decode(s), StandardCharsets.UTF_8)));
 
@@ -26,10 +31,12 @@ public final class Serdes {
     public final static Serde<List<Card>> LIST_CARD_SERDE = Serde.listOf(CARD_SERDE, ",");
     public final static Serde<List<Route>> LIST_ROUTE_SERDE = Serde.listOf(ROUTE_SERDE, ",");
     public final static Serde<SortedBag<Ticket>> SORTEDBAG_TICKET_SERDE = Serde.bagOf(TICKET_SERDE, ",");
-    /**
-     *
-     */
+
+
+
     public final static Serde<SortedBag<Card>> SORTEDBAG_CARD_SERDE = Serde.bagOf(CARD_SERDE, ",");
+
+
 
     public final static Serde<PublicCardState> PUBLIC_CARD_STATE_SERDE = new Serde<>() {
         @Override
@@ -51,6 +58,8 @@ public final class Serdes {
             return new PublicCardState(faceUpCards, discardsSize, deckSize);
         }
     };
+
+
 
 
     public final static Serde<PublicPlayerState> PUBLIC_PLAYER_STATE_SERDE = new Serde<>() {
@@ -77,6 +86,9 @@ public final class Serdes {
         }
     };
 
+
+
+
     public final static Serde<PlayerState> PLAYER_STATE_SERDE = new Serde<>() {
         @Override
         public String serialize(PlayerState playerState) {
@@ -100,6 +112,9 @@ public final class Serdes {
 
         }
     };
+
+
+
 
     public final static Serde<PublicGameState> PUBLIC_GAME_STATE_SERDE = new Serde<>() {
         @Override
@@ -125,8 +140,8 @@ public final class Serdes {
             PublicPlayerState player1 = PUBLIC_PLAYER_STATE_SERDE.deserialize(serializedArray[3]);
             PublicPlayerState player2 = PUBLIC_PLAYER_STATE_SERDE.deserialize(serializedArray[4]);
             Map<PlayerId, PublicPlayerState> playerState = Map.of(PlayerId.PLAYER_1, player1, PlayerId.PLAYER_2, player2);
-            if ( PLAYER_ID_SERDE.deserialize(serializedArray[5])==null){
-                return new PublicGameState(ticketsCount, cardState, currentPlayerId, playerState,null);
+            if (PLAYER_ID_SERDE.deserialize(serializedArray[5]) == null) {
+                return new PublicGameState(ticketsCount, cardState, currentPlayerId, playerState, null);
             }
             PlayerId lastPlayer = PLAYER_ID_SERDE.deserialize(serializedArray[5]);
 

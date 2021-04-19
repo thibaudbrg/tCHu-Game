@@ -1,6 +1,6 @@
 package ch.epfl.tchu.gui;
 
-public final class StringsFr {
+public final class  StringsFr {
     private StringsFr() {
     }
 

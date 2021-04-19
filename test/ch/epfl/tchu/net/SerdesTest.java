@@ -35,6 +35,16 @@ class SerdesTest {
     }
 
     @Test
+    void stringList(){
+        Serde<List<String>> i = Serdes.LIST_STRING_SERDE;
+        String serde = i.serialize(List.of("Charles","BOi"));
+        List<String> deserialize = i.deserialize(serde);
+        assertEquals(List.of("Charles","BOi"),deserialize);
+        assertEquals("Q2hhcmxlcw==,Qk9p",serde);
+
+    }
+
+    @Test
     void EnumTypeSerdeTest() {
         Serde<Ticket> i = Serdes.TICKET_SERDE;
         List<String> ser = new ArrayList<>();
