@@ -31,11 +31,8 @@ public final class Serdes {
     public final static Serde<List<Card>> LIST_CARD_SERDE = Serde.listOf(CARD_SERDE, ",");
     public final static Serde<List<Route>> LIST_ROUTE_SERDE = Serde.listOf(ROUTE_SERDE, ",");
     public final static Serde<SortedBag<Ticket>> SORTEDBAG_TICKET_SERDE = Serde.bagOf(TICKET_SERDE, ",");
-
-
-
     public final static Serde<SortedBag<Card>> SORTEDBAG_CARD_SERDE = Serde.bagOf(CARD_SERDE, ",");
-
+    public final static Serde<List<SortedBag<Card>>> LIST_SORTEDBAG_CARD_SERDE = Serde.listOf(SORTEDBAG_CARD_SERDE, ";"); //TODO a tester
 
 
     public final static Serde<PublicCardState> PUBLIC_CARD_STATE_SERDE = new Serde<>() {
@@ -58,8 +55,6 @@ public final class Serdes {
             return new PublicCardState(faceUpCards, discardsSize, deckSize);
         }
     };
-
-
 
 
     public final static Serde<PublicPlayerState> PUBLIC_PLAYER_STATE_SERDE = new Serde<>() {
@@ -87,8 +82,6 @@ public final class Serdes {
     };
 
 
-
-
     public final static Serde<PlayerState> PLAYER_STATE_SERDE = new Serde<>() {
         @Override
         public String serialize(PlayerState playerState) {
@@ -112,8 +105,6 @@ public final class Serdes {
 
         }
     };
-
-
 
 
     public final static Serde<PublicGameState> PUBLIC_GAME_STATE_SERDE = new Serde<>() {

@@ -10,19 +10,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class RemotePlayerProxy implements Player {
+public class RemotePlayerProxy implements Player { // Voir si on peut pas final la classe
     private final Socket socket;
 
-    private Serde<PlayerId> playerIdSerde = Serdes.PLAYER_ID_SERDE;
-    private Serde<List<String>> stringListSerde = Serdes.LIST_STRING_SERDE;
-    private Serde<String> stringSerde = Serdes.STRING_SERDE;
-    private Serde<PublicGameState> publicGameStateSerde = Serdes.PUBLIC_GAME_STATE_SERDE;
-    private Serde<PlayerState> playerStateSerde = Serdes.PLAYER_STATE_SERDE;
-    private Serde<SortedBag<Ticket>> ticketSortedBagSerde = Serdes.SORTEDBAG_TICKET_SERDE;
-    private Serde<TurnKind> turnKindSerde = Serdes.TURN_KIND_SERDE;
-    private Serde<Integer> integerSerde = Serdes.INTEGER_SERDE;
-    private Serde<Route> routeSerde = Serdes.ROUTE_SERDE;
-    private Serde<SortedBag<Card>> cardSortedBagSerde = Serdes.SORTEDBAG_CARD_SERDE;
+    private final Serde<PlayerId> playerIdSerde = Serdes.PLAYER_ID_SERDE;
+    private final Serde<List<String>> stringListSerde = Serdes.LIST_STRING_SERDE;
+    private final Serde<String> stringSerde = Serdes.STRING_SERDE;
+    private final Serde<PublicGameState> publicGameStateSerde = Serdes.PUBLIC_GAME_STATE_SERDE;
+    private final Serde<PlayerState> playerStateSerde = Serdes.PLAYER_STATE_SERDE;
+    private final Serde<SortedBag<Ticket>> ticketSortedBagSerde = Serdes.SORTEDBAG_TICKET_SERDE;
+    private final Serde<TurnKind> turnKindSerde = Serdes.TURN_KIND_SERDE;
+    private final Serde<Integer> integerSerde = Serdes.INTEGER_SERDE;
+    private final Serde<Route> routeSerde = Serdes.ROUTE_SERDE;
+    private final Serde<SortedBag<Card>> cardSortedBagSerde = Serdes.SORTEDBAG_CARD_SERDE;
+    private final Serde<List<SortedBag<Card>>> cardSortedBagListSerde = Serdes.LIST_SORTEDBAG_CARD_SERDE;
 
     public RemotePlayerProxy(Socket socket) {
         this.socket = socket;
@@ -159,8 +160,7 @@ public class RemotePlayerProxy implements Player {
      */
     @Override
     public SortedBag<Card> chooseAdditionalCards(List<SortedBag<Card>> options) {
-        Serde<List<SortedBag<Card>>> se = Serde.listOf(Serdes.SORTEDBAG_CARD_SERDE, "");
-        sendMessage(MessageId.CARDS, se.serialize(options));
+        sendMessage(MessageId.CARDS, cardSortedBagListSerde.serialize(options));
         return cardSortedBagSerde.deserialize(receiveMessage());
     }
 
@@ -169,7 +169,7 @@ public class RemotePlayerProxy implements Player {
         try (BufferedWriter w = new BufferedWriter(
                 new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.US_ASCII))) {
             w.write(messageId.name());
-            w.write(" " + serialized + " ");
+            w.write(" " + serialized); // askip pas besoin avant \n
             w.write('\n');
             w.flush();
         } catch (IOException e) {
