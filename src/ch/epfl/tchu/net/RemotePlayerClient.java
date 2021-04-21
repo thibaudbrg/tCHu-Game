@@ -28,7 +28,7 @@ public class RemotePlayerClient {
     private final Serde<Route> routeSerde = Serdes.ROUTE_SERDE;
     private final Serde<SortedBag<Card>> cardSortedBagSerde = Serdes.SORTEDBAG_CARD_SERDE;
     private final Serde<List<SortedBag<Card>>> cardSortedBagListSerde = Serdes.LIST_SORTEDBAG_CARD_SERDE;
-private String message;
+private String line;
 
     public RemotePlayerClient(Player player, String name, int port) {
         this.player = player;
@@ -40,9 +40,9 @@ private String message;
         try (Socket s = new Socket(name,port)) {
             BufferedReader r = new BufferedReader(new InputStreamReader(s.getInputStream(), US_ASCII));
             BufferedWriter w = new BufferedWriter(new OutputStreamWriter(s.getOutputStream(), US_ASCII));
-            while ((message = r.readLine())!=null){
+            while ((line = r.readLine())!=null){
 
-                String[] splittedString = (message.split(Pattern.quote(" "), 0));
+                String[] splittedString = (line.split(Pattern.quote(" "), 0));
 
                 switch (MessageId.valueOf(splittedString[0])) {
                     case INIT_PLAYERS:

@@ -141,7 +141,7 @@ public interface Serde<E> {
 
             @Override
             public SortedBag<T> deserialize(String s) {
-                if (s.isEmpty()) return null;
+                if (s.isEmpty()) return SortedBag.of();
                 String[] serializedArray = s.split(Pattern.quote(sep), -1);
                 List<T> deserializedList = Arrays.stream(serializedArray)
                         .map(se::deserialize)
