@@ -29,7 +29,6 @@ public final class TestServer {
             playerProxy.receiveInfo(i.canPlay());
 
 
-
             var faceUpCards = SortedBag.of(5, Card.LOCOMOTIVE).toList();
             var cardState = new PublicCardState(faceUpCards, 0, 0);
             var initialPlayerState = (PublicPlayerState) PlayerState.initial(SortedBag.of(4, Card.RED));
@@ -59,19 +58,33 @@ public final class TestServer {
             ticketsBuilder.add(ChMap.ALL_TICKETS.get(7));
             ticketsBuilder.add(ChMap.ALL_TICKETS.get(8));
             var tickets = ticketsBuilder.build();
-
-
             playerProxy.setInitialTicketChoice(tickets);
 
-
             System.out.println(playerProxy.nextTurn());
 
-
-           System.out.println(playerProxy.chooseTickets(tickets));
+            System.out.println(playerProxy.chooseTickets(tickets));
             System.out.println(playerProxy.nextTurn());
-            System.out.println(playerProxy.nextTurn());
-            //
+            System.out.println(playerProxy.drawSlot());
+            System.out.println(playerProxy.claimedRoute());
+            System.out.println(playerProxy.initialClaimCards());
 
+            var list = new ArrayList<SortedBag<Card>>();
+            var cardBuilder1 = new SortedBag.Builder<Card>();
+            cardBuilder1.add(Card.LOCOMOTIVE);
+            cardBuilder1.add(2, Card.BLUE);
+            cardBuilder1.add(3, Card.GREEN);
+            cardBuilder1.add(4, Card.BLACK);
+            var cardBuilder2 = new SortedBag.Builder<Card>();
+            cardBuilder2.add(Card.LOCOMOTIVE);
+            cardBuilder2.add(2, Card.BLUE);
+            cardBuilder1.add(3, Card.GREEN);
+            cardBuilder1.add(4, Card.BLACK);
+            var cardBuilder1 = new SortedBag.Builder<Card>();
+            cardBuilder1.add(Card.LOCOMOTIVE);
+            cardBuilder1.add(2, Card.BLUE);
+            cardBuilder1.add(3, Card.GREEN);
+            cardBuilder1.add(4, Card.BLACK);
+            System.out.println(playerProxy.chooseAdditionalCards(list));
 
         }
         System.out.println("Server done!");

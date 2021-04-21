@@ -74,12 +74,13 @@ System.out.println(tickets);
 
         @Override
         public SortedBag<Card> initialClaimCards() {
-            return null;
+            return SortedBag.of(2,Card.BLUE,2,Card.RED);
         }
 
         @Override
         public SortedBag<Card> chooseAdditionalCards(List<SortedBag<Card>> options) {
-            return null;
+            System.out.println(options);
+            return options.get(i%options.size());
         }
 
 
