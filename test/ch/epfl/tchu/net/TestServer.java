@@ -60,15 +60,19 @@ public final class TestServer {
             var tickets = ticketsBuilder.build();
             playerProxy.setInitialTicketChoice(tickets);
 
+            System.out.println("-----------SHOW NEXTTURN-----------");
             System.out.println(playerProxy.nextTurn());
-
+            System.out.println("-----------SHOW CHOOSETICKETS-----------");
             System.out.println(playerProxy.chooseTickets(tickets));
+            System.out.println("-----------SHOW NEXTTURN-----------");
             System.out.println(playerProxy.nextTurn());
+            System.out.println("-----------SHOW DRAWSLOT-----------");
             System.out.println(playerProxy.drawSlot());
+            System.out.println("-----------SHOW CLAIMEDROUTE-----------");
             System.out.println(playerProxy.claimedRoute());
+            System.out.println("-----------SHOW INITIALCLAIMCARDS-----------");
             System.out.println(playerProxy.initialClaimCards());
 
-            var list = new ArrayList<SortedBag<Card>>();
             var cardBuilder1 = new SortedBag.Builder<Card>();
             cardBuilder1.add(Card.LOCOMOTIVE);
             cardBuilder1.add(2, Card.BLUE);
@@ -76,14 +80,17 @@ public final class TestServer {
             cardBuilder1.add(4, Card.BLACK);
             var cardBuilder2 = new SortedBag.Builder<Card>();
             cardBuilder2.add(Card.LOCOMOTIVE);
-            cardBuilder2.add(2, Card.BLUE);
-            cardBuilder1.add(3, Card.GREEN);
-            cardBuilder1.add(4, Card.BLACK);
-            var cardBuilder1 = new SortedBag.Builder<Card>();
-            cardBuilder1.add(Card.LOCOMOTIVE);
-            cardBuilder1.add(2, Card.BLUE);
-            cardBuilder1.add(3, Card.GREEN);
-            cardBuilder1.add(4, Card.BLACK);
+            cardBuilder2.add(5, Card.YELLOW);
+            cardBuilder2.add(1, Card.LOCOMOTIVE);
+            cardBuilder2.add(1, Card.BLUE);
+            var cardBuilder3 = new SortedBag.Builder<Card>();
+            cardBuilder3.add(Card.WHITE);
+            cardBuilder3.add(5, Card.BLUE);
+            cardBuilder3.add(2, Card.GREEN);
+            cardBuilder3.add(4, Card.BLACK);
+            var list = List.of(cardBuilder1.build(), cardBuilder2.build(), cardBuilder3.build());
+            System.out.println("-----------SHOW CHOOSEADDITIONALCARDS-----------");
+
             System.out.println(playerProxy.chooseAdditionalCards(list));
 
         }
