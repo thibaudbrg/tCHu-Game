@@ -30,7 +30,7 @@ private int i = 0;
 
         @Override
         public void receiveInfo(String info) {
-            System.out.printf("info: %s\n", info);
+            System.out.printf("info: %s", info);
         }
 
         @Override

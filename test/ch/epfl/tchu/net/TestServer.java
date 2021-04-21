@@ -47,7 +47,7 @@ public final class TestServer {
 
             playerProxy.updateState(publicGameState, ownState);
 
-            System.out.println();
+
             var ticketsBuilder = new SortedBag.Builder<Ticket>();
             ticketsBuilder.add(ChMap.ALL_TICKETS.get(0));
             ticketsBuilder.add(ChMap.ALL_TICKETS.get(1));
@@ -58,16 +58,18 @@ public final class TestServer {
             ticketsBuilder.add(ChMap.ALL_TICKETS.get(6));
             ticketsBuilder.add(ChMap.ALL_TICKETS.get(7));
             ticketsBuilder.add(ChMap.ALL_TICKETS.get(8));
-
-            playerProxy.setInitialTicketChoice(ticketsBuilder.build());
-
+            var tickets = ticketsBuilder.build();
 
 
-            System.out.println();
+            playerProxy.setInitialTicketChoice(tickets);
 
 
+            System.out.println(playerProxy.nextTurn());
 
 
+           System.out.println(playerProxy.chooseTickets(tickets));
+            System.out.println(playerProxy.nextTurn());
+            System.out.println(playerProxy.nextTurn());
             //
 
 
