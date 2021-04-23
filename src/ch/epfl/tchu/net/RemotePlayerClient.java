@@ -4,7 +4,6 @@ import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,13 @@ import java.util.regex.Pattern;
 
 import static java.nio.charset.StandardCharsets.US_ASCII;
 
-public class RemotePlayerClient {
+/**
+ * Represents a remote player client
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
+public class RemotePlayerClient { // TODO Voir si on peut pas final la classe
     private final Player player;
     private final String name;
     private final int port;
@@ -28,19 +33,33 @@ public class RemotePlayerClient {
     private final Serde<Route> routeSerde = Serdes.ROUTE_SERDE;
     private final Serde<SortedBag<Card>> cardSortedBagSerde = Serdes.SORTEDBAG_CARD_SERDE;
     private final Serde<List<SortedBag<Card>>> cardSortedBagListSerde = Serdes.LIST_SORTEDBAG_CARD_SERDE;
-private String line;
+    private String line;
 
+    /**
+     * Constructs a remote player client
+     *
+     * @param player (Player) The player to whom it must provide remote access
+     * @param name (String) The name of the client
+     * @param port (int) The port to be used
+     */
     public RemotePlayerClient(Player player, String name, int port) {
         this.player = player;
         this.name = name;
         this.port = port;
     }
 
+    /**
+     * Performs a loop during which it waits for a message from the proxy;
+     * chops it using the space character as separator;
+     * determines the type of the message according to the first string resulting from the splitting;
+     * according to this type of message, deserializes the arguments, calls the corresponding method of the player,
+     * if this method returns a result, serializes it to send it back to the proxy in response
+     */
     public void run() {
-        try (Socket s = new Socket(name,port)) {
+        try (Socket s = new Socket(name, port)) {
             BufferedReader r = new BufferedReader(new InputStreamReader(s.getInputStream(), US_ASCII));
             BufferedWriter w = new BufferedWriter(new OutputStreamWriter(s.getOutputStream(), US_ASCII));
-            while ((line = r.readLine())!=null){
+            while ((line = r.readLine()) != null) {
 
                 String[] splittedString = (line.split(Pattern.quote(" "), 0));
 
@@ -122,8 +141,7 @@ private String line;
             }
 
         } catch (IOException e) {
-            throw
-                    new UncheckedIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 

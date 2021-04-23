@@ -10,7 +10,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class RemotePlayerProxy implements Player { // Voir si on peut pas final la classe
+/**
+ * Represents a remote player proxy
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
+public class RemotePlayerProxy implements Player { // TODO Voir si on peut pas final la classe
     private final Socket socket;
 
     private final Serde<PlayerId> playerIdSerde = Serdes.PLAYER_ID_SERDE;
@@ -25,6 +31,12 @@ public class RemotePlayerProxy implements Player { // Voir si on peut pas final 
     private final Serde<SortedBag<Card>> cardSortedBagSerde = Serdes.SORTEDBAG_CARD_SERDE;
     private final Serde<List<SortedBag<Card>>> cardSortedBagListSerde = Serdes.LIST_SORTEDBAG_CARD_SERDE;
 
+    /**
+     * Constructs a new remote player proxy
+     *
+     * @param socket (Socket) The socket that the proxy uses to communicate through the network
+     *               with the client by exchanging text messages
+     */
     public RemotePlayerProxy(Socket socket) {
         this.socket = socket;
     }
