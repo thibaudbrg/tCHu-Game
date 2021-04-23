@@ -126,24 +126,24 @@ public final class Ticket implements Comparable<Ticket> {
      * @param o (Object) The ticket
      * @return (boolean) Return true if the two tickets are equals
      */
-/*
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
-        return stationFrom.name().equals(ticket.stationFrom.name())
+        return stationFrom.equals(ticket.stationFrom)
                 && trips.equals(ticket.trips);
     }
-*/
+
     /**
      * Returns a hash code value for the object. (Redefined because of equals())
      *
      * @return (int) The hashcode
      */
-    /*
+
     @Override
     public int hashCode() {
         return Objects.hash(stationFrom, trips);
-    }*/
+    }
 }

@@ -190,7 +190,6 @@ public final class Game {
             playerNames.forEach((k, s) -> playerNamesList.add(s));
             sendInfoToBothPlayers(players, Info.draw(playerNamesList, playerPoints[0]));
         }
-        System.out.printf("%4d  %4d", playerPoints[0], playerPoints[1]);
     }
 
 
