@@ -17,7 +17,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
  * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
-public class RemotePlayerClient { // TODO Voir si on peut pas final la classe
+public final class RemotePlayerClient {
     private final Player player;
     private final String name;
     private final int port;
@@ -61,7 +61,7 @@ public class RemotePlayerClient { // TODO Voir si on peut pas final la classe
             BufferedWriter w = new BufferedWriter(new OutputStreamWriter(s.getOutputStream(), US_ASCII));
             while ((line = r.readLine()) != null) {
 
-                String[] splittedString = (line.split(Pattern.quote(" "), 0));
+                String[] splittedString = (line.split(Pattern.quote(" "), -1));
 
                 switch (MessageId.valueOf(splittedString[0])) {
                     case INIT_PLAYERS:

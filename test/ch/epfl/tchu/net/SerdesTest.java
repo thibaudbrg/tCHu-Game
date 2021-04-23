@@ -123,7 +123,16 @@ class SerdesTest {
         PublicGameState s = i.deserialize(i.serialize(gs));
 
     }
+@Test
+void ListSortedTest(){
+        Serde<List<SortedBag<Card>>> serde = Serdes.LIST_SORTEDBAG_CARD_SERDE;
+        SortedBag<Card> c1 = SortedBag.of(2,Card.BLUE,3,Card.ORANGE);
+    SortedBag<Card> c2 = SortedBag.of(2,Card.LOCOMOTIVE,3,Card.RED);
+    SortedBag<Card> c3 = SortedBag.of(2,Card.WHITE,3,Card.BLUE);
+        List<SortedBag<Card>> ls = List.of(c1,c2,c3);
 
+        assertEquals(ls,serde.deserialize(serde.serialize(ls)));
+    }
     @Test
     void PlayerStateTest() {
         Serde<PlayerState> i = Serdes.PLAYER_STATE_SERDE;

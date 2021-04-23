@@ -95,6 +95,13 @@ public final class Trip {
         return (connectivity.connected(from, to)) ? points : -points;
     }
 
+    /**
+     * Indicates whether some other trip is "equal to" this one
+     *
+     * @param o (Object) The trip
+     * @return (boolean) Return true if the two trips are equals
+     */
+/*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -103,10 +110,16 @@ public final class Trip {
         return points == trip.points
                 && from.equals(trip.from)
                 && to.equals(trip.to);
-    }
+    }*/
 
+    /**
+     * Returns a hash code value for the object. (Redefined because of equals())
+     *
+     * @return (int) The hashcode
+     */
+    /*
     @Override
     public int hashCode() {
         return Objects.hash(from, to, points);
-    }
+    }*/
 }

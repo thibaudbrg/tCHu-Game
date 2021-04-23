@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
-public class RemotePlayerProxy implements Player { // TODO Voir si on peut pas final la classe
+public final class RemotePlayerProxy implements Player {
     private final Socket socket;
 
     private final Serde<PlayerId> playerIdSerde = Serdes.PLAYER_ID_SERDE;
@@ -181,7 +181,7 @@ public class RemotePlayerProxy implements Player { // TODO Voir si on peut pas f
         try {BufferedWriter w = new BufferedWriter(
                 new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.US_ASCII));
             w.write(messageId.name());
-            w.write(" " + serialized); // askip pas besoin avant \n
+            w.write(" " + serialized);
             w.write('\n');
             w.flush();
         } catch (IOException e) {

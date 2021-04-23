@@ -207,21 +207,32 @@ public final class Route {
         return color;
     }
 
-    @Override
+    /**
+     * Indicates whether some other route is "equal to" this one
+     *
+     * @param o (Object) The route
+     * @return (boolean) Return true if the two routes are equals
+     */
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Route route = (Route) o;
         return length == route.length
                 && id.equals(route.id)
-                && station1.equals(route.station1)
-                && station2.equals(route.station2)
+                && station1.name().equals(route.station1.name())
+                && station2.name().equals(route.station2.name())
                 && level == route.level
                 && color == route.color;
-    }
+    }*/
 
+    /**
+     * Returns a hash code value for the object. (Redefined because of equals())
+     *
+     * @return (int) The hashcode
+     *//*
     @Override
     public int hashCode() {
         return Objects.hash(id, station1, station2, length, level, color);
-    }
+    }*/
 }

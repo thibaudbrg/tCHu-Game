@@ -3,7 +3,6 @@ package ch.epfl.tchu.net;
 import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
 import ch.epfl.tchu.gui.Info;
-import ch.epfl.tchu.gui.StringsFr;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -11,6 +10,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import static ch.epfl.tchu.game.PlayerId.PLAYER_1;
 import static ch.epfl.tchu.game.PlayerId.PLAYER_2;
@@ -21,7 +21,12 @@ public final class TestServer {
         try (ServerSocket serverSocket = new ServerSocket(5108);
              Socket socket = serverSocket.accept()) {
             Player playerProxy = new RemotePlayerProxy(socket);
-            var playerNames = Map.of(PLAYER_1, "Ada",
+            Player playerProxy2 = new RemotePlayerProxy(socket);
+
+            Game.play(Map.of(PLAYER_1, playerProxy, PLAYER_2, playerProxy2), Map.of(PLAYER_1, "Ada",
+                    PLAYER_2, "Charles"), SortedBag.of(ChMap.ALL_TICKETS), new Random(2021));
+
+           /* var playerNames = Map.of(PLAYER_1, "Ada",
                     PLAYER_2, "Charles");
             playerProxy.initPlayers(PLAYER_1, playerNames);
 
@@ -92,8 +97,10 @@ public final class TestServer {
             System.out.println("-----------SHOW CHOOSEADDITIONALCARDS-----------");
 
             System.out.println(playerProxy.chooseAdditionalCards(list));
-
+*/
         }
+
+
         System.out.println("Server done!");
     }
 
