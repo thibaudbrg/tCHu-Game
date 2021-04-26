@@ -106,4 +106,11 @@ public final class Constants {
      * Nombre de points bonus obtenus par le(s) joueur(s) disposant du plus long chemin.
      */
     public static final int LONGEST_TRAIL_BONUS_POINTS = 10;
+
+    public static final int TICKETS_COUNT = 46;
+
+    /**
+     * Liste de tous les numéros d'emplacements de type de cartes.
+     */
+    public static final List<Integer> TYPE_CARD_SLOTS = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8);
 }
