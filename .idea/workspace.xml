@@ -23,24 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/chooser.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/colors.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/decks.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/info.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/locomotive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/map.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/map.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/train-car.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/DisplayTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EPFL-BA2-Project-1-tCHu-Game.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EPFL-BA2-Project-1-tCHu-Game.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
     </list>
     <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
     </list>
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="e051be56-e229-4578-985e-2db9506678af" name="Changes by Thibaud" comment="" />
@@ -69,6 +57,64 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="2" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="5" end1="7" start2="4" end2="6" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="8" end1="10" start2="7" end2="7" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="11" end1="11" start2="8" end2="9" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="12" end1="13" start2="10" end2="11" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="15" end1="16" start2="13" end2="13" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="18" end1="18" start2="15" end2="18" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="19" end1="23" start2="19" end2="23" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="25" end1="29" start2="25" end2="29" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="30" end1="34" start2="30" end2="34" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="38" end1="38" start2="38" end2="42" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="39" end1="39" start2="43" end2="51" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="40" end1="40" start2="52" end2="53" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="43" end1="44" start2="56" end2="56" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="47" end1="48" start2="59" end2="59" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="50" end1="52" start2="61" end2="62" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="58" end1="67" start2="68" end2="73" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="70" end1="71" start2="76" end2="76" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="72" end1="74" start2="77" end2="79" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="76" end1="78" start2="81" end2="84" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="80" end1="82" start2="86" end2="89" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="84" end1="86" start2="91" end2="91" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="87" end1="87" start2="92" end2="94" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="89" end1="94" start2="96" end2="98" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="96" end1="97" start2="100" end2="101" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="98" end1="103" start2="102" end2="105" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="107" end1="109" start2="109" end2="132" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="132" end1="137" start2="155" end2="156" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="140" end1="145" start2="159" end2="161" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="147" end1="150" start2="163" end2="169" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="152" end1="153" start2="171" end2="173" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="156" end1="156" start2="176" end2="188" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="160" end1="162" start2="192" end2="194" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="164" end1="166" start2="196" end2="198" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="169" end1="171" start2="201" end2="203" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="173" end1="175" start2="205" end2="207" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="178" end1="180" start2="210" end2="212" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="182" end1="184" start2="214" end2="216" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
+        <range start1="187" end1="189" start2="219" end2="221" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="191" end1="193" start2="223" end2="225" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="196" end1="196" start2="228" end2="235" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="199" end1="201" start2="238" end2="240" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="203" end1="204" start2="242" end2="243" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="207" end1="213" start2="246" end2="248" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="216" end1="216" start2="251" end2="254" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="217" end1="219" start2="255" end2="261" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="221" end1="222" start2="263" end2="265" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="225" end1="225" start2="268" end2="280" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="229" end1="232" start2="284" end2="288" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="234" end1="236" start2="290" end2="292" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="238" end1="240" start2="294" end2="296" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="242" end1="244" start2="298" end2="298" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -99,7 +145,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -146,15 +192,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -289,7 +333,10 @@
       <workItem from="1619169975875" duration="58000" />
       <workItem from="1619170482364" duration="7000" />
       <workItem from="1619172935212" duration="382000" />
-      <workItem from="1619427697447" duration="16873000" />
+      <workItem from="1619427697447" duration="16923000" />
+      <workItem from="1619543450072" duration="1263000" />
+      <workItem from="1619594156299" duration="9000" />
+      <workItem from="1619638304175" duration="8538000" />
     </task>
     <servers />
   </component>

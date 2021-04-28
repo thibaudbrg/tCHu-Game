@@ -1,112 +1,135 @@
 package ch.epfl.tchu.gui;
 
-import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
 import javafx.beans.property.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ListIterator;
 
 import static ch.epfl.tchu.game.Constants.FACE_UP_CARD_SLOTS;
-import static ch.epfl.tchu.game.Constants.TYPE_CARD_SLOTS;
 
 public final class ObservableGameState {
+
+    private PlayerId playerId;
+
     // Properties concerning the public state of the game
-    private final IntegerProperty percentTicketsRemainingInDeck = new SimpleIntegerProperty();
-    private final IntegerProperty percentCardsRemainingInDeck = new SimpleIntegerProperty();
-    private final List<ObjectProperty<Card>> faceUpCards = new createFaceUpCards();
-    private final List<ObjectProperty<Route>> routes = new SimpleListProperty();// l'identité du joueur la possédant, ou null si elle n'appartient à personne ???
+    private final IntegerProperty percentTicketsRemainingInDeck;
+    private final IntegerProperty percentCardsRemainingInDeck;
+    private final List<ObjectProperty<Card>> faceUpCards;
+    private final List<ObjectProperty<PlayerId>> routes;
 
     // Properties concerning the public state for each player
-    private final IntegerProperty numberOfTicketsOnHand = new SimpleIntegerProperty();
-    private final IntegerProperty numberOfCardsOnHand = new SimpleIntegerProperty();
-    private final IntegerProperty numberOfCarsOnHand = new SimpleIntegerProperty();
-    private final IntegerProperty numberOfBuildingPointsOnHand = new SimpleIntegerProperty();
+    private final List<IntegerProperty> numberOfTicketsOnHand;
+    private final List<IntegerProperty> numberOfCardsOnHand;
+    private final List<IntegerProperty> numberOfCarsOnHand;
+    private final List<IntegerProperty> numberOfBuildingPointsOnHand;
 
-    //Properties concerning the private state of the player who instanciates ObservableGameState
-    private final List<ObjectProperty<Ticket>> ticketsOnHand = new SimpleListProperty();
-    private final List<IntegerProperty> numberOfEachCards = new SimpleListProperty();
-    private final List<BooleanProperty> claimForEachRoute = new SimpleListProperty();
+    //Properties concerning the private state of the player who instantiates ObservableGameState
+    private final ListProperty<Ticket> ticketsOnHand;
+    private final List<IntegerProperty> numberOfEachCards;
+    private final List<BooleanProperty> claimForEachRoute;
 
     //TODO LE PROF DECRIT UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT,
     //TODO ALORS COMMENT FAIRE POUR FAIRE UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT MAIS QUI PREND EN ARGUMENTS UN ID
     public ObservableGameState(PlayerId id) {
+        percentTicketsRemainingInDeck = new SimpleIntegerProperty();
+        percentCardsRemainingInDeck = new SimpleIntegerProperty();
+        faceUpCards = createFaceUpCards();
+        routes = createRoute();
 
+        numberOfTicketsOnHand = createIntPropertyBothPlayers();
+        numberOfCardsOnHand = createIntPropertyBothPlayers();
+        numberOfCarsOnHand = createIntPropertyBothPlayers();
+        numberOfBuildingPointsOnHand = createIntPropertyBothPlayers();
+
+        ticketsOnHand = new SimpleListProperty<>();
+        numberOfEachCards = createNumberOfEachCard();
+        claimForEachRoute = createClaimForEachRoute();
     }
+
 
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
         // refresh the percentTicketsRemainingInDeck
-        percentTicketsRemainingInDeckProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
         percentTicketsRemainingInDeck.set((int) Math.floor((newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
 
         // refresh the percentCardsRemainingInDeck
-        percentCardsRemainingInDeckProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
         percentCardsRemainingInDeck.set((int) Math.floor((newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
 
-        // refresh the faceUpCards
-        faceUpCardsProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
+        // refresh the faceUpCard
         for (int slot : FACE_UP_CARD_SLOTS) {
             Card newCard = newGameState.cardState().faceUpCard(slot);
             faceUpCards.get(slot).set(newCard);
         }
 
         // refresh the routes
-        routesProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-        for (Route route : newGameState.claimedRoutes()) {
-            if (/*route appartient à player ? */) {
-                Route newRoute = route;
-                routes.get().set(newRoute);
-
-            } else {
-                Route newRoute = null;
-                routes.get().set(newRoute);
+        int i = 0;
+        for (ObjectProperty<PlayerId> routeObjectProperty : routes) {
+            Route currentRoute = ChMap.routes().get(i);
+            if (newGameState.claimedRoutes().contains(currentRoute)) {
+                routeObjectProperty.set(newPlayerState.routes().contains(currentRoute) ? playerId : playerId.next());
             }
         }
 
-
         // refresh the numberOfTicketsOnHand
-        numberOfTicketsOnHandProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-        numberOfTicketsOnHand.set(newPlayerState.ticketCount());
+        numberOfTicketsOnHand.get(0).set(newPlayerState.ticketCount());
+        numberOfTicketsOnHand.get(1).set(newGameState.playerState(playerId.next()).ticketCount());
 
         // refresh the numberOfCardsOnHand
-        numberOfCardsOnHandProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-        numberOfCardsOnHand.set(newPlayerState.cards().size());
+
+        numberOfCardsOnHand.get(0).set(newPlayerState.cardCount());
+        numberOfCardsOnHand.get(1).set(newGameState.playerState(playerId.next()).cardCount());
 
         // refresh the numberOfCarsOnHand
-        numberOfCarsOnHandProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-        numberOfCarsOnHand.set(newPlayerState.carCount());
+
+        numberOfCarsOnHand.get(0).set(newPlayerState.carCount());
+        numberOfCarsOnHand.get(1).set(newGameState.playerState(playerId.next()).carCount());
 
         // refresh the numberOfBuildingPointsOnHand
-        numberOfBuildingPointsOnHandProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-        numberOfBuildingPointsOnHand.set(newPlayerState.claimPoints());
 
+        numberOfBuildingPointsOnHand.get(0).set(newPlayerState.claimPoints());
+        numberOfBuildingPointsOnHand.get(1).set(newGameState.playerState(playerId.next()).claimPoints());
 
         // refresh the ticketsOnHand
-        ticketsOnHandProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-        for (Ticket ticket : newPlayerState.tickets()) {
-            Ticket newTicket = ticket;
-            ticketsOnHand.get().set(newTicket);
-        }
+        ticketsOnHand.set(newPlayerState.tickets().toList()); //TODO JSP FAIRE
+
 
         // refresh the numberOfEachCards
-        numberOfEachCardsProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
+
         // TODO VERIFIER SI ON A LE DROIT DE CREER DES NOUVELLES CONSTANTES
-        for (int slot : TYPE_CARD_SLOTS) {
-            // TODO VERIFIER SI LE STREAM MARCHE
-            int newNumber = Collections.frequency(newPlayerState.cards().toList(), Card.CARS.get(slot));
-            numberOfEachCards.get(slot).addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-            numberOfEachCards.get(slot).set(newNumber);
+        for (Card card : Card.ALL) {
+            int newNumber = newPlayerState.cards().countOf(card);
+            numberOfEachCards.get(card.ordinal()).set(newNumber);
         }
 
 
         // refresh the claimForEachRoute
-        claimForEachRouteProperty().addListener((observableValue, oldValue, newValue) -> System.out.println(newValue));
-        for (int slot : )
+        for (BooleanProperty booleanProperty : claimForEachRoute) {
+            if (newGameState.currentPlayerId().equals(playerId)) {
+                ListIterator<Route> listIterator = ChMap.routes().listIterator();
+
+                if (listIterator.hasNext()) {
+                    Route actualRoute = listIterator.next();
+                    if (!newGameState.claimedRoutes().contains(actualRoute)) {
+                        List<List<Station>> listClaimedRouteStation = new LinkedList<>();
+                        for (Route route : newGameState.claimedRoutes()) {
+                            listClaimedRouteStation.add(route.stations());
+
+                        }
+                        if (!listClaimedRouteStation.contains(actualRoute.stations())) {
+                            if (newPlayerState.canClaimRoute(actualRoute)) {
+                                booleanProperty.setValue(true);
+                            }
+                        } else booleanProperty.setValue(false);
+
+                    } else booleanProperty.setValue(false);
+                } else booleanProperty.setValue(false);
+            } else booleanProperty.setValue(false);
+        }
+
     }
 
     //==============================================================//
@@ -130,115 +153,146 @@ public final class ObservableGameState {
     }
 
 
-    public final List<ObjectProperty<Card>> faceUpCardsProperty() {
-        return Collections.unmodifiableList(faceUpCards);
-    }
-
-    public final ReadOnlyObjectProperty<Card> getFaceUpCard(int slot) {
+    public final ReadOnlyObjectProperty<Card> faceUpCardsProperty(int slot) {
         return faceUpCards.get(slot);
     }
 
-    // TODO C'est quoi cette méthode
-    private static List<SimpleObjectProperty<Card>> createFaceUpCards() {
-        List<SimpleObjectProperty<Card>> list = new ArrayList<>();
+    public final Card getFaceUpCard(int slot) {
+        return faceUpCards.get(slot).get();
+    }
 
-        return null;
+    private final static List<ObjectProperty<Card>> createFaceUpCards() {
+        List<ObjectProperty<Card>> list = new LinkedList<>(); //TODO voir si pas array
+        for (int i = 0; i < 5; i++) {
+            list.add(new SimpleObjectProperty<Card>());
+        }
+        return list;
     }
 
 
-    public final List<ObjectProperty<Route>> routesProperty() {
-        return Collections.unmodifiableList(routes);
-    }
-
-    public final ReadOnlyObjectProperty<Route> getRoutes(int slot) {
+    public final ReadOnlyObjectProperty<PlayerId> routesProperty(int slot) {
         return routes.get(slot);
     }
 
-
-    //==============================================================//
-
-
-    public final ReadOnlyIntegerProperty numberOfTicketsOnHandProperty() {
-        return numberOfTicketsOnHand;
+    public final PlayerId getRoutes(int slot) {
+        return routes.get(slot).get();
     }
 
-    public final int getNumberOfTicketsOnHand() {
-        return numberOfTicketsOnHand.get();
-    }
-
-
-    public final ReadOnlyIntegerProperty numberOfCardsOnHandProperty() {
-        return numberOfCardsOnHand;
-    }
-
-    public final int getNumberOfCardsOnHand() {
-        return numberOfCardsOnHand.get();
-    }
-
-
-    public final ReadOnlyIntegerProperty numberOfCarsOnHandProperty() {
-        return numberOfCarsOnHand;
-    }
-
-    public final int getNumberOfCarsOnHand() {
-        return numberOfCarsOnHand.get();
-    }
-
-
-    public final ReadOnlyIntegerProperty numberOfBuildingPointsOnHandProperty() {
-        return numberOfBuildingPointsOnHand;
-    }
-
-    public final int getNumberOfBuildingPointsOnHand() {
-        return numberOfBuildingPointsOnHand.get();
+    private final static List<ObjectProperty<PlayerId>> createRoute() {
+        List<ObjectProperty<PlayerId>> objectPropertyList = new LinkedList<>();
+        for (Route route : ChMap.routes()) {
+            objectPropertyList.add(new SimpleObjectProperty<PlayerId>());
+        }
+        return objectPropertyList;
     }
 
 
     //==============================================================//
 
 
-    public final List<ObjectProperty<Ticket>> ticketsOnHandProperty() {
-        return Collections.unmodifiableList(ticketsOnHand);
+    public final ReadOnlyIntegerProperty numberOfTicketsOnHandProperty(int slot) {
+        return numberOfTicketsOnHand.get(slot);
     }
 
-    public final ReadOnlyObjectProperty<Ticket> getTicketOnHand(int slot) {
+    public final int getNumberOfTicketsOnHand(int slot) {
+        return numberOfTicketsOnHandProperty(slot).get();
+    }
+
+
+    public final ReadOnlyIntegerProperty numberOfCardsOnHandProperty(int slot) {
+        return numberOfCardsOnHand.get(slot);
+    }
+
+    public final int getNumberOfCardsOnHand(int slot) {
+        return numberOfCardsOnHand.get(slot).get();
+    }
+
+
+    public final ReadOnlyIntegerProperty numberOfCarsOnHandProperty(int slot) {
+        return numberOfCarsOnHand.get(slot);
+    }
+
+    public final int getNumberOfCarsOnHand(int slot) {
+        return numberOfCarsOnHand.get(slot).get();
+    }
+
+
+    public final ReadOnlyIntegerProperty numberOfBuildingPointsOnHandProperty(int slot) {
+        return numberOfBuildingPointsOnHand.get(slot);
+    }
+
+    public final int getNumberOfBuildingPointsOnHand(int slot) {
+        return numberOfBuildingPointsOnHand.get(slot).get();
+    }
+
+
+    private final static List<IntegerProperty> createIntPropertyBothPlayers() {
+        List<IntegerProperty> list = new LinkedList<>();
+        for (int i = 0; i < 2; i++) list.add(new SimpleIntegerProperty());
+        return Collections.unmodifiableList(list);
+    }
+
+
+    //==============================================================//
+
+
+    public final ReadOnlyListProperty<Ticket> ticketsOnHandProperty() {
+        return ticketsOnHand;
+    }
+
+    public final Ticket getTicketOnHand(int slot) {
         return ticketsOnHand.get(slot);
     }
 
-    
-    public final List<IntegerProperty> numberOfEachCardsProperty() {
-        return numberOfEachCards;
-    }
 
-    public final ReadOnlyIntegerProperty getNumberOfEachCards(int slot) {
+    public final ReadOnlyIntegerProperty numberOfEachCardsProperty(int slot) {
         return numberOfEachCards.get(slot);
     }
 
-
-    public final List<BooleanProperty> claimForEachRouteProperty() {
-        return claimForEachRoute;
+    public final int getNumberOfEachCards(int slot) {
+        return numberOfEachCards.get(slot).get();
     }
 
-    public final ReadOnlyBooleanProperty getClaimForEachRoute(int slot) {
+    private final static List<IntegerProperty> createNumberOfEachCard() {
+        List<IntegerProperty> list = new LinkedList<>();
+        for (int i = 0; i < 9; i++) {
+            list.add(new SimpleIntegerProperty());
+        }
+        return Collections.unmodifiableList(list);
+    }
+
+
+    public final ReadOnlyBooleanProperty claimForEachRouteProperty(int slot) {
         return claimForEachRoute.get(slot);
+    }
+
+    public final boolean getClaimForEachRoute(int slot) {
+        return claimForEachRoute.get(slot).get();
+    }
+
+    private final static List<BooleanProperty> createClaimForEachRoute() {
+        List<BooleanProperty> list = new LinkedList<>();
+        for (Route route : ChMap.routes()) {
+            list.add(new SimpleBooleanProperty());
+        }
+        return list;
     }
 
 
     //==============================================================//
 
 
-    // TODO Comment on code ces trois classes
-    private boolean canDrawTickets() {
-        return PublicGameState.canDrawTickets();
+    //TODO Coder les dernières méthodes
+
+    private final void canDrawTickets(PublicGameState publicGameState) {
+        publicGameState.canDrawTickets();
     }
 
-    private boolean canDrawCards() {
-        return PublicGameState.canDrawCards();
+    private final void canDrawCards(PublicGameState publicGameState) {
+        publicGameState.canDrawCards();
     }
 
-    private static List<SortedBag<Card>> possibleClaimCards(Route route) {
-        return PlayerState.possibleClaimCards(route);
+    private final void possibleClaimCards(PlayerState playerState, Route route) {
+        playerState.possibleClaimCards(route);
     }
 }
-
-// https://openjfx.io/openjfx-docs/#install-javafx

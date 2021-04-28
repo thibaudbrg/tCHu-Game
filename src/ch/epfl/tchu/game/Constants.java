@@ -109,8 +109,4 @@ public final class Constants {
 
     public static final int TICKETS_COUNT = 46;
 
-    /**
-     * Liste de tous les numéros d'emplacements de type de cartes.
-     */
-    public static final List<Integer> TYPE_CARD_SLOTS = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8);
 }
