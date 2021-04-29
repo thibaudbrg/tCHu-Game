@@ -2,63 +2,59 @@ package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.Card;
-import ch.epfl.tchu.game.*;
+import ch.epfl.tchu.game.ChMap;
+import ch.epfl.tchu.game.Route;
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.util.List;
-import java.util.StringJoiner;
-
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
+import java.util.List;
+
 class MapViewCreator {
-    private ObservableGameState observableGameState;
-    private ObjectProperty<ClaimRouteHandler> objectProperty;
-    private CardChooser cardChooser;
-
-    public createMapView(ObservableGameState observableGameState, ObjectProperty<ClaimRouteHandler> objectProperty, CardChooser cardChooser) {
-        this.observableGameState = observableGameState;
-        this.objectProperty = objectProperty;
-        this.cardChooser = cardChooser;
-
-    }
-
 
     @FunctionalInterface
     interface CardChooser {
         void chooseCards(List<SortedBag<Card>> options,
-                         ChooseCardsHandler handler);
+                         ActionHandler.ChooseCardsHandler handler);
     }
 
-    private Pane sceneGraphConstructor() {
+
+    // private ObservableGameState observableGameState;
+    //  private ObjectProperty<ClaimRouteHandler> objectProperty;
+    //private CardChooser cardChooser;
+
+    public static Node createMapView(ObservableGameState observableGameState/*, ObjectProperty<ActionHandler.ClaimRouteHandler> objectProperty, CardChooser cardChooser*/) {
+        //  this.observableGameState = observableGameState;
+        // this.objectProperty = objectProperty;
+        //  this.cardChooser = cardChooser;
         Pane Carte = new Pane();
-        Carte.getStylesheets().add(new String("map.css"));
-        Carte.getStylesheets().add(new String("color.css"));
-        ImageView fond = new ImageView("map.png");
-        Carte.getChildren().add((fond));
+        Carte.getStylesheets().add("map.css");
+        Carte.getStylesheets().add("colors.css");
+
+        ImageView font = new ImageView("map.png");
+        Carte.getChildren().add((font));
+
         for (Route r : ChMap.routes()) {
             Group Route = new Group();
 
             Route.setId(r.id());
 
-            List<String> styleClass = List.of("route", "UNDERGROUND", "NEUTRAL");
+            List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? "NEUTRAL" : r.color().name());
             Route.getStyleClass().addAll(styleClass);
 
-            for (int i = 0; i < r.length(); i++) {
+            for (int i = 1; i <= r.length(); i++) {
                 Group Case = new Group();
                 Case.setId(r.id() + "_" + i);
 
-                Rectangle Voie = new Rectangle();
+                Rectangle voie = new Rectangle();
                 List<String> styleClassR = List.of("track", "filled");
-                Voie.getStyleClass().addAll(styleClassR);
-                Voie.setHeight(12);
-                Voie.setWidth(36);
+                voie.getStyleClass().addAll(styleClassR);
+                voie.setHeight(12);
+                voie.setWidth(36);
 
                 Group Wagon = new Group();
                 Wagon.getStyleClass().add("car");
@@ -80,7 +76,7 @@ class MapViewCreator {
                 List<Node> nodeListOfWagon = List.of(rectangle1, circle1, circle2);
                 Wagon.getChildren().addAll(nodeListOfWagon);
 
-                List<Node> nodeListOfCase = List.of(Voie, Wagon);
+                List<Node> nodeListOfCase = List.of(voie, Wagon);
                 Case.getChildren().addAll(nodeListOfCase);
                 Route.getChildren().add(Case);
 
@@ -90,6 +86,15 @@ class MapViewCreator {
 
         }
 
-
+        return Carte;
     }
+
+
+  /*  @FunctionalInterface
+    interface CardChooser {
+        void chooseCards(List<SortedBag<Card>> options,
+                         ChooseCardsHandler handler);
+    }*/
+
+
 }

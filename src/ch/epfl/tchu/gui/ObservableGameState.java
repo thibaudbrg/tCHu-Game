@@ -36,6 +36,7 @@ public final class ObservableGameState {
     //TODO LE PROF DECRIT UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT,
     //TODO ALORS COMMENT FAIRE POUR FAIRE UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT MAIS QUI PREND EN ARGUMENTS UN ID
     public ObservableGameState(PlayerId id) {
+        this.playerId = id;
         percentTicketsRemainingInDeck = new SimpleIntegerProperty();
         percentCardsRemainingInDeck = new SimpleIntegerProperty();
         faceUpCards = createFaceUpCards();
@@ -54,10 +55,12 @@ public final class ObservableGameState {
 
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
         // refresh the percentTicketsRemainingInDeck
-        percentTicketsRemainingInDeck.set((int) Math.floor((newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
+        System.out.println(Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
+        percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
 
         // refresh the percentCardsRemainingInDeck
-        percentCardsRemainingInDeck.set((int) Math.floor((newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
+        System.out.println(Math.floor(((double) newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
+        percentCardsRemainingInDeck.set((int) Math.floor(((double) newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
 
         // refresh the faceUpCard
         for (int slot : FACE_UP_CARD_SLOTS) {
@@ -72,6 +75,7 @@ public final class ObservableGameState {
             if (newGameState.claimedRoutes().contains(currentRoute)) {
                 routeObjectProperty.set(newPlayerState.routes().contains(currentRoute) ? playerId : playerId.next());
             }
+            i++;
         }
 
         // refresh the numberOfTicketsOnHand
@@ -94,7 +98,7 @@ public final class ObservableGameState {
         numberOfBuildingPointsOnHand.get(1).set(newGameState.playerState(playerId.next()).claimPoints());
 
         // refresh the ticketsOnHand
-        ticketsOnHand.set(newPlayerState.tickets().toList()); //TODO JSP FAIRE
+        //ticketsOnHand.set(newPlayerState.tickets().toList()); //TODO JSP FAIRE
 
 
         // refresh the numberOfEachCards
