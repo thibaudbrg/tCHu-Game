@@ -48,7 +48,7 @@ public final class ObservableGameState {
         numberOfCarsOnHand = createMapIntPropertyBothPlayers();
         numberOfBuildingPointsOnHand = createMapIntPropertyBothPlayers();
 
-        ticketsOnHand = FXCollections.emptyObservableList();
+        ticketsOnHand = FXCollections.observableArrayList();
         numberOfEachCards = createNumberOfEachCard();
         claimForEachRoute = createClaimForEachRoute();
     }
@@ -76,7 +76,6 @@ public final class ObservableGameState {
         });
 
         // refresh the numberOfTicketsOnHand
-
         numberOfTicketsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.ticketCount());
         numberOfTicketsOnHand.get(newGameState.currentPlayerId().next()).set(newGameState.playerState(playerId.next()).ticketCount());
 
@@ -93,10 +92,9 @@ public final class ObservableGameState {
         numberOfBuildingPointsOnHand.get(newGameState.currentPlayerId()).set(newGameState.playerState(playerId.next()).claimPoints());
 
         // refresh the ticketsOnHand
-      /*  System.out.println(newPlayerState.tickets().size());
-        if (!newPlayerState.tickets().isEmpty()) {
-            ticketsOnHand.setAll(newPlayerState.tickets().toList());
-        }*/
+       System.out.println(newPlayerState.tickets().size());
+       ticketsOnHand.setAll(newPlayerState.tickets().toList());
+
 
 
         // refresh the numberOfEachCards

@@ -51,17 +51,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java">
-      <ranges>
-        <range start1="78" end1="80" start2="78" end2="81" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="82" end1="84" start2="83" end2="85" changelist="e051be56-e229-4578-985e-2db9506678af" />
-        <range start1="86" end1="88" start2="87" end2="89" changelist="e051be56-e229-4578-985e-2db9506678af" />
-        <range start1="90" end1="92" start2="91" end2="93" changelist="e051be56-e229-4578-985e-2db9506678af" />
-        <range start1="101" end1="107" start2="102" end2="106" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -111,7 +100,7 @@
       <recent name="ch.epfl.tchu.game" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DisplayTest">
+  <component name="RunManager" selected="Application.Stage9Test">
     <configuration name="DisplayTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.DisplayTest" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
@@ -126,12 +115,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.net.TestClient" />
+    <configuration name="Stage9Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.Stage9Test" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.net.*" />
+          <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -193,19 +183,18 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.TestClient" />
       <item itemvalue="Application.TestServer" />
-      <item itemvalue="Application.DisplayTest" />
+      <item itemvalue="Application.Stage9Test" />
       <item itemvalue="JUnit.SerdesTest" />
       <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DisplayTest" />
+        <item itemvalue="Application.Stage9Test" />
+        <item itemvalue="Application.Stage9Test" />
         <item itemvalue="JUnit.SerdesTest" />
         <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
         <item itemvalue="Application.TestServer" />
-        <item itemvalue="Application.TestClient" />
       </list>
     </recent_temporary>
   </component>
@@ -331,13 +320,13 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/gui/DisplayTest.java</url>
+          <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/gui/Stage9Test.java</url>
           <line>19</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java</url>
-          <line>97</line>
+          <line>95</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">

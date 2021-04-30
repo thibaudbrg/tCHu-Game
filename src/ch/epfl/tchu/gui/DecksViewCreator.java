@@ -1,6 +1,7 @@
 package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.game.*;
+import javafx.beans.property.ObjectProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
@@ -51,7 +52,7 @@ class DecksViewCreator {
         return HandView;
     }
 
-    public static Node createCardsView(ObservableGameState gameState) {// TODO PREND PLUS D'ARG
+    public static Node createCardsView(ObservableGameState gameState, ObjectProperty<ActionHandler.DrawTicketsHandler> drawTicketsHandler,ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandler) {// TODO PREND PLUS D'ARG
 
 
         VBox cardVue = new VBox();

@@ -23,14 +23,9 @@ class MapViewCreator {
     }
 
 
-    // private ObservableGameState observableGameState;
-    //  private ObjectProperty<ClaimRouteHandler> objectProperty;
-    //private CardChooser cardChooser;
 
-    public static Node createMapView(ObservableGameState observableGameState/*, ObjectProperty<ActionHandler.ClaimRouteHandler> objectProperty, CardChooser cardChooser*/) {
-        //  this.observableGameState = observableGameState;
-        // this.objectProperty = objectProperty;
-        //  this.cardChooser = cardChooser;
+    public static Node createMapView(ObservableGameState gameState, ObjectProperty<ActionHandler.ClaimRouteHandler> claimRouteHP, CardChooser cardChooser) {
+
         Pane Carte = new Pane();
         Carte.getStylesheets().add("map.css");
         Carte.getStylesheets().add("colors.css");
@@ -39,12 +34,20 @@ class MapViewCreator {
         Carte.getChildren().add((font));
 
         for (Route r : ChMap.routes()) {
-            Group Route = new Group();
+            Group groupRoute = new Group();
+            gameState.routesProperty(r).addListener((observable, oldValue, newValue) -> {
+                if (oldValue == null) {
+                       groupRoute.getStyleClass().add(newValue.name()); }
+            });
+            groupRoute.disableProperty().bind(
+                    claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
 
-            Route.setId(r.id());
+
+            groupRoute.setId(r.id());
 
             List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? "NEUTRAL" : r.color().name());
-            Route.getStyleClass().addAll(styleClass);
+            groupRoute.getStyleClass().addAll(styleClass);
+
 
             for (int i = 1; i <= r.length(); i++) {
                 Group Case = new Group();
@@ -73,28 +76,22 @@ class MapViewCreator {
                 circle1.setRadius(3);
 
 
+
                 List<Node> nodeListOfWagon = List.of(rectangle1, circle1, circle2);
                 Wagon.getChildren().addAll(nodeListOfWagon);
 
                 List<Node> nodeListOfCase = List.of(voie, Wagon);
                 Case.getChildren().addAll(nodeListOfCase);
-                Route.getChildren().add(Case);
+                groupRoute.getChildren().add(Case);
 
             }
-            Carte.getChildren().add(Route);
+            Carte.getChildren().add(groupRoute);
 
 
         }
 
         return Carte;
     }
-
-
-  /*  @FunctionalInterface
-    interface CardChooser {
-        void chooseCards(List<SortedBag<Card>> options,
-                         ChooseCardsHandler handler);
-    }*/
 
 
 }
