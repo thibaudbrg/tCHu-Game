@@ -23,7 +23,6 @@ class MapViewCreator {
     }
 
 
-
     public static Node createMapView(ObservableGameState gameState, ObjectProperty<ActionHandler.ClaimRouteHandler> claimRouteHP, CardChooser cardChooser) {
 
         Pane Carte = new Pane();
@@ -37,7 +36,8 @@ class MapViewCreator {
             Group groupRoute = new Group();
             gameState.routesProperty(r).addListener((observable, oldValue, newValue) -> {
                 if (oldValue == null) {
-                       groupRoute.getStyleClass().add(newValue.name()); }
+                    groupRoute.getStyleClass().add(newValue.name());
+                }
             });
             groupRoute.disableProperty().bind(
                     claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
@@ -47,6 +47,18 @@ class MapViewCreator {
 
             List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? "NEUTRAL" : r.color().name());
             groupRoute.getStyleClass().addAll(styleClass);
+
+            groupRoute.setOnMouseClicked((s) -> {
+                List<SortedBag<Card>> possibleClaimCards = gameState.possibleClaimCards(r);
+                ActionHandler.ClaimRouteHandler claimRouteH = claimRouteHP.get();
+                if (possibleClaimCards.size() > 1) {
+                    ActionHandler.ChooseCardsHandler chooseCardsH = chosenCards -> claimRouteH.onClaimRoute(r, chosenCards);
+                    cardChooser.chooseCards(possibleClaimCards, chooseCardsH);
+                } else {
+                    claimRouteH.onClaimRoute(r, possibleClaimCards.get(0));
+
+                }
+            });
 
 
             for (int i = 1; i <= r.length(); i++) {
@@ -71,10 +83,9 @@ class MapViewCreator {
                 circle1.setRadius(3);
 
                 Circle circle2 = new Circle();
-                circle1.setCenterX(24);
-                circle1.setCenterY(6);
-                circle1.setRadius(3);
-
+                circle2.setCenterX(24);
+                circle2.setCenterY(6);
+                circle2.setRadius(3);
 
 
                 List<Node> nodeListOfWagon = List.of(rectangle1, circle1, circle2);

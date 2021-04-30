@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="" />
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
-    <list id="e051be56-e229-4578-985e-2db9506678af" name="Changes by Thibaud" comment="" />
+    <list id="033944a0-e0b4-441c-a1b2-71c946180614" name="Changes by Thibaud" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +50,11 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib/src.zip!/javafx.graphics/javafx/scene/Node.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/adopt-openjdk-14.0.2/Contents/Home/lib/src.zip!/java.base/java/util/List.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib/src.zip!/javafx.base/javafx/beans/property/Property.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -323,11 +328,6 @@
           <url>file://$PROJECT_DIR$/test/ch/epfl/tchu/gui/Stage9Test.java</url>
           <line>19</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.io.UncheckedIOException" package="java.io" />

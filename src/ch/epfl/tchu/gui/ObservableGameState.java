@@ -1,7 +1,10 @@
 package ch.epfl.tchu.gui;
 
+import ch.epfl.tchu.Preconditions;
+import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
 import com.sun.javafx.collections.ImmutableObservableList;
+import com.sun.javafx.text.PrismTextLayoutFactory;
 import javafx.beans.Observable;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -16,7 +19,8 @@ import static javafx.collections.FXCollections.*;
 public final class ObservableGameState {
 
     private PlayerId playerId;
-
+private PublicGameState gameState;
+private PlayerState playerState;
     // Properties concerning the public state of the game
     private final IntegerProperty percentTicketsRemainingInDeck;
     private final IntegerProperty percentCardsRemainingInDeck;
@@ -34,7 +38,6 @@ public final class ObservableGameState {
     private final Map<Card, IntegerProperty> numberOfEachCards;
     private final Map<Route, BooleanProperty> claimForEachRoute;
 
-    //TODO LE PROF DECRIT UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT,
     //TODO ALORS COMMENT FAIRE POUR FAIRE UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT MAIS QUI PREND EN ARGUMENTS UN ID
     public ObservableGameState(PlayerId id) {
         this.playerId = id;
@@ -55,6 +58,8 @@ public final class ObservableGameState {
 
 
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
+        gameState=newGameState;
+        playerState=newPlayerState;
         // refresh the percentTicketsRemainingInDeck
         percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
 
@@ -200,6 +205,7 @@ public final class ObservableGameState {
     }
 
 
+
     public final ReadOnlyIntegerProperty numberOfCarsOnHandProperty(PlayerId playerId) {
         return numberOfCarsOnHand.get(playerId);
     }
@@ -207,6 +213,7 @@ public final class ObservableGameState {
     public final int getNumberOfCarsOnHand(PlayerId playerId) {
         return numberOfCarsOnHand.get(playerId).get();
     }
+
 
 
     public final ReadOnlyIntegerProperty numberOfBuildingPointsOnHandProperty(PlayerId playerId) {
@@ -277,16 +284,19 @@ public final class ObservableGameState {
 
     //TODO Coder les dernières méthodes
 
-    private final void canDrawTickets(PublicGameState publicGameState) {
-        publicGameState.canDrawTickets();
+    public final Boolean canDrawTickets() {
+        Preconditions.checkArgument(gameState!=null);
+       return gameState.canDrawTickets();
     }
 
-    private final void canDrawCards(PublicGameState publicGameState) {
-        publicGameState.canDrawCards();
+    public final Boolean canDrawCards() {
+        Preconditions.checkArgument(gameState!=null);
+       return gameState.canDrawCards();
     }
 
-    private final void possibleClaimCards(PlayerState playerState, Route route) {
-        playerState.possibleClaimCards(route);
+    public final List<SortedBag<Card>> possibleClaimCards(Route route) {
+        Preconditions.checkArgument(playerState!=null);
+        return playerState.possibleClaimCards(route);
 
     }
 

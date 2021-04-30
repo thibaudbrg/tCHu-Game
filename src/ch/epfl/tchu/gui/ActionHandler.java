@@ -4,12 +4,14 @@ import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.Card;
 import ch.epfl.tchu.game.Route;
 import ch.epfl.tchu.game.Ticket;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 
-public interface ActionHandler {
+public interface ActionHandler extends EventHandler {
 
 
     @FunctionalInterface
-    interface DrawTicketsHandler{
+    interface DrawTicketsHandler {
         void onDrawTickets();
     }
 

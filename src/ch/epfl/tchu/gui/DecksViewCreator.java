@@ -1,6 +1,7 @@
 package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.game.*;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -29,21 +30,24 @@ class DecksViewCreator {
 
         HBox handCard = new HBox();
         handCard.setId("hand-pane");
-        for (Card c : Card.values()) {
+        for (Card c : Card.ALL) {
             StackPane cardAndCount = new StackPane();
+            cardAndCount.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 0));
             if (c.equals(Card.LOCOMOTIVE)) {
                 cardAndCount.getStyleClass().add("NEUTRAL");
             } else {
                 cardAndCount.getStyleClass().add(c.name());
             }
             cardAndCount.getStyleClass().add("card");
-
             Text counter = new Text();
+            counter.textProperty().bind(Bindings.convert(gameState.numberOfEachCardsProperty(c)));
             counter.getStyleClass().add("count");
+            counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 1));
 
             List<Node> cardAndCountNodeList = initialiseCard();
-            cardAndCount.getChildren().add(counter);
+
             cardAndCount.getChildren().addAll(cardAndCountNodeList);
+            cardAndCount.getChildren().add(counter);
             handCard.getChildren().add(cardAndCount);
         }
         HandView.getChildren().add(billets);
@@ -52,7 +56,9 @@ class DecksViewCreator {
         return HandView;
     }
 
-    public static Node createCardsView(ObservableGameState gameState, ObjectProperty<ActionHandler.DrawTicketsHandler> drawTicketsHandler,ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandler) {// TODO PREND PLUS D'ARG
+    public static Node createCardsView(ObservableGameState gameState,
+                                       ObjectProperty<ActionHandler.DrawTicketsHandler> drawTicketsHandler,
+                                       ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandler) {// TODO PREND PLUS D'ARG
 
 
         VBox cardVue = new VBox();
@@ -67,7 +73,8 @@ class DecksViewCreator {
         Rectangle foregroundRect1 = new Rectangle();
         foregroundRect1.getStyleClass().add("foreground");
         foregroundRect1.setHeight(5);
-        foregroundRect1.setWidth(gameState.getPercentTicketsRemainingInDeck() / 2);
+        foregroundRect1.widthProperty().bind(
+                gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100));
 
         Rectangle backgroundRect1 = new Rectangle();
         backgroundRect1.getStyleClass().add("background");
@@ -85,7 +92,8 @@ class DecksViewCreator {
         Rectangle foregroundRect2 = new Rectangle();
         foregroundRect2.getStyleClass().add("foreground");
         foregroundRect2.setHeight(5);
-        foregroundRect2.setWidth(gameState.getPercentCardsRemainingInDeck() / 2);
+        foregroundRect2.widthProperty().bind(
+                gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
 
         Rectangle backgroundRect2 = new Rectangle();
         backgroundRect2.getStyleClass().add("background");
@@ -99,24 +107,37 @@ class DecksViewCreator {
         cardDeckButton.setGraphic(button2Jauge);
 
         cardVue.getChildren().add(ticketDeckButton);
-        for (int i : Constants.FACE_UP_CARD_SLOTS) {
-            Card c = gameState.getFaceUpCard(i);
 
+        ticketDeckButton.disableProperty().bind(drawTicketsHandler.isNull());
+        cardDeckButton.disableProperty().bind(drawCardHandler.isNull());
+        for (int i : Constants.FACE_UP_CARD_SLOTS) {
             StackPane card = new StackPane();
-            if(c!=null){
-            if (c.equals(Card.LOCOMOTIVE)) {
-                card.getStyleClass().add("NEUTRAL");
-            } else {
-                card.getStyleClass().add(c.name());
-            }}
+            gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
+                card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE)?"NEUTRAL":newValue.name());
+                if (oldValue!=null){
+                card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE)?"NEUTRAL":oldValue.name());}
+
+
+            });
             card.getStyleClass().add("card");
             List<Node> cardNodeList = initialiseCard();
             card.getChildren().addAll(cardNodeList);
             cardVue.getChildren().add(card);
+
+            card.setOnMouseClicked(s->drawCardHandler.get().onDrawCard(i));
         }
         cardVue.getChildren().add(cardDeckButton);
+
+        ticketDeckButton.setOnMouseClicked(s -> {
+            drawTicketsHandler.get().onDrawTickets();
+        });
+        cardDeckButton.setOnMouseClicked(s ->{
+            drawCardHandler.get().onDrawCard(-1);
+                }
+        );
         return cardVue;
     }
+
 
     private static List<Node> initialiseCard() {
         List<Rectangle> list = new LinkedList<>();
