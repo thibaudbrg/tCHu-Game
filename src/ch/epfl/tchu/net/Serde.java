@@ -74,7 +74,7 @@ public interface Serde<E> {
             public String serialize(T t) {
                 if (t == null) return new String();
 
-                Preconditions.checkArgument(list.contains(t));
+               // Preconditions.checkArgument(list.contains(t));
                 return String.valueOf(list.indexOf(t));
             }
 
@@ -82,7 +82,7 @@ public interface Serde<E> {
             public T deserialize(String s) {
                 if (s.isEmpty()) return null;
 
-                Preconditions.checkArgument(Integer.parseInt(s) < list.size());
+              //  Preconditions.checkArgument(Integer.parseInt(s) < list.size());
                 return list.get(Integer.parseInt(s));
             }
         };

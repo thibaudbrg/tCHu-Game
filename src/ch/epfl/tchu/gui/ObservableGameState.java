@@ -1,8 +1,11 @@
 package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.game.*;
+import com.sun.javafx.collections.ImmutableObservableList;
+import javafx.beans.Observable;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ModifiableObservableListBase;
 import javafx.collections.ObservableList;
 
 import java.util.Collections;
@@ -11,6 +14,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import static ch.epfl.tchu.game.Constants.FACE_UP_CARD_SLOTS;
+import static javafx.collections.FXCollections.*;
 
 public final class ObservableGameState {
 
@@ -29,7 +33,7 @@ public final class ObservableGameState {
     private final List<IntegerProperty> numberOfBuildingPointsOnHand;
 
     //Properties concerning the private state of the player who instantiates ObservableGameState
-    private final ListProperty<Ticket> ticketsOnHand;
+    private final ObservableList<Ticket> ticketsOnHand;
     private final List<IntegerProperty> numberOfEachCards;
     private final List<BooleanProperty> claimForEachRoute;
 
@@ -47,7 +51,7 @@ public final class ObservableGameState {
         numberOfCarsOnHand = createIntPropertyBothPlayers();
         numberOfBuildingPointsOnHand = createIntPropertyBothPlayers();
 
-        ticketsOnHand = new SimpleListProperty<>();
+        ticketsOnHand = FXCollections.emptyObservableList();
         numberOfEachCards = createNumberOfEachCard();
         claimForEachRoute = createClaimForEachRoute();
     }
@@ -55,11 +59,9 @@ public final class ObservableGameState {
 
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
         // refresh the percentTicketsRemainingInDeck
-        System.out.println(Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
         percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
 
         // refresh the percentCardsRemainingInDeck
-        System.out.println(Math.floor(((double) newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
         percentCardsRemainingInDeck.set((int) Math.floor(((double) newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
 
         // refresh the faceUpCard
@@ -83,27 +85,25 @@ public final class ObservableGameState {
         numberOfTicketsOnHand.get(1).set(newGameState.playerState(playerId.next()).ticketCount());
 
         // refresh the numberOfCardsOnHand
-
         numberOfCardsOnHand.get(0).set(newPlayerState.cardCount());
         numberOfCardsOnHand.get(1).set(newGameState.playerState(playerId.next()).cardCount());
 
         // refresh the numberOfCarsOnHand
-
         numberOfCarsOnHand.get(0).set(newPlayerState.carCount());
         numberOfCarsOnHand.get(1).set(newGameState.playerState(playerId.next()).carCount());
 
         // refresh the numberOfBuildingPointsOnHand
-
         numberOfBuildingPointsOnHand.get(0).set(newPlayerState.claimPoints());
         numberOfBuildingPointsOnHand.get(1).set(newGameState.playerState(playerId.next()).claimPoints());
 
         // refresh the ticketsOnHand
-        //ticketsOnHand.set(newPlayerState.tickets().toList()); //TODO JSP FAIRE
+        System.out.println(newPlayerState.tickets().size());
+        if (!newPlayerState.tickets().isEmpty()){
+        ticketsOnHand.setAll(newPlayerState.tickets().toList());}
+
 
 
         // refresh the numberOfEachCards
-
-        // TODO VERIFIER SI ON A LE DROIT DE CREER DES NOUVELLES CONSTANTES
         for (Card card : Card.ALL) {
             int newNumber = newPlayerState.cards().countOf(card);
             numberOfEachCards.get(card.ordinal()).set(newNumber);
@@ -240,13 +240,14 @@ public final class ObservableGameState {
     //==============================================================//
 
 
-    public final ReadOnlyListProperty<Ticket> ticketsOnHandProperty() {
-        return ticketsOnHand;
+    public final ObservableList<Ticket> ticketsOnHandProperty() {
+        return unmodifiableObservableList(ticketsOnHand);
     }
 
     public final Ticket getTicketOnHand(int slot) {
         return ticketsOnHand.get(slot);
     }
+
 
 
     public final ReadOnlyIntegerProperty numberOfEachCardsProperty(int slot) {

@@ -59,7 +59,7 @@ class DecksViewCreator {
         cardVue.getStylesheets().add("decks.css");
         cardVue.getStylesheets().add("colors.css");
 
-        Button ticketDeckButton = new Button("Billets");
+        Button ticketDeckButton = new Button(StringsFr.TICKETS);
         ticketDeckButton.getStyleClass().add("gauged");
 
         Group button1Jauge = new Group();
@@ -77,8 +77,7 @@ class DecksViewCreator {
         button1Jauge.getChildren().add(foregroundRect1);
 
         ticketDeckButton.setGraphic(button1Jauge);
-
-        Button cardDeckButton = new Button("Cartes");
+        Button cardDeckButton = new Button(StringsFr.CARDS);
         cardDeckButton.getStyleClass().add("gauged");
 
         Group button2Jauge = new Group();

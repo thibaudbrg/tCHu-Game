@@ -31,7 +31,7 @@ public final class DisplayTest extends Application {
         var playerState = Map.of(
                 PLAYER_1, initialPlayerState,
                 PLAYER_2, initialPlayerState);
-        var ticketsCount = 30;
+        var ticketsCount = 36;
         var p1 = PLAYER_1;
         var p2 = PLAYER_2;
         PublicGameState publicGameState = new PublicGameState(ticketsCount, cardState, p1, playerState, p2);
