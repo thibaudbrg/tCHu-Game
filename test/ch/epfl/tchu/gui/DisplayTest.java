@@ -25,22 +25,8 @@ public final class DisplayTest extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        var faceUpCards = SortedBag.of(5, Card.LOCOMOTIVE).toList();
-        var cardState = new PublicCardState(faceUpCards, 54, 0);
-        var initialPlayerState = (PublicPlayerState) PlayerState.initial(SortedBag.of(4, Card.RED));
-        var playerState = Map.of(
-                PLAYER_1, initialPlayerState,
-                PLAYER_2, initialPlayerState);
-        var ticketsCount = 36;
-        var p1 = PLAYER_1;
-        var p2 = PLAYER_2;
-        PublicGameState publicGameState = new PublicGameState(ticketsCount, cardState, p1, playerState, p2);
-        var builder = new SortedBag.Builder<Card>();
-        builder.add(2, Card.BLUE);
-        builder.add(2, Card.GREEN);
-        PlayerState ownState = PlayerState.initial(builder.build());
         ObservableGameState gameState = new ObservableGameState(PLAYER_1);
-          gameState.setState(publicGameState, ownState);
+         // gameState.setState(publicGameState, ownState);
        /* ObjectProperty<ClaimRouteHandler> claimRoute =
                 new SimpleObjectProperty<>(Stage9Test::claimRoute);
         ObjectProperty<DrawTicketsHandler> drawTickets =

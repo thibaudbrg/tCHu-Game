@@ -8,10 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ModifiableObservableListBase;
 import javafx.collections.ObservableList;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 import static ch.epfl.tchu.game.Constants.FACE_UP_CARD_SLOTS;
 import static javafx.collections.FXCollections.*;
@@ -24,18 +21,18 @@ public final class ObservableGameState {
     private final IntegerProperty percentTicketsRemainingInDeck;
     private final IntegerProperty percentCardsRemainingInDeck;
     private final List<ObjectProperty<Card>> faceUpCards;
-    private final List<ObjectProperty<PlayerId>> routes;
+    private final Map<Route, ObjectProperty<PlayerId>> routes;
 
     // Properties concerning the public state for each player
-    private final List<IntegerProperty> numberOfTicketsOnHand;
-    private final List<IntegerProperty> numberOfCardsOnHand;
-    private final List<IntegerProperty> numberOfCarsOnHand;
-    private final List<IntegerProperty> numberOfBuildingPointsOnHand;
+    private final Map<PlayerId, IntegerProperty> numberOfTicketsOnHand;
+    private final Map<PlayerId, IntegerProperty> numberOfCardsOnHand;
+    private final Map<PlayerId, IntegerProperty> numberOfCarsOnHand;
+    private final Map<PlayerId, IntegerProperty> numberOfBuildingPointsOnHand;
 
     //Properties concerning the private state of the player who instantiates ObservableGameState
     private final ObservableList<Ticket> ticketsOnHand;
-    private final List<IntegerProperty> numberOfEachCards;
-    private final List<BooleanProperty> claimForEachRoute;
+    private final Map<Card, IntegerProperty> numberOfEachCards;
+    private final Map<Route, BooleanProperty> claimForEachRoute;
 
     //TODO LE PROF DECRIT UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT,
     //TODO ALORS COMMENT FAIRE POUR FAIRE UN CONSTRUCTEUR PAR DEFAUT PAR DEFAUT MAIS QUI PREND EN ARGUMENTS UN ID
@@ -46,10 +43,10 @@ public final class ObservableGameState {
         faceUpCards = createFaceUpCards();
         routes = createRoute();
 
-        numberOfTicketsOnHand = createIntPropertyBothPlayers();
-        numberOfCardsOnHand = createIntPropertyBothPlayers();
-        numberOfCarsOnHand = createIntPropertyBothPlayers();
-        numberOfBuildingPointsOnHand = createIntPropertyBothPlayers();
+        numberOfTicketsOnHand = createMapIntPropertyBothPlayers();
+        numberOfCardsOnHand = createMapIntPropertyBothPlayers();
+        numberOfCarsOnHand = createMapIntPropertyBothPlayers();
+        numberOfBuildingPointsOnHand = createMapIntPropertyBothPlayers();
 
         ticketsOnHand = FXCollections.emptyObservableList();
         numberOfEachCards = createNumberOfEachCard();
@@ -72,67 +69,60 @@ public final class ObservableGameState {
 
         // refresh the routes
         int i = 0;
-        for (ObjectProperty<PlayerId> routeObjectProperty : routes) {
-            Route currentRoute = ChMap.routes().get(i);
-            if (newGameState.claimedRoutes().contains(currentRoute)) {
-                routeObjectProperty.set(newPlayerState.routes().contains(currentRoute) ? playerId : playerId.next());
+        routes.forEach((r, id) -> {
+            if (newGameState.claimedRoutes().contains(r)) {
+                id.setValue(newPlayerState.routes().contains(r) ? newGameState.currentPlayerId() : newGameState.currentPlayerId().next()); //TODO PAS SUR DES PLAYERID
             }
-            i++;
-        }
+        });
 
         // refresh the numberOfTicketsOnHand
-        numberOfTicketsOnHand.get(0).set(newPlayerState.ticketCount());
-        numberOfTicketsOnHand.get(1).set(newGameState.playerState(playerId.next()).ticketCount());
+
+        numberOfTicketsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.ticketCount());
+        numberOfTicketsOnHand.get(newGameState.currentPlayerId().next()).set(newGameState.playerState(playerId.next()).ticketCount());
 
         // refresh the numberOfCardsOnHand
-        numberOfCardsOnHand.get(0).set(newPlayerState.cardCount());
-        numberOfCardsOnHand.get(1).set(newGameState.playerState(playerId.next()).cardCount());
+        numberOfCardsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.cardCount());
+        numberOfCardsOnHand.get(newGameState.currentPlayerId()).set(newGameState.playerState(playerId.next()).cardCount());
 
         // refresh the numberOfCarsOnHand
-        numberOfCarsOnHand.get(0).set(newPlayerState.carCount());
-        numberOfCarsOnHand.get(1).set(newGameState.playerState(playerId.next()).carCount());
+        numberOfCarsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.carCount());
+        numberOfCarsOnHand.get(newGameState.currentPlayerId()).set(newGameState.playerState(playerId.next()).carCount());
 
         // refresh the numberOfBuildingPointsOnHand
-        numberOfBuildingPointsOnHand.get(0).set(newPlayerState.claimPoints());
-        numberOfBuildingPointsOnHand.get(1).set(newGameState.playerState(playerId.next()).claimPoints());
+        numberOfBuildingPointsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.claimPoints());
+        numberOfBuildingPointsOnHand.get(newGameState.currentPlayerId()).set(newGameState.playerState(playerId.next()).claimPoints());
 
         // refresh the ticketsOnHand
-        System.out.println(newPlayerState.tickets().size());
-        if (!newPlayerState.tickets().isEmpty()){
-        ticketsOnHand.setAll(newPlayerState.tickets().toList());}
-
+      /*  System.out.println(newPlayerState.tickets().size());
+        if (!newPlayerState.tickets().isEmpty()) {
+            ticketsOnHand.setAll(newPlayerState.tickets().toList());
+        }*/
 
 
         // refresh the numberOfEachCards
-        for (Card card : Card.ALL) {
-            int newNumber = newPlayerState.cards().countOf(card);
-            numberOfEachCards.get(card.ordinal()).set(newNumber);
-        }
-
+        numberOfEachCards.forEach((card,integerProperty)->{
+            integerProperty.setValue(newPlayerState.cards().countOf(card));
+        });
 
         // refresh the claimForEachRoute
-        for (BooleanProperty booleanProperty : claimForEachRoute) {
+        claimForEachRoute.forEach((r, b) -> {
             if (newGameState.currentPlayerId().equals(playerId)) {
-                ListIterator<Route> listIterator = ChMap.routes().listIterator();
+                if (!newGameState.claimedRoutes().contains(r)) {
+                    List<List<Station>> listClaimedRouteStation = new LinkedList<>();
+                    for (Route route : newGameState.claimedRoutes()) {
+                        listClaimedRouteStation.add(route.stations());
 
-                if (listIterator.hasNext()) {
-                    Route actualRoute = listIterator.next();
-                    if (!newGameState.claimedRoutes().contains(actualRoute)) {
-                        List<List<Station>> listClaimedRouteStation = new LinkedList<>();
-                        for (Route route : newGameState.claimedRoutes()) {
-                            listClaimedRouteStation.add(route.stations());
-
+                    }
+                    if (!listClaimedRouteStation.contains(r.stations())) {
+                        if (newPlayerState.canClaimRoute(r)) {
+                            b.setValue(true);
                         }
-                        if (!listClaimedRouteStation.contains(actualRoute.stations())) {
-                            if (newPlayerState.canClaimRoute(actualRoute)) {
-                                booleanProperty.setValue(true);
-                            }
-                        } else booleanProperty.setValue(false);
+                    } else b.setValue(false);
 
-                    } else booleanProperty.setValue(false);
-                } else booleanProperty.setValue(false);
-            } else booleanProperty.setValue(false);
-        }
+                } else b.setValue(false);
+            } else b.setValue(false);
+        });
+
 
     }
 
@@ -166,74 +156,75 @@ public final class ObservableGameState {
     }
 
     private final static List<ObjectProperty<Card>> createFaceUpCards() {
-        List<ObjectProperty<Card>> list = new LinkedList<>(); //TODO voir si pas array
+        List<ObjectProperty<Card>> list = new LinkedList<>();
         for (int i = 0; i < 5; i++) {
-            list.add(new SimpleObjectProperty<Card>());
+            list.add(new SimpleObjectProperty<>());
         }
         return list;
     }
 
 
-    public final ReadOnlyObjectProperty<PlayerId> routesProperty(int slot) {
-        return routes.get(slot);
+    public final ReadOnlyObjectProperty<PlayerId> routesProperty(Route route) {
+        return routes.get(route);
     }
 
-    public final PlayerId getRoutes(int slot) {
-        return routes.get(slot).get();
+    public final PlayerId getRoutes(Route route) {
+        return routes.get(route).get();
     }
 
-    private final static List<ObjectProperty<PlayerId>> createRoute() {
-        List<ObjectProperty<PlayerId>> objectPropertyList = new LinkedList<>();
+    private final static Map<Route, ObjectProperty<PlayerId>> createRoute() {
+        Map<Route, ObjectProperty<PlayerId>> map = new HashMap<>();
         for (Route route : ChMap.routes()) {
-            objectPropertyList.add(new SimpleObjectProperty<PlayerId>());
+            map.put(route, new SimpleObjectProperty<>());
         }
-        return objectPropertyList;
+        return Collections.unmodifiableMap(map);
     }
 
 
     //==============================================================//
 
 
-    public final ReadOnlyIntegerProperty numberOfTicketsOnHandProperty(int slot) {
-        return numberOfTicketsOnHand.get(slot);
+    public final ReadOnlyIntegerProperty numberOfTicketsOnHandProperty(PlayerId playerId) {
+        return numberOfTicketsOnHand.get(playerId);
     }
 
-    public final int getNumberOfTicketsOnHand(int slot) {
-        return numberOfTicketsOnHandProperty(slot).get();
-    }
-
-
-    public final ReadOnlyIntegerProperty numberOfCardsOnHandProperty(int slot) {
-        return numberOfCardsOnHand.get(slot);
-    }
-
-    public final int getNumberOfCardsOnHand(int slot) {
-        return numberOfCardsOnHand.get(slot).get();
+    public final int getNumberOfTicketsOnHand(PlayerId playerId) {
+        return numberOfTicketsOnHandProperty(playerId).get();
     }
 
 
-    public final ReadOnlyIntegerProperty numberOfCarsOnHandProperty(int slot) {
-        return numberOfCarsOnHand.get(slot);
+    public final ReadOnlyIntegerProperty numberOfCardsOnHandProperty(PlayerId playerId) {
+        return numberOfCardsOnHand.get(playerId);
     }
 
-    public final int getNumberOfCarsOnHand(int slot) {
-        return numberOfCarsOnHand.get(slot).get();
-    }
-
-
-    public final ReadOnlyIntegerProperty numberOfBuildingPointsOnHandProperty(int slot) {
-        return numberOfBuildingPointsOnHand.get(slot);
-    }
-
-    public final int getNumberOfBuildingPointsOnHand(int slot) {
-        return numberOfBuildingPointsOnHand.get(slot).get();
+    public final int getNumberOfCardsOnHand(PlayerId playerId) {
+        return numberOfCardsOnHand.get(playerId).get();
     }
 
 
-    private final static List<IntegerProperty> createIntPropertyBothPlayers() {
-        List<IntegerProperty> list = new LinkedList<>();
-        for (int i = 0; i < 2; i++) list.add(new SimpleIntegerProperty());
-        return Collections.unmodifiableList(list);
+    public final ReadOnlyIntegerProperty numberOfCarsOnHandProperty(PlayerId playerId) {
+        return numberOfCarsOnHand.get(playerId);
+    }
+
+    public final int getNumberOfCarsOnHand(PlayerId playerId) {
+        return numberOfCarsOnHand.get(playerId).get();
+    }
+
+
+    public final ReadOnlyIntegerProperty numberOfBuildingPointsOnHandProperty(PlayerId playerId) {
+        return numberOfBuildingPointsOnHand.get(playerId);
+    }
+
+    public final int getNumberOfBuildingPointsOnHand(PlayerId playerId) {
+        return numberOfBuildingPointsOnHand.get(playerId).get();
+    }
+
+
+    private final static Map<PlayerId, IntegerProperty> createMapIntPropertyBothPlayers() {
+        Map<PlayerId, IntegerProperty> map = new HashMap<>();
+        map.put(PlayerId.PLAYER_1, new SimpleIntegerProperty());
+        map.put(PlayerId.PLAYER_2, new SimpleIntegerProperty());
+        return Collections.unmodifiableMap(map);
     }
 
 
@@ -249,38 +240,37 @@ public final class ObservableGameState {
     }
 
 
-
-    public final ReadOnlyIntegerProperty numberOfEachCardsProperty(int slot) {
-        return numberOfEachCards.get(slot);
+    public final ReadOnlyIntegerProperty numberOfEachCardsProperty(Card card) {
+        return numberOfEachCards.get(card);
     }
 
-    public final int getNumberOfEachCards(int slot) {
-        return numberOfEachCards.get(slot).get();
+    public final int getNumberOfEachCards(Card card) {
+        return numberOfEachCards.get(card).get();
     }
 
-    private final static List<IntegerProperty> createNumberOfEachCard() {
-        List<IntegerProperty> list = new LinkedList<>();
-        for (int i = 0; i < 9; i++) {
-            list.add(new SimpleIntegerProperty());
+    private final static Map<Card, IntegerProperty> createNumberOfEachCard() {
+        Map<Card, IntegerProperty> map = new HashMap<>();
+        for (Card card : Card.ALL) {
+            map.put(card, new SimpleIntegerProperty());
         }
-        return Collections.unmodifiableList(list);
+        return Collections.unmodifiableMap(map);
     }
 
 
-    public final ReadOnlyBooleanProperty claimForEachRouteProperty(int slot) {
-        return claimForEachRoute.get(slot);
+    public final ReadOnlyBooleanProperty claimForEachRouteProperty(Route route) {
+        return claimForEachRoute.get(route);
     }
 
-    public final boolean getClaimForEachRoute(int slot) {
-        return claimForEachRoute.get(slot).get();
+    public final boolean getClaimForEachRoute(Route route) {
+        return claimForEachRoute.get(route).get();
     }
 
-    private final static List<BooleanProperty> createClaimForEachRoute() {
-        List<BooleanProperty> list = new LinkedList<>();
+    private final static Map<Route, BooleanProperty> createClaimForEachRoute() {
+        Map<Route, BooleanProperty> map = new HashMap<>();
         for (Route route : ChMap.routes()) {
-            list.add(new SimpleBooleanProperty());
+            map.put(route, new SimpleBooleanProperty());
         }
-        return list;
+        return Collections.unmodifiableMap(map);
     }
 
 
@@ -299,5 +289,7 @@ public final class ObservableGameState {
 
     private final void possibleClaimCards(PlayerState playerState, Route route) {
         playerState.possibleClaimCards(route);
+
     }
+
 }

@@ -100,12 +100,14 @@ class DecksViewCreator {
         cardVue.getChildren().add(ticketDeckButton);
         for (int i : Constants.FACE_UP_CARD_SLOTS) {
             Card c = gameState.getFaceUpCard(i);
+
             StackPane card = new StackPane();
+            if(c!=null){
             if (c.equals(Card.LOCOMOTIVE)) {
                 card.getStyleClass().add("NEUTRAL");
             } else {
                 card.getStyleClass().add(c.name());
-            }
+            }}
             card.getStyleClass().add("card");
             List<Node> cardNodeList = initialiseCard();
             card.getChildren().addAll(cardNodeList);
