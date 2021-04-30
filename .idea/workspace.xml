@@ -24,15 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" afterDir="false" />
-    </list>
-    <list id="2e462b44-1f10-42be-9cdb-86807fb73d01" name="Changes by matthieudecotignie" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/DisplayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/DisplayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" afterDir="false" />
     </list>
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="e051be56-e229-4578-985e-2db9506678af" name="Changes by Thibaud" comment="" />
@@ -61,14 +52,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java">
-      <ranges>
-        <range start1="76" end1="77" start2="76" end2="77" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="84" end1="85" start2="84" end2="85" changelist="2e462b44-1f10-42be-9cdb-86807fb73d01" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1pL3dVXDKzD9H4nR8C8HIdIqf5W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -300,7 +283,7 @@
       <workItem from="1619594156299" duration="9000" />
       <workItem from="1619638304175" duration="8538000" />
       <workItem from="1619721434696" duration="9302000" />
-      <workItem from="1619766974467" duration="4547000" />
+      <workItem from="1619766974467" duration="6114000" />
     </task>
     <servers />
   </component>
