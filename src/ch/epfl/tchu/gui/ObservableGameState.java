@@ -76,7 +76,7 @@ public final class ObservableGameState {
      * @param newGameState (PublicGameState) The new PublicGameState
      * @param newPlayerState (PlayerState) The new PlayerState
      */
-    public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
+    public void setState(PublicGameState newGameState, PlayerState newPlayerState) { //TODO A QUOI SERT LE NEWPLAYERSTATE SI ON PEUT UTILISER NEWGAMESTATE.PLAYERSTATE(PLAYERID1)
         gameState = newGameState;
         playerState = newPlayerState;
         // refresh the percentTicketsRemainingInDeck
@@ -100,23 +100,22 @@ public final class ObservableGameState {
         });
 
         // refresh the numberOfTicketsOnHand
-        numberOfTicketsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.ticketCount());
-        numberOfTicketsOnHand.get(newGameState.currentPlayerId().next()).set(newGameState.playerState(playerId.next()).ticketCount());
+        numberOfTicketsOnHand.get(playerId).set(newPlayerState.ticketCount());
+        numberOfTicketsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).ticketCount());
 
         // refresh the numberOfCardsOnHand
-        numberOfCardsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.cardCount());
-        numberOfCardsOnHand.get(newGameState.currentPlayerId()).set(newGameState.playerState(playerId.next()).cardCount());
+        numberOfCardsOnHand.get(playerId).set(newPlayerState.cardCount());
+        numberOfCardsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).cardCount());
 
         // refresh the numberOfCarsOnHand
-        numberOfCarsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.carCount());
-        numberOfCarsOnHand.get(newGameState.currentPlayerId()).set(newGameState.playerState(playerId.next()).carCount());
+        numberOfCarsOnHand.get(playerId).set(newPlayerState.carCount());
+        numberOfCarsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).carCount());
 
         // refresh the numberOfBuildingPointsOnHand
-        numberOfBuildingPointsOnHand.get(newGameState.currentPlayerId()).set(newPlayerState.claimPoints());
-        numberOfBuildingPointsOnHand.get(newGameState.currentPlayerId()).set(newGameState.playerState(playerId.next()).claimPoints());
+        numberOfBuildingPointsOnHand.get(playerId).set(newPlayerState.claimPoints());
+        numberOfBuildingPointsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).claimPoints());
 
         // refresh the ticketsOnHand
-        System.out.println(newPlayerState.tickets().size());
         ticketsOnHand.setAll(newPlayerState.tickets().toList());
 
 
@@ -429,7 +428,7 @@ public final class ObservableGameState {
         for (int i = 0; i < 5; i++) {
             list.add(new SimpleObjectProperty<>());
         }
-        return list;
+        return Collections.unmodifiableList(list);
     }
 
     private final static Map<Route, ObjectProperty<PlayerId>> createRoute() {

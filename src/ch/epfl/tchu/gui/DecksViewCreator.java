@@ -22,7 +22,7 @@ import java.util.List;
  * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
-class DecksViewCreator {
+abstract class DecksViewCreator {
 
     /**
      * Takes as argument the observableGameState and returns the view of the hand
@@ -30,7 +30,7 @@ class DecksViewCreator {
      * @param gameState (ObservableGameState) The observable GameSate
      * @return (Node) The view of the hand
      */
-    public static Node createHandView(ObservableGameState gameState) { //TODO changer  retour
+    public static Node createHandView(ObservableGameState gameState) {
         HBox HandView = new HBox();
         HandView.getStylesheets().add(" decks.css");
         HandView.getStylesheets().add("colors.css");
@@ -91,47 +91,40 @@ class DecksViewCreator {
         Button ticketDeckButton = new Button(StringsFr.TICKETS);
         ticketDeckButton.getStyleClass().add("gauged");
 
-        Group button1Jauge = new Group();
+
         Rectangle foregroundRect1 = new Rectangle();
         foregroundRect1.getStyleClass().add("foreground");
         foregroundRect1.setHeight(5);
         foregroundRect1.widthProperty().bind(
                 gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100));
 
-        Rectangle backgroundRect1 = new Rectangle();
+        Rectangle backgroundRect1 = new Rectangle(50, 5);
         backgroundRect1.getStyleClass().add("background");
-        backgroundRect1.setWidth(50);
-        backgroundRect1.setHeight(5);
 
-        button1Jauge.getChildren().add(backgroundRect1);
-        button1Jauge.getChildren().add(foregroundRect1);
+        Group button1Jauge = new Group(backgroundRect1, foregroundRect1);
 
         ticketDeckButton.setGraphic(button1Jauge);
         Button cardDeckButton = new Button(StringsFr.CARDS);
         cardDeckButton.getStyleClass().add("gauged");
 
-        Group button2Jauge = new Group();
+
         Rectangle foregroundRect2 = new Rectangle();
         foregroundRect2.getStyleClass().add("foreground");
         foregroundRect2.setHeight(5);
         foregroundRect2.widthProperty().bind(
                 gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
 
-        Rectangle backgroundRect2 = new Rectangle();
+        Rectangle backgroundRect2 = new Rectangle(50, 5);
         backgroundRect2.getStyleClass().add("background");
-        backgroundRect2.setWidth(50);
-        backgroundRect2.setHeight(5);
 
-        button2Jauge.getChildren().add(backgroundRect2);
-        button2Jauge.getChildren().add(foregroundRect2);
-
-
+        Group button2Jauge = new Group(backgroundRect2, foregroundRect2);
         cardDeckButton.setGraphic(button2Jauge);
 
         cardVue.getChildren().add(ticketDeckButton);
 
         ticketDeckButton.disableProperty().bind(drawTicketsHandler.isNull());
         cardDeckButton.disableProperty().bind(drawCardHandler.isNull());
+
         for (int i : Constants.FACE_UP_CARD_SLOTS) {
             StackPane card = new StackPane();
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
@@ -165,22 +158,14 @@ class DecksViewCreator {
     private static List<Node> initialiseCard() {
         List<Rectangle> list = new LinkedList<>();
 
-        Rectangle rectangleOutside = new Rectangle();
+        Rectangle rectangleOutside = new Rectangle(60, 90);
         rectangleOutside.getStyleClass().add("outside");
 
-        rectangleOutside.setWidth(60);
-        rectangleOutside.setHeight(90);
-
-        Rectangle rectangleInside = new Rectangle();
+        Rectangle rectangleInside = new Rectangle(40, 70);
         rectangleInside.getStyleClass().add("filled");
 
-        rectangleInside.setWidth(40);
-        rectangleInside.setHeight(70);
-
-        Rectangle rectangleImage = new Rectangle();
+        Rectangle rectangleImage = new Rectangle(40, 70);
         rectangleImage.getStyleClass().add("train-image");
-        rectangleImage.setWidth(40);
-        rectangleImage.setHeight(70);
 
         list.add(rectangleOutside);
         list.add(rectangleInside);

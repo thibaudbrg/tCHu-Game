@@ -20,7 +20,7 @@ import java.util.List;
  * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
-class MapViewCreator {
+abstract class MapViewCreator {
 
     /**
      * Functional interface to choose a card
@@ -86,39 +86,22 @@ class MapViewCreator {
 
 
             for (int i = 1; i <= r.length(); i++) {
-                Group Case = new Group();
-                Case.setId(r.id() + "_" + i);
-
-                Rectangle voie = new Rectangle();
+                Rectangle voie = new Rectangle(36,12);
                 List<String> styleClassR = List.of("track", "filled");
                 voie.getStyleClass().addAll(styleClassR);
-                voie.setHeight(12);
-                voie.setWidth(36);
-
-                Group Wagon = new Group();
-                Wagon.getStyleClass().add("car");
 
                 Rectangle rectangle1 = new Rectangle();
                 rectangle1.getStyleClass().add("filled");
 
-                Circle circle1 = new Circle();
-                circle1.setCenterX(12);
-                circle1.setCenterY(6);
-                circle1.setRadius(3);
+                Circle circle1 = new Circle(12,6,3);
+                Circle circle2 = new Circle(24,6,3);
 
-                Circle circle2 = new Circle();
-                circle2.setCenterX(24);
-                circle2.setCenterY(6);
-                circle2.setRadius(3);
+                Group Wagon = new Group(rectangle1,circle1,circle2);
+                Wagon.getStyleClass().add("car");
 
-
-                List<Node> nodeListOfWagon = List.of(rectangle1, circle1, circle2);
-                Wagon.getChildren().addAll(nodeListOfWagon);
-
-                List<Node> nodeListOfCase = List.of(voie, Wagon);
-                Case.getChildren().addAll(nodeListOfCase);
+                Group Case = new Group(voie,Wagon);
+                Case.setId(r.id() + "_" + i);
                 groupRoute.getChildren().add(Case);
-
             }
             Carte.getChildren().add(groupRoute);
 
