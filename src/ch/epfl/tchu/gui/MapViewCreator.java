@@ -14,15 +14,39 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
+/**
+ * Allows to create the map view
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 class MapViewCreator {
 
+    /**
+     * Functional interface to choose a card
+     */
     @FunctionalInterface
     interface CardChooser {
+
+        /**
+         * Called when the player has to choose the cards he wants to use to seize a road.
+         * The possibilities are given by the options argument,
+         * while the action handler is intended to be used when he has made his choice.
+         *
+         * @param options (List<SortedBag<Card>>) The options available
+         * @param handler (ActionHandler.ChooseCardsHandler) The handler to be used after his choice
+         */
         void chooseCards(List<SortedBag<Card>> options,
                          ActionHandler.ChooseCardsHandler handler);
     }
 
-
+    /**
+     * @param gameState    (ObservableGameState) The observable GameState
+     * @param claimRouteHP (ObjectProperty<ActionHandler.ClaimRouteHandler>) Property containing the action handler
+     *                     to use when the player wants to seize a road
+     * @param cardChooser  (CardChooser) A Card selector
+     * @return (Node) The view of the hand
+     */
     public static Node createMapView(ObservableGameState gameState, ObjectProperty<ActionHandler.ClaimRouteHandler> claimRouteHP, CardChooser cardChooser) {
 
         Pane Carte = new Pane();

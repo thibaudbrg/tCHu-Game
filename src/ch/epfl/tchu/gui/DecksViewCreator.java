@@ -16,11 +16,21 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * Allows to create the deck view (cards, discards, infos etc...)
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 class DecksViewCreator {
 
+    /**
+     * Takes as argument the observableGameState and returns the view of the hand
+     *
+     * @param gameState (ObservableGameState) The observable GameSate
+     * @return (Node) The view of the hand
+     */
     public static Node createHandView(ObservableGameState gameState) { //TODO changer  retour
-        // Normalement pas dans la methode
         HBox HandView = new HBox();
         HandView.getStylesheets().add(" decks.css");
         HandView.getStylesheets().add("colors.css");
@@ -56,9 +66,21 @@ class DecksViewCreator {
         return HandView;
     }
 
+    /**
+     * Takes as arguments the observable game state and two properties each containing an action handler:
+     * the first contains the one managing the drawing of tickets,
+     * the second contains the one managing the drawing of cards
+     *
+     * @param gameState          (ObservableGameState) The observable GameState
+     * @param drawTicketsHandler (ObjectProperty<ActionHandler.DrawTicketsHandler>) The property containing
+     *                           the action handler managing the drawing of tickets
+     * @param drawCardHandler    (ObjectProperty<ActionHandler.DrawCardHandler>) The property containing
+     *                           the action handler managing the drawing of cards
+     * @return (Node) The view of the hand
+     */
     public static Node createCardsView(ObservableGameState gameState,
                                        ObjectProperty<ActionHandler.DrawTicketsHandler> drawTicketsHandler,
-                                       ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandler) {// TODO PREND PLUS D'ARG
+                                       ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandler) {
 
 
         VBox cardVue = new VBox();
@@ -113,9 +135,10 @@ class DecksViewCreator {
         for (int i : Constants.FACE_UP_CARD_SLOTS) {
             StackPane card = new StackPane();
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
-                card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE)?"NEUTRAL":newValue.name());
-                if (oldValue!=null){
-                card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE)?"NEUTRAL":oldValue.name());}
+                card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? "NEUTRAL" : newValue.name());
+                if (oldValue != null) {
+                    card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE) ? "NEUTRAL" : oldValue.name());
+                }
 
 
             });
@@ -124,15 +147,15 @@ class DecksViewCreator {
             card.getChildren().addAll(cardNodeList);
             cardVue.getChildren().add(card);
 
-            card.setOnMouseClicked(s->drawCardHandler.get().onDrawCard(i));
+            card.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(i));
         }
         cardVue.getChildren().add(cardDeckButton);
 
         ticketDeckButton.setOnMouseClicked(s -> {
             drawTicketsHandler.get().onDrawTickets();
         });
-        cardDeckButton.setOnMouseClicked(s ->{
-            drawCardHandler.get().onDrawCard(-1);
+        cardDeckButton.setOnMouseClicked(s -> {
+                    drawCardHandler.get().onDrawCard(-1);
                 }
         );
         return cardVue;
