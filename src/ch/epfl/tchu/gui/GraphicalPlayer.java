@@ -2,22 +2,23 @@ package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
-import ch.epfl.tchu.game.PlayerId;
-import ch.epfl.tchu.game.PlayerState;
-import ch.epfl.tchu.game.PublicGameState;
-import ch.epfl.tchu.game.Ticket;
+import ch.epfl.tchu.game.*;
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import javax.swing.text.html.ListView;
+import static ch.epfl.tchu.gui.ActionHandler.*;
+
 import java.awt.*;
 import java.util.List;
 import java.util.Map;
@@ -29,10 +30,12 @@ public final class GraphicalPlayer {
     private final Map<PlayerId, String> playerNames;
     private final ObservableGameState gameState;
     private final ObservableList<Text> gameInfos;
+    private final Stage  mainStage;
 
-    private ObjectProperty<ActionHandler.DrawTicketsHandler> drawTicketsHandlerObject;
-    private ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandlerObject;
-    private ObjectProperty<ActionHandler.ClaimRouteHandler> claimRouteHandlerObject;
+    private ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObject;
+    private ObjectProperty<DrawCardHandler> drawCardHandlerObject;
+    private ObjectProperty<ClaimRouteHandler> claimRouteHandlerObject;
+
 
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
         this.playerId = playerId;
@@ -40,11 +43,22 @@ public final class GraphicalPlayer {
         gameState = new ObservableGameState(playerId);
         gameInfos = FXCollections.observableList(List.of());
 
-        BorderPane borderPane = new BorderPane();
+
+        BorderPane borderPane = new BorderPane(
+                MapViewCreator.createMapView(gameState, claimRouteHandlerObject, GraphicalPlayer::chooseClaimCards),
+                null,
+                DecksViewCreator.createCardsView(gameState, drawTicketsHandlerObject, drawCardHandlerObject),
+                DecksViewCreator.createHandView(gameState),
+                InfoViewCreator.createInfoView(this.playerId, this.playerNames, gameState, gameInfos)
+        );
+
         Scene scene = new Scene(borderPane);
-        Stage dialogStage = new Stage();
-
-
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("tCHu \u2014 "+playerNames
+        .get(playerId));
+        mainStage = stage;
+        stage.show();//PEUT ETRE PAS
     }
 
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
@@ -59,48 +73,70 @@ public final class GraphicalPlayer {
 
     }
 
-    public void startTurn(ActionHandler.DrawTicketsHandler drawTicketsHandler,
-                          ActionHandler.DrawCardHandler drawCardHandler,
-                          ActionHandler.ClaimRouteHandler claimRouteHandler) {
+    public void startTurn(DrawTicketsHandler drawTicketsHandler,
+                          DrawCardHandler drawCardHandler,
+                          ClaimRouteHandler claimRouteHandler) {
         assert isFxApplicationThread();
-        if (gameState.canDrawTickets()) drawTicketsHandlerObjectProperty().set(drawTicketsHandler);
-        if (gameState.canDrawCards()) drawCardHandlerObjectProperty().set(drawCardHandler);
-        claimRouteHandlerObjectProperty().set(claimRouteHandler); //TODO pas compris le bail avec presque les memes reset les propriétés
+        -
+        if (gameState.canDrawTickets()) drawTicketsHandlerObjectProperty().set(() -> {
+            drawTicketsHandler.onDrawTickets();
+            drawTicketsHandlerObjectProperty().set(null);
+            drawCardHandlerObjectProperty().set(null);
+            claimRouteHandlerObjectProperty().set(null);
+        });
+        if (gameState.canDrawCards()) drawCardHandlerObjectProperty().set(slot -> {
+            drawCardHandler.onDrawCard(slot);
+            drawCard(drawCardHandler);
+            drawTicketsHandlerObjectProperty().set(null);
+            drawCardHandlerObjectProperty().set(null);
+            claimRouteHandlerObjectProperty().set(null);
 
+        });
+        claimRouteHandlerObjectProperty().set((route, cards) -> {
+            claimRouteHandler.onClaimRoute(route, cards);
+            drawTicketsHandlerObjectProperty().set(null);
+            drawCardHandlerObjectProperty().set(null);
+            claimRouteHandlerObjectProperty().set(null);
+        });
 
     }
 
 
-    public void chooseTickets(SortedBag<Ticket> ticketSortedBag, ActionHandler.ChooseTicketsHandler chooseTicketsHandler) {
+    public void chooseTickets(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
         assert isFxApplicationThread();
         Preconditions.checkArgument(ticketSortedBag.size() == 3 || ticketSortedBag.size() == 5);
     }
 
 
-    public void drawCard(ActionHandler.DrawCardHandler drawCardHandler) {
+    public void drawCard(DrawCardHandler drawCardHandler) {
         assert isFxApplicationThread();
-        //drawCardHandlerObjectProperty().bindBidirectional();
+        drawCardHandlerObjectProperty().set(slot -> {
+            drawCardHandler.onDrawCard(slot);
+            drawTicketsHandlerObjectProperty().set(null);
+            drawCardHandlerObjectProperty().set(null);
+            claimRouteHandlerObjectProperty().set(null);
+        });
 
     }
 
-    public void chooseClaimCards() {
+    public static void chooseClaimCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         assert isFxApplicationThread();
 
     }
 
-    public void chooseAdditionalCards() {
+    public static void chooseAdditionalCards() {
         assert isFxApplicationThread();
 
     }
 
 
- /*   private Node constructDialogWindow() {
-
-        VBox vBox = new VBox();
-        Scene scene = new Scene(vBox);
+ private Node constructDialogWindow() {
+     Stage dialogStage = new Stage(StageStyle.UTILITY);
+     dialogStage.initOwner(mainStage);
+     dialogStage.initModality(Modality.WINDOW_MODAL);
+VBox vBox = new VBox();
+     Scene scene = new Scene(vBox);
         scene.getStylesheets().add("chooser.css");
-
-        Stage dialogStage = new Stage();
 
 
         TextFlow textFlow = new TextFlow();
@@ -110,33 +146,30 @@ public final class GraphicalPlayer {
         vBox.getChildren().add(textFlow);
         vBox.getChildren().add(listView);
        vBox.getChildren().add(button);
-    }*/
+    }
 
 
-
-
-
-    public ActionHandler.DrawTicketsHandler getDrawTicketsHandlerObject() {
+    public DrawTicketsHandler getDrawTicketsHandlerObject() {
         return drawTicketsHandlerObject.get();
     }
 
-    public ObjectProperty<ActionHandler.DrawTicketsHandler> drawTicketsHandlerObjectProperty() {
+    public ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObjectProperty() {
         return drawTicketsHandlerObject;
     }
 
-    public ActionHandler.DrawCardHandler getDrawCardHandlerObject() {
+    public DrawCardHandler getDrawCardHandlerObject() {
         return drawCardHandlerObject.get();
     }
 
-    public ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandlerObjectProperty() {
+    public ObjectProperty<DrawCardHandler> drawCardHandlerObjectProperty() {
         return drawCardHandlerObject;
     }
 
-    public ActionHandler.ClaimRouteHandler getClaimRouteHandlerObject() {
+    public ClaimRouteHandler getClaimRouteHandlerObject() {
         return claimRouteHandlerObject.get();
     }
 
-    public ObjectProperty<ActionHandler.ClaimRouteHandler> claimRouteHandlerObjectProperty() {
+    public ObjectProperty<ClaimRouteHandler> claimRouteHandlerObjectProperty() {
         return claimRouteHandlerObject;
     }
 }
