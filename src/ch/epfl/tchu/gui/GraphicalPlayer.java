@@ -50,7 +50,7 @@ public final class GraphicalPlayer {
     /**
      * Constructs the graphical interface
      *
-     * @param playerId (PlayerId) The Id's players
+     * @param playerId    (PlayerId) The Id's players
      * @param playerNames (Map<PlayerId, String>) The playerNames
      */
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
@@ -81,33 +81,33 @@ public final class GraphicalPlayer {
      * Makes sure that when the player decides to perform an action, the corresponding handler is called
      *
      * @param drawTicketsHandler (DrawTicketsHandler) The action handler corresponding to the drawing of tickets
-     * @param drawCardHandler (DrawCardHandler) The action handler corresponding to the drawing of cards
-     * @param claimRouteHandler (ClaimRouteHandler) The action handler corresponding to the claim of a route
+     * @param drawCardHandler    (DrawCardHandler) The action handler corresponding to the drawing of cards
+     * @param claimRouteHandler  (ClaimRouteHandler) The action handler corresponding to the claim of a route
      */
     public void startTurn(DrawTicketsHandler drawTicketsHandler,
                           DrawCardHandler drawCardHandler,
                           ClaimRouteHandler claimRouteHandler) {
         assert isFxApplicationThread();
 
-        if (gameState.canDrawTickets()) drawTicketsHandlerObjectProperty().set(() -> {
+        if (gameState.canDrawTickets()) drawTicketsHandlerObject.set(() -> {
             drawTicketsHandler.onDrawTickets();
-            drawTicketsHandlerObjectProperty().set(null);
-            drawCardHandlerObjectProperty().set(null);
-            claimRouteHandlerObjectProperty().set(null);
+            drawTicketsHandlerObject.set(null);
+            drawCardHandlerObject.set(null);
+            claimRouteHandlerObject.set(null);
         });
-        if (gameState.canDrawCards()) drawCardHandlerObjectProperty().set(slot -> {
+        if (gameState.canDrawCards()) drawCardHandlerObject.set(slot -> {
             drawCardHandler.onDrawCard(slot);
-            drawTicketsHandlerObjectProperty().set(null);
-            drawCardHandlerObjectProperty().set(null);
-            claimRouteHandlerObjectProperty().set(null);
+            drawTicketsHandlerObject.set(null);
+            drawCardHandlerObject.set(null);
+            claimRouteHandlerObject.set(null);
             drawCard(drawCardHandler);
 
         });
-        claimRouteHandlerObjectProperty().set((route, cards) -> {
+        claimRouteHandlerObject.set((route, cards) -> {
             claimRouteHandler.onClaimRoute(route, cards);
-            drawTicketsHandlerObjectProperty().set(null);
-            drawCardHandlerObjectProperty().set(null);
-            claimRouteHandlerObjectProperty().set(null);
+            drawTicketsHandlerObject.set(null);
+            drawCardHandlerObject.set(null);
+            claimRouteHandlerObject.set(null);
         });
 
     }
@@ -115,7 +115,7 @@ public final class GraphicalPlayer {
     /**
      * Calls setState(...) on the player's observable state
      *
-     * @param newGameState (PublicGameState) The new PublicGameState
+     * @param newGameState   (PublicGameState) The new PublicGameState
      * @param newPlayerState (PlayerState) The new PlayerState
      */
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
@@ -146,11 +146,11 @@ public final class GraphicalPlayer {
      */
     public void drawCard(DrawCardHandler drawCardHandler) {
         assert isFxApplicationThread();
-        drawCardHandlerObjectProperty().set(slot -> {
+        drawCardHandlerObject.set(slot -> {
             drawCardHandler.onDrawCard(slot);
-            drawTicketsHandlerObjectProperty().set(null);
-            drawCardHandlerObjectProperty().set(null);
-            claimRouteHandlerObjectProperty().set(null);
+            drawTicketsHandlerObject.set(null);
+            drawCardHandlerObject.set(null);
+            claimRouteHandlerObject.set(null);
         });
     }
 
@@ -158,7 +158,7 @@ public final class GraphicalPlayer {
     /**
      * Open a window, which enables the player to select the cards that he wants to use to claim a road
      *
-     * @param cards (List<SortedBag<Card>>) The possible claim Cards
+     * @param cards              (List<SortedBag<Card>>) The possible claim Cards
      * @param chooseCardsHandler (ChooseCardsHandler) The handler for the cards to choose
      */
     public static void chooseClaimCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
@@ -170,7 +170,7 @@ public final class GraphicalPlayer {
     /**
      * Open a window, which enables the player to select the additional cards to use.
      *
-     * @param cards (List<SortedBag<Card>>) The possible additional cards
+     * @param cards              (List<SortedBag<Card>>) The possible additional cards
      * @param chooseCardsHandler (ChooseCardsHandler) The handler for the cards to choose
      */
     public void chooseAdditionalCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
@@ -182,7 +182,7 @@ public final class GraphicalPlayer {
     /**
      * Open a window, which enables the player to select tickets from a given list
      *
-     * @param ticketSortedBag (SortedBag<Ticket>)
+     * @param ticketSortedBag      (SortedBag<Ticket>)
      * @param chooseTicketsHandler (ChooseTicketsHandler)
      */
     public void chooseTickets(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
@@ -191,65 +191,6 @@ public final class GraphicalPlayer {
         constructDialogWindowTicket(ticketSortedBag, chooseTicketsHandler);
     }
 
-
-
-    /**
-     * Returns the value of the property
-     *
-     * @return (DrawTicketsHandler) The value
-     */
-    public DrawTicketsHandler getDrawTicketsHandlerObject() {
-        return drawTicketsHandlerObject.get();
-    }
-
-    /**
-     * Returns the corresponding property
-     *
-     * @return (ReadOnlyObjectProperty) The unmodifiable property
-     */
-    public ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObjectProperty() {
-        return drawTicketsHandlerObject;
-    }
-
-
-
-    /**
-     * Returns the value of the property
-     *
-     * @return (DrawCardHandler) The value
-     */
-    public DrawCardHandler getDrawCardHandlerObject() {
-        return drawCardHandlerObject.get();
-    }
-
-    /**
-     * Returns the corresponding property
-     *
-     * @return (ReadOnlyObjectProperty) The unmodifiable property
-     */
-    public ObjectProperty<DrawCardHandler> drawCardHandlerObjectProperty() {
-        return drawCardHandlerObject;
-    }
-
-
-
-    /**
-     * Returns the value of the property
-     *
-     * @return (ClaimRouteHandler) The value
-     */
-    public ClaimRouteHandler getClaimRouteHandlerObject() {
-        return claimRouteHandlerObject.get();
-    }
-
-    /**
-     * Returns the corresponding property
-     *
-     * @return (ReadOnlyObjectProperty) The unmodifiable property
-     */
-    public ObjectProperty<ClaimRouteHandler> claimRouteHandlerObjectProperty() {
-        return claimRouteHandlerObject;
-    }
 
     private void constructDialogWindowTicket(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
         int numberOfTicketToClaim = ticketSortedBag.size() == 3 ? 1 : 0;
