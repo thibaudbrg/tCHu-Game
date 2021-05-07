@@ -139,7 +139,7 @@ abstract class DecksViewCreator {
             List<Node> cardNodeList = initialiseCard();
             card.getChildren().addAll(cardNodeList);
             cardVue.getChildren().add(card);
-
+card.disableProperty().bind(drawCardHandler.isNull());
             card.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(i));
         }
         cardVue.getChildren().add(cardDeckButton);

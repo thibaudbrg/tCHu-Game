@@ -76,7 +76,13 @@ public final class Info {
         return route.station1() + StringsFr.EN_DASH_SEPARATOR + route.station2();
     }
 
-    private static String cardDescription(SortedBag<Card> cards) {
+    /**
+     * Created the description of each of the cards and their numbers contained in a SortedBag
+     *
+     * @param cards (SortedBag<Card>) The cards
+     * @return (String) The description
+     */
+    public static String cardDescription(SortedBag<Card> cards) {
         StringBuilder result = new StringBuilder();
         int index = 1;
         for (Card c : cards.toSet()) {
@@ -89,7 +95,7 @@ public final class Info {
                 result.append(cards.countOf(c))
                         .append(" ")
                         .append(cardName(c, cards.countOf(c)))
-                        .append(" et ");
+                        .append(StringsFr.AND_SEPARATOR);
             } else {
                 result.append(cards.countOf(c))
                         .append(" ")

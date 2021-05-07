@@ -63,8 +63,8 @@ abstract class MapViewCreator {
                     groupRoute.getStyleClass().add(newValue.name());
                 }
             });
-            groupRoute.disableProperty().bind(
-                    claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
+
+            groupRoute.disableProperty().bind(claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
 
 
             groupRoute.setId(r.id());

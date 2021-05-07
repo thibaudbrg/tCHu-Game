@@ -69,7 +69,7 @@ public final class Station {
         Station station = (Station) o;
         return id == station.id
                 && name.equals(station.name);
-    }//TODO avant on faisait par ref
+    }
 
 
     /**
