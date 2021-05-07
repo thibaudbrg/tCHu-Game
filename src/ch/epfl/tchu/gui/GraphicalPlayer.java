@@ -29,18 +29,30 @@ import java.util.Map;
 import static ch.epfl.tchu.gui.ActionHandler.*;
 import static com.sun.javafx.application.PlatformImpl.isFxApplicationThread;
 
+
+/**
+ * Represents the graphical interface of a tCHu player
+ *
+ * @author Decotignie Matthieu (329953)
+ * @author Bourgeois Thibaud (324604)
+ */
 public final class GraphicalPlayer {
     private final PlayerId playerId;
     private final Map<PlayerId, String> playerNames;
     private final ObservableGameState gameState;
     private final ObservableList<Text> gameInfos;
-    private static Stage mainStage = new Stage() ;
+    private static Stage mainStage = new Stage();
 
     private ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObject = new SimpleObjectProperty<>();
-    private ObjectProperty<DrawCardHandler> drawCardHandlerObject =new SimpleObjectProperty<>();
+    private ObjectProperty<DrawCardHandler> drawCardHandlerObject = new SimpleObjectProperty<>();
     private ObjectProperty<ClaimRouteHandler> claimRouteHandlerObject = new SimpleObjectProperty<>();
 
-
+    /**
+     * Constructs the graphical interface
+     *
+     * @param playerId (PlayerId) The Id's players
+     * @param playerNames (Map<PlayerId, String>) The playerNames
+     */
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
         this.playerId = playerId;
         this.playerNames = Map.copyOf(playerNames);
@@ -62,9 +74,16 @@ public final class GraphicalPlayer {
 
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
-        stage.show();//TODO PEUT ETRE PAS
+        stage.show();
     }
 
+    /**
+     * Makes sure that when the player decides to perform an action, the corresponding handler is called
+     *
+     * @param drawTicketsHandler (DrawTicketsHandler) The action handler corresponding to the drawing of tickets
+     * @param drawCardHandler (DrawCardHandler) The action handler corresponding to the drawing of cards
+     * @param claimRouteHandler (ClaimRouteHandler) The action handler corresponding to the claim of a route
+     */
     public void startTurn(DrawTicketsHandler drawTicketsHandler,
                           DrawCardHandler drawCardHandler,
                           ClaimRouteHandler claimRouteHandler) {
@@ -78,10 +97,10 @@ public final class GraphicalPlayer {
         });
         if (gameState.canDrawCards()) drawCardHandlerObjectProperty().set(slot -> {
             drawCardHandler.onDrawCard(slot);
-            drawCard(drawCardHandler);
             drawTicketsHandlerObjectProperty().set(null);
             drawCardHandlerObjectProperty().set(null);
             claimRouteHandlerObjectProperty().set(null);
+            drawCard(drawCardHandler);
 
         });
         claimRouteHandlerObjectProperty().set((route, cards) -> {
@@ -93,19 +112,38 @@ public final class GraphicalPlayer {
 
     }
 
+    /**
+     * Calls setState(...) on the player's observable state
+     *
+     * @param newGameState (PublicGameState) The new PublicGameState
+     * @param newPlayerState (PlayerState) The new PlayerState
+     */
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
         assert isFxApplicationThread();
         gameState.setState(newGameState, newPlayerState);
     }
 
+    /**
+     * Adds to the bottom of the information the message about the progress of the game,
+     * which are presented in the lower part of the information view,
+     * this view contains only the last five messages received
+     *
+     * @param message (String) The corresponding message
+     */
     public void receiveInfo(String message) {
         assert isFxApplicationThread();
         if (gameInfos.size() >= 5) gameInfos.remove(0);
-        gameInfos.add(new Text(message));
+        gameInfos.add(new Text(message + "\n"));
 
     }
 
-
+    /**
+     * Allows the player to choose a car/locomotive card, either one of the five face-up cards or the one at the top of the deck;
+     * once the player has clicked on one of these cards, the handler is called up with the player's choice;
+     * this method is intended to be called up when the player has already drawn a first card and must now draw the second
+     *
+     * @param drawCardHandler (DrawCardHandler) The handler for the draw of cards
+     */
     public void drawCard(DrawCardHandler drawCardHandler) {
         assert isFxApplicationThread();
         drawCardHandlerObjectProperty().set(slot -> {
@@ -114,47 +152,101 @@ public final class GraphicalPlayer {
             drawCardHandlerObjectProperty().set(null);
             claimRouteHandlerObjectProperty().set(null);
         });
-
     }
 
-    public void chooseTickets(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
-        assert isFxApplicationThread();
-        Preconditions.checkArgument(ticketSortedBag.size() == 3 || ticketSortedBag.size() == 5);
-        constructDialogWindowTicket(ticketSortedBag, chooseTicketsHandler);
-    }
 
+    /**
+     * Open a window, which enables the player to select the cards that he wants to use to claim a road
+     *
+     * @param cards (List<SortedBag<Card>>) The possible claim Cards
+     * @param chooseCardsHandler (ChooseCardsHandler) The handler for the cards to choose
+     */
     public static void chooseClaimCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         assert isFxApplicationThread();
         constructDialogWindowCards(0, cards, chooseCardsHandler);
 
     }
 
+    /**
+     * Open a window, which enables the player to select the additional cards to use.
+     *
+     * @param cards (List<SortedBag<Card>>) The possible additional cards
+     * @param chooseCardsHandler (ChooseCardsHandler) The handler for the cards to choose
+     */
     public void chooseAdditionalCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         assert isFxApplicationThread();
         constructDialogWindowCards(1, cards, chooseCardsHandler);
 
     }
 
+    /**
+     * Open a window, which enables the player to select tickets from a given list
+     *
+     * @param ticketSortedBag (SortedBag<Ticket>)
+     * @param chooseTicketsHandler (ChooseTicketsHandler)
+     */
+    public void chooseTickets(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
+        assert isFxApplicationThread();
+        Preconditions.checkArgument(ticketSortedBag.size() == 3 || ticketSortedBag.size() == 5);
+        constructDialogWindowTicket(ticketSortedBag, chooseTicketsHandler);
+    }
+
+
+
+    /**
+     * Returns the value of the property
+     *
+     * @return (DrawTicketsHandler) The value
+     */
     public DrawTicketsHandler getDrawTicketsHandlerObject() {
         return drawTicketsHandlerObject.get();
     }
 
+    /**
+     * Returns the corresponding property
+     *
+     * @return (ReadOnlyObjectProperty) The unmodifiable property
+     */
     public ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObjectProperty() {
         return drawTicketsHandlerObject;
     }
 
+
+
+    /**
+     * Returns the value of the property
+     *
+     * @return (DrawCardHandler) The value
+     */
     public DrawCardHandler getDrawCardHandlerObject() {
         return drawCardHandlerObject.get();
     }
 
+    /**
+     * Returns the corresponding property
+     *
+     * @return (ReadOnlyObjectProperty) The unmodifiable property
+     */
     public ObjectProperty<DrawCardHandler> drawCardHandlerObjectProperty() {
         return drawCardHandlerObject;
     }
 
+
+
+    /**
+     * Returns the value of the property
+     *
+     * @return (ClaimRouteHandler) The value
+     */
     public ClaimRouteHandler getClaimRouteHandlerObject() {
         return claimRouteHandlerObject.get();
     }
 
+    /**
+     * Returns the corresponding property
+     *
+     * @return (ReadOnlyObjectProperty) The unmodifiable property
+     */
     public ObjectProperty<ClaimRouteHandler> claimRouteHandlerObjectProperty() {
         return claimRouteHandlerObject;
     }
@@ -189,7 +281,7 @@ public final class GraphicalPlayer {
 
     private static void constructDialogWindowCards(int i, List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         Preconditions.checkArgument(i == 1 || i == 0);
-
+        ObservableList<SortedBag<Card>> sortedBagObservableList = FXCollections.observableList(cards);
         Stage dialogStage = new Stage(StageStyle.UTILITY);
         dialogStage.setOnCloseRequest((s) -> s.consume());
 
@@ -199,7 +291,7 @@ public final class GraphicalPlayer {
 
         Text text = new Text(i == 0 ? StringsFr.CHOOSE_CARDS : StringsFr.CHOOSE_ADDITIONAL_CARDS);
         TextFlow textFlow = new TextFlow(text);
-        ListView<SortedBag<Card>> listView = new ListView();
+        ListView<SortedBag<Card>> listView = new ListView(sortedBagObservableList);
         Button button = new Button(StringsFr.CHOOSE);
         if (i == 0)
             button.disableProperty().bind(Bindings.equal(1, Bindings.size(listView.getSelectionModel().getSelectedItems())));
@@ -227,4 +319,56 @@ public final class GraphicalPlayer {
         dialogStage.show();
 
     }
+/*
+              _______________________________________________________
+            /                                                        \
+           |    __________________________________________________    |
+           |   |                                                  |   |
+           |   |                                                  |   |
+           |   |                   .,,,,,,,                       |   |
+           |   |                   ,,,,,,,,,                      |   |
+           |   |                   ,,,,,,,,,                      |   |
+           |   |                   ,,,,,,,,,                      |   |
+           |   |                   ,,,,,,,,,                      |   |
+           |   |                   ,,,,,,,,,                      |   |
+           |   |                   ,,,,,,,,,                      |   |
+           |   |                   ,,,,,,,,,.                     |   |
+           |   |                   ,,,,,,,,,.                     |   |
+           |   |                   ,,,,,,,,,,                     |   |
+           |   |                   ,,,,,,,,,,                     |   |
+           |   |                   ,,,,,,,,,,                     |   |
+           |   |            .,,,.,,,,,,,,,,,,,.,,,,.              |   |
+           |   |          ,,,,,,,,,,,,,,,,,,,,,,,,,,,,            |   |
+           |   |         ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,    |   |
+           |   |        .,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,   |   |
+           |   |        .,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.  |   |
+           |   |         ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.  |   |
+           |   |        ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.   |   |
+           |   |      .,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.   |   |
+           |   |     .,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,    |   |
+           |   |   ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,    |   |
+           |   |   ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     |   |
+           |   |    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.     |   |
+           |   |      ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     |   |
+           |   |       .,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,      |   |
+           |   |         ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,        |   |
+           |   |           ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,          |   |
+           |   |          .,,,,,,,,,,,,,,,,,,,,,,,,,,,,           |   |
+           |   |           .,,,,,,,,,,,,,,,,,,,,,,,,,,,,          |   |
+           |   |           ,,,,,,,,,,,,,,,,,,,,,,,,,,,.           |   |
+           |   |                                                  |   |
+           |   |__________________________________________________|   |
+           |     ____                                                 |
+            \________________________________________________________/
+                     \_______________________________________/
+                  _______________________________________________
+               _-'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_
+            _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  .-.-.`-_
+         _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-`__`. .-.-.-.`-_
+      _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-----. .-.-.-.-.`-_
+   _-'.-.-.-.-.-. .---.-. .-----------------------------. .-.---. .---.-.-.-.`-_
+  :-----------------------------------------------------------------------------:
+  `---._.-----------------------------------------------------------------._.---'
+
+ */
 }

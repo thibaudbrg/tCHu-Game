@@ -86,20 +86,20 @@ abstract class MapViewCreator {
 
 
             for (int i = 1; i <= r.length(); i++) {
-                Rectangle voie = new Rectangle(36,12);
+                Rectangle voie = new Rectangle(36, 12);
                 List<String> styleClassR = List.of("track", "filled");
                 voie.getStyleClass().addAll(styleClassR);
 
                 Rectangle rectangle1 = new Rectangle();
                 rectangle1.getStyleClass().add("filled");
 
-                Circle circle1 = new Circle(12,6,3);
-                Circle circle2 = new Circle(24,6,3);
+                Circle circle1 = new Circle(12, 6, 3);
+                Circle circle2 = new Circle(24, 6, 3);
 
-                Group Wagon = new Group(rectangle1,circle1,circle2);
+                Group Wagon = new Group(rectangle1, circle1, circle2);
                 Wagon.getStyleClass().add("car");
 
-                Group Case = new Group(voie,Wagon);
+                Group Case = new Group(voie, Wagon);
                 Case.setId(r.id() + "_" + i);
                 groupRoute.getChildren().add(Case);
             }

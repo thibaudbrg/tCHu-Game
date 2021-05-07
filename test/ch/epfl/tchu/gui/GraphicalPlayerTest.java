@@ -5,6 +5,7 @@ import ch.epfl.tchu.game.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Map;
 
 import static ch.epfl.tchu.game.PlayerId.PLAYER_1;
@@ -61,10 +62,17 @@ public final class GraphicalPlayerTest extends Application {
         ActionHandler.ClaimRouteHandler claimRouteH =
                 (r, cs) -> {
                     String rn = r.station1() + " - " + r.station2();
-                    p.receiveInfo(String.format("Je m'empare de %s avec %s", rn, cs));
+                    p.receiveInfo(String.format("Je m'empare de %s avec %s !", rn, cs));
                 };
 
         p.startTurn(drawTicketsH, drawCardH, claimRouteH);
+      /* p.chooseTickets(SortedBag.of(1, ChMap.tickets().get(2), 2, ChMap.tickets().get(6)), tickets -> System.out.println(tickets));
+       });*/
+        p.chooseAdditionalCards(
+                List.of(SortedBag.of(1, Card.WHITE, 4, Card.BLACK), SortedBag.of(3, Card.YELLOW, 4, Card.GREEN), SortedBag.of(3, Card.WHITE, 2, Card.LOCOMOTIVE)),
+                cards -> System.out.println(cards));
+
+
     }
 
 

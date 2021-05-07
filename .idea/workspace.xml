@@ -24,16 +24,18 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/GraphicalPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/GraphicalPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/InfoViewCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/InfoViewCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/GraphicalPlayerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/GraphicalPlayerTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerText.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java" afterDir="false" />
     </list>
-    <list id="440fa68d-4851-4701-9910-20433a931b19" name="Changes by matthieudecotignie" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
+    <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="">
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java" afterDir="false" />
     </list>
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="033944a0-e0b4-441c-a1b2-71c946180614" name="Changes by Thibaud" comment="" />
@@ -67,45 +69,55 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java">
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java">
       <ranges>
-        <range start1="78" end1="79" start2="78" end2="85" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="91" end1="92" start2="97" end2="98" changelist="440fa68d-4851-4701-9910-20433a931b19" />
+        <range start1="16" end1="16" start2="16" end2="22" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="17" end1="18" start2="23" end2="32" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="19" end1="21" start2="33" end2="33" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="24" end1="25" start2="36" end2="37" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="28" end1="29" start2="40" end2="41" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="30" end1="31" start2="42" end2="43" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="35" end1="36" start2="47" end2="49" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="37" end1="38" start2="50" end2="51" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="43" end1="45" start2="56" end2="58" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="47" end1="48" start2="60" end2="61" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="57" end1="58" start2="70" end2="70" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java">
+      <ranges>
+        <range start1="7" end1="7" start2="7" end2="8" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="63" end1="64" start2="64" end2="65" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="67" end1="67" start2="68" end2="75" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java">
       <ranges>
-        <range start1="5" end1="5" start2="5" end2="6" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="6" end1="6" start2="7" end2="8" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="8" end1="9" start2="10" end2="10" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="10" end1="10" start2="11" end2="12" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="11" end1="11" start2="13" end2="15" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="18" end1="18" start2="22" end2="23" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="19" end1="22" start2="24" end2="25" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="25" end1="25" start2="28" end2="29" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="32" end1="33" start2="36" end2="37" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="34" end1="37" start2="38" end2="41" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="43" end1="44" start2="47" end2="48" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="45" end1="45" start2="49" end2="53" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="55" end1="56" start2="63" end2="63" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="57" end1="61" start2="64" end2="65" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="63" end1="63" start2="67" end2="95" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="75" end1="109" start2="107" end2="107" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="121" end1="121" start2="119" end2="125" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="123" end1="123" start2="127" end2="128" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="126" end1="127" start2="131" end2="132" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="128" end1="128" start2="133" end2="134" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="131" end1="131" start2="137" end2="144" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="132" end1="138" start2="145" end2="183" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="139" end1="140" start2="184" end2="186" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="141" end1="148" start2="187" end2="187" changelist="440fa68d-4851-4701-9910-20433a931b19" />
-        <range start1="150" end1="150" start2="189" end2="191" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="151" end1="154" start2="192" end2="194" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="155" end1="158" start2="195" end2="198" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="159" end1="162" start2="199" end2="205" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="163" end1="166" start2="206" end2="211" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="167" end1="170" start2="212" end2="220" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="171" end1="173" start2="221" end2="228" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="31" end1="31" start2="31" end2="38" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="36" end1="37" start2="43" end2="44" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="39" end1="40" start2="46" end2="47" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="42" end1="43" start2="49" end2="55" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="64" end1="65" start2="76" end2="77" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="67" end1="67" start2="79" end2="86" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="80" end1="81" start2="99" end2="99" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="84" end1="84" start2="102" end2="103" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="95" end1="95" start2="114" end2="120" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="100" end1="100" start2="125" end2="132" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="103" end1="104" start2="135" end2="136" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="107" end1="108" start2="139" end2="146" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="116" end1="117" start2="154" end2="154" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="119" end1="124" start2="156" end2="156" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="125" end1="125" start2="157" end2="163" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="131" end1="131" start2="169" end2="175" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="137" end1="137" start2="181" end2="200" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="141" end1="141" start2="204" end2="209" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="145" end1="145" start2="213" end2="220" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="149" end1="149" start2="224" end2="229" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="153" end1="153" start2="233" end2="240" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="157" end1="157" start2="244" end2="249" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="191" end1="192" start2="283" end2="284" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="201" end1="202" start2="293" end2="294" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="229" end1="229" start2="321" end2="373" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
       </ranges>
     </file>
   </component>
@@ -129,6 +141,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
@@ -204,13 +217,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -346,6 +361,7 @@
       <workItem from="1620032277162" duration="3366000" />
       <workItem from="1620037950545" duration="12483000" />
       <workItem from="1620205873900" duration="5740000" />
+      <workItem from="1620387073233" duration="4980000" />
     </task>
     <servers />
   </component>
