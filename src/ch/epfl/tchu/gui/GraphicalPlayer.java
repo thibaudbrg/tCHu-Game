@@ -41,7 +41,7 @@ public final class GraphicalPlayer {
     private final Map<PlayerId, String> playerNames;
     private final ObservableGameState gameState;
     private final ObservableList<Text> gameInfos;
-    private static Stage mainStage = new Stage();
+    private final Stage mainStage ;
 
     private ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObject = new SimpleObjectProperty<>();
     private ObjectProperty<DrawCardHandler> drawCardHandlerObject = new SimpleObjectProperty<>();
@@ -54,6 +54,7 @@ public final class GraphicalPlayer {
      * @param playerNames (Map<PlayerId, String>) The playerNames
      */
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
+        assert isFxApplicationThread();
         this.playerId = playerId;
         this.playerNames = Map.copyOf(playerNames);
         gameState = new ObservableGameState(playerId);
@@ -62,10 +63,10 @@ public final class GraphicalPlayer {
         Stage stage = new Stage();
         stage.setTitle("tCHu \u2014 " + playerNames
                 .get(playerId));
-        mainStage = stage;
+       this.mainStage = stage;
 
         BorderPane borderPane = new BorderPane(
-                MapViewCreator.createMapView(gameState, claimRouteHandlerObject, GraphicalPlayer::chooseClaimCards),
+                MapViewCreator.createMapView(gameState, claimRouteHandlerObject, this::chooseClaimCards),
                 null,
                 DecksViewCreator.createCardsView(gameState, drawTicketsHandlerObject, drawCardHandlerObject),
                 DecksViewCreator.createHandView(gameState),
@@ -88,7 +89,6 @@ public final class GraphicalPlayer {
                           DrawCardHandler drawCardHandler,
                           ClaimRouteHandler claimRouteHandler) {
         assert isFxApplicationThread();
-
         if (gameState.canDrawTickets()) drawTicketsHandlerObject.set(() -> {
             drawTicketsHandler.onDrawTickets();
             drawTicketsHandlerObject.set(null);
@@ -161,7 +161,7 @@ public final class GraphicalPlayer {
      * @param cards              (List<SortedBag<Card>>) The possible claim Cards
      * @param chooseCardsHandler (ChooseCardsHandler) The handler for the cards to choose
      */
-    public static void chooseClaimCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
+    public void chooseClaimCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         assert isFxApplicationThread();
         constructDialogWindowCards(0, cards, chooseCardsHandler);
 
@@ -220,7 +220,7 @@ public final class GraphicalPlayer {
 
     }
 
-    private static void constructDialogWindowCards(int i, List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
+    private void constructDialogWindowCards(int i, List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         Preconditions.checkArgument(i == 1 || i == 0);
         ObservableList<SortedBag<Card>> sortedBagObservableList = FXCollections.observableList(cards);
         Stage dialogStage = new Stage(StageStyle.UTILITY);
@@ -264,7 +264,6 @@ public final class GraphicalPlayer {
               _______________________________________________________
             /                                                        \
            |    __________________________________________________    |
-           |   |                                                  |   |
            |   |                                                  |   |
            |   |                   .,,,,,,,                       |   |
            |   |                   ,,,,,,,,,                      |   |

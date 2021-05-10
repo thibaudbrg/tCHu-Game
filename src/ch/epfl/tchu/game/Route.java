@@ -41,7 +41,7 @@ public final class Route {
      * @param color    (Color) color of the Route
      */
     public Route(String id, Station station1, Station station2, int length, Level level, Color color) {
-        Preconditions.checkArgument(!(station1.id() == (station2.id())));
+        Preconditions.checkArgument(!(station1.id()== (station2.id())));
         Preconditions.checkArgument(length >= Constants.MIN_ROUTE_LENGTH);
         Preconditions.checkArgument(length <= Constants.MAX_ROUTE_LENGTH);
 

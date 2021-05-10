@@ -30,7 +30,7 @@ public final class PlayerState extends PublicPlayerState {
      * @return (PlayerState) The initial state of a player to whom the given initial cards have been dealt
      */
     public static PlayerState initial(SortedBag<Card> initialCards) {
-        Preconditions.checkArgument(initialCards.size() == 4);
+        Preconditions.checkArgument(initialCards.size() == Constants.INITIAL_CARDS_COUNT);
         return new PlayerState(SortedBag.of(), initialCards, List.of());
     }
 
@@ -69,15 +69,6 @@ public final class PlayerState extends PublicPlayerState {
         return new PlayerState(tickets, cards.union(SortedBag.of(card)), routes());
     }
 
-    /**
-     * Returns a state identical to the receiver, except that the player also has the given cards
-     *
-     * @param additionalCards (SortedBag<Card>) The given cards
-     * @return (PlayerState) a state identical to the receiver, except that the player also has the given cards
-     */
-    public PlayerState withAddedCards(SortedBag<Card> additionalCards) {
-        return new PlayerState(tickets, cards.union(additionalCards), routes());
-    }
 
     /**
      * Returns true if the player can take the given road, i.e. if he has enough wagons left and if he has the necessary cards
@@ -115,16 +106,14 @@ public final class PlayerState extends PublicPlayerState {
      *
      * @param additionalCardsCount (int) The number of additional cards that the player must lay down
      * @param initialCards         (SortedBag<Card>) The initial Cards
-     * @param drawnCards           (SortedBag<Card>) The drawn Cards
      * @return (List<SortedBag<Card>>) a list of all the sets of cards the player could use to take over a tunnel
      */
-    public List<SortedBag<Card>> possibleAdditionalCards(int additionalCardsCount, SortedBag<Card> initialCards, SortedBag<Card> drawnCards) {
+    public List<SortedBag<Card>> possibleAdditionalCards(int additionalCardsCount, SortedBag<Card> initialCards) {
         Preconditions.checkArgument(additionalCardsCount >= 1 && additionalCardsCount <= 3);
         Preconditions.checkArgument(!initialCards.isEmpty());
-        Preconditions.checkArgument(drawnCards.size() == Constants.ADDITIONAL_TUNNEL_CARDS);
         Preconditions.checkArgument(initialCards.toSet().size() <= 2);
 
-        SortedBag.Builder<Card> builder = new SortedBag.Builder();
+        SortedBag.Builder<Card> builder = new SortedBag.Builder<>();
         if (initialCards.get(0).color() != null) {
             builder.add(cards.countOf(Card.of(initialCards.get(0).color())),
                     Card.of(initialCards.get(0).color()));

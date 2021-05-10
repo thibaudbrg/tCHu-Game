@@ -191,7 +191,6 @@ public final class GameState extends PublicGameState {
      * in the current player's hand, and replaced by the one at the top of the deck
      */
     public GameState withDrawnFaceUpCard(int slot) {
-        Preconditions.checkArgument(canDrawCards());
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(),
                 completePlayerState.get(currentPlayerId())
@@ -207,7 +206,6 @@ public final class GameState extends PublicGameState {
      * @return (GameState) a state identical to the receiver except that the top card of the deck has been placed in the current player's hand
      */
     public GameState withBlindlyDrawnCard() {
-        Preconditions.checkArgument(canDrawCards());
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.replace(currentPlayerId(),
                 completePlayerState.get(currentPlayerId()).withAddedCard(completeCardState.topDeckCard()));

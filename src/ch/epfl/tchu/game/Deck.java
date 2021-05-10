@@ -26,7 +26,7 @@ public final class Deck<C extends Comparable<C>> {
      * @param cards (List<C>) List of cards that constitute the deck
      */
     private Deck(List<C> cards) {
-        this.cards = new ArrayList<>(cards);
+        this.cards = List.copyOf(cards);
     }
 
     /**
@@ -38,7 +38,7 @@ public final class Deck<C extends Comparable<C>> {
      * @return (Deck < C >) a shuffled deck of cards
      */
     public static <C extends Comparable<C>> Deck<C> of(SortedBag<C> cards, Random rng) {
-        List<C> shuffledCards = cards.toList();
+        List<C> shuffledCards = new ArrayList(cards.toList());
         Collections.shuffle(shuffledCards, rng);
         return new Deck<>(shuffledCards);
 
@@ -61,7 +61,8 @@ public final class Deck<C extends Comparable<C>> {
      * @return (Deck < C >) a deck without the top card
      */
     public Deck<C> withoutTopCard() {
-        return new Deck<>(this.cards.subList(0, cards.size() - 1));
+        Preconditions.checkArgument(!cards.isEmpty());
+        return withoutTopCards(1);
     }
 
     /**

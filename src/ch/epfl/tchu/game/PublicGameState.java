@@ -29,12 +29,12 @@ public class PublicGameState {
      * @throws NullPointerException if currentPlayerId or cardState is null
      */
     public PublicGameState(int ticketsCount, PublicCardState cardState, PlayerId currentPlayerId, Map<PlayerId, PublicPlayerState> playerState, PlayerId lastPlayer) {
-        Preconditions.checkArgument(ticketsCount >= 0 && playerState.size() == 2);
+        Preconditions.checkArgument(ticketsCount >= 0 && playerState.size() == PlayerId.COUNT);
 
         this.ticketsCount = ticketsCount;
         this.cardState = Objects.requireNonNull(cardState);
         this.currentPlayerId = Objects.requireNonNull(currentPlayerId);
-        this.playerState = new HashMap<>(playerState);
+        this.playerState = Map.copyOf(playerState);
         this.lastPlayer = lastPlayer;
     }
 
@@ -108,9 +108,9 @@ public class PublicGameState {
      * @return (List<Route>) all the claimed road of the game
      */
     public List<Route> claimedRoutes() {
+
         List<Route> claimedRoutes = new ArrayList<>();
-        claimedRoutes.addAll(currentPlayerState().routes());
-        claimedRoutes.addAll(playerState(currentPlayerId.next()).routes());
+        PlayerId.ALL.forEach(c ->claimedRoutes.addAll(playerState(c).routes()));
         return claimedRoutes;
     }
 

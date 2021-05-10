@@ -4,6 +4,7 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,21 +33,12 @@ public class PublicCardState {
         Preconditions.checkArgument(faceUpCards.size() == Constants.FACE_UP_CARDS_COUNT);
         Preconditions.checkArgument(deckSize >= 0);
         Preconditions.checkArgument(discardsSize >= 0);
-        this.faceUpCards = new ArrayList<>(faceUpCards);
+        this.faceUpCards = List.copyOf(faceUpCards);
         this.deckSize = deckSize;
         this.discardsSize = discardsSize;
 
     }
 
-    /**
-     * Give the total number of cards that are not in the players' hands
-     *
-     * @return (int) the total number of cards that are not in the players' hands
-     */
-    public int totalSize() {
-        return faceUpCards.size() + deckSize + discardsSize;
-
-    }
 
     /**
      * Give the 5 cards face up, in the form of a list with exactly 5 elements
@@ -54,7 +46,7 @@ public class PublicCardState {
      * @return (List < Card >) the 5 cards face up, in the form of a list with exactly 5 elements
      */
     public List<Card> faceUpCards() {
-        return new ArrayList<>(faceUpCards);
+        return Collections.unmodifiableList(faceUpCards);
     }
 
     /**

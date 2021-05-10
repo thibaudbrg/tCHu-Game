@@ -17,6 +17,7 @@ import java.util.Random;
  */
 public final class Game {
 
+    private Game(){}
     /**
      * Plays a game of tCHu to the given players, whose names are listed in the playerNames table;
      * the tickets available for this game are those of tickets, and the random generator rng is used to create
@@ -28,8 +29,8 @@ public final class Game {
      * @param rng         (Random) The random generator
      */
     public static void play(Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, SortedBag<Ticket> tickets, Random rng) {
-        Preconditions.checkArgument(playerNames.size() == 2);
-        Preconditions.checkArgument(players.size() == 2);
+        Preconditions.checkArgument(playerNames.size() == PlayerId.COUNT);
+        Preconditions.checkArgument(players.size() == PlayerId.COUNT);
 
         // Initialise playerNames
         players.forEach((id, player) -> player.initPlayers(id, playerNames));
@@ -45,8 +46,9 @@ public final class Game {
         }
 
         // The chosen tickets have been added to the given player's hand
+        updateStateBothPlayers(players, gameState);
         for (Map.Entry<PlayerId, Player> player : players.entrySet()) {
-            updateStateBothPlayers(players, gameState);
+
             gameState = gameState.withInitiallyChosenTickets(player.getKey(), player.getValue().chooseInitialTickets());
         }
 
@@ -102,7 +104,7 @@ public final class Game {
                         sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
 
                         if (additionalCost >= 1) {
-                            List<SortedBag<Card>> possibleAdditionalCards = gameState.currentPlayerState().possibleAdditionalCards(additionalCost, initialClaimCards, drawnCard);
+                            List<SortedBag<Card>> possibleAdditionalCards = gameState.currentPlayerState().possibleAdditionalCards(additionalCost, initialClaimCards);
                             if (possibleAdditionalCards.isEmpty()) {
                                 sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
                             } else {
@@ -110,7 +112,7 @@ public final class Game {
                                 if (theCardToTake.isEmpty()) {
                                     sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
                                 } else {
-                                    gameState = gameState.withClaimedRoute(route, theCardToTake);
+                                    gameState = gameState.withClaimedRoute(route, theCardToTake.union(initialClaimCards));
                                     sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, theCardToTake.union(initialClaimCards)));
                                 }
                             }
@@ -157,18 +159,13 @@ public final class Game {
         int player1Points = gameState.playerState(PlayerId.PLAYER_1).finalPoints();
         int player2Points = gameState.playerState(PlayerId.PLAYER_2).finalPoints();
 
-        if (longestPlayer1Trail.length() < longestPlayer2Trail.length()) {
+        if (longestPlayer1Trail.length() <= longestPlayer2Trail.length()) {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).getsLongestTrailBonus(longestPlayer2Trail));
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
 
-        } else if (longestPlayer1Trail.length() > longestPlayer2Trail.length()) {
+        }  if (longestPlayer1Trail.length() >= longestPlayer2Trail.length()) {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).getsLongestTrailBonus(longestPlayer1Trail));
             player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
-        } else {
-            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).getsLongestTrailBonus(longestPlayer1Trail));
-            sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).getsLongestTrailBonus(longestPlayer2Trail));
-            player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
-            player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
         }
         return new Integer[]{player1Points, player2Points};
     }
@@ -195,7 +192,7 @@ public final class Game {
 
     private static SortedBag<Card> threeOnTheTopDeckCards(GameState gameState, Random rng) {
         SortedBag.Builder builder = new SortedBag.Builder<>();
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < Constants.IN_GAME_TICKETS_COUNT; ++i) {
             gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
             builder.add(gameState.topCard());
             gameState = gameState.withoutTopCard();

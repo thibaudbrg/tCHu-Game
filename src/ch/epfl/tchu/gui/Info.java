@@ -56,7 +56,7 @@ public final class Info {
             case WHITE:
                 return StringsFr.WHITE_CARD + plural(count);
             default:
-                return StringsFr.LOCOMOTIVE_CARD + plural(count);
+               throw  new Error();
 
         }
     }

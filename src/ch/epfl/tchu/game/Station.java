@@ -24,7 +24,7 @@ public final class Station {
     public Station(int id, String name) {
         Preconditions.checkArgument(id >= 0);
         this.id = id;
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
 
     }
 
