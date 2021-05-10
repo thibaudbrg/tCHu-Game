@@ -39,6 +39,8 @@
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,7 +323,7 @@
       <workItem from="1620387073233" duration="4980000" />
       <workItem from="1620392430586" duration="172000" />
       <workItem from="1620394729540" duration="138000" />
-      <workItem from="1620647220300" duration="13801000" />
+      <workItem from="1620647220300" duration="13946000" />
     </task>
     <servers />
   </component>

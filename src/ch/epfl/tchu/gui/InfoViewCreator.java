@@ -25,7 +25,7 @@ abstract class InfoViewCreator {
      * Create the information vue
      *
      * @param id (PlayerId) The corresponding player identity
-     * @param playerNames(Map<PlayerId,String>) The associative table of players' names
+     * @param playerNames (Map<PlayerId,String>) The associative table of players' names
      * @param gameState(ObservableGameState) The observable game state
      * @param gameInfos (ObservableList<Text>) Observable list containing information on the course of the game
      * @return (Node) The information vue
