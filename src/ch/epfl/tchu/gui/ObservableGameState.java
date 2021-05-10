@@ -95,7 +95,7 @@ public final class ObservableGameState {
         int i = 0;
         routes.forEach((r, id) -> {
             if (newGameState.claimedRoutes().contains(r)) {
-                id.setValue(newPlayerState.routes().contains(r) ? newGameState.currentPlayerId() : newGameState.currentPlayerId().next()); //TODO PAS SUR DES PLAYERID
+                id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next()); //TODO PAS SUR DES PLAYERID
             }
         });
 

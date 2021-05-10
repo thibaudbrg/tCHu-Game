@@ -23,33 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" afterDir="false" />
     </list>
     <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="" />
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="033944a0-e0b4-441c-a1b2-71c946180614" name="Changes by Thibaud" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/StringsFr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/StringsFr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/Stage11Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PublicCardStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/game/PublicCardStateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,48 +69,31 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java">
+    <file path="$PROJECT_DIR$/test/ch/epfl/tchu/game/PlayerStateTest.java">
       <ranges>
-        <range start1="32" end1="33" start2="32" end2="33" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="71" end1="80" start2="71" end2="71" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="117" end1="118" start2="108" end2="108" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="120" end1="121" start2="110" end2="111" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="123" end1="124" start2="113" end2="113" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="126" end1="127" start2="115" end2="116" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="239" end1="241" start2="239" end2="240" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="251" end1="253" start2="250" end2="252" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="257" end1="259" start2="256" end2="258" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="269" end1="271" start2="268" end2="269" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="297" end1="299" start2="295" end2="296" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="320" end1="321" start2="317" end2="318" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="346" end1="348" start2="343" end2="344" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java">
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java">
       <ranges>
-        <range start1="43" end1="44" start2="43" end2="44" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="56" end1="56" start2="56" end2="57" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="64" end1="65" start2="65" end2="66" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="67" end1="68" start2="68" end2="69" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="90" end1="91" start2="91" end2="91" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="163" end1="164" start2="163" end2="164" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="222" end1="223" start2="222" end2="223" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="267" end1="268" start2="267" end2="267" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java">
-      <ranges>
-        <range start1="6" end1="6" start2="6" end2="7" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="34" end1="35" start2="35" end2="36" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="40" end1="49" start2="41" end2="41" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="56" end1="57" start2="48" end2="49" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java">
-      <ranges>
-        <range start1="19" end1="19" start2="19" end2="20" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="30" end1="32" start2="31" end2="33" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="47" end1="47" start2="48" end2="49" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="48" end1="49" start2="50" end2="51" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="104" end1="105" start2="106" end2="107" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="112" end1="113" start2="114" end2="115" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="159" end1="160" start2="161" end2="162" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="163" end1="164" start2="165" end2="166" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="166" end1="171" start2="168" end2="168" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="197" end1="198" start2="194" end2="195" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="9" end1="9" start2="9" end2="10" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="16" end1="17" start2="17" end2="22" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="19" end1="20" start2="24" end2="29" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="42" end1="43" start2="51" end2="52" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="52" end1="53" start2="61" end2="62" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="60" end1="63" start2="69" end2="69" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="64" end1="67" start2="70" end2="103" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="72" end1="73" start2="108" end2="109" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="78" end1="80" start2="114" end2="132" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="83" end1="84" start2="135" end2="140" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="88" end1="89" start2="144" end2="150" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="93" end1="94" start2="154" end2="168" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
       </ranges>
     </file>
   </component>
@@ -180,12 +151,26 @@
       <recent name="ch.epfl.tchu.game" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GraphicalPlayerTest">
+  <component name="RunManager" selected="Application.Stage11Test">
     <configuration name="GraphicalPlayerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.GraphicalPlayerTest" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <option name="PROGRAM_PARAMETERS" value="-ea" />
-      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls " />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Stage11Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.Stage11Test" />
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -203,19 +188,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.net.TestServer" />
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.net.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -264,19 +236,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.TestServer" />
       <item itemvalue="Application.Stage9Test" />
       <item itemvalue="Application.GraphicalPlayerTest" />
+      <item itemvalue="Application.Stage11Test" />
       <item itemvalue="JUnit.SerdesTest" />
       <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Stage11Test" />
         <item itemvalue="Application.GraphicalPlayerTest" />
         <item itemvalue="Application.Stage9Test" />
         <item itemvalue="Application.Stage9Test" />
         <item itemvalue="JUnit.SerdesTest" />
-        <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
       </list>
     </recent_temporary>
   </component>
@@ -368,7 +340,7 @@
       <workItem from="1620387073233" duration="4980000" />
       <workItem from="1620392430586" duration="172000" />
       <workItem from="1620394729540" duration="138000" />
-      <workItem from="1620647220300" duration="5005000" />
+      <workItem from="1620647220300" duration="7422000" />
     </task>
     <servers />
   </component>
