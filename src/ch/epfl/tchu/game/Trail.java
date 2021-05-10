@@ -118,10 +118,7 @@ public final class Trail {
     @Override
     public String toString() {
         List<String> listStation = listStation(this);
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(String.join(" - ", listStation) )
-                .append(" (").append(length()).append(")");
-        return stringBuilder.toString();
+        return String.join(" - ", listStation) + " (" + length() + ")";
     }
 
     private int trailLength(List<Route> routes) {

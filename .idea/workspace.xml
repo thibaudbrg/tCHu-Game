@@ -24,21 +24,21 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/MapViewCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/MapViewCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/GraphicalPlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Card.java" afterDir="false" />
     </list>
     <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="" />
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="033944a0-e0b4-441c-a1b2-71c946180614" name="Changes by Thibaud" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/gui/FakeServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/PublicCardState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Trip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,23 +68,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java">
-      <ranges>
-        <range start1="9" end1="10" start2="9" end2="9" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="29" end1="29" start2="28" end2="29" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="33" end1="34" start2="33" end2="35" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="49" end1="56" start2="50" end2="51" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="60" end1="65" start2="55" end2="56" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="69" end1="103" start2="60" end2="65" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="117" end1="129" start2="79" end2="81" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="135" end1="140" start2="87" end2="88" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="144" end1="149" start2="92" end2="93" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="154" end1="168" start2="98" end2="100" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-        <range start1="169" end1="169" start2="101" end2="117" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -140,7 +123,7 @@
       <recent name="ch.epfl.tchu.game" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientMain">
+  <component name="RunManager" selected="JUnit.CardStateTest and 16 more">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ClientMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
@@ -196,20 +179,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Stage9Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.Stage9Test" />
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls -ea" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -221,20 +190,46 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CardStateTest and 16 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="ch.epfl.tchu.game.CardStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.CardTest" />
+        <pattern testClass="ch.epfl.tchu.game.ColorTest" />
+        <pattern testClass="ch.epfl.tchu.game.DeckTest" />
+        <pattern testClass="ch.epfl.tchu.game.GameStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.GameTest" />
+        <pattern testClass="ch.epfl.tchu.game.PlayerIdTest" />
+        <pattern testClass="ch.epfl.tchu.game.PlayerStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicCardStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicGameStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.PublicPlayerStateTest" />
+        <pattern testClass="ch.epfl.tchu.game.RouteTest" />
+        <pattern testClass="ch.epfl.tchu.game.StationPartitionTest" />
+        <pattern testClass="ch.epfl.tchu.game.StationTest" />
+        <pattern testClass="ch.epfl.tchu.game.TicketTest" />
+        <pattern testClass="ch.epfl.tchu.game.TrailTest" />
+        <pattern testClass="ch.epfl.tchu.game.TripTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.Stage9Test" />
       <item itemvalue="Application.GraphicalPlayerTest" />
       <item itemvalue="Application.Stage11Test" />
       <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.FakeServer" />
+      <item itemvalue="JUnit.CardStateTest and 16 more" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CardStateTest and 16 more" />
         <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.FakeServer" />
         <item itemvalue="Application.GraphicalPlayerTest" />
         <item itemvalue="Application.Stage11Test" />
-        <item itemvalue="Application.Stage9Test" />
       </list>
     </recent_temporary>
   </component>
@@ -326,7 +321,7 @@
       <workItem from="1620387073233" duration="4980000" />
       <workItem from="1620392430586" duration="172000" />
       <workItem from="1620394729540" duration="138000" />
-      <workItem from="1620647220300" duration="13164000" />
+      <workItem from="1620647220300" duration="13801000" />
     </task>
     <servers />
   </component>

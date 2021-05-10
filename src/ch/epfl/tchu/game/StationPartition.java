@@ -80,12 +80,8 @@ public final class StationPartition implements StationConnectivity {
          * being built by this builder
          */
         public StationPartition build() {
-
-            List<Integer> stationLink = Arrays.stream(builderStationLink)
-                    .map(this::representative)
-                    .collect(Collectors.toList());
-
-            return new StationPartition(stationLink.toArray(new Integer[0]));
+            return new StationPartition(Arrays.stream(builderStationLink)
+                    .map(this::representative).toArray(Integer[]::new));
         }
 
 

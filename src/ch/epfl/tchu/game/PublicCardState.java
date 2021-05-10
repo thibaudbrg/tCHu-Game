@@ -3,7 +3,6 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -46,7 +45,7 @@ public class PublicCardState {
      * @return (List < Card >) the 5 cards face up, in the form of a list with exactly 5 elements
      */
     public List<Card> faceUpCards() {
-        return Collections.unmodifiableList(faceUpCards);
+        return faceUpCards;
     }
 
     /**

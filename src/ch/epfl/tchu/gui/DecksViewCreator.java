@@ -144,12 +144,8 @@ card.disableProperty().bind(drawCardHandler.isNull());
         }
         cardVue.getChildren().add(cardDeckButton);
 
-        ticketDeckButton.setOnMouseClicked(s -> {
-            drawTicketsHandler.get().onDrawTickets();
-        });
-        cardDeckButton.setOnMouseClicked(s -> {
-                    drawCardHandler.get().onDrawCard(-1);
-                }
+        ticketDeckButton.setOnMouseClicked(s -> drawTicketsHandler.get().onDrawTickets());
+        cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(-1)
         );
         return cardVue;
     }

@@ -17,7 +17,7 @@ public class ClientMain extends Application {
         List<String> argList = getParameters().getRaw();
         GraphicalPlayerAdapter player = new GraphicalPlayerAdapter();
         String name = argList.size() == 2 ? argList.get(0) : "localhost";
-        int port = argList.size() == 2 ? Integer.valueOf(argList.get(1)) : 5108;
+        int port = argList.size() == 2 ? Integer.parseInt(argList.get(1)) : 5108;
         RemotePlayerClient client = new RemotePlayerClient(player, "localhost", 5108);
         client.run();
 

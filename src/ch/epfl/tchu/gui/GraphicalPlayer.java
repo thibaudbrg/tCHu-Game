@@ -8,6 +8,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -37,15 +38,13 @@ import static com.sun.javafx.application.PlatformImpl.isFxApplicationThread;
  * @author Bourgeois Thibaud (324604)
  */
 public final class GraphicalPlayer {
-    private final PlayerId playerId;
-    private final Map<PlayerId, String> playerNames;
     private final ObservableGameState gameState;
     private final ObservableList<Text> gameInfos;
     private final Stage mainStage ;
 
-    private ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObject = new SimpleObjectProperty<>();
-    private ObjectProperty<DrawCardHandler> drawCardHandlerObject = new SimpleObjectProperty<>();
-    private ObjectProperty<ClaimRouteHandler> claimRouteHandlerObject = new SimpleObjectProperty<>();
+    private final ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObject = new SimpleObjectProperty<>();
+    private final ObjectProperty<DrawCardHandler> drawCardHandlerObject = new SimpleObjectProperty<>();
+    private final ObjectProperty<ClaimRouteHandler> claimRouteHandlerObject = new SimpleObjectProperty<>();
 
     /**
      * Constructs the graphical interface
@@ -55,8 +54,7 @@ public final class GraphicalPlayer {
      */
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
        assert isFxApplicationThread();
-        this.playerId = playerId;
-        this.playerNames = Map.copyOf(playerNames);
+        Map<PlayerId, String> playerNames1 = Map.copyOf(playerNames);
         gameState = new ObservableGameState(playerId);
         gameInfos = FXCollections.observableList(new ArrayList<>());
 
@@ -70,7 +68,7 @@ public final class GraphicalPlayer {
                 null,
                 DecksViewCreator.createCardsView(gameState, drawTicketsHandlerObject, drawCardHandlerObject),
                 DecksViewCreator.createHandView(gameState),
-                InfoViewCreator.createInfoView(this.playerId, this.playerNames, gameState, gameInfos)
+                InfoViewCreator.createInfoView(playerId, playerNames1, gameState, gameInfos)
         );
 
         Scene scene = new Scene(borderPane);
@@ -196,13 +194,13 @@ public final class GraphicalPlayer {
         int numberOfTicketToClaim = ticketSortedBag.size() == 3 ? 1 : 3;
         ObservableList<Ticket> observableListTickets = FXCollections.observableList(ticketSortedBag.toList());
         Stage dialogStage = new Stage(StageStyle.UTILITY);
-        dialogStage.setOnCloseRequest((s) -> s.consume());
+        dialogStage.setOnCloseRequest(Event::consume);
         dialogStage.setTitle(StringsFr.TICKETS_CHOICE);
         dialogStage.initOwner(mainStage);
         dialogStage.initModality(Modality.WINDOW_MODAL);
         Text text = new Text(String.format(StringsFr.CHOOSE_TICKETS, numberOfTicketToClaim, StringsFr.plural(numberOfTicketToClaim)));
         TextFlow textFlow = new TextFlow(text);
-        ListView<Ticket> listView = new ListView(observableListTickets);
+        ListView<Ticket> listView = new ListView<>(observableListTickets);
         Button button = new Button(StringsFr.CHOOSE);
 
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -224,7 +222,7 @@ public final class GraphicalPlayer {
         Preconditions.checkArgument(i == 1 || i == 0);
         ObservableList<SortedBag<Card>> sortedBagObservableList = FXCollections.observableList(cards);
         Stage dialogStage = new Stage(StageStyle.UTILITY);
-        dialogStage.setOnCloseRequest((s) -> s.consume());
+        dialogStage.setOnCloseRequest(Event::consume);
 
         dialogStage.setTitle(StringsFr.CARDS_CHOICE);
         dialogStage.initOwner(mainStage);
@@ -232,7 +230,7 @@ public final class GraphicalPlayer {
 
         Text text = new Text(i == 0 ? StringsFr.CHOOSE_CARDS : StringsFr.CHOOSE_ADDITIONAL_CARDS);
         TextFlow textFlow = new TextFlow(text);
-        ListView<SortedBag<Card>> listView = new ListView(sortedBagObservableList);
+        ListView<SortedBag<Card>> listView = new ListView<>(sortedBagObservableList);
         Button button = new Button(StringsFr.CHOOSE);
         if (i == 0)
             button.disableProperty().bind(Bindings.equal(1, Bindings.size(listView.getSelectionModel().getSelectedItems())));

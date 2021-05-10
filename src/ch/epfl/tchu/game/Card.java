@@ -51,7 +51,7 @@ public enum Card {
             case ORANGE -> ORANGE;
             case VIOLET -> VIOLET;
             case YELLOW -> YELLOW;
-            default -> LOCOMOTIVE;
+            default -> throw new Error();
         };
     }
 

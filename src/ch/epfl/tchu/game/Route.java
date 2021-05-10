@@ -94,7 +94,7 @@ public final class Route {
      * @return (List<SortedBag<Card>>) a list of all possible combination of cards that allow you to claim the Route
      */
     public List<SortedBag<Card>> possibleClaimCards() {
-        List<SortedBag<Card>> possibleClaim = new LinkedList();
+        List<SortedBag<Card>> possibleClaim = new LinkedList<>();
 
         if (this.level == Level.UNDERGROUND) {
             if (color == null) {
