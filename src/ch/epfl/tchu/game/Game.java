@@ -191,7 +191,7 @@ public final class Game {
 
 
     private static SortedBag<Card> threeOnTheTopDeckCards(GameState gameState, Random rng) {
-        SortedBag.Builder builder = new SortedBag.Builder<>();
+        SortedBag.Builder<Card> builder = new SortedBag.Builder<>();
         for (int i = 0; i < Constants.IN_GAME_TICKETS_COUNT; ++i) {
             gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
             builder.add(gameState.topCard());

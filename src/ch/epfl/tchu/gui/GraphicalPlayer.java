@@ -54,7 +54,7 @@ public final class GraphicalPlayer {
      * @param playerNames (Map<PlayerId, String>) The playerNames
      */
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
-        assert isFxApplicationThread();
+       assert isFxApplicationThread();
         this.playerId = playerId;
         this.playerNames = Map.copyOf(playerNames);
         gameState = new ObservableGameState(playerId);

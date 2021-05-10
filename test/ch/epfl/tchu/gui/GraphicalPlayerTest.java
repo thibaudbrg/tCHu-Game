@@ -68,9 +68,9 @@ public final class GraphicalPlayerTest extends Application {
         p.startTurn(drawTicketsH, drawCardH, claimRouteH);
       /* p.chooseTickets(SortedBag.of(1, ChMap.tickets().get(2), 2, ChMap.tickets().get(6)), tickets -> System.out.println(tickets));
        });*/
-        p.chooseAdditionalCards(
+       /* p.chooseAdditionalCards(
                 List.of(SortedBag.of(1, Card.WHITE, 4, Card.BLACK), SortedBag.of(3, Card.YELLOW, 4, Card.GREEN), SortedBag.of(3, Card.WHITE, 2, Card.LOCOMOTIVE)),
-                cards -> System.out.println(cards));
+                cards -> System.out.println(cards));*/
 
 
     }

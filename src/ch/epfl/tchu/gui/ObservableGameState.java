@@ -3,18 +3,14 @@ package ch.epfl.tchu.gui;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
-import com.sun.javafx.collections.ImmutableObservableList;
-import com.sun.javafx.text.PrismTextLayoutFactory;
-import javafx.beans.Observable;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ModifiableObservableListBase;
 import javafx.collections.ObservableList;
 
 import java.util.*;
 
 import static ch.epfl.tchu.game.Constants.FACE_UP_CARD_SLOTS;
-import static javafx.collections.FXCollections.*;
+import static javafx.collections.FXCollections.unmodifiableObservableList;
 
 /**
  * Represents the observable state of a game of tCHu. Includes the public part of the game state,
@@ -26,9 +22,10 @@ import static javafx.collections.FXCollections.*;
  */
 public final class ObservableGameState {
 
-    private PlayerId playerId;
+    private final PlayerId playerId;
     private PublicGameState gameState;
     private PlayerState playerState;
+
     // Properties concerning the public state of the game
     private final IntegerProperty percentTicketsRemainingInDeck;
     private final IntegerProperty percentCardsRemainingInDeck;
@@ -76,7 +73,7 @@ public final class ObservableGameState {
      * @param newGameState (PublicGameState) The new PublicGameState
      * @param newPlayerState (PlayerState) The new PlayerState
      */
-    public void setState(PublicGameState newGameState, PlayerState newPlayerState) { //TODO A QUOI SERT LE NEWPLAYERSTATE SI ON PEUT UTILISER NEWGAMESTATE.PLAYERSTATE(PLAYERID1)
+    public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
         gameState = newGameState;
         playerState = newPlayerState;
         // refresh the percentTicketsRemainingInDeck
@@ -92,10 +89,9 @@ public final class ObservableGameState {
         }
 
         // refresh the routes
-        int i = 0;
         routes.forEach((r, id) -> {
             if (newGameState.claimedRoutes().contains(r)) {
-                id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next()); //TODO PAS SUR DES PLAYERID
+                id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next());
             }
         });
 
@@ -120,9 +116,7 @@ public final class ObservableGameState {
 
 
         // refresh the numberOfEachCards
-        numberOfEachCards.forEach((card, integerProperty) -> {
-            integerProperty.setValue(newPlayerState.cards().countOf(card));
-        });
+        numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
         // refresh the claimForEachRoute
         claimForEachRoute.forEach((r, b) -> {
@@ -423,7 +417,7 @@ public final class ObservableGameState {
     //==============================================================//
     //==============================================================//
 
-    private final static List<ObjectProperty<Card>> createFaceUpCards() {
+    private static List<ObjectProperty<Card>> createFaceUpCards() {
         List<ObjectProperty<Card>> list = new LinkedList<>();
         for (int i = 0; i < 5; i++) {
             list.add(new SimpleObjectProperty<>());
@@ -431,7 +425,7 @@ public final class ObservableGameState {
         return Collections.unmodifiableList(list);
     }
 
-    private final static Map<Route, ObjectProperty<PlayerId>> createRoute() {
+    private static Map<Route, ObjectProperty<PlayerId>> createRoute() {
         Map<Route, ObjectProperty<PlayerId>> map = new HashMap<>();
         for (Route route : ChMap.routes()) {
             map.put(route, new SimpleObjectProperty<>());
@@ -439,14 +433,14 @@ public final class ObservableGameState {
         return Collections.unmodifiableMap(map);
     }
 
-    private final static Map<PlayerId, IntegerProperty> createMapIntPropertyBothPlayers() {
+    private static Map<PlayerId, IntegerProperty> createMapIntPropertyBothPlayers() {
         Map<PlayerId, IntegerProperty> map = new HashMap<>();
         map.put(PlayerId.PLAYER_1, new SimpleIntegerProperty());
         map.put(PlayerId.PLAYER_2, new SimpleIntegerProperty());
         return Collections.unmodifiableMap(map);
     }
 
-    private final static Map<Card, IntegerProperty> createNumberOfEachCard() {
+    private static Map<Card, IntegerProperty> createNumberOfEachCard() {
         Map<Card, IntegerProperty> map = new HashMap<>();
         for (Card card : Card.ALL) {
             map.put(card, new SimpleIntegerProperty());
@@ -454,7 +448,7 @@ public final class ObservableGameState {
         return Collections.unmodifiableMap(map);
     }
 
-    private final static Map<Route, BooleanProperty> createClaimForEachRoute() {
+    private static Map<Route, BooleanProperty> createClaimForEachRoute() {
         Map<Route, BooleanProperty> map = new HashMap<>();
         for (Route route : ChMap.routes()) {
             map.put(route, new SimpleBooleanProperty());
