@@ -38,17 +38,27 @@ public final class Info {
     public static String cardName(Card card, int count) {
         if (card.color() == null)
             return StringsFr.LOCOMOTIVE_CARD + plural(count);
-        return switch (card.color()) {
-            case BLACK -> StringsFr.BLACK_CARD + plural(count);
-            case VIOLET -> StringsFr.VIOLET_CARD + plural(count);
-            case BLUE -> StringsFr.BLUE_CARD + plural(count);
-            case GREEN -> StringsFr.GREEN_CARD + plural(count);
-            case YELLOW -> StringsFr.YELLOW_CARD + plural(count);
-            case ORANGE -> StringsFr.ORANGE_CARD + plural(count);
-            case RED -> StringsFr.RED_CARD + plural(count);
-            case WHITE -> StringsFr.WHITE_CARD + plural(count);
-            default -> throw new Error();
-        };
+        switch (card.color()) {
+            case BLACK:
+                return StringsFr.BLACK_CARD + plural(count);
+            case VIOLET:
+                return StringsFr.VIOLET_CARD + plural(count);
+            case BLUE:
+                return StringsFr.BLUE_CARD + plural(count);
+            case GREEN:
+                return StringsFr.GREEN_CARD + plural(count);
+            case YELLOW:
+                return StringsFr.YELLOW_CARD + plural(count);
+            case ORANGE:
+                return StringsFr.ORANGE_CARD + plural(count);
+            case RED:
+                return StringsFr.RED_CARD + plural(count);
+            case WHITE:
+                return StringsFr.WHITE_CARD + plural(count);
+            default:
+                throw  new Error();
+
+        }
     }
 
     /**

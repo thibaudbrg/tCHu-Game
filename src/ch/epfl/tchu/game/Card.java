@@ -42,17 +42,27 @@ public enum Card {
      * @return (Card) the corresponding card
      */
     public static Card of(Color color) {
-        return switch (color) {
-            case RED -> RED;
-            case BLUE -> BLUE;
-            case BLACK -> BLACK;
-            case GREEN -> GREEN;
-            case WHITE -> WHITE;
-            case ORANGE -> ORANGE;
-            case VIOLET -> VIOLET;
-            case YELLOW -> YELLOW;
-            default -> throw new Error();
-        };
+        switch (color) {
+            case RED:
+                return RED;
+            case BLUE:
+                return BLUE;
+            case BLACK:
+                return BLACK;
+            case GREEN:
+                return GREEN;
+            case WHITE:
+                return WHITE;
+            case ORANGE:
+                return ORANGE;
+            case VIOLET:
+                return VIOLET;
+            case YELLOW:
+                return YELLOW;
+            default:
+                return LOCOMOTIVE;
+
+        }
     }
 
     /**

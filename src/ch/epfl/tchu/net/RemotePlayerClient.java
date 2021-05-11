@@ -65,69 +65,69 @@ public final class RemotePlayerClient {
                 String[] splitedString = (line.split(Pattern.quote(" "), -1));
 
                 switch (MessageId.valueOf(splitedString[0])) {
-                    case INIT_PLAYERS -> {
+                    case INIT_PLAYERS :
                         PlayerId ownId = playerIdSerde.deserialize(splitedString[1]);
                         List<String> playerString = stringListSerde.deserialize(splitedString[2]);
                         Map<PlayerId, String> playerNames = Map.of(PlayerId.PLAYER_1, playerString.get(0), PlayerId.PLAYER_2, playerString.get(1));
                         player.initPlayers(ownId, playerNames);
-                    }
-                    case RECEIVE_INFO -> {
+                    break;
+                    case RECEIVE_INFO :
                         String info = stringSerde.deserialize(splitedString[1]);
                         player.receiveInfo(info);
-                    }
-                    case UPDATE_STATE -> {
+                    break;
+                    case UPDATE_STATE :
                         PublicGameState newState = publicGameStateSerde.deserialize(splitedString[1]);
                         PlayerState ownState = playerStateSerde.deserialize(splitedString[2]);
                         player.updateState(newState, ownState);
-                    }
-                    case SET_INITIAL_TICKETS -> {
+                    break;
+                    case SET_INITIAL_TICKETS :
                         SortedBag<Ticket> tickets = ticketSortedBagSerde.deserialize(splitedString[1]);
                         player.setInitialTicketChoice(tickets);
-                    }
-                    case CHOOSE_INITIAL_TICKETS -> {
+                    break;
+                    case CHOOSE_INITIAL_TICKETS :
                         String serializedTickets = ticketSortedBagSerde.serialize(player.chooseInitialTickets());
                         w.write(serializedTickets);
                         w.write('\n');
                         w.flush();
-                    }
-                    case NEXT_TURN -> {
+                    break;
+                    case NEXT_TURN :
                         String serializedNextTurn = turnKindSerde.serialize(player.nextTurn());
                         w.write(serializedNextTurn);
                         w.write('\n');
                         w.flush();
-                    }
-                    case CHOOSE_TICKETS -> {
+                    break;
+                    case CHOOSE_TICKETS :
                         SortedBag<Ticket> options = ticketSortedBagSerde.deserialize(splitedString[1]);
                         String serialized = ticketSortedBagSerde.serialize(player.chooseTickets(options));
                         w.write(serialized);
                         w.write('\n');
                         w.flush();
-                    }
-                    case DRAW_SLOT -> {
+                    break;
+                    case DRAW_SLOT :
                         String serializedDrawSlot = integerSerde.serialize(player.drawSlot());
                         w.write(serializedDrawSlot);
                         w.write('\n');
                         w.flush();
-                    }
-                    case ROUTE -> {
+                    break;
+                    case ROUTE :
                         String serializedRoute = routeSerde.serialize((player.claimedRoute()));
                         w.write(serializedRoute);
                         w.write('\n');
                         w.flush();
-                    }
-                    case CARDS -> {
+                    break;
+                    case CARDS :
                         String serializedCards = cardSortedBagSerde.serialize((player.initialClaimCards()));
                         w.write(serializedCards);
                         w.write('\n');
                         w.flush();
-                    }
-                    case CHOOSE_ADDITIONAL_CARDS -> {
+                    break;
+                    case CHOOSE_ADDITIONAL_CARDS :
                         List<SortedBag<Card>> options1 = cardSortedBagListSerde.deserialize(splitedString[1]);
                         String serializedAdditionalCards = cardSortedBagSerde.serialize(player.chooseAdditionalCards(options1));
                         w.write(serializedAdditionalCards);
                         w.write('\n');
                         w.flush();
-                    }
+                    break;
                 }
             }
 

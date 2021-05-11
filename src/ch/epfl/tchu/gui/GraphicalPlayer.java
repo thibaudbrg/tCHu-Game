@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 import static ch.epfl.tchu.gui.ActionHandler.*;
-import static com.sun.javafx.application.PlatformImpl.isFxApplicationThread;
+import static javafx.application.Platform.isFxApplicationThread;
 
 
 /**
@@ -53,7 +53,7 @@ public final class GraphicalPlayer {
      * @param playerNames (Map<PlayerId, String>) The playerNames
      */
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
-       assert isFxApplicationThread();
+        isFxApplicationThread();
         Map<PlayerId, String> playerNames1 = Map.copyOf(playerNames);
         gameState = new ObservableGameState(playerId);
         gameInfos = FXCollections.observableList(new ArrayList<>());
