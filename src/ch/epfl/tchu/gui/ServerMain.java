@@ -24,25 +24,15 @@ public class ServerMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         List<String> argList = getParameters().getRaw();
 
-        String player1Name = argList.size()==2?argList.get(0):"Ada";
-        String player2Name = argList.size()==2?argList.get(1):"Charles";
-        Map<PlayerId,String> playersName = Map.of(PlayerId.PLAYER_1,player1Name, PlayerId.PLAYER_2,player2Name);
-        try (ServerSocket serverSocket = new ServerSocket(5108);
-             Socket socket = serverSocket.accept()) {
-            GraphicalPlayerAdapter player =  new GraphicalPlayerAdapter(); //TODO ON SAIT PAS QUI JOUE EN LOCAL
-            RemotePlayerProxy playerProxy =new RemotePlayerProxy(socket);
-            Game.play(Map.of(PlayerId.PLAYER_1,player,PlayerId.PLAYER_2,playerProxy),playersName, SortedBag.of(ChMap.tickets()),new Random(2020));
-
+        String player1Name = argList.size() == 2 || argList.size() == 1 ? argList.get(0) : "Ada";
+        String player2Name = argList.size() == 2 ? argList.get(1) : "Charles";
+        Map<PlayerId, String> playersName = Map.of(PlayerId.PLAYER_1, player1Name, PlayerId.PLAYER_2, player2Name);
+        try (ServerSocket serverSocket = new ServerSocket(5108)) {
+            Socket socket = serverSocket.accept();
+            GraphicalPlayerAdapter player = new GraphicalPlayerAdapter(); //TODO ON SAIT PAS QUI JOUE EN LOCAL
+            RemotePlayerProxy playerProxy = new RemotePlayerProxy(socket);
+            new Thread(() -> Game.play(Map.of(PlayerId.PLAYER_1, player, PlayerId.PLAYER_2, playerProxy),
+                    playersName, SortedBag.of(ChMap.tickets()), new Random(2020))).start();
         }
-
-/*
-        Game holaquetal = new Game();
-        holaquetal.play();
-
-
-        java.util.Map<PlayerId, Player> players, Map<PlayerId, String> playerNames, SortedBag< Ticket > tickets, Random
-        rng
-
- */
     }
 }
