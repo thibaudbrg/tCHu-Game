@@ -23,11 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_11.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ShowMyIp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EPFL-BA2-Project-1-tCHu-Game.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EPFL-BA2-Project-1-tCHu-Game.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_3$C.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_3$C.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/sigcheck/SignatureChecks_3.class" afterDir="false" />
@@ -141,15 +140,17 @@
       <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/net/TestServer$ChMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/net/TestServer$ChMap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/net/TestServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/net/TestServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/test/TestRandomizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/test/TestRandomizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/sigcheck/SignatureChecks_2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/Serde.java" afterDir="false" />
     </list>
-    <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="">
+    <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="" />
+    <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
+    <list id="033944a0-e0b4-441c-a1b2-71c946180614" name="Changes by Thibaud" comment="">
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" afterDir="false" />
     </list>
-    <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
-    <list id="033944a0-e0b4-441c-a1b2-71c946180614" name="Changes by Thibaud" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,8 +183,20 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java">
       <ranges>
-        <range start1="26" end1="35" start2="26" end2="35" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="36" end1="46" start2="36" end2="36" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="11" end1="11" start2="11" end2="13" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="17" end1="17" start2="19" end2="25" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="22" end1="22" start2="30" end2="39" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="23" end1="24" start2="40" end2="41" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="31" end1="32" start2="48" end2="49" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="35" end1="35" start2="52" end2="55" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java">
+      <ranges>
+        <range start1="8" end1="9" start2="8" end2="14" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="16" end1="16" start2="21" end2="29" changelist="033944a0-e0b4-441c-a1b2-71c946180614" />
+        <range start1="17" end1="18" start2="30" end2="31" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="20" end1="21" start2="33" end2="34" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
       </ranges>
     </file>
   </component>
@@ -244,11 +257,11 @@
       <recent name="ch.epfl.tchu.game" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ServerMain">
+  <component name="RunManager" selected="Application.ShowMyIp">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ClientMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls -ea" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls -ea" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -272,10 +285,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GraphicalPlayerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.GraphicalPlayerTest" />
+    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ServerMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls -ea" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls -ea" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -286,10 +299,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ServerMain" />
+    <configuration name="ShowMyIp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ShowMyIp" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls -ea" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -325,19 +337,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.GraphicalPlayerTest" />
       <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.TestServer" />
       <item itemvalue="Application.ServerMain" />
       <item itemvalue="Application.FakeServer" />
+      <item itemvalue="Application.ShowMyIp" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ServerMain" />
+        <item itemvalue="Application.ShowMyIp" />
         <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ServerMain" />
         <item itemvalue="Application.FakeServer" />
         <item itemvalue="Application.TestServer" />
-        <item itemvalue="Application.GraphicalPlayerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -437,6 +449,8 @@
       <workItem from="1620759705644" duration="333000" />
       <workItem from="1620820332551" duration="24000" />
       <workItem from="1620820395236" duration="3429000" />
+      <workItem from="1620824015789" duration="2232000" />
+      <workItem from="1620992272210" duration="2794000" />
     </task>
     <servers />
   </component>
@@ -488,14 +502,6 @@
           <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerClient.java</url>
           <line>134</line>
           <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerClient.java</url>
-          <line>57</line>
-          <properties class="ch.epfl.tchu.net.RemotePlayerClient" method="run">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

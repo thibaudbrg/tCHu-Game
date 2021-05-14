@@ -74,7 +74,7 @@ public interface Serde<E> {
             public String serialize(T t) {
                 if (t == null) return new String();
 
-               // Preconditions.checkArgument(list.contains(t));
+                Preconditions.checkArgument(list.contains(t));
                 return String.valueOf(list.indexOf(t));
             }
 
@@ -82,7 +82,7 @@ public interface Serde<E> {
             public T deserialize(String s) {
                 if (s.isEmpty()) return null;
 
-              //  Preconditions.checkArgument(Integer.parseInt(s) < list.size());
+              Preconditions.checkArgument(Integer.parseInt(s) < list.size());
                 return list.get(Integer.parseInt(s));
             }
         };
@@ -92,17 +92,17 @@ public interface Serde<E> {
      * Takes as argument a serde and a separator character
      * and returns a serde capable of (de)serializing lists of values (de)serialized by the given serde
      *
-     * @param se (Serde<T>) The Serde capable to (de)serialize the objects in the List
+     * @param serde (Serde<T>) The Serde capable to (de)serialize the objects in the List
      * @param sep (String) The separator character
      * @param <T> The type of the object that the method serializes or deserializes
      * @return (Serde<List<T>>) The corresponding serde
      */
-    static <T> Serde<List<T>> listOf(Serde<T> se, String sep) {
+    static <T> Serde<List<T>> listOf(Serde<T> serde, String sep) {
         return new Serde<>() {
             @Override
             public String serialize(List<T> ts) {
                 if (ts.isEmpty()) return new String();
-                List<String> serializedList = ts.stream().map(se::serialize).collect(Collectors.toList());
+                List<String> serializedList = ts.stream().map(serde::serialize).collect(Collectors.toList());
                 return String.join(sep, serializedList);
             }
 
@@ -112,7 +112,7 @@ public interface Serde<E> {
 
                 String[] serializedArray = s.split(Pattern.quote(sep), -1);
                 return Arrays.stream(serializedArray)
-                        .map(se::deserialize)
+                        .map(serde::deserialize)
                         .collect(Collectors.toList());
             }
         };
@@ -122,19 +122,19 @@ public interface Serde<E> {
      * Takes as argument a serde and a separator character
      * and returns a serde capable of (de)serializing a SortedBag (de)serialized by the given serde
      *
-     * @param se (Serde<T>) The Serde capable to (de)serialize the objects in the SortedBag
+     * @param serde (Serde<T>) The Serde capable to (de)serialize the objects in the SortedBag
      * @param sep (String) The separator character
      * @param <T> The type of the object that the method serializes or deserializes
      * @return (Serde<SortedBag<T>>) The corresponding serde
      */
-    static <T extends Comparable<T>> Serde<SortedBag<T>> bagOf(Serde<T> se, String sep) {
+    static <T extends Comparable<T>> Serde<SortedBag<T>> bagOf(Serde<T> serde, String sep) {
         return new Serde<>() {
             @Override
             public String serialize(SortedBag<T> ts) {
                 if (ts.isEmpty()) return new String();
 
                 List<String> serializedList = ts.stream()
-                        .map(se::serialize)
+                        .map(serde::serialize)
                         .collect(Collectors.toList());
                 return String.join(sep, serializedList);
             }
@@ -144,7 +144,7 @@ public interface Serde<E> {
                 if (s.isEmpty()) return SortedBag.of();
                 String[] serializedArray = s.split(Pattern.quote(sep), -1);
                 List<T> deserializedList = Arrays.stream(serializedArray)
-                        .map(se::deserialize)
+                        .map(serde::deserialize)
                         .collect(Collectors.toList());
 
                 return SortedBag.of(deserializedList);
