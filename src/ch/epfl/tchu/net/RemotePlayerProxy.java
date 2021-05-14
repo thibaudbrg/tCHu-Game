@@ -98,7 +98,7 @@ public final class RemotePlayerProxy implements Player {
      */
     @Override
     public SortedBag<Ticket> chooseInitialTickets() {
-        sendMessage(MessageId.CHOOSE_INITIAL_TICKETS, "");
+        sendMessage(MessageId.CHOOSE_INITIAL_TICKETS, ""); //TODO PEUT ETRE UN TRUC PCQ PAS ARG
         return ticketSortedBagSerde.deserialize(receiveMessage());
     }
 
@@ -181,7 +181,7 @@ public final class RemotePlayerProxy implements Player {
         try {BufferedWriter w = new BufferedWriter(
                 new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.US_ASCII));
             w.write(messageId.name());
-            w.write(" " + serialized);
+           if(!serialized.isEmpty()) w.write(" " + serialized);
             w.write('\n');
             w.flush();
         } catch (IOException e) {

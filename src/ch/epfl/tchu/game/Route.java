@@ -41,7 +41,7 @@ public final class Route {
      * @param color    (Color) color of the Route
      */
     public Route(String id, Station station1, Station station2, int length, Level level, Color color) {
-        Preconditions.checkArgument(!(station1.id()== (station2.id())));
+        Preconditions.checkArgument(!(station1.id() == (station2.id())));
         Preconditions.checkArgument(length >= Constants.MIN_ROUTE_LENGTH);
         Preconditions.checkArgument(length <= Constants.MAX_ROUTE_LENGTH);
 
@@ -57,7 +57,7 @@ public final class Route {
     /**
      * Return a list with the two stations in the order of the constructor
      *
-     * @return (List<Station>) a list with the two stations in the order of the constructor
+     * @return (List < Station >) a list with the two stations in the order of the constructor
      */
     public List<Station> stations() {
         List<Station> stationList = new ArrayList<>();
@@ -91,7 +91,7 @@ public final class Route {
     /**
      * Return a list of all possible combination of cards that allow you to claim the Route
      *
-     * @return (List<SortedBag<Card>>) a list of all possible combination of cards that allow you to claim the Route
+     * @return (List < SortedBag < Card > >) a list of all possible combination of cards that allow you to claim the Route
      */
     public List<SortedBag<Card>> possibleClaimCards() {
         List<SortedBag<Card>> possibleClaim = new LinkedList<>();

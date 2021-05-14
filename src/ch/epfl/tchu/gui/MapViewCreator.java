@@ -53,8 +53,7 @@ abstract class MapViewCreator {
         Carte.getStylesheets().add("map.css");
         Carte.getStylesheets().add("colors.css");
 
-        ImageView font = new ImageView("map.png");
-        Carte.getChildren().add((font));
+        Carte.getChildren().add((new ImageView("map.png")));
 
         for (Route r : ChMap.routes()) {
             Group groupRoute = new Group();

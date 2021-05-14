@@ -76,6 +76,7 @@ public final class Deck<C extends Comparable<C>> {
         List<C> s = cards.stream()
                 .skip(cards.size() - count)
                 .collect(Collectors.toList());
+
         return SortedBag.of(s);
     }
 

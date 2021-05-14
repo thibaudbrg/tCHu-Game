@@ -68,10 +68,11 @@ public final class Game {
             switch (actualPlayer.nextTurn()) {
                 // If the actualPlayer wants to draw some tickets
                 case DRAW_TICKETS:
+                   SortedBag<Ticket> topTickets = gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT);
                     sendInfoToBothPlayers(players, currentInfoPlayer.drewTickets(Constants.IN_GAME_TICKETS_COUNT));
-                    SortedBag<Ticket> chosenTickets = actualPlayer.chooseTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT));
+                    SortedBag<Ticket> chosenTickets = actualPlayer.chooseTickets(topTickets);
                     sendInfoToBothPlayers(players, currentInfoPlayer.keptTickets(chosenTickets.size()));
-                    gameState = gameState.withChosenAdditionalTickets(gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT), chosenTickets);
+                    gameState = gameState.withChosenAdditionalTickets(topTickets, chosenTickets);
                     break;
                 // If the actualPlayer wants to draw a card
                 case DRAW_CARDS:

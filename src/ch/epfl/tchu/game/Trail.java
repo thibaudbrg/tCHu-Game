@@ -15,6 +15,7 @@ public final class Trail {
     private final Station station1;
     private final Station station2;
     private final int length;
+    private final static Trail EMPTY_TRAIL = new Trail(List.of(), null, null);
 
     private Trail(List<Route> routes, Station station1, Station station2) {
         this.routes = new ArrayList<>(routes);
@@ -31,7 +32,7 @@ public final class Trail {
      */
     public static Trail longest(List<Route> routes) {
         if (routes.isEmpty()) {
-            return new Trail(new ArrayList<>(), null, null);
+            return EMPTY_TRAIL;
         } else {
             List<Trail> cs = findCS(routes);
             Trail longestTrail = cs.get(0);

@@ -86,9 +86,9 @@ public final class StationPartition implements StationConnectivity {
 
 
         private int representative(int stationId) {
-            do {
+            while (stationId != builderStationLink[stationId]){
                 stationId = builderStationLink[stationId];
-            } while (stationId != builderStationLink[stationId]);
+            } ;
             return stationId;
         }
     }

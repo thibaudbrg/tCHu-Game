@@ -23,9 +23,9 @@ public final class Ticket implements Comparable<Ticket> {
     public Ticket(List<Trip> trips) {
         Preconditions.checkArgument(!trips.isEmpty());
         stationFrom = trips.get(0).from();
-
+        String stationName = stationFrom.name();
         for (Trip trip : trips) {
-            Preconditions.checkArgument(stationFrom.name().equals(trip.from().name()));
+            Preconditions.checkArgument(stationName.equals(trip.from().name()));
         }
 
         this.trips = List.copyOf(trips);

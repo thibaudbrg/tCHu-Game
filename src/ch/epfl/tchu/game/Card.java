@@ -1,5 +1,7 @@
 package ch.epfl.tchu.game;
 
+import ch.epfl.tchu.Preconditions;
+
 import java.util.List;
 
 /**
@@ -42,6 +44,7 @@ public enum Card {
      * @return (Card) the corresponding card
      */
     public static Card of(Color color) {
+        Preconditions.checkArgument(color!=null);
         switch (color) {
             case RED:
                 return RED;
@@ -60,8 +63,7 @@ public enum Card {
             case YELLOW:
                 return YELLOW;
             default:
-                return LOCOMOTIVE;
-
+              return null;
         }
     }
 

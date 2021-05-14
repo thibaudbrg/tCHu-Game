@@ -82,7 +82,6 @@ abstract class DecksViewCreator {
                                        ObjectProperty<ActionHandler.DrawTicketsHandler> drawTicketsHandler,
                                        ObjectProperty<ActionHandler.DrawCardHandler> drawCardHandler) {
 
-
         VBox cardVue = new VBox();
         cardVue.setId("card-pane");
         cardVue.getStylesheets().add("decks.css");

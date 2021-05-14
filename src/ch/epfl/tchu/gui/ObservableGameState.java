@@ -23,8 +23,8 @@ import static javafx.collections.FXCollections.unmodifiableObservableList;
 public final class ObservableGameState {
 
     private final PlayerId playerId;
-    private PublicGameState gameState;
-    private PlayerState playerState;
+    private PublicGameState gameState; //TODO C PAS FINAL
+    private PlayerState playerState;//TODO C PAS FINAL
 
     // Properties concerning the public state of the game
     private final IntegerProperty percentTicketsRemainingInDeck;

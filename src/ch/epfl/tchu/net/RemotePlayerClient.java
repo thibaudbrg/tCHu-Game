@@ -39,8 +39,8 @@ public final class RemotePlayerClient {
      * Constructs a remote player client
      *
      * @param player (Player) The player to whom it must provide remote access
-     * @param name (String) The name of the client
-     * @param port (int) The port to be used
+     * @param name   (String) The name of the client
+     * @param port   (int) The port to be used
      */
     public RemotePlayerClient(Player player, String name, int port) {
         this.player = player;
@@ -65,72 +65,62 @@ public final class RemotePlayerClient {
                 String[] splitedString = (line.split(Pattern.quote(" "), -1));
 
                 switch (MessageId.valueOf(splitedString[0])) {
-                    case INIT_PLAYERS :
+                    case INIT_PLAYERS:
                         PlayerId ownId = playerIdSerde.deserialize(splitedString[1]);
                         List<String> playerString = stringListSerde.deserialize(splitedString[2]);
                         Map<PlayerId, String> playerNames = Map.of(PlayerId.PLAYER_1, playerString.get(0), PlayerId.PLAYER_2, playerString.get(1));
                         player.initPlayers(ownId, playerNames);
-                    break;
-                    case RECEIVE_INFO :
+                        break;
+                    case RECEIVE_INFO:
                         String info = stringSerde.deserialize(splitedString[1]);
                         player.receiveInfo(info);
-                    break;
-                    case UPDATE_STATE :
+                        break;
+                    case UPDATE_STATE:
                         PublicGameState newState = publicGameStateSerde.deserialize(splitedString[1]);
                         PlayerState ownState = playerStateSerde.deserialize(splitedString[2]);
                         player.updateState(newState, ownState);
-                    break;
-                    case SET_INITIAL_TICKETS :
+                        break;
+                    case SET_INITIAL_TICKETS:
                         SortedBag<Ticket> tickets = ticketSortedBagSerde.deserialize(splitedString[1]);
                         player.setInitialTicketChoice(tickets);
-                    break;
-                    case CHOOSE_INITIAL_TICKETS :
-                        String serializedTickets = ticketSortedBagSerde.serialize(player.chooseInitialTickets());
-                        w.write(serializedTickets);
-                        w.write('\n');
-                        w.flush();
-                    break;
-                    case NEXT_TURN :
-                        String serializedNextTurn = turnKindSerde.serialize(player.nextTurn());
-                        w.write(serializedNextTurn);
-                        w.write('\n');
-                        w.flush();
-                    break;
-                    case CHOOSE_TICKETS :
+                        break;
+                    case CHOOSE_INITIAL_TICKETS:
+                        sendReply(w,ticketSortedBagSerde.serialize(player.chooseInitialTickets()));
+                        break;
+                    case NEXT_TURN:
+                        sendReply(w, turnKindSerde.serialize(player.nextTurn()));
+                        break;
+                    case CHOOSE_TICKETS:
                         SortedBag<Ticket> options = ticketSortedBagSerde.deserialize(splitedString[1]);
-                        String serialized = ticketSortedBagSerde.serialize(player.chooseTickets(options));
-                        w.write(serialized);
-                        w.write('\n');
-                        w.flush();
-                    break;
-                    case DRAW_SLOT :
-                        String serializedDrawSlot = integerSerde.serialize(player.drawSlot());
-                        w.write(serializedDrawSlot);
-                        w.write('\n');
-                        w.flush();
-                    break;
-                    case ROUTE :
-                        String serializedRoute = routeSerde.serialize((player.claimedRoute()));
-                        w.write(serializedRoute);
-                        w.write('\n');
-                        w.flush();
-                    break;
-                    case CARDS :
-                        String serializedCards = cardSortedBagSerde.serialize((player.initialClaimCards()));
-                        w.write(serializedCards);
-                        w.write('\n');
-                        w.flush();
-                    break;
-                    case CHOOSE_ADDITIONAL_CARDS :
+                        sendReply(w, (ticketSortedBagSerde.serialize(player.chooseTickets(options))));
+                        break;
+                    case DRAW_SLOT:
+                        sendReply(w,integerSerde.serialize(player.drawSlot()));
+                        break;
+                    case ROUTE:
+                        sendReply(w, routeSerde.serialize((player.claimedRoute())));
+                        break;
+                    case CARDS:
+                        sendReply(w, cardSortedBagSerde.serialize((player.initialClaimCards())));
+                        break;
+                    case CHOOSE_ADDITIONAL_CARDS:
                         List<SortedBag<Card>> options1 = cardSortedBagListSerde.deserialize(splitedString[1]);
-                        String serializedAdditionalCards = cardSortedBagSerde.serialize(player.chooseAdditionalCards(options1));
-                        w.write(serializedAdditionalCards);
-                        w.write('\n');
-                        w.flush();
-                    break;
+                        sendReply(w, cardSortedBagSerde.serialize(player.chooseAdditionalCards(options1)));
+                        break;
                 }
             }
 
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+
+    }
+
+    private void sendReply(BufferedWriter w, String s) {
+        try {
+            w.write(s);
+            w.write('\n');
+            w.flush();
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

@@ -45,7 +45,7 @@ public class PublicCardState {
      * @return (List < Card >) the 5 cards face up, in the form of a list with exactly 5 elements
      */
     public List<Card> faceUpCards() {
-        return faceUpCards;
+        return Collections.unmodifiableList(faceUpCards);
     }
 
     /**
