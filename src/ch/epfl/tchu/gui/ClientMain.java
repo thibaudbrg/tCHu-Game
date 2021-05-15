@@ -31,7 +31,7 @@ public class ClientMain extends Application {
     public void start(Stage primaryStage)  {
         List<String> argList = getParameters().getRaw();
         GraphicalPlayerAdapter player = new GraphicalPlayerAdapter();
-        String name = argList.size() == 2 || argList.size() == 1 ? argList.get(0) : "128.179.251.211";
+        String name = argList.size() == 2 || argList.size() == 1 ? argList.get(0) : "localhost";
         int port = argList.size() == 2 ? Integer.parseInt(argList.get(1)) : 5108;
         new Thread(() -> new RemotePlayerClient(player, name, port).run()).start();
     }

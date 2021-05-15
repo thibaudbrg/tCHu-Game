@@ -232,8 +232,9 @@ public final class GraphicalPlayer {
         TextFlow textFlow = new TextFlow(text);
         ListView<SortedBag<Card>> listView = new ListView<>(sortedBagObservableList);
         Button button = new Button(StringsFr.CHOOSE);
-        if (i == 0)
-            button.disableProperty().bind(Bindings.equal(1, Bindings.size(listView.getSelectionModel().getSelectedItems())));
+if(i==0) {
+    button.disableProperty().bind(Bindings.equal(0, Bindings.size(listView.getSelectionModel().getSelectedItems())));
+}
 
         listView.setCellFactory(v -> new TextFieldListCell<>(new StringConverter<>() {
             @Override
@@ -248,8 +249,9 @@ public final class GraphicalPlayer {
         }));
         button.setOnAction(s -> {
             dialogStage.hide();
-            chooseCardsHandler.onChooseCards(listView.getSelectionModel().getSelectedItem());
-
+            SortedBag<Card> chooseCard = listView.getSelectionModel().getSelectedItem();
+            if (chooseCard==null)chooseCardsHandler.onChooseCards(SortedBag.of());
+            chooseCardsHandler.onChooseCards(chooseCard);
         });
         VBox vBox = new VBox(textFlow, listView, button);
         Scene scene = new Scene(vBox);

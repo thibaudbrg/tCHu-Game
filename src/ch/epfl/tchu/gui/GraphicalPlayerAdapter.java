@@ -98,8 +98,11 @@ public final class GraphicalPlayerAdapter implements Player {
     public TurnKind nextTurn() {
         Platform.runLater(() -> graphicalPlayer.startTurn(
                 (() -> put(turnKindsQueue, TurnKind.DRAW_TICKETS)),
-                ((i) -> put(turnKindsQueue, TurnKind.DRAW_CARDS)),
-                ((r, cards) -> put(turnKindsQueue, TurnKind.CLAIM_ROUTE))));
+                ((i) -> {put(turnKindsQueue, TurnKind.DRAW_CARDS);
+                put(cardsQueue,i);}),
+                ((r, cards) ->{ put(turnKindsQueue, TurnKind.CLAIM_ROUTE);
+                put(routeQueue,r);
+                put(sortedBagCQueue,cards);})));
         return take(turnKindsQueue);
     }
 
