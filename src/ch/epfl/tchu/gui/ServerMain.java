@@ -49,7 +49,7 @@ public class ServerMain extends Application {
             GraphicalPlayerAdapter player = new GraphicalPlayerAdapter();
             RemotePlayerProxy playerProxy = new RemotePlayerProxy(socket);
             new Thread(() -> Game.play(Map.of(PlayerId.PLAYER_1, player, PlayerId.PLAYER_2, playerProxy),
-                    playersName, SortedBag.of(ChMap.tickets()), new Random(2020))).start();
+                    playersName, SortedBag.of(ChMap.tickets()), new Random())).start();
         } catch (IOException e){
             throw new UncheckedIOException(e);
 
