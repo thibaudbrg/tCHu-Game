@@ -24,13 +24,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/InfoViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" afterDir="false" />
     </list>
     <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="">
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerProxy.java" afterDir="false" />
     </list>
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="99a3876c-a6d8-42c3-86b3-1a429abed314" name="Changes by Thibaud" comment="" />
@@ -64,30 +65,26 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java">
+    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java">
       <ranges>
-        <range start1="25" end1="27" start2="25" end2="27" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="51" end1="52" start2="51" end2="52" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="72" end1="73" start2="72" end2="73" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="76" end1="79" start2="76" end2="79" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="80" end1="82" start2="80" end2="80" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="84" end1="85" start2="82" end2="82" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="90" end1="91" start2="87" end2="87" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="92" end1="94" start2="88" end2="92" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="97" end1="98" start2="95" end2="95" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="101" end1="102" start2="98" end2="98" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="105" end1="106" start2="101" end2="101" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="109" end1="110" start2="104" end2="104" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="113" end1="114" start2="107" end2="107" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="116" end1="118" start2="109" end2="109" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="120" end1="121" start2="111" end2="111" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="122" end1="137" start2="112" end2="125" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="189" end1="190" start2="177" end2="178" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="212" end1="213" start2="200" end2="201" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="321" end1="322" start2="309" end2="310" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="405" end1="406" start2="393" end2="394" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="408" end1="409" start2="396" end2="397" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="457" end1="460" start2="445" end2="445" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="33" end1="36" start2="33" end2="33" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="42" end1="42" start2="39" end2="40" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="44" end1="50" start2="42" end2="42" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="51" end1="51" start2="43" end2="44" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="52" end1="53" start2="45" end2="45" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="54" end1="55" start2="46" end2="46" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="60" end1="60" start2="51" end2="59" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="62" end1="64" start2="61" end2="66" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="89" end1="114" start2="91" end2="93" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="115" end1="120" start2="94" end2="94" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="123" end1="126" start2="97" end2="97" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="128" end1="136" start2="99" end2="99" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="139" end1="139" start2="102" end2="110" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="140" end1="141" start2="111" end2="113" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="143" end1="143" start2="115" end2="116" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
+        <range start1="145" end1="145" start2="118" end2="120" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="148" end1="148" start2="123" end2="124" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
+        <range start1="151" end1="151" start2="127" end2="145" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
       </ranges>
     </file>
   </component>
@@ -180,7 +177,7 @@
     <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ServerMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="PROGRAM_PARAMETERS" value="Thibaud Mallo" />
+      <option name="PROGRAM_PARAMETERS" value="Thibaud Matthieu" />
       <option name="VM_PARAMETERS" value=" --module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls" />
       <extension name="coverage">
         <pattern>
@@ -351,7 +348,7 @@
       <workItem from="1621068601909" duration="2674000" />
       <workItem from="1621071312100" duration="88000" />
       <workItem from="1621169910395" duration="3656000" />
-      <workItem from="1621252281168" duration="1598000" />
+      <workItem from="1621252281168" duration="4648000" />
     </task>
     <servers />
   </component>

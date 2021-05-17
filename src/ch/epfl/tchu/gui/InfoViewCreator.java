@@ -31,33 +31,30 @@ abstract class InfoViewCreator {
      * @return (Node) The information vue
      */
     public static Node createInfoView(PlayerId id, Map<PlayerId, String> playerNames, ObservableGameState gameState, ObservableList<Text> gameInfos) {
-        // The player-stats vBox
         VBox playerStatsVBox = new VBox();
         playerStatsVBox.setId("player-stats");
+
         for (PlayerId i : List.of(id, id.next())) {
             Circle circle = new Circle(5);
             circle.getStyleClass().add("filled");
-            Text text = new Text();
-            text.textProperty().bind(Bindings.format(StringsFr.PLAYER_STATS, playerNames.get(i),
-                    gameState.numberOfTicketsOnHandProperty(i), gameState.numberOfCardsOnHandProperty(i),
-                    gameState.numberOfCarsOnHandProperty(i), gameState.numberOfBuildingPointsOnHandProperty(i)));
 
+            Text text = new Text();
             TextFlow playerTextFlow = new TextFlow(circle, text);
             playerTextFlow.getStyleClass().add(i.name());
             playerStatsVBox.getChildren().add(playerTextFlow);
+
+            text.textProperty().bind(Bindings.format(StringsFr.PLAYER_STATS, playerNames.get(i),
+                    gameState.numberOfTicketsOnHandProperty(i), gameState.numberOfCardsOnHandProperty(i),
+                    gameState.numberOfCarsOnHandProperty(i), gameState.numberOfBuildingPointsOnHandProperty(i)));
         }
 
-
-       // The separator
         Separator separator = new Separator();
         separator.setOrientation(Orientation.HORIZONTAL);
 
-        // The textFlow
         TextFlow textFlow = new TextFlow();
         textFlow.setId("game-info");
         Bindings.bindContent(textFlow.getChildren(), gameInfos);
 
-        // The vBox
         VBox infoView = new VBox(playerStatsVBox, separator, textFlow);
         infoView.setId("info-view");
         infoView.getStylesheets().add("info.css");

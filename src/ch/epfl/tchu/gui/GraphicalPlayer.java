@@ -40,7 +40,7 @@ import static javafx.application.Platform.isFxApplicationThread;
 public final class GraphicalPlayer {
     private final ObservableGameState gameState;
     private final ObservableList<Text> gameInfos;
-    private final Stage mainStage ;
+    private final Stage mainStage;
 
     private final ObjectProperty<DrawTicketsHandler> drawTicketsHandlerObject = new SimpleObjectProperty<>();
     private final ObjectProperty<DrawCardHandler> drawCardHandlerObject = new SimpleObjectProperty<>();
@@ -59,18 +59,15 @@ public final class GraphicalPlayer {
         gameInfos = FXCollections.observableList(new ArrayList<>());
 
         Stage stage = new Stage();
-        stage.setTitle("tCHu \u2014 " + playerNames
-                .get(playerId));
-       this.mainStage = stage;
+        stage.setTitle("tCHu \u2014 " + playerNames.get(playerId));
+        this.mainStage = stage;
 
         BorderPane borderPane = new BorderPane(
                 MapViewCreator.createMapView(gameState, claimRouteHandlerObject, this::chooseClaimCards),
                 null,
                 DecksViewCreator.createCardsView(gameState, drawTicketsHandlerObject, drawCardHandlerObject),
                 DecksViewCreator.createHandView(gameState),
-                InfoViewCreator.createInfoView(playerId, playerNames1, gameState, gameInfos)
-        );
-
+                InfoViewCreator.createInfoView(playerId, playerNames1, gameState, gameInfos));
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
@@ -83,32 +80,25 @@ public final class GraphicalPlayer {
      * @param drawCardHandler    (DrawCardHandler) The action handler corresponding to the drawing of cards
      * @param claimRouteHandler  (ClaimRouteHandler) The action handler corresponding to the claim of a route
      */
-    public void startTurn(DrawTicketsHandler drawTicketsHandler,
-                          DrawCardHandler drawCardHandler,
-                          ClaimRouteHandler claimRouteHandler) {
+    public void startTurn(DrawTicketsHandler drawTicketsHandler, DrawCardHandler drawCardHandler, ClaimRouteHandler claimRouteHandler) {
         assert isFxApplicationThread();
         if (gameState.canDrawTickets()) drawTicketsHandlerObject.set(() -> {
             drawTicketsHandler.onDrawTickets();
-            drawTicketsHandlerObject.set(null);
-            drawCardHandlerObject.set(null);
-            claimRouteHandlerObject.set(null);
+            putAllHandlersNull();
         });
         if (gameState.canDrawCards()) drawCardHandlerObject.set(slot -> {
             drawCardHandler.onDrawCard(slot);
-            drawTicketsHandlerObject.set(null);
-            drawCardHandlerObject.set(null);
-            claimRouteHandlerObject.set(null);
+            putAllHandlersNull();
             drawCard(drawCardHandler);
 
         });
         claimRouteHandlerObject.set((route, cards) -> {
             claimRouteHandler.onClaimRoute(route, cards);
-            drawTicketsHandlerObject.set(null);
-            drawCardHandlerObject.set(null);
-            claimRouteHandlerObject.set(null);
+            putAllHandlersNull();
         });
 
     }
+
 
     /**
      * Calls setState(...) on the player's observable state
@@ -146,9 +136,7 @@ public final class GraphicalPlayer {
         assert isFxApplicationThread();
         drawCardHandlerObject.set(slot -> {
             drawCardHandler.onDrawCard(slot);
-            drawTicketsHandlerObject.set(null);
-            drawCardHandlerObject.set(null);
-            claimRouteHandlerObject.set(null);
+            putAllHandlersNull();
         });
     }
 
@@ -189,6 +177,11 @@ public final class GraphicalPlayer {
         constructDialogWindowTicket(ticketSortedBag, chooseTicketsHandler);
     }
 
+    private void putAllHandlersNull() {
+        drawTicketsHandlerObject.set(null);
+        drawCardHandlerObject.set(null);
+        claimRouteHandlerObject.set(null);
+    }
 
     private void constructDialogWindowTicket(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
         int numberOfTicketToClaim = ticketSortedBag.size() == 3 ? 1 : 3;
@@ -232,9 +225,9 @@ public final class GraphicalPlayer {
         TextFlow textFlow = new TextFlow(text);
         ListView<SortedBag<Card>> listView = new ListView<>(sortedBagObservableList);
         Button button = new Button(StringsFr.CHOOSE);
-if(i==0) {
-    button.disableProperty().bind(Bindings.equal(0, Bindings.size(listView.getSelectionModel().getSelectedItems())));
-}
+        if (i == 0) {
+            button.disableProperty().bind(Bindings.equal(0, Bindings.size(listView.getSelectionModel().getSelectedItems())));
+        }
 
         listView.setCellFactory(v -> new TextFieldListCell<>(new StringConverter<>() {
             @Override
@@ -250,7 +243,7 @@ if(i==0) {
         button.setOnAction(s -> {
             dialogStage.hide();
             SortedBag<Card> chooseCard = listView.getSelectionModel().getSelectedItem();
-            if (chooseCard==null)chooseCardsHandler.onChooseCards(SortedBag.of());
+            if (chooseCard == null) chooseCardsHandler.onChooseCards(SortedBag.of());
             chooseCardsHandler.onChooseCards(chooseCard);
         });
         VBox vBox = new VBox(textFlow, listView, button);

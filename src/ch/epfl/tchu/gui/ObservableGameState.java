@@ -86,7 +86,7 @@ public final class ObservableGameState {
         }
 
         routes.forEach((r, id) -> {
-            if (id == null) {
+            if (id.get() == null) {
                 if (newGameState.claimedRoutes().contains(r)) {
                     id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next());
                 }
@@ -110,20 +110,22 @@ public final class ObservableGameState {
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
         claimForEachRoute.forEach((r, b) -> {
-            if (b == null) {
-                if (newGameState.currentPlayerId().equals(playerId)) {
-                    if (!newGameState.claimedRoutes().contains(r)) {
-                        if (newGameState.claimedRoutes().stream()
-                                .map(Route::stations)
-                                .noneMatch((listStations) -> listStations.contains(r.stations()))) {
-                            if (newPlayerState.canClaimRoute(r)) {
-                                b.setValue(true);
-                            }
-                        } else b.setValue(false);
-                    } else b.setValue(false);
-                } else b.setValue(false);
+    if (newGameState.currentPlayerId().equals(playerId)) {
+        if (!newGameState.claimedRoutes().contains(r)) {
+            List<List<Station>> listClaimedRouteStation = new LinkedList<>();
+            for (Route route : newGameState.claimedRoutes()) {
+                listClaimedRouteStation.add(route.stations());
+
             }
-        });
+            if (!listClaimedRouteStation.contains(r.stations())) {
+                if (newPlayerState.canClaimRoute(r)) {
+                    b.setValue(true);
+                }
+            } else b.setValue(false);
+        } else b.setValue(false);
+    } else b.setValue(false);
+
+ });
 
 
     }

@@ -31,37 +31,39 @@ abstract class DecksViewCreator {
      * @return (Node) The view of the hand
      */
     public static Node createHandView(ObservableGameState gameState) {
-        HBox HandView = new HBox();
-        HandView.getStylesheets().add(" decks.css");
-        HandView.getStylesheets().add("colors.css");
 
         ListView<Ticket> billets = new ListView<>(gameState.ticketsOnHandProperty());
         billets.setId("tickets");
 
         HBox handCard = new HBox();
         handCard.setId("hand-pane");
+
         for (Card c : Card.ALL) {
             StackPane cardAndCount = new StackPane();
-            cardAndCount.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 0));
-            if (c.equals(Card.LOCOMOTIVE)) {
-                cardAndCount.getStyleClass().add("NEUTRAL");
-            } else {
-                cardAndCount.getStyleClass().add(c.name());
-            }
             cardAndCount.getStyleClass().add("card");
+
             Text counter = new Text();
-            counter.textProperty().bind(Bindings.convert(gameState.numberOfEachCardsProperty(c)));
             counter.getStyleClass().add("count");
-            counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 1));
 
             List<Node> cardAndCountNodeList = initialiseCard();
 
             cardAndCount.getChildren().addAll(cardAndCountNodeList);
             cardAndCount.getChildren().add(counter);
+            if (c.equals(Card.LOCOMOTIVE)) cardAndCount.getStyleClass().add("NEUTRAL");
+            else cardAndCount.getStyleClass().add(c.name());
+
+
+            cardAndCount.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 0));
+            counter.textProperty().bind(Bindings.convert(gameState.numberOfEachCardsProperty(c)));
+            counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 1));
+
             handCard.getChildren().add(cardAndCount);
         }
-        HandView.getChildren().add(billets);
-        HandView.getChildren().add(handCard);
+
+        HBox HandView = new HBox(billets, handCard);
+        HandView.getStylesheets().add("decks.css");
+        HandView.getStylesheets().add("colors.css");
+
 
         return HandView;
     }
@@ -87,68 +89,60 @@ abstract class DecksViewCreator {
         cardVue.getStylesheets().add("decks.css");
         cardVue.getStylesheets().add("colors.css");
 
-        Button ticketDeckButton = new Button(StringsFr.TICKETS);
-        ticketDeckButton.getStyleClass().add("gauged");
+        Button ticketDeckButton = createButton(StringsFr.TICKETS, gameState);
+        Button cardDeckButton = createButton(StringsFr.CARDS, gameState);
 
-
-        Rectangle foregroundRect1 = new Rectangle();
-        foregroundRect1.getStyleClass().add("foreground");
-        foregroundRect1.setHeight(5);
-        foregroundRect1.widthProperty().bind(
-                gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100));
-
-        Rectangle backgroundRect1 = new Rectangle(50, 5);
-        backgroundRect1.getStyleClass().add("background");
-
-        Group button1Jauge = new Group(backgroundRect1, foregroundRect1);
-
-        ticketDeckButton.setGraphic(button1Jauge);
-        Button cardDeckButton = new Button(StringsFr.CARDS);
-        cardDeckButton.getStyleClass().add("gauged");
-
-
-        Rectangle foregroundRect2 = new Rectangle();
-        foregroundRect2.getStyleClass().add("foreground");
-        foregroundRect2.setHeight(5);
-        foregroundRect2.widthProperty().bind(
-                gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
-
-        Rectangle backgroundRect2 = new Rectangle(50, 5);
-        backgroundRect2.getStyleClass().add("background");
-
-        Group button2Jauge = new Group(backgroundRect2, foregroundRect2);
-        cardDeckButton.setGraphic(button2Jauge);
 
         cardVue.getChildren().add(ticketDeckButton);
 
-        ticketDeckButton.disableProperty().bind(drawTicketsHandler.isNull());
-        cardDeckButton.disableProperty().bind(drawCardHandler.isNull());
-
         for (int i : Constants.FACE_UP_CARD_SLOTS) {
             StackPane card = new StackPane();
+            card.getStyleClass().add("card");
+            List<Node> cardNodeList = initialiseCard();
+            card.getChildren().addAll(cardNodeList);
+
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
                 card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? "NEUTRAL" : newValue.name());
                 if (oldValue != null) {
                     card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE) ? "NEUTRAL" : oldValue.name());
                 }
-
-
             });
-            card.getStyleClass().add("card");
-            List<Node> cardNodeList = initialiseCard();
-            card.getChildren().addAll(cardNodeList);
+
             cardVue.getChildren().add(card);
-card.disableProperty().bind(drawCardHandler.isNull());
+
+            card.disableProperty().bind(drawCardHandler.isNull());
             card.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(i));
         }
+
         cardVue.getChildren().add(cardDeckButton);
 
+        ticketDeckButton.disableProperty().bind(drawTicketsHandler.isNull());
+        cardDeckButton.disableProperty().bind(drawCardHandler.isNull());
         ticketDeckButton.setOnMouseClicked(s -> drawTicketsHandler.get().onDrawTickets());
         cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(-1)
         );
+
         return cardVue;
     }
 
+    private static Button createButton(String text, ObservableGameState gameState) {
+        Button button = new Button(text);
+        button.getStyleClass().add("gauged");
+
+        Rectangle foregroundRect = new Rectangle();
+        foregroundRect.getStyleClass().add("foreground");
+        foregroundRect.setHeight(5);
+
+        Rectangle backgroundRect = new Rectangle(50, 5);
+        backgroundRect.getStyleClass().add("background");
+
+        Group buttonGauge = new Group(backgroundRect, foregroundRect);
+        button.setGraphic(buttonGauge);
+        foregroundRect.widthProperty().bind(text.equals(StringsFr.TICKETS) ? gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100)
+                : gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
+
+        return button;
+    }
 
     private static List<Node> initialiseCard() {
         List<Rectangle> list = new LinkedList<>();

@@ -52,7 +52,6 @@ abstract class MapViewCreator {
         Pane Carte = new Pane();
         Carte.getStylesheets().add("map.css");
         Carte.getStylesheets().add("colors.css");
-
         Carte.getChildren().add((new ImageView("map.png")));
 
         for (Route r : ChMap.routes()) {
@@ -63,13 +62,33 @@ abstract class MapViewCreator {
                 }
             });
 
-            groupRoute.disableProperty().bind(claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
-
-
             groupRoute.setId(r.id());
 
             List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? "NEUTRAL" : r.color().name());
             groupRoute.getStyleClass().addAll(styleClass);
+
+
+
+            for (int i = 1; i <= r.length(); i++) {
+                Rectangle voie = new Rectangle(36, 12);
+                List<String> styleClassR = List.of("track", "filled");
+                voie.getStyleClass().addAll(styleClassR);
+
+                Rectangle rectangle1 = new Rectangle(36,12);
+                rectangle1.getStyleClass().add("filled");
+
+                Circle circle1 = new Circle(12, 6, 3);
+                Circle circle2 = new Circle(24, 6, 3);
+
+                Group Wagon = new Group(rectangle1, circle1, circle2);
+                Wagon.getStyleClass().add("car");
+
+                Group Case = new Group(voie, Wagon);
+                Case.setId(r.id() + "_" + i);
+                groupRoute.getChildren().add(Case);
+            }
+
+            groupRoute.disableProperty().bind(claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
 
             groupRoute.setOnMouseClicked((s) -> {
                 List<SortedBag<Card>> possibleClaimCards = gameState.possibleClaimCards(r);
@@ -83,30 +102,8 @@ abstract class MapViewCreator {
                 }
             });
 
-
-            for (int i = 1; i <= r.length(); i++) {
-                Rectangle voie = new Rectangle(36, 12);
-                List<String> styleClassR = List.of("track", "filled");
-                voie.getStyleClass().addAll(styleClassR);
-
-                Rectangle rectangle1 = new Rectangle();
-                rectangle1.getStyleClass().add("filled");
-
-                Circle circle1 = new Circle(12, 6, 3);
-                Circle circle2 = new Circle(24, 6, 3);
-
-                Group Wagon = new Group(rectangle1, circle1, circle2);
-                Wagon.getStyleClass().add("car");
-
-                Group Case = new Group(voie, Wagon);
-                Case.setId(r.id() + "_" + i);
-                groupRoute.getChildren().add(Case);
-            }
             Carte.getChildren().add(groupRoute);
-
-
         }
-
         return Carte;
     }
 
