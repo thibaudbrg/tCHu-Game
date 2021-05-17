@@ -52,7 +52,6 @@ public class ServerMain extends Application {
                     playersName, SortedBag.of(ChMap.tickets()), new Random())).start();
         } catch (IOException e){
             throw new UncheckedIOException(e);
-
         }
     }
 }

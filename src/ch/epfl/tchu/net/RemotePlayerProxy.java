@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Represents a remote player proxy
@@ -38,7 +39,7 @@ public final class RemotePlayerProxy implements Player {
      *               with the client by exchanging text messages
      */
     public RemotePlayerProxy(Socket socket) {
-        this.socket = socket;
+        this.socket = Objects.requireNonNull(socket);
     }
 
     /**

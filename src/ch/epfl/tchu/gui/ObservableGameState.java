@@ -23,8 +23,8 @@ import static javafx.collections.FXCollections.unmodifiableObservableList;
 public final class ObservableGameState {
 
     private final PlayerId playerId;
-    private PublicGameState gameState; //TODO C PAS FINAL
-    private PlayerState playerState;//TODO C PAS FINAL
+    private PublicGameState gameState;
+    private PlayerState playerState;
 
     // Properties concerning the public state of the game
     private final IntegerProperty percentTicketsRemainingInDeck;
@@ -49,7 +49,7 @@ public final class ObservableGameState {
      * @param id (PlayerId) The identity of the player
      */
     public ObservableGameState(PlayerId id) {
-        this.playerId = id;
+        this.playerId = Objects.requireNonNull(id);
         percentTicketsRemainingInDeck = new SimpleIntegerProperty();
         percentCardsRemainingInDeck = new SimpleIntegerProperty();
         faceUpCards = createFaceUpCards();
@@ -70,71 +70,59 @@ public final class ObservableGameState {
      * Updates the state it contains (the set of properties),
      * taking as argument the public part of the game and the complete state of the player it corresponds to
      *
-     * @param newGameState (PublicGameState) The new PublicGameState
+     * @param newGameState   (PublicGameState) The new PublicGameState
      * @param newPlayerState (PlayerState) The new PlayerState
      */
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
-        gameState = newGameState;
-        playerState = newPlayerState;
-        // refresh the percentTicketsRemainingInDeck
-        percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
+        gameState = Objects.requireNonNull(newGameState);
+        playerState = Objects.requireNonNull(newPlayerState);
 
-        // refresh the percentCardsRemainingInDeck
+        percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
         percentCardsRemainingInDeck.set((int) Math.floor(((double) newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
 
-        // refresh the faceUpCard
         for (int slot : FACE_UP_CARD_SLOTS) {
             Card newCard = newGameState.cardState().faceUpCard(slot);
             faceUpCards.get(slot).set(newCard);
         }
 
-        // refresh the routes
         routes.forEach((r, id) -> {
-            if (newGameState.claimedRoutes().contains(r)) {
-                id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next());
+            if (id == null) {
+                if (newGameState.claimedRoutes().contains(r)) {
+                    id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next());
+                }
             }
         });
 
-        // refresh the numberOfTicketsOnHand
         numberOfTicketsOnHand.get(playerId).set(newPlayerState.ticketCount());
         numberOfTicketsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).ticketCount());
 
-        // refresh the numberOfCardsOnHand
         numberOfCardsOnHand.get(playerId).set(newPlayerState.cardCount());
         numberOfCardsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).cardCount());
 
-        // refresh the numberOfCarsOnHand
         numberOfCarsOnHand.get(playerId).set(newPlayerState.carCount());
         numberOfCarsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).carCount());
 
-        // refresh the numberOfBuildingPointsOnHand
         numberOfBuildingPointsOnHand.get(playerId).set(newPlayerState.claimPoints());
         numberOfBuildingPointsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).claimPoints());
 
-        // refresh the ticketsOnHand
         ticketsOnHand.setAll(newPlayerState.tickets().toList());
 
-
-        // refresh the numberOfEachCards
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
-        // refresh the claimForEachRoute
         claimForEachRoute.forEach((r, b) -> {
-            if (newGameState.currentPlayerId().equals(playerId)) {
-                if (!newGameState.claimedRoutes().contains(r)) {
-                    List<List<Station>> listClaimedRouteStation = new LinkedList<>();
-                    for (Route route : newGameState.claimedRoutes()) {
-                        listClaimedRouteStation.add(route.stations());
-
-                    }
-                    if (!listClaimedRouteStation.contains(r.stations())) {
-                        if (newPlayerState.canClaimRoute(r)) {
-                            b.setValue(true);
-                        }
+            if (b == null) {
+                if (newGameState.currentPlayerId().equals(playerId)) {
+                    if (!newGameState.claimedRoutes().contains(r)) {
+                        if (newGameState.claimedRoutes().stream()
+                                .map(Route::stations)
+                                .noneMatch((listStations) -> listStations.contains(r.stations()))) {
+                            if (newPlayerState.canClaimRoute(r)) {
+                                b.setValue(true);
+                            }
+                        } else b.setValue(false);
                     } else b.setValue(false);
-
                 } else b.setValue(false);
-            } else b.setValue(false);
+            }
         });
 
 
@@ -187,7 +175,7 @@ public final class ObservableGameState {
      * Returns the corresponding property at the chosen index
      *
      * @param slot (int) the chosen index
-     * @return (ReadOnlyObjectProperty<Card>) the unmodifiable property
+     * @return (ReadOnlyObjectProperty < Card >) the unmodifiable property
      */
     public final ReadOnlyObjectProperty<Card> faceUpCardsProperty(int slot) {
         return faceUpCards.get(slot);
@@ -210,7 +198,7 @@ public final class ObservableGameState {
      * Returns the corresponding property at the chosen route
      *
      * @param route (Route) the chosen route
-     * @return (ReadOnlyObjectProperty<PlayerId>) the unmodifiable property
+     * @return (ReadOnlyObjectProperty < PlayerId >) the unmodifiable property
      */
     public final ReadOnlyObjectProperty<PlayerId> routesProperty(Route route) {
         return routes.get(route);
@@ -319,7 +307,7 @@ public final class ObservableGameState {
     /**
      * Returns the corresponding property
      *
-     * @return (ObservableList<Ticket>) the unmodifiable property
+     * @return (ObservableList < Ticket >) the unmodifiable property
      */
     public final ObservableList<Ticket> ticketsOnHandProperty() {
         return unmodifiableObservableList(ticketsOnHand);
@@ -403,10 +391,10 @@ public final class ObservableGameState {
     }
 
     /**
-     *  Call gameState.possibleClaimCards
+     * Call gameState.possibleClaimCards
      *
      * @param route (Route) The given Route
-     * @return (List<SortedBag<Card>>) A list of all the sets of cards that the player could use to take possession of the given route
+     * @return (List < SortedBag < Card > >) A list of all the sets of cards that the player could use to take possession of the given route
      */
     public final List<SortedBag<Card>> possibleClaimCards(Route route) {
         Preconditions.checkArgument(playerState != null);
@@ -455,7 +443,4 @@ public final class ObservableGameState {
         }
         return Collections.unmodifiableMap(map);
     }
-
-
-
 }

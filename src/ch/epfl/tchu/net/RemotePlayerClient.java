@@ -7,6 +7,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static java.nio.charset.StandardCharsets.US_ASCII;
@@ -43,9 +44,9 @@ public final class RemotePlayerClient {
      * @param port   (int) The port to be used
      */
     public RemotePlayerClient(Player player, String name, int port) {
-        this.player = player;
-        this.name = name;
-        this.port = port;
+        this.player = Objects.requireNonNull(player);
+        this.name =Objects.requireNonNull(name);
+        this.port =Objects.requireNonNull(port);
     }
 
     /**
