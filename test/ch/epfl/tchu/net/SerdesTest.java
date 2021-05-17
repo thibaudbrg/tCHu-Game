@@ -149,7 +149,6 @@ void ListSortedTest(){
         builder2.add(2, Card.BLUE);
         builder2.add(3, Card.GREEN);
         SortedBag<Card> cards = builder2.build();
-        //         1,1,1,1,25,25,25,25,25,25,25,25,26,26,26,26,26,26,26,26,29,29,33,33;0,2,2,3,3,3,8,8,8,8,8,8,8,8;47,11,32,32,21
 
         List<Route> routes = List.of(ChMap.routes().get(3), ChMap.routes().get(23), ChMap.routes().get(9), ChMap.routes().get(8), ChMap.routes().get(6));
 
