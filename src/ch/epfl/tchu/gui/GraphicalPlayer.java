@@ -26,6 +26,7 @@ import javafx.util.StringConverter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static ch.epfl.tchu.gui.ActionHandler.*;
 import static javafx.application.Platform.isFxApplicationThread;
@@ -54,7 +55,8 @@ public final class GraphicalPlayer {
      */
     public GraphicalPlayer(PlayerId playerId, Map<PlayerId, String> playerNames) {
         isFxApplicationThread();
-        Map<PlayerId, String> playerNames1 = Map.copyOf(playerNames);
+
+        Map<PlayerId, String> playerNames1 = Objects.requireNonNull(Map.copyOf(playerNames));
         gameState = new ObservableGameState(playerId);
         gameInfos = FXCollections.observableList(new ArrayList<>());
 
@@ -84,21 +86,20 @@ public final class GraphicalPlayer {
         assert isFxApplicationThread();
         if (gameState.canDrawTickets()) drawTicketsHandlerObject.set(() -> {
             drawTicketsHandler.onDrawTickets();
-            putAllHandlersNull();
+            putAllHandlersAtNull();
         });
         if (gameState.canDrawCards()) drawCardHandlerObject.set(slot -> {
             drawCardHandler.onDrawCard(slot);
-            putAllHandlersNull();
+            putAllHandlersAtNull();
             drawCard(drawCardHandler);
 
         });
         claimRouteHandlerObject.set((route, cards) -> {
             claimRouteHandler.onClaimRoute(route, cards);
-            putAllHandlersNull();
+            putAllHandlersAtNull();
         });
 
     }
-
 
     /**
      * Calls setState(...) on the player's observable state
@@ -121,7 +122,7 @@ public final class GraphicalPlayer {
     public void receiveInfo(String message) {
         assert isFxApplicationThread();
         if (gameInfos.size() >= 5) gameInfos.remove(0);
-        gameInfos.add(new Text(message + "\n"));
+        gameInfos.add(new Text(message));
 
     }
 
@@ -136,7 +137,7 @@ public final class GraphicalPlayer {
         assert isFxApplicationThread();
         drawCardHandlerObject.set(slot -> {
             drawCardHandler.onDrawCard(slot);
-            putAllHandlersNull();
+            putAllHandlersAtNull();
         });
     }
 
@@ -177,14 +178,14 @@ public final class GraphicalPlayer {
         constructDialogWindowTicket(ticketSortedBag, chooseTicketsHandler);
     }
 
-    private void putAllHandlersNull() {
+    private void putAllHandlersAtNull() {
         drawTicketsHandlerObject.set(null);
         drawCardHandlerObject.set(null);
         claimRouteHandlerObject.set(null);
     }
 
     private void constructDialogWindowTicket(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
-        int numberOfTicketToClaim = ticketSortedBag.size() == 3 ? 1 : 3;
+        int numberOfTicketToClaim = ticketSortedBag.size() - 2;
         ObservableList<Ticket> observableListTickets = FXCollections.observableList(ticketSortedBag.toList());
         Stage dialogStage = new Stage(StageStyle.UTILITY);
         dialogStage.setOnCloseRequest(Event::consume);
@@ -197,7 +198,7 @@ public final class GraphicalPlayer {
         Button button = new Button(StringsFr.CHOOSE);
 
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        button.disableProperty().bind(Bindings.greaterThan(numberOfTicketToClaim, Bindings.size(listView.getSelectionModel().getSelectedItems())));
+        button.disableProperty().bind(Bindings.greaterThan(numberOfTicketToClaim, Bindings.size(listView.getSelectionModel().getSelectedItems()))); //TODO comprends pas
         button.setOnAction(s -> {
             dialogStage.hide();
             chooseTicketsHandler.onChooseTickets(SortedBag.of(listView.getSelectionModel().getSelectedItems()));
@@ -251,6 +252,5 @@ public final class GraphicalPlayer {
         scene.getStylesheets().add("chooser.css");
         dialogStage.setScene(scene);
         dialogStage.show();
-
     }
 }

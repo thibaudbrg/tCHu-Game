@@ -99,7 +99,7 @@ public final class RemotePlayerProxy implements Player {
      */
     @Override
     public SortedBag<Ticket> chooseInitialTickets() {
-        sendMessage(MessageId.CHOOSE_INITIAL_TICKETS, ""); //TODO PEUT ETRE UN TRUC PCQ PAS ARG
+        sendMessage(MessageId.CHOOSE_INITIAL_TICKETS, "");
         return ticketSortedBagSerde.deserialize(receiveMessage());
     }
 
@@ -131,7 +131,7 @@ public final class RemotePlayerProxy implements Player {
      * Called when the player has decided to draw railcar/locomotive cards,
      * so that he knows where he wants to draw them from: from one of the slots containing a face-up card or the deck
      *
-     * @return (int) The value is between 0 and 4 if it comes from a slot containin a face-up card,
+     * @return (int) The value is between 0 and 4 if it comes from a slot containing a face-up card,
      * or the dummy slot number designating the deck of cards
      */
     @Override

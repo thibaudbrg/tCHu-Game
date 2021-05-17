@@ -37,8 +37,8 @@ abstract class InfoViewCreator {
         for (PlayerId i : List.of(id, id.next())) {
             Circle circle = new Circle(5);
             circle.getStyleClass().add("filled");
-
             Text text = new Text();
+
             TextFlow playerTextFlow = new TextFlow(circle, text);
             playerTextFlow.getStyleClass().add(i.name());
             playerStatsVBox.getChildren().add(playerTextFlow);
@@ -56,12 +56,10 @@ abstract class InfoViewCreator {
         Bindings.bindContent(textFlow.getChildren(), gameInfos);
 
         VBox infoView = new VBox(playerStatsVBox, separator, textFlow);
-        infoView.setId("info-view");
+
         infoView.getStylesheets().add("info.css");
         infoView.getStylesheets().add("colors.css");
 
         return infoView;
     }
-
-
 }

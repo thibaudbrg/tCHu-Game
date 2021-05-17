@@ -4,9 +4,7 @@ import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -88,7 +86,7 @@ class SerdesTest {
     @Test
     void SerdeSortedBagTest() {
         Serde<SortedBag<Card>> i = Serdes.SORTEDBAG_CARD_SERDE;
-        SortedBag.Builder builder = new SortedBag.Builder();
+        SortedBag.Builder<Card> builder = new SortedBag.Builder<Card>();
         builder.add(1, Card.BLACK);
         builder.add(8, Card.LOCOMOTIVE);
         builder.add(2, Card.BLUE);
@@ -136,7 +134,7 @@ void ListSortedTest(){
     void PlayerStateTest() {
         Serde<PlayerState> i = Serdes.PLAYER_STATE_SERDE;
 
-        SortedBag.Builder builder1 = new SortedBag.Builder();
+        SortedBag.Builder<Ticket> builder1 = new SortedBag.Builder<>();
         builder1.add(1, ChMap.tickets().get(3));
         builder1.add(8, ChMap.tickets().get(4));
         builder1.add(2, ChMap.tickets().get(6));
@@ -145,7 +143,7 @@ void ListSortedTest(){
         builder1.add(3, ChMap.tickets().get(9));
         SortedBag<Ticket> tickets = builder1.build();
 
-        SortedBag.Builder builder2 = new SortedBag.Builder();
+        SortedBag.Builder<Card> builder2 = new SortedBag.Builder<Card>();
         builder2.add(1, Card.BLACK);
         builder2.add(8, Card.LOCOMOTIVE);
         builder2.add(2, Card.BLUE);
@@ -160,9 +158,7 @@ void ListSortedTest(){
         String ser = i.serialize(playerState);
         PlayerState deser = i.deserialize(ser);
 
-        assertEquals("1,1,1,1,25,25,25,25,25,25,25,25,26,26,26,26,26,26,26,26,29,29,33,33;" +
-                "0,2,2,3,3,3,8,8,8,8,8,8,8,8;" +
-                "47,11,32,32,21", ser);
+        assertEquals("3,4,4,4,4,4,4,4,4,6,6,1,1,1,1,1,1,1,1,7,7,9,9,9;0,2,2,3,3,3,8,8,8,8,8,8,8,8;3,23,9,8,6", ser);
 
 
         int a = 0;

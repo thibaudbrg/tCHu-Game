@@ -46,7 +46,7 @@ public final class RemotePlayerClient {
     public RemotePlayerClient(Player player, String name, int port) {
         this.player = Objects.requireNonNull(player);
         this.name =Objects.requireNonNull(name);
-        this.port =Objects.requireNonNull(port);
+        this.port = port;
     }
 
     /**
@@ -63,26 +63,26 @@ public final class RemotePlayerClient {
             BufferedWriter w = new BufferedWriter(new OutputStreamWriter(s.getOutputStream(), US_ASCII));
             while ((line = r.readLine()) != null) {
 
-                String[] splitedString = (line.split(Pattern.quote(" "), -1));
+                String[] splitString = (line.split(Pattern.quote(" "), -1));
 
-                switch (MessageId.valueOf(splitedString[0])) {
+                switch (MessageId.valueOf(splitString[0])) {
                     case INIT_PLAYERS:
-                        PlayerId ownId = playerIdSerde.deserialize(splitedString[1]);
-                        List<String> playerString = stringListSerde.deserialize(splitedString[2]);
+                        PlayerId ownId = playerIdSerde.deserialize(splitString[1]);
+                        List<String> playerString = stringListSerde.deserialize(splitString[2]);
                         Map<PlayerId, String> playerNames = Map.of(PlayerId.PLAYER_1, playerString.get(0), PlayerId.PLAYER_2, playerString.get(1));
                         player.initPlayers(ownId, playerNames);
                         break;
                     case RECEIVE_INFO:
-                        String info = stringSerde.deserialize(splitedString[1]);
+                        String info = stringSerde.deserialize(splitString[1]);
                         player.receiveInfo(info);
                         break;
                     case UPDATE_STATE:
-                        PublicGameState newState = publicGameStateSerde.deserialize(splitedString[1]);
-                        PlayerState ownState = playerStateSerde.deserialize(splitedString[2]);
+                        PublicGameState newState = publicGameStateSerde.deserialize(splitString[1]);
+                        PlayerState ownState = playerStateSerde.deserialize(splitString[2]);
                         player.updateState(newState, ownState);
                         break;
                     case SET_INITIAL_TICKETS:
-                        SortedBag<Ticket> tickets = ticketSortedBagSerde.deserialize(splitedString[1]);
+                        SortedBag<Ticket> tickets = ticketSortedBagSerde.deserialize(splitString[1]);
                         player.setInitialTicketChoice(tickets);
                         break;
                     case CHOOSE_INITIAL_TICKETS:
@@ -92,7 +92,7 @@ public final class RemotePlayerClient {
                         sendReply(w, turnKindSerde.serialize(player.nextTurn()));
                         break;
                     case CHOOSE_TICKETS:
-                        SortedBag<Ticket> options = ticketSortedBagSerde.deserialize(splitedString[1]);
+                        SortedBag<Ticket> options = ticketSortedBagSerde.deserialize(splitString[1]);
                         sendReply(w, (ticketSortedBagSerde.serialize(player.chooseTickets(options))));
                         break;
                     case DRAW_SLOT:
@@ -105,12 +105,11 @@ public final class RemotePlayerClient {
                         sendReply(w, cardSortedBagSerde.serialize((player.initialClaimCards())));
                         break;
                     case CHOOSE_ADDITIONAL_CARDS:
-                        List<SortedBag<Card>> options1 = cardSortedBagListSerde.deserialize(splitedString[1]);
+                        List<SortedBag<Card>> options1 = cardSortedBagListSerde.deserialize(splitString[1]);
                         sendReply(w, cardSortedBagSerde.serialize(player.chooseAdditionalCards(options1)));
                         break;
                 }
             }
-
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
