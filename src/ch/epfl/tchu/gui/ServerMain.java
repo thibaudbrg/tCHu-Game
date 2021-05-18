@@ -24,7 +24,7 @@ import java.util.Random;
  * @author Bourgeois Thibaud (324604)
  */
 public class ServerMain extends Application {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
 

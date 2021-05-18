@@ -14,9 +14,8 @@ import java.util.List;
  */
 public class ClientMain extends Application {
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
-
     }
 
     /**
