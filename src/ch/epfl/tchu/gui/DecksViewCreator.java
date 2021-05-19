@@ -1,14 +1,13 @@
 package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.game.*;
+import com.sun.prism.paint.Paint;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.*;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -32,8 +31,8 @@ abstract class DecksViewCreator {
      */
     public static Node createHandView(ObservableGameState gameState) {
 
-        ListView<Ticket> billets = new ListView<>(gameState.ticketsOnHandProperty());
-        billets.setId("tickets");
+        ListView<Ticket> tickets = new ListView<>(gameState.ticketsOnHandProperty());
+        tickets.setId("tickets");
 
         HBox handCard = new HBox();
         handCard.setId("hand-pane");
@@ -56,11 +55,17 @@ abstract class DecksViewCreator {
             cardAndCount.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 0));
             counter.textProperty().bind(Bindings.convert(gameState.numberOfEachCardsProperty(c)));
             counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 1));
-
-            handCard.getChildren().add(cardAndCount);
         }
 
-        HBox HandView = new HBox(billets, handCard);
+        /*
+        for (Ticket item : tickets.getItems()) {
+            if(gameState.ticketsOnHandProperty().contains(item))
+                tickets.setBackground(new Background());
+        }
+        tickets.getItems().get(i)
+
+         */
+        HBox HandView = new HBox(tickets, handCard);
         HandView.getStylesheets().add("decks.css");
         HandView.getStylesheets().add("colors.css");
 
@@ -119,9 +124,7 @@ abstract class DecksViewCreator {
         ticketDeckButton.disableProperty().bind(drawTicketsHandler.isNull());
         cardDeckButton.disableProperty().bind(drawCardHandler.isNull());
         ticketDeckButton.setOnMouseClicked(s -> drawTicketsHandler.get().onDrawTickets());
-        cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(-1)
-        );
-
+        cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(-1));
         return cardVue;
     }
 

@@ -48,7 +48,6 @@ abstract class MapViewCreator {
      * @return (Node) The view of the hand
      */
     public static Node createMapView(ObservableGameState gameState, ObjectProperty<ActionHandler.ClaimRouteHandler> claimRouteHP, CardChooser cardChooser) {
-
         Pane Carte = new Pane();
         Carte.getStylesheets().add("map.css");
         Carte.getStylesheets().add("colors.css");
@@ -68,13 +67,12 @@ abstract class MapViewCreator {
             groupRoute.getStyleClass().addAll(styleClass);
 
 
-
             for (int i = 1; i <= r.length(); i++) {
                 Rectangle voie = new Rectangle(36, 12);
                 List<String> styleClassR = List.of("track", "filled");
                 voie.getStyleClass().addAll(styleClassR);
 
-                Rectangle rectangle1 = new Rectangle(36,12);
+                Rectangle rectangle1 = new Rectangle(36, 12);
                 rectangle1.getStyleClass().add("filled");
 
                 Circle circle1 = new Circle(12, 6, 3);
@@ -106,6 +104,4 @@ abstract class MapViewCreator {
         }
         return Carte;
     }
-
-
 }

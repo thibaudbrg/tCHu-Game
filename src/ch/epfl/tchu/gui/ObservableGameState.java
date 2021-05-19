@@ -110,24 +110,22 @@ public final class ObservableGameState {
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
         claimForEachRoute.forEach((r, b) -> {
-    if (newGameState.currentPlayerId().equals(playerId)) {
-        if (!newGameState.claimedRoutes().contains(r)) {
-            List<List<Station>> listClaimedRouteStation = new LinkedList<>();
-            for (Route route : newGameState.claimedRoutes()) {
-                listClaimedRouteStation.add(route.stations());
+            if (newGameState.currentPlayerId().equals(playerId)) {
+                if (!newGameState.claimedRoutes().contains(r)) {
+                    List<List<Station>> listClaimedRouteStation = new LinkedList<>();
+                    for (Route route : newGameState.claimedRoutes()) {
+                        listClaimedRouteStation.add(route.stations());
 
-            }
-            if (!listClaimedRouteStation.contains(r.stations())) {
-                if (newPlayerState.canClaimRoute(r)) {
-                    b.setValue(true);
-                }
+                    }
+                    if (!listClaimedRouteStation.contains(r.stations())) {
+                        if (newPlayerState.canClaimRoute(r)) {
+                            b.setValue(true);
+                        }
+                    } else b.setValue(false);
+                } else b.setValue(false);
             } else b.setValue(false);
-        } else b.setValue(false);
-    } else b.setValue(false);
 
- });
-
-
+        });
     }
 
     //==============================================================//
