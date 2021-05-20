@@ -47,9 +47,10 @@ abstract class DecksViewCreator {
             counter.getStyleClass().add("count");
             cardAndCounter.getChildren().add(counter);
 
-            List<Node> cardAndCountNodeList = initialiseCard();
-            cardAndCounter.getChildren().addAll(cardAndCountNodeList);
 
+            List<Node> cardAndCountNodeList = initialiseCard();
+
+            cardAndCounter.getChildren().addAll(cardAndCountNodeList);
             if (c.equals(Card.LOCOMOTIVE)) {
                 cardAndCounter.getStyleClass().add(StringsFr.NEUTRAL);
             } else {
@@ -129,18 +130,17 @@ abstract class DecksViewCreator {
         Button button = new Button(text);
         button.getStyleClass().add("gauged");
 
-        Rectangle foregroundRect = new Rectangle(50,5);
+        Rectangle foregroundRect = new Rectangle();
         foregroundRect.getStyleClass().add("foreground");
-
+        foregroundRect.setHeight(5);
         Rectangle backgroundRect = new Rectangle(50, 5);
         backgroundRect.getStyleClass().add("background");
 
         Group buttonGauge = new Group(backgroundRect, foregroundRect);
         button.setGraphic(buttonGauge);
-        foregroundRect.widthProperty().bind(text.equals(StringsFr.TICKETS) ?
-                gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100)
-                :
-                gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
+        foregroundRect.widthProperty().bind(text.equals(StringsFr.TICKETS)
+                ? gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100)
+                : gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
 
         return button;
     }
