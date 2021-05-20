@@ -25,12 +25,16 @@
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/DecksViewCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/DecksViewCreator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
     </list>
     <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="">
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" afterDir="false" />
+>>>>>>> parent of 67d2c97 (18/05)
 =======
       <change beforePath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ch/epfl/tchu/net/SerdesTest.java" afterDir="false" />
 >>>>>>> parent of 67d2c97 (18/05)
@@ -172,7 +176,11 @@
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <option name="PROGRAM_PARAMETERS" value="Tibo Mathieu" />
+=======
+      <option name="PROGRAM_PARAMETERS" value="Thibaud Matthieu" />
+>>>>>>> parent of 67d2c97 (18/05)
 =======
       <option name="PROGRAM_PARAMETERS" value="Thibaud Matthieu" />
 >>>>>>> parent of 67d2c97 (18/05)
@@ -192,9 +200,12 @@
     </configuration>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration name="Stage9Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.Stage9Test" />
 =======
+=======
+>>>>>>> parent of 67d2c97 (18/05)
 =======
 >>>>>>> parent of 67d2c97 (18/05)
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -361,10 +372,14 @@
       <workItem from="1621169910395" duration="3656000" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1621252281168" duration="8039000" />
       <workItem from="1621261532312" duration="1340000" />
       <workItem from="1621356096271" duration="4889000" />
       <workItem from="1621518289693" duration="6640000" />
+=======
+      <workItem from="1621252281168" duration="7985000" />
+>>>>>>> parent of 67d2c97 (18/05)
 =======
       <workItem from="1621252281168" duration="7985000" />
 >>>>>>> parent of 67d2c97 (18/05)

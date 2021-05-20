@@ -25,8 +25,13 @@ import java.util.Random;
  */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 public final class ServerMain extends Application {
     public static void main(String[] args) {
+=======
+public class ServerMain extends Application {
+    static void main(String[] args) {
+>>>>>>> parent of 67d2c97 (18/05)
 =======
 public class ServerMain extends Application {
     static void main(String[] args) {
