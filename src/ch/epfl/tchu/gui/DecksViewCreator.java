@@ -56,8 +56,8 @@ abstract class DecksViewCreator {
             } else {
                 cardAndCounter.getStyleClass().add(c.name());
             }
-
-
+handCard.getChildren().add(cardAndCounter);
+            
             cardAndCounter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 0));
             counter.textProperty().bind(Bindings.convert(gameState.numberOfEachCardsProperty(c)));
             counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 1));
