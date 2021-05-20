@@ -24,21 +24,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EPFL-BA2-Project-1-tCHu-Game.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EPFL-BA2-Project-1-tCHu-Game.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/DecksViewCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/DecksViewCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ActionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/StringsFr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/StringsFr.java" afterDir="false" />
     </list>
-    <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ServerMain.java" afterDir="false" />
-    </list>
+    <list id="c2f10365-5408-4b1e-a8af-3a479399efc7" name="Changes by matthieudecotignie" comment="" />
     <list id="07858d4e-d584-4aac-81f6-619a576349b0" name="Changes by thiba" comment="" />
     <list id="99a3876c-a6d8-42c3-86b3-1a429abed314" name="Changes by Thibaud" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,88 +62,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/MapViewCreator.java">
-      <ranges>
-        <range start1="15" end1="15" start2="15" end2="17" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="23" end1="23" start2="25" end2="26" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="38" end1="40" start2="41" end2="42" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="49" end1="50" start2="51" end2="52" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="57" end1="57" start2="59" end2="64" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="63" end1="69" start2="70" end2="70" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="70" end1="71" start2="71" end2="72" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="72" end1="73" start2="73" end2="74" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="76" end1="77" start2="77" end2="77" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="83" end1="86" start2="83" end2="86" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="92" end1="93" start2="92" end2="93" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="94" end1="95" start2="94" end2="95" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java">
-      <ranges>
-        <range start1="3" end1="4" start2="3" end2="3" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="16" end1="16" start2="15" end2="18" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="40" end1="42" start2="42" end2="44" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="45" end1="45" start2="47" end2="48" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="47" end1="47" start2="50" end2="51" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="48" end1="52" start2="52" end2="57" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="54" end1="55" start2="59" end2="60" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="59" end1="65" start2="64" end2="64" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="66" end1="67" start2="65" end2="65" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="71" end1="72" start2="69" end2="69" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="81" end1="82" start2="78" end2="79" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="83" end1="84" start2="80" end2="81" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="88" end1="90" start2="85" end2="87" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="109" end1="110" start2="106" end2="107" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="111" end1="112" start2="108" end2="109" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="117" end1="118" start2="114" end2="114" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="119" end1="119" start2="115" end2="116" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="134" end1="135" start2="131" end2="132" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="136" end1="137" start2="133" end2="133" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="143" end1="145" start2="139" end2="143" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="157" end1="157" start2="155" end2="156" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java">
-      <ranges>
-        <range start1="114" end1="115" start2="114" end2="115" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="123" end1="123" start2="123" end2="128" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="147" end1="148" start2="152" end2="153" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="158" end1="159" start2="163" end2="164" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="167" end1="168" start2="172" end2="173" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="179" end1="180" start2="184" end2="185" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="190" end1="191" start2="195" end2="196" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="202" end1="203" start2="207" end2="208" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="212" end1="213" start2="217" end2="218" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="224" end1="225" start2="229" end2="230" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="234" end1="235" start2="239" end2="240" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="246" end1="247" start2="251" end2="252" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="256" end1="257" start2="261" end2="262" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="268" end1="269" start2="273" end2="274" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="278" end1="279" start2="283" end2="284" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="290" end1="291" start2="295" end2="296" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="300" end1="301" start2="305" end2="306" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="311" end1="312" start2="316" end2="317" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="321" end1="322" start2="326" end2="327" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="333" end1="334" start2="338" end2="339" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="343" end1="344" start2="348" end2="349" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="355" end1="356" start2="360" end2="361" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="365" end1="366" start2="370" end2="371" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="377" end1="378" start2="382" end2="383" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="387" end1="388" start2="392" end2="393" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="398" end1="399" start2="403" end2="404" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="401" end1="402" start2="406" end2="406" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="408" end1="409" start2="412" end2="413" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ClientMain.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-        <range start1="14" end1="15" start2="15" end2="16" changelist="c2f10365-5408-4b1e-a8af-3a479399efc7" />
-        <range start1="32" end1="34" start2="33" end2="36" changelist="d5082263-0fc9-4c7e-b284-5ab77a2f8fc8" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -190,7 +101,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3219512" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -213,21 +124,8 @@
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ClientMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GraphicalPlayerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.GraphicalPlayerTest" />
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value=" --module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls" />
+      <option name="PROGRAM_PARAMETERS" value="8.tcp.ngrok.io 19537" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -267,20 +165,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SerdesTest.PlayerStateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.net.TestClient" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -288,28 +174,48 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.net" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.net.SerdesTest" />
-      <option name="METHOD_NAME" value="PlayerStateTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.net.TestServer" />
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.net.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.ServerMain" />
-      <item itemvalue="Application.GraphicalPlayerTest" />
       <item itemvalue="Application.Stage9Test" />
       <item itemvalue="Application.ClientMain" />
-      <item itemvalue="JUnit.SerdesTest.PlayerStateTest" />
+      <item itemvalue="Application.TestServer" />
+      <item itemvalue="Application.TestClient" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.TestClient" />
+        <item itemvalue="Application.TestServer" />
         <item itemvalue="Application.ServerMain" />
         <item itemvalue="Application.Stage9Test" />
-        <item itemvalue="Application.GraphicalPlayerTest" />
-        <item itemvalue="JUnit.SerdesTest.PlayerStateTest" />
       </list>
     </recent_temporary>
   </component>
@@ -419,6 +325,7 @@
       <workItem from="1621261532312" duration="1340000" />
       <workItem from="1621356096271" duration="4889000" />
       <workItem from="1621518289693" duration="5128000" />
+      <workItem from="1621524205767" duration="2114000" />
     </task>
     <servers />
   </component>

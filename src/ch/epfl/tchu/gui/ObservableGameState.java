@@ -112,7 +112,7 @@ public final class ObservableGameState {
         claimForEachRoute.forEach((r, b) -> {
             if (newGameState.currentPlayerId().equals(playerId)) {
                 if (!newGameState.claimedRoutes().contains(r)) {
-                 /*   List<List<Station>> listClaimedRouteStation = new ArrayList<>();
+                 /*  List<List<Station>> listClaimedRouteStation = new ArrayList<>();
                     for (Route route : newGameState.claimedRoutes()) {
                         listClaimedRouteStation.add(route.stations());
 

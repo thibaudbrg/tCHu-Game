@@ -57,16 +57,17 @@ abstract class MapViewCreator {
 
         for (Route r : ChMap.routes()) {
             Group groupRoute = new Group();
-            groupRoute.setId(r.id());
 
-            List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? StringsFr.NEUTRAL : r.color().name());
-            groupRoute.getStyleClass().addAll(styleClass);
 
             gameState.routesProperty(r).addListener((observable, oldValue, newValue) -> {
                 if (oldValue == null) {
                     groupRoute.getStyleClass().add(newValue.name());
                 }
             });
+            groupRoute.setId(r.id());
+
+            List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? StringsFr.NEUTRAL : r.color().name());
+            groupRoute.getStyleClass().addAll(styleClass);
 
             for (int i = 1; i <= r.length(); i++) {
                 Rectangle lane = new Rectangle(36, 12);
