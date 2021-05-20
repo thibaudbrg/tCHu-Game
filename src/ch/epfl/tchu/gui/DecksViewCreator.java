@@ -45,19 +45,19 @@ abstract class DecksViewCreator {
 
             Text counter = new Text();
             counter.getStyleClass().add("count");
+            cardAndCounter.getChildren().add(counter);
 
 
             List<Node> cardAndCountNodeList = initialiseCard();
 
             cardAndCounter.getChildren().addAll(cardAndCountNodeList);
-            cardAndCounter.getChildren().add(counter);
             if (c.equals(Card.LOCOMOTIVE)) {
                 cardAndCounter.getStyleClass().add(StringsFr.NEUTRAL);
             } else {
                 cardAndCounter.getStyleClass().add(c.name());
             }
 
-handCard.getChildren().add(cardAndCounter);
+
             cardAndCounter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 0));
             counter.textProperty().bind(Bindings.convert(gameState.numberOfEachCardsProperty(c)));
             counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 1));
@@ -112,9 +112,9 @@ handCard.getChildren().add(cardAndCounter);
             });
 
             cardVue.getChildren().add(card);
-            card.disableProperty().bind(drawCardHandler.isNull());
-            card.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(i));
 
+            card.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(i));
+            card.disableProperty().bind(drawCardHandler.isNull());
         }
 
         cardVue.getChildren().add(cardDeckButton);
@@ -132,16 +132,15 @@ handCard.getChildren().add(cardAndCounter);
 
         Rectangle foregroundRect = new Rectangle();
         foregroundRect.getStyleClass().add("foreground");
-foregroundRect.setHeight(5);
+        foregroundRect.setHeight(5);
         Rectangle backgroundRect = new Rectangle(50, 5);
         backgroundRect.getStyleClass().add("background");
 
         Group buttonGauge = new Group(backgroundRect, foregroundRect);
         button.setGraphic(buttonGauge);
-        foregroundRect.widthProperty().bind(text.equals(StringsFr.TICKETS) ?
-                gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100)
-                :
-                gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
+        foregroundRect.widthProperty().bind(text.equals(StringsFr.TICKETS)
+                ? gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100)
+                : gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
 
         return button;
     }
