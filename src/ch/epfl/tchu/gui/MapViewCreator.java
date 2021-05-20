@@ -14,8 +14,6 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
-import ch.epfl.tchu.gui.ActionHandler.*;
-
 /**
  * Allows to create the map view
  *
@@ -23,7 +21,6 @@ import ch.epfl.tchu.gui.ActionHandler.*;
  * @author Bourgeois Thibaud (324604)
  */
 abstract class MapViewCreator {
-
 
     /**
      * Functional interface to choose a card
@@ -39,7 +36,8 @@ abstract class MapViewCreator {
          * @param options (List<SortedBag<Card>>) The options available
          * @param handler (ActionHandler.ChooseCardsHandler) The handler to be used after his choice
          */
-        void chooseCards(List<SortedBag<Card>> options, ChooseCardsHandler handler);
+        void chooseCards(List<SortedBag<Card>> options,
+                         ActionHandler.ChooseCardsHandler handler);
     }
 
     /**
@@ -49,7 +47,8 @@ abstract class MapViewCreator {
      * @param cardChooser  (CardChooser) A Card selector
      * @return (Node) The view of the hand
      */
-    public static Node createMapView(ObservableGameState gameState, ObjectProperty<ClaimRouteHandler> claimRouteHP, CardChooser cardChooser) {
+    public static Node createMapView(ObservableGameState gameState, ObjectProperty<ActionHandler.ClaimRouteHandler> claimRouteHP, CardChooser cardChooser) {
+
         Pane Carte = new Pane();
         Carte.getStylesheets().add("map.css");
         Carte.getStylesheets().add("colors.css");
@@ -57,43 +56,45 @@ abstract class MapViewCreator {
 
         for (Route r : ChMap.routes()) {
             Group groupRoute = new Group();
-
-
             gameState.routesProperty(r).addListener((observable, oldValue, newValue) -> {
                 if (oldValue == null) {
                     groupRoute.getStyleClass().add(newValue.name());
                 }
             });
+
             groupRoute.setId(r.id());
 
-            List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? StringsFr.NEUTRAL : r.color().name());
+            List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? "NEUTRAL" : r.color().name());
             groupRoute.getStyleClass().addAll(styleClass);
 
-            for (int i = 1; i <= r.length(); i++) {
-                Rectangle lane = new Rectangle(36, 12);
-                List<String> styleClassR = List.of("track", "filled");
-                lane.getStyleClass().addAll(styleClassR);
 
-                Rectangle rectangle1 = new Rectangle(36, 12);
+
+            for (int i = 1; i <= r.length(); i++) {
+                Rectangle voie = new Rectangle(36, 12);
+                List<String> styleClassR = List.of("track", "filled");
+                voie.getStyleClass().addAll(styleClassR);
+
+                Rectangle rectangle1 = new Rectangle(36,12);
                 rectangle1.getStyleClass().add("filled");
+
                 Circle circle1 = new Circle(12, 6, 3);
                 Circle circle2 = new Circle(24, 6, 3);
 
                 Group Wagon = new Group(rectangle1, circle1, circle2);
                 Wagon.getStyleClass().add("car");
 
-                Group Cell = new Group(lane, Wagon);
-                Cell.setId(r.id() + "_" + i);
-                groupRoute.getChildren().add(Cell);
+                Group Case = new Group(voie, Wagon);
+                Case.setId(r.id() + "_" + i);
+                groupRoute.getChildren().add(Case);
             }
 
             groupRoute.disableProperty().bind(claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
 
             groupRoute.setOnMouseClicked((s) -> {
                 List<SortedBag<Card>> possibleClaimCards = gameState.possibleClaimCards(r);
-                ClaimRouteHandler claimRouteH = claimRouteHP.get();
+                ActionHandler.ClaimRouteHandler claimRouteH = claimRouteHP.get();
                 if (possibleClaimCards.size() > 1) {
-                    ChooseCardsHandler chooseCardsH = chosenCards -> claimRouteH.onClaimRoute(r, chosenCards);
+                    ActionHandler.ChooseCardsHandler chooseCardsH = chosenCards -> claimRouteH.onClaimRoute(r, chosenCards);
                     cardChooser.chooseCards(possibleClaimCards, chooseCardsH);
                 } else {
                     claimRouteH.onClaimRoute(r, possibleClaimCards.get(0));
@@ -105,4 +106,6 @@ abstract class MapViewCreator {
         }
         return Carte;
     }
+
+
 }

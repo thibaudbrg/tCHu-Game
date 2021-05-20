@@ -48,7 +48,6 @@ abstract class InfoViewCreator {
                     gameState.numberOfCarsOnHandProperty(i), gameState.numberOfBuildingPointsOnHandProperty(i)));
         }
 
-
         Separator separator = new Separator();
         separator.setOrientation(Orientation.HORIZONTAL);
 

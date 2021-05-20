@@ -244,7 +244,7 @@ public final class GraphicalPlayer {
         button.setOnAction(s -> {
             dialogStage.hide();
             SortedBag<Card> chooseCard = listView.getSelectionModel().getSelectedItem();
-            if (chooseCard.isEmpty()) chooseCardsHandler.onChooseCards(SortedBag.of());
+            if (chooseCard == null) chooseCardsHandler.onChooseCards(SortedBag.of());
             chooseCardsHandler.onChooseCards(chooseCard);
         });
         VBox vBox = new VBox(textFlow, listView, button);

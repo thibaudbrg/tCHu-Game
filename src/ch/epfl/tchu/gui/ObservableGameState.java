@@ -110,27 +110,24 @@ public final class ObservableGameState {
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
         claimForEachRoute.forEach((r, b) -> {
-            if (newGameState.currentPlayerId().equals(playerId)) {
-                if (!newGameState.claimedRoutes().contains(r)) {
-                 /*  List<List<Station>> listClaimedRouteStation = new ArrayList<>();
-                    for (Route route : newGameState.claimedRoutes()) {
-                        listClaimedRouteStation.add(route.stations());
+    if (newGameState.currentPlayerId().equals(playerId)) {
+        if (!newGameState.claimedRoutes().contains(r)) {
+            List<List<Station>> listClaimedRouteStation = new LinkedList<>();
+            for (Route route : newGameState.claimedRoutes()) {
+                listClaimedRouteStation.add(route.stations());
 
-                    }
-                    if (!listClaimedRouteStation.contains(r.stations())) {
-                        if (newPlayerState.canClaimRoute(r)) {
-                            b.setValue(true);
-                        }
-                    } else b.setValue(false);*/
-                    if (newGameState.claimedRoutes().stream().map(Route::stations).noneMatch(route -> route.equals(r.stations()))) {
-                        if (newPlayerState.canClaimRoute(r)) {
-                            b.setValue(true);
-                        }
-                    } else b.setValue(false);
-                } else b.setValue(false);
+            }
+            if (!listClaimedRouteStation.contains(r.stations())) {
+                if (newPlayerState.canClaimRoute(r)) {
+                    b.setValue(true);
+                }
             } else b.setValue(false);
+        } else b.setValue(false);
+    } else b.setValue(false);
 
-        });
+ });
+
+
     }
 
     //==============================================================//
@@ -150,7 +147,7 @@ public final class ObservableGameState {
      *
      * @return (int) The value
      */
-    public int getPercentTicketsRemainingInDeck() {
+    public final int getPercentTicketsRemainingInDeck() {
         return percentTicketsRemainingInDeck.get();
     }
 
@@ -161,7 +158,7 @@ public final class ObservableGameState {
      *
      * @return (ReadOnlyIntegerProperty) the unmodifiable property
      */
-    public ReadOnlyIntegerProperty percentCardsRemainingInDeckProperty() {
+    public final ReadOnlyIntegerProperty percentCardsRemainingInDeckProperty() {
         return percentCardsRemainingInDeck;
     }
 
@@ -170,7 +167,7 @@ public final class ObservableGameState {
      *
      * @return (int) The value
      */
-    public int getPercentCardsRemainingInDeck() {
+    public final int getPercentCardsRemainingInDeck() {
         return percentCardsRemainingInDeck.get();
     }
 
@@ -182,7 +179,7 @@ public final class ObservableGameState {
      * @param slot (int) the chosen index
      * @return (ReadOnlyObjectProperty < Card >) the unmodifiable property
      */
-    public ReadOnlyObjectProperty<Card> faceUpCardsProperty(int slot) {
+    public final ReadOnlyObjectProperty<Card> faceUpCardsProperty(int slot) {
         return faceUpCards.get(slot);
     }
 
@@ -193,7 +190,7 @@ public final class ObservableGameState {
      * @param slot (int) The index
      * @return (Card) The value
      */
-    public Card getFaceUpCard(int slot) {
+    public final Card getFaceUpCard(int slot) {
         return faceUpCards.get(slot).get();
     }
 
@@ -205,7 +202,7 @@ public final class ObservableGameState {
      * @param route (Route) the chosen route
      * @return (ReadOnlyObjectProperty < PlayerId >) the unmodifiable property
      */
-    public ReadOnlyObjectProperty<PlayerId> routesProperty(Route route) {
+    public final ReadOnlyObjectProperty<PlayerId> routesProperty(Route route) {
         return routes.get(route);
     }
 
@@ -215,7 +212,7 @@ public final class ObservableGameState {
      * @param route (Route) The route
      * @return (PlayerId) The value
      */
-    public PlayerId getRoutes(Route route) {
+    public final PlayerId getRoutes(Route route) {
         return routes.get(route).get();
     }
 
@@ -227,7 +224,7 @@ public final class ObservableGameState {
      * @param playerId (playerId) the chosen playerId
      * @return (ReadOnlyIntegerProperty) the unmodifiable property
      */
-    public ReadOnlyIntegerProperty numberOfTicketsOnHandProperty(PlayerId playerId) {
+    public final ReadOnlyIntegerProperty numberOfTicketsOnHandProperty(PlayerId playerId) {
         return numberOfTicketsOnHand.get(playerId);
     }
 
@@ -237,7 +234,7 @@ public final class ObservableGameState {
      * @param playerId (PlayerId) The playerId
      * @return (int) The value
      */
-    public int getNumberOfTicketsOnHand(PlayerId playerId) {
+    public final int getNumberOfTicketsOnHand(PlayerId playerId) {
         return numberOfTicketsOnHandProperty(playerId).get();
     }
 
@@ -249,7 +246,7 @@ public final class ObservableGameState {
      * @param playerId (playerId) the chosen playerId
      * @return (ReadOnlyIntegerProperty) the unmodifiable property
      */
-    public ReadOnlyIntegerProperty numberOfCardsOnHandProperty(PlayerId playerId) {
+    public final ReadOnlyIntegerProperty numberOfCardsOnHandProperty(PlayerId playerId) {
         return numberOfCardsOnHand.get(playerId);
     }
 
@@ -259,7 +256,7 @@ public final class ObservableGameState {
      * @param playerId (PlayerId) The playerId
      * @return (int) The value
      */
-    public int getNumberOfCardsOnHand(PlayerId playerId) {
+    public final int getNumberOfCardsOnHand(PlayerId playerId) {
         return numberOfCardsOnHand.get(playerId).get();
     }
 
@@ -271,7 +268,7 @@ public final class ObservableGameState {
      * @param playerId (playerId) the chosen playerId
      * @return (ReadOnlyIntegerProperty) the unmodifiable property
      */
-    public ReadOnlyIntegerProperty numberOfCarsOnHandProperty(PlayerId playerId) {
+    public final ReadOnlyIntegerProperty numberOfCarsOnHandProperty(PlayerId playerId) {
         return numberOfCarsOnHand.get(playerId);
     }
 
@@ -281,7 +278,7 @@ public final class ObservableGameState {
      * @param playerId (PlayerId) The playerId
      * @return (int) The value
      */
-    public int getNumberOfCarsOnHand(PlayerId playerId) {
+    public final int getNumberOfCarsOnHand(PlayerId playerId) {
         return numberOfCarsOnHand.get(playerId).get();
     }
 
@@ -293,7 +290,7 @@ public final class ObservableGameState {
      * @param playerId (playerId) the chosen playerId
      * @return (ReadOnlyIntegerProperty) the unmodifiable property
      */
-    public ReadOnlyIntegerProperty numberOfBuildingPointsOnHandProperty(PlayerId playerId) {
+    public final ReadOnlyIntegerProperty numberOfBuildingPointsOnHandProperty(PlayerId playerId) {
         return numberOfBuildingPointsOnHand.get(playerId);
     }
 
@@ -303,7 +300,7 @@ public final class ObservableGameState {
      * @param playerId (PlayerId) The playerId
      * @return (int) The value
      */
-    public int getNumberOfBuildingPointsOnHand(PlayerId playerId) {
+    public final int getNumberOfBuildingPointsOnHand(PlayerId playerId) {
         return numberOfBuildingPointsOnHand.get(playerId).get();
     }
 
@@ -314,7 +311,7 @@ public final class ObservableGameState {
      *
      * @return (ObservableList < Ticket >) the unmodifiable property
      */
-    public ObservableList<Ticket> ticketsOnHandProperty() {
+    public final ObservableList<Ticket> ticketsOnHandProperty() {
         return unmodifiableObservableList(ticketsOnHand);
     }
 
@@ -324,7 +321,7 @@ public final class ObservableGameState {
      * @param slot (int) The index
      * @return (Ticket) The value
      */
-    public Ticket getTicketOnHand(int slot) {
+    public final Ticket getTicketOnHand(int slot) {
         return ticketsOnHand.get(slot);
     }
 
@@ -336,7 +333,7 @@ public final class ObservableGameState {
      * @param card (Card) the chosen card
      * @return (ReadOnlyIntegerProperty) the unmodifiable property
      */
-    public ReadOnlyIntegerProperty numberOfEachCardsProperty(Card card) {
+    public final ReadOnlyIntegerProperty numberOfEachCardsProperty(Card card) {
         return numberOfEachCards.get(card);
     }
 
@@ -346,7 +343,7 @@ public final class ObservableGameState {
      * @param card (Card) The card
      * @return (int) The value
      */
-    public int getNumberOfEachCards(Card card) {
+    public final int getNumberOfEachCards(Card card) {
         return numberOfEachCards.get(card).get();
     }
 
@@ -358,7 +355,7 @@ public final class ObservableGameState {
      * @param route (Route) the chosen route
      * @return (ReadOnlyBooleanProperty) the unmodifiable property
      */
-    public ReadOnlyBooleanProperty claimForEachRouteProperty(Route route) {
+    public final ReadOnlyBooleanProperty claimForEachRouteProperty(Route route) {
         return claimForEachRoute.get(route);
     }
 
@@ -368,7 +365,7 @@ public final class ObservableGameState {
      * @param route (Route) The route
      * @return (boolean) The value
      */
-    public boolean getClaimForEachRoute(Route route) {
+    public final boolean getClaimForEachRoute(Route route) {
         return claimForEachRoute.get(route).get();
     }
 
@@ -380,7 +377,7 @@ public final class ObservableGameState {
      *
      * @return (boolean) true if the tickets deck isn't empty
      */
-    public boolean canDrawTickets() {
+    public final boolean canDrawTickets() {
         Preconditions.checkArgument(gameState != null);
         return gameState.canDrawTickets();
     }
@@ -390,7 +387,7 @@ public final class ObservableGameState {
      *
      * @return (boolean) true iff the deck and the discards contains at least 5 cards
      */
-    public boolean canDrawCards() {
+    public final boolean canDrawCards() {
         Preconditions.checkArgument(gameState != null);
         return gameState.canDrawCards();
     }
@@ -401,16 +398,17 @@ public final class ObservableGameState {
      * @param route (Route) The given Route
      * @return (List < SortedBag < Card > >) A list of all the sets of cards that the player could use to take possession of the given route
      */
-    public List<SortedBag<Card>> possibleClaimCards(Route route) {
+    public final List<SortedBag<Card>> possibleClaimCards(Route route) {
         Preconditions.checkArgument(playerState != null);
         return playerState.possibleClaimCards(route);
+
     }
 
     //==============================================================//
     //==============================================================//
 
     private static List<ObjectProperty<Card>> createFaceUpCards() {
-        List<ObjectProperty<Card>> list = new ArrayList<>();
+        List<ObjectProperty<Card>> list = new LinkedList<>();
         for (int i = 0; i < 5; i++) {
             list.add(new SimpleObjectProperty<>());
         }
