@@ -69,7 +69,7 @@ public interface ActionHandler extends EventHandler {
         /**
          * Called when the player has chosen to keep the donated tickets following a ticket draw
          *
-         * @param tickets(Ticket) The given tickets
+         * @param tickets (SortedBag<Ticket>) The given tickets
          */
         void onChooseTickets(SortedBag<Ticket> tickets);
     }

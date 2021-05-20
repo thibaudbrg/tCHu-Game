@@ -23,7 +23,7 @@ import java.util.Random;
  * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
-public class ServerMain extends Application {
+public final class ServerMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
@@ -40,9 +40,9 @@ public class ServerMain extends Application {
     @Override
     public void start(Stage primaryStage)  {
         List<String> argList = getParameters().getRaw();
-
-        String player1Name = argList.size() == 2 || argList.size() == 1 ? argList.get(0) : "Ada";
-        String player2Name = argList.size() == 2 ? argList.get(1) : "Charles";
+        int size = argList.size();
+        String player1Name = size == PlayerId.COUNT || size == 1 ? argList.get(0) : "Ada";
+        String player2Name = size == PlayerId.COUNT ? argList.get(1) : "Charles";
         Map<PlayerId, String> playersName = Map.of(PlayerId.PLAYER_1, player1Name, PlayerId.PLAYER_2, player2Name);
         try (ServerSocket serverSocket = new ServerSocket(5108)) {
             Socket socket = serverSocket.accept();
