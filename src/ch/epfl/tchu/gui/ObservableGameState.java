@@ -77,8 +77,8 @@ public final class ObservableGameState {
         gameState = Objects.requireNonNull(newGameState);
         playerState = Objects.requireNonNull(newPlayerState);
 
-        percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / Constants.TICKETS_COUNT) * 100d));
-        percentCardsRemainingInDeck.set((int) Math.floor(((double) newGameState.cardState().deckSize() / Constants.ALL_CARDS.size()) * 100d));
+        percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / (double) Constants.TICKETS_COUNT)* 100));
+        percentCardsRemainingInDeck.set((int)Math.floor(((double) newGameState.cardState().deckSize() / (double) Constants.ALL_CARDS.size())* 100));
 
         for (int slot : FACE_UP_CARD_SLOTS) {
             Card newCard = newGameState.cardState().faceUpCard(slot);
@@ -112,12 +112,16 @@ public final class ObservableGameState {
         claimForEachRoute.forEach((r, b) -> {
     if (newGameState.currentPlayerId().equals(playerId)) {
         if (!newGameState.claimedRoutes().contains(r)) {
-            List<List<Station>> listClaimedRouteStation = new ArrayList<>();
+           /* List<List<Station>> listClaimedRouteStation = new ArrayList<>();
             for (Route route : newGameState.claimedRoutes()) {
                 listClaimedRouteStation.add(route.stations());
 
             }
             if (!listClaimedRouteStation.contains(r.stations())) {
+                if (newPlayerState.canClaimRoute(r)) {
+                    b.setValue(true);
+                }*/
+            if (newGameState.claimedRoutes().stream().map(Route::stations).noneMatch(route -> route.equals(r.stations()))) {
                 if (newPlayerState.canClaimRoute(r)) {
                     b.setValue(true);
                 }

@@ -245,7 +245,7 @@ public final class GraphicalPlayer {
             dialogStage.hide();
             SortedBag<Card> chooseCard = listView.getSelectionModel().getSelectedItem();
             if (chooseCard==null) {chooseCardsHandler.onChooseCards(SortedBag.of());}
-            chooseCardsHandler.onChooseCards(chooseCard);
+            else chooseCardsHandler.onChooseCards(chooseCard);
         });
         VBox vBox = new VBox(textFlow, listView, button);
         Scene scene = new Scene(vBox);
