@@ -62,7 +62,8 @@ public final class Station {
      * @param o (Object) The station
      * @return (boolean) Return true if the two stations are equals
      */
-    @Override
+    /*
+   @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -70,15 +71,16 @@ public final class Station {
         return id == station.id
                 && name.equals(station.name);
     }
-
+*/
 
     /**
      * Returns a hash code value for the object. (Redefined because of equals())
      *
      * @return (int) The hashcode
      */
+    /*
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
     }
-}
+*/}

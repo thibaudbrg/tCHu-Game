@@ -100,7 +100,13 @@ public final class Game {
 
                     if (route.level().equals(Route.Level.UNDERGROUND)) {
                         sendInfoToBothPlayers(players, currentInfoPlayer.attemptsTunnelClaim(route, initialClaimCards));
-                        SortedBag<Card> drawnCard = threeOnTheTopDeckCards(gameState, rng);
+                        SortedBag.Builder<Card> builder = new SortedBag.Builder<>();
+                        for (int i = 0; i < Constants.IN_GAME_TICKETS_COUNT; ++i) {
+                            gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
+                            builder.add(gameState.topCard());
+                            gameState = gameState.withoutTopCard();
+                        }
+                        SortedBag<Card> drawnCard = builder.build();
                         int additionalCost = route.additionalClaimCardsCount(initialClaimCards, drawnCard);
                         sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
 
@@ -190,8 +196,8 @@ public final class Game {
         }
     }
 
-
-    private static SortedBag<Card> threeOnTheTopDeckCards(GameState gameState, Random rng) {
+//TODO CHECK C'est surement ca
+   /* private static SortedBag<Card> threeOnTheTopDeckCards(GameState gameState, Random rng) {
         SortedBag.Builder<Card> builder = new SortedBag.Builder<>();
         for (int i = 0; i < Constants.IN_GAME_TICKETS_COUNT; ++i) {
             gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
@@ -199,7 +205,7 @@ public final class Game {
             gameState = gameState.withoutTopCard();
         }
         return builder.build();
-    }
+    }*/
 
 
     private static void sendInfoToBothPlayers(Map<PlayerId, Player> players, String s) {

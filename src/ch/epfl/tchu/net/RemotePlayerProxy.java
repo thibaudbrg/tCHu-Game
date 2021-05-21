@@ -6,10 +6,7 @@ import ch.epfl.tchu.game.*;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Represents a remote player proxy
@@ -51,7 +48,7 @@ public final class RemotePlayerProxy implements Player {
      */
     @Override
     public void initPlayers(PlayerId ownId, Map<PlayerId, String> playerNames) {
-        List<String> serializedArgument = new LinkedList<>();
+        List<String> serializedArgument = new ArrayList<>();
         serializedArgument.add(playerIdSerde.serialize(ownId));
         serializedArgument.add(stringListSerde.serialize(List.of(playerNames.get(PlayerId.PLAYER_1), playerNames.get(PlayerId.PLAYER_2))));
 

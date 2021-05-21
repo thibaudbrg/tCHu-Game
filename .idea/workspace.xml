@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="75bc9653-2117-4f1f-8e33-3a517e14447c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/GraphicalPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/GraphicalPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/ObservableGameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/ObservableGameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/GraphicalPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/ObservableGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/net/RemotePlayerProxy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,22 +52,7 @@
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ClientMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="PROGRAM_PARAMETERS" value="8.tcp.ngrok.io 19537" />
       <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GraphicalPlayerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.GraphicalPlayerTest" />
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -81,20 +67,6 @@
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ServerMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Stage11Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.Stage11Test" />
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -131,21 +103,6 @@
       </method>
     </configuration>
     <configuration name="DeckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.DeckTest" />
-      <option name="METHOD_NAME" value="deckOfShufflesDeck" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
         <pattern>
@@ -160,21 +117,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SerdesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.net.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.net" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.net.SerdesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.GraphicalPlayerTest" />
       <item itemvalue="Application.Stage9Test" />
-      <item itemvalue="Application.Stage11Test" />
       <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.ServerMain" />
-      <item itemvalue="JUnit.DeckTest" />
+      <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
+      <item itemvalue="JUnit.SerdesTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain" />
+        <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
+        <item itemvalue="JUnit.SerdesTest" />
         <item itemvalue="Application.Stage9Test" />
-        <item itemvalue="Application.Stage11Test" />
-        <item itemvalue="Application.GraphicalPlayerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +180,8 @@
       <workItem from="1621549097088" duration="476000" />
       <workItem from="1621582526787" duration="784000" />
       <workItem from="1621587610649" duration="4239000" />
+      <workItem from="1621592341198" duration="1139000" />
+      <workItem from="1621596509937" duration="2905000" />
     </task>
     <servers />
   </component>

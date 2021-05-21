@@ -175,7 +175,7 @@ public final class GameState extends PublicGameState {
         Preconditions.checkArgument(drawnTickets.contains(chosenTickets));
 
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
-        newPlayerState.replace(currentPlayerId(),
+        newPlayerState.put(currentPlayerId(),
                 completePlayerState.get(currentPlayerId()).withAddedTickets(chosenTickets));
 
         return new GameState(completeCardState, currentPlayerId(),
@@ -193,7 +193,7 @@ public final class GameState extends PublicGameState {
      */
     public GameState withDrawnFaceUpCard(int slot) {
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
-        newPlayerState.replace(currentPlayerId(),
+        newPlayerState.put(currentPlayerId(),
                 completePlayerState.get(currentPlayerId())
                         .withAddedCard(completeCardState.faceUpCard(slot)));
 
@@ -208,7 +208,7 @@ public final class GameState extends PublicGameState {
      */
     public GameState withBlindlyDrawnCard() {
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
-        newPlayerState.replace(currentPlayerId(),
+        newPlayerState.put(currentPlayerId(),
                 completePlayerState.get(currentPlayerId()).withAddedCard(completeCardState.topDeckCard()));
 
         return new GameState(completeCardState.withoutTopDeckCard(), currentPlayerId(),
@@ -225,7 +225,7 @@ public final class GameState extends PublicGameState {
      */
     public GameState withClaimedRoute(Route route, SortedBag<Card> cards) {
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
-        newPlayerState.replace(currentPlayerId(), completePlayerState.
+        newPlayerState.put(currentPlayerId(), completePlayerState.
                 get(currentPlayerId()).withClaimedRoute(route, cards));
 
         return new GameState(completeCardState.withMoreDiscardedCards(cards),
