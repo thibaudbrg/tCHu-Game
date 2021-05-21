@@ -169,8 +169,8 @@ public final class GraphicalPlayer {
     /**
      * Open a window, which enables the player to select tickets from a given list
      *
-     * @param ticketSortedBag      (SortedBag<Ticket>)
-     * @param chooseTicketsHandler (ChooseTicketsHandler)
+     * @param ticketSortedBag      (SortedBag<Ticket>) The possible tickets to choose
+     * @param chooseTicketsHandler (ChooseTicketsHandler) Then handler for the tickets to choose
      */
     public void chooseTickets(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
         assert isFxApplicationThread();
@@ -187,6 +187,7 @@ public final class GraphicalPlayer {
     private void constructDialogWindowTicket(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
         int numberOfTicketToClaim = ticketSortedBag.size() - 2;
         ObservableList<Ticket> observableListTickets = FXCollections.observableList(ticketSortedBag.toList());
+
         Stage dialogStage = new Stage(StageStyle.UTILITY);
         dialogStage.setOnCloseRequest(Event::consume);
         dialogStage.setTitle(StringsFr.TICKETS_CHOICE);
@@ -244,8 +245,7 @@ public final class GraphicalPlayer {
         button.setOnAction(s -> {
             dialogStage.hide();
             SortedBag<Card> chooseCard = listView.getSelectionModel().getSelectedItem();
-            if (chooseCard==null) {chooseCardsHandler.onChooseCards(SortedBag.of());}
-            else chooseCardsHandler.onChooseCards(chooseCard);
+            chooseCardsHandler.onChooseCards(Objects.requireNonNullElseGet(chooseCard, SortedBag::of));
         });
         VBox vBox = new VBox(textFlow, listView, button);
         Scene scene = new Scene(vBox);

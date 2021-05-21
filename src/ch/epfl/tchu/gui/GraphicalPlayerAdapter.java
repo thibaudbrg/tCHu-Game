@@ -34,9 +34,9 @@ public final class GraphicalPlayerAdapter implements Player {
     }
 
     /**
-     *  Builds, on the JavaFX thread, the instance of the graphical player GraphicalPlayer that it adapts
+     * Builds, on the JavaFX thread, the instance of the graphical player GraphicalPlayer that it adapts
      *
-     * @param ownId (PlayerId) The own identity to the player
+     * @param ownId       (PlayerId) The own identity to the player
      * @param playerNames (Map<PlayerId, String>) The names of the players
      */
     @Override
@@ -75,12 +75,12 @@ public final class GraphicalPlayerAdapter implements Player {
      */
     @Override
     public void setInitialTicketChoice(SortedBag<Ticket> tickets) {
-
         Platform.runLater(() -> graphicalPlayer.chooseTickets(tickets, ticket -> put(sortedBagTQueue, ticket)));
     }
 
     /**
      * Blocks until the queue also used by setInitialTicketChoice contains a value, then returns it
+     *
      * @return (SortedBag < Ticket >) The tickets that the player keeps
      */
     @Override
@@ -98,11 +98,15 @@ public final class GraphicalPlayerAdapter implements Player {
     public TurnKind nextTurn() {
         Platform.runLater(() -> graphicalPlayer.startTurn(
                 (() -> put(turnKindsQueue, TurnKind.DRAW_TICKETS)),
-                ((i) -> {put(turnKindsQueue, TurnKind.DRAW_CARDS);
-                put(cardsQueue,i);}),
-                ((r, cards) ->{ put(turnKindsQueue, TurnKind.CLAIM_ROUTE);
-                put(routeQueue,r);
-                put(sortedBagCQueue,cards);})));
+                ((i) -> {
+                    put(turnKindsQueue, TurnKind.DRAW_CARDS);
+                    put(cardsQueue, i);
+                }),
+                ((r, cards) -> {
+                    put(turnKindsQueue, TurnKind.CLAIM_ROUTE);
+                    put(routeQueue, r);
+                    put(sortedBagCQueue, cards);
+                })));
         return take(turnKindsQueue);
     }
 
@@ -121,10 +125,10 @@ public final class GraphicalPlayerAdapter implements Player {
 
 
     /**
-     *  Tests if the queue containing the card locations contains a value; if it does,
-     *  it means that drawSlot is called for the first time of the round,
-     *  and that the handler installed by nextTurn has placed the location of the first card drawn in this queue,
-     *  otherwise, it means that drawSlot is called for the second time of the turn
+     * Tests if the queue containing the card locations contains a value; if it does,
+     * it means that drawSlot is called for the first time of the round,
+     * and that the handler installed by nextTurn has placed the location of the first card drawn in this queue,
+     * otherwise, it means that drawSlot is called for the second time of the turn
      *
      * @return (int) The value is between 0 and 4 if it comes from a slot containing a face-up card,
      * or the dummy slot number designating the deck of cards
@@ -154,13 +158,10 @@ public final class GraphicalPlayerAdapter implements Player {
     /**
      * Is similar to claimedRoute but uses the queue containing the multiset of maps
      *
-     * @return (SortedBag <Card>) The Cards he initially wants to use
+     * @return (SortedBag < Card >) The Cards he initially wants to use
      */
     @Override
-    public SortedBag<Card> initialClaimCards() {
-        return take(sortedBagCQueue);
-
-    }
+    public SortedBag<Card> initialClaimCards() { return take(sortedBagCQueue); }
 
     /**
      * Calls, on the JavaFX thread, the method of the same name of the graphical player, and then blocks
