@@ -49,7 +49,7 @@ abstract class DecksViewCreator {
 
             cardAndCount.getChildren().addAll(cardAndCountNodeList);
             cardAndCount.getChildren().add(counter);
-            if (c.equals(Card.LOCOMOTIVE)) cardAndCount.getStyleClass().add("NEUTRAL");
+            if (c.equals(Card.LOCOMOTIVE)) cardAndCount.getStyleClass().add(StringsFr.NEUTRAL);
             else cardAndCount.getStyleClass().add(c.name());
 
 
@@ -102,9 +102,9 @@ abstract class DecksViewCreator {
             card.getChildren().addAll(cardNodeList);
 
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
-                card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? "NEUTRAL" : newValue.name());
+                card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
                 if (oldValue != null) {
-                    card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE) ? "NEUTRAL" : oldValue.name());
+                    card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : oldValue.name());
                 }
             });
 
@@ -129,9 +129,9 @@ abstract class DecksViewCreator {
         Button button = new Button(text);
         button.getStyleClass().add("gauged");
 
-        Rectangle foregroundRect = new Rectangle();
+        Rectangle foregroundRect = new Rectangle(50,5);
         foregroundRect.getStyleClass().add("foreground");
-        foregroundRect.setHeight(5);
+
 
         Rectangle backgroundRect = new Rectangle(50, 5);
         backgroundRect.getStyleClass().add("background");
@@ -152,6 +152,7 @@ abstract class DecksViewCreator {
 
         Rectangle rectangleInside = new Rectangle(40, 70);
         rectangleInside.getStyleClass().add("filled");
+        rectangleInside.getStyleClass().add("inside");
 
         Rectangle rectangleImage = new Rectangle(40, 70);
         rectangleImage.getStyleClass().add("train-image");

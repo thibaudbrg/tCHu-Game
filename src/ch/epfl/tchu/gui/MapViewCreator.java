@@ -64,7 +64,7 @@ abstract class MapViewCreator {
 
             groupRoute.setId(r.id());
 
-            List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? "NEUTRAL" : r.color().name());
+            List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? StringsFr.NEUTRAL : r.color().name());
             groupRoute.getStyleClass().addAll(styleClass);
 
 

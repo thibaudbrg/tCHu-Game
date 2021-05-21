@@ -12,7 +12,7 @@ import java.util.List;
  * @author Decotignie Matthieu (329953)
  * @author Bourgeois Thibaud (324604)
  */
-public class ClientMain extends Application {
+public final class ClientMain extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -29,9 +29,10 @@ public class ClientMain extends Application {
     @Override
     public void start(Stage primaryStage)  {
         List<String> argList = getParameters().getRaw();
+        int size = argList.size();
         GraphicalPlayerAdapter player = new GraphicalPlayerAdapter();
-        String name = argList.size() == 2 || argList.size() == 1 ? argList.get(0) : "localhost";
-        int port = argList.size() == 2 ? Integer.parseInt(argList.get(1)) : 5108;
+        String name = size == 2 || size == 1 ? argList.get(0) : "localhost";
+        int port = size == 2 ? Integer.parseInt(argList.get(1)) : 5108;
         new Thread(() -> new RemotePlayerClient(player, name, port).run()).start();
     }
 }
