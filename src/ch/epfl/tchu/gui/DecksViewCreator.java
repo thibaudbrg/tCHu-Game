@@ -4,6 +4,7 @@ import ch.epfl.tchu.game.*;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.*;
@@ -11,6 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -32,8 +34,23 @@ abstract class DecksViewCreator {
      */
     public static Node createHandView(ObservableGameState gameState) {
 
-        ListView<Ticket> billets = new ListView<>(gameState.ticketsOnHandProperty());
-        billets.setId("tickets");
+        ListView<Ticket> tickets = new ListView<>(gameState.ticketsOnHandProperty());
+        tickets.setId("tickets");
+        tickets.setCellFactory(new Callback<ListView<Ticket>, ListCell<Ticket>>() {
+            @Override
+            public ListCell<Ticket> call(ListView<Ticket> param) {
+                return new ListCell<Ticket>() {
+                    @Override
+                    protected void updateItem(Ticket item, boolean empty) {
+                        super.updateItem(item, empty);
+                    }
+                };
+            }
+        });
+
+
+
+
 
         HBox handCard = new HBox();
         handCard.setId("hand-pane");
@@ -60,7 +77,7 @@ abstract class DecksViewCreator {
             handCard.getChildren().add(cardAndCount);
         }
 
-        HBox HandView = new HBox(billets, handCard);
+        HBox HandView = new HBox(tickets, handCard);
         HandView.getStylesheets().add("decks.css");
         HandView.getStylesheets().add("colors.css");
 
@@ -129,7 +146,7 @@ abstract class DecksViewCreator {
         Button button = new Button(text);
         button.getStyleClass().add("gauged");
 
-        Rectangle foregroundRect = new Rectangle(50,5);
+        Rectangle foregroundRect = new Rectangle(50, 5);
         foregroundRect.getStyleClass().add("foreground");
 
 

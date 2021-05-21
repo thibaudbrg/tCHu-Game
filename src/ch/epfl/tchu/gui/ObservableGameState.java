@@ -40,6 +40,7 @@ public final class ObservableGameState {
 
     //Properties concerning the private state of the player who instantiates ObservableGameState
     private final ObservableList<Ticket> ticketsOnHand;
+    private final Map<Ticket,BooleanProperty> ticketsComplete;
     private final Map<Card, IntegerProperty> numberOfEachCards;
     private final Map<Route, BooleanProperty> claimForEachRoute;
 
@@ -61,6 +62,8 @@ public final class ObservableGameState {
         numberOfBuildingPointsOnHand = createMapIntPropertyBothPlayers();
 
         ticketsOnHand = FXCollections.observableArrayList();
+        ticketsComplete = FXCollections.observableMap(Map.of());
+
         numberOfEachCards = createNumberOfEachCard();
         claimForEachRoute = createClaimForEachRoute();
     }
@@ -106,22 +109,14 @@ public final class ObservableGameState {
         numberOfBuildingPointsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).claimPoints());
 
         ticketsOnHand.setAll(newPlayerState.tickets().toList());
+        ticketsComplete.setAll(newPlayerState.ticketsDone());
 
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
         claimForEachRoute.forEach((r, b) -> {
     if (newGameState.currentPlayerId().equals(playerId)) {
         if (!newGameState.claimedRoutes().contains(r)) {
-           /* List<List<Station>> listClaimedRouteStation = new ArrayList<>();
-            for (Route route : newGameState.claimedRoutes()) {
-                listClaimedRouteStation.add(route.stations());
-
-            }
-            if (!listClaimedRouteStation.contains(r.stations())) {
-                if (newPlayerState.canClaimRoute(r)) {
-                    b.setValue(true);
-                }*/
-            if (newGameState.claimedRoutes().stream().map(Route::stations).noneMatch(route -> route.equals(r.stations()))) {
+           if (newGameState.claimedRoutes().stream().map(Route::stations).noneMatch(route -> route.equals(r.stations()))) {
                 if (newPlayerState.canClaimRoute(r)) {
                     b.setValue(true);
                 }
@@ -242,6 +237,10 @@ public final class ObservableGameState {
         return numberOfTicketsOnHandProperty(playerId).get();
     }
 
+    //==============================================================//
+
+
+    public ReadOnlyBooleanProperty numberOfTicketsComplete
     //==============================================================//
 
     /**
@@ -407,6 +406,7 @@ public final class ObservableGameState {
         return playerState.possibleClaimCards(route);
 
     }
+
 
     //==============================================================//
     //==============================================================//

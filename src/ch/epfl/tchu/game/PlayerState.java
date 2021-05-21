@@ -2,11 +2,9 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
+import javafx.beans.property.BooleanProperty;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -19,7 +17,6 @@ public final class PlayerState extends PublicPlayerState {
 
     private final SortedBag<Ticket> tickets;
     private final SortedBag<Card> cards;
-
 
 
     /**
@@ -87,7 +84,7 @@ public final class PlayerState extends PublicPlayerState {
      * Returns a list of all the sets of cards that the player could use to take possession of the given route
      *
      * @param route (Route) The given Route
-     * @return (List<SortedBag<Card>>) a list of all the sets of cards that the player could use to take possession of the given route
+     * @return (List < SortedBag < Card > >) a list of all the sets of cards that the player could use to take possession of the given route
      */
     public List<SortedBag<Card>> possibleClaimCards(Route route) {
         Preconditions.checkArgument(this.carCount() >= route.length());
@@ -105,7 +102,7 @@ public final class PlayerState extends PublicPlayerState {
      *
      * @param additionalCardsCount (int) The number of additional cards that the player must lay down
      * @param initialCards         (SortedBag<Card>) The initial Cards
-     * @return (List<SortedBag<Card>>) a list of all the sets of cards the player could use to take over a tunnel
+     * @return (List < SortedBag < Card > >) a list of all the sets of cards the player could use to take over a tunnel
      */
     public List<SortedBag<Card>> possibleAdditionalCards(int additionalCardsCount, SortedBag<Card> initialCards) {
         Preconditions.checkArgument(additionalCardsCount >= 1 && additionalCardsCount <= 3);
@@ -150,16 +147,14 @@ public final class PlayerState extends PublicPlayerState {
         return new PlayerState(tickets, cards.difference(claimCards), routesCopy);
     }
 
+
     /**
      * Return all the points obtained by the player with its tickets
      *
      * @return (int) all the points obtained by the player with its tickets
      */
     public int ticketPoints() {
-        StationPartition.Builder builder = new StationPartition.Builder(maxId() + 1);
-
-        this.routes().forEach(r -> builder.connect(r.station1(), r.station2()));
-        StationPartition playerPartition = builder.build();
+        StationPartition playerPartition = getStationConnectivity();
 
         int points = 0;
         for (Ticket ticket : tickets) {
@@ -182,7 +177,7 @@ public final class PlayerState extends PublicPlayerState {
     /**
      * Returns all the cards owned by the player
      *
-     * @return (SortedBag<Card>) all the cards owned by the player
+     * @return (SortedBag < Card >) all the cards owned by the player
      */
     public SortedBag<Card> cards() {
         return cards;
@@ -191,13 +186,20 @@ public final class PlayerState extends PublicPlayerState {
     /**
      * Returns all the tickets owned by the player
      *
-     * @return (SortedGag<Ticket>) all the tickets owned by the player
+     * @return (SortedGag < Ticket >) all the tickets owned by the player
      */
     public SortedBag<Ticket> tickets() {
         return tickets;
     }
 
-    private int maxId(){
+    public StationPartition getStationConnectivity() {
+        StationPartition.Builder builder = new StationPartition.Builder(maxId() + 1);
+
+        this.routes().forEach(r -> builder.connect(r.station1(), r.station2()));
+        return builder.build();
+    }
+
+    private int maxId() {
         int maxId = 0;
 
         for (Route route : this.routes()) {
@@ -207,6 +209,15 @@ public final class PlayerState extends PublicPlayerState {
         }
         return maxId;
 
+    }
+
+    public Map<Ticket, Boolean> ticketsDone() {
+        StationConnectivity stationConnectivity = getStationConnectivity();
+        Map<Ticket, Boolean> map = new HashMap<>();
+        for (Ticket t : tickets) {
+            map.put(t, t.points(stationConnectivity) > 0);
+        }
+        return map;
     }
 
 }

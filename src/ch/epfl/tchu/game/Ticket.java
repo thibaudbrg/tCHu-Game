@@ -14,7 +14,6 @@ public final class Ticket implements Comparable<Ticket> {
     private final String Text;
     private final Station stationFrom;
     private final List<Trip> trips;
-
     /**
      * Built a ticket
      *
@@ -118,32 +117,5 @@ public final class Ticket implements Comparable<Ticket> {
                         .append(String.join(", ", stationTo))
                         .append("}")
                         .toString();
-    }
-
-    /**
-     * Indicates whether some other ticket is "equal to" this one
-     *
-     * @param o (Object) The ticket
-     * @return (boolean) Return true if the two tickets are equals
-     */
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ticket ticket = (Ticket) o;
-        return stationFrom.equals(ticket.stationFrom)
-                && trips.equals(ticket.trips);
-    }
-
-    /**
-     * Returns a hash code value for the object. (Redefined because of equals())
-     *
-     * @return (int) The hashcode
-     */
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(stationFrom, trips);
     }
 }

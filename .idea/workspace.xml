@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75bc9653-2117-4f1f-8e33-3a517e14447c" name="Default Changelist" comment="" />
-    <list id="f76fc985-079d-4ba3-9aef-50e56f2d39bb" name="Changes by Thibaud" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="75bc9653-2117-4f1f-8e33-3a517e14447c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Ticket.java" afterDir="false" />
     </list>
+    <list id="f76fc985-079d-4ba3-9aef-50e56f2d39bb" name="Changes by Thibaud" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +44,7 @@
     <property name="project.structure.proportion" value="0.13908207" />
     <property name="project.structure.side.proportion" value="0.152439" />
   </component>
-  <component name="RunManager" selected="Application.ClientMain">
+  <component name="RunManager" selected="JUnit.TicketTest">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ClientMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
@@ -63,20 +63,6 @@
       <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.ServerMain" />
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../BA2PROG/javafx-sdk-11.0.2/lib --add-modules javafx.controls" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Stage9Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.gui.Stage9Test" />
-      <module name="EPFL-BA2-Project-1-tCHu-Game" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Program&quot; &quot;Files\JavaFX\javafx-sdk-11.0.2\lib --add-modules javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch.epfl.tchu.gui.*" />
@@ -128,6 +114,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TicketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPFL-BA2-Project-1-tCHu-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.tchu.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.tchu.game" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.tchu.game.TicketTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EPFL-BA2-Project-1-tCHu-Game" />
       <extension name="coverage">
@@ -143,19 +144,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Stage9Test" />
       <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.ServerMain" />
       <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
       <item itemvalue="JUnit.SerdesTest" />
+      <item itemvalue="JUnit.TicketTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TicketTest" />
+        <item itemvalue="JUnit.SerdesTest" />
         <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain" />
         <item itemvalue="JUnit.ch.epfl.tchu.game in EPFL-BA2-Project-1-tCHu-Game" />
-        <item itemvalue="JUnit.SerdesTest" />
-        <item itemvalue="Application.Stage9Test" />
       </list>
     </recent_temporary>
   </component>
@@ -177,7 +178,7 @@
       <workItem from="1621582526787" duration="784000" />
       <workItem from="1621587610649" duration="4239000" />
       <workItem from="1621592341198" duration="1139000" />
-      <workItem from="1621596509937" duration="5255000" />
+      <workItem from="1621596509937" duration="6153000" />
     </task>
     <servers />
   </component>
