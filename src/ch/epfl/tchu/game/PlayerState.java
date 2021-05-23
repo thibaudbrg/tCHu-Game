@@ -213,7 +213,7 @@ public final class PlayerState extends PublicPlayerState {
 
     public Boolean ticketsDone(Ticket t) {
         Preconditions.checkArgument(tickets.contains(t));
-        return t.points(getStationConnectivity())>0;
+        return t.points(getStationConnectivity()) > 0;
     }
 
 }

@@ -1,13 +1,20 @@
 package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.game.*;
+import javafx.animation.TranslateTransition;
+import javafx.animation.ScaleTransition;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.*;
 import javafx.scene.layout.StackPane;
@@ -17,6 +24,7 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -40,20 +48,27 @@ abstract class DecksViewCreator {
 
         ListView<Ticket> tickets = new ListView<>(gameState.ticketsOnHandProperty());
         tickets.setId("tickets");
-        tickets.setCellFactory(new Callback<ListView<Ticket>, ListCell<Ticket>>() {
+        tickets.setCellFactory(new Callback<>() {
                                    @Override
                                    public ListCell<Ticket> call(ListView<Ticket> param) {
-                                       return new ListCell<Ticket>() {
+                                       return new ListCell<>() {
                                            @Override
                                            protected void updateItem(Ticket item, boolean empty) {
                                                super.updateItem(item, empty);
                                                BooleanProperty trueProperty = new SimpleBooleanProperty();
                                                trueProperty.set(true);
-                                               if(!empty) {
-                                                  // setOnMouseClicked((s)->setText());
-                                                    textProperty().bind(Bindings.when(gameState.ticketDoneProperty(item).isEqualTo(trueProperty)).then(item.text()+"  \u2713").otherwise(item.text()+"  \u2717"));
-                                                     styleProperty().bind(Bindings.when(gameState.ticketDoneProperty(item).isEqualTo(trueProperty)).then("-fx-border-color: B0F2B6;").otherwise("-fx-border-color: FF6961;"));
-                                               } }
+                                               if (!empty) {
+                                                   textProperty().bind(Bindings
+                                                           .when(gameState.ticketCompleteProperty(item).isEqualTo(trueProperty))
+                                                           .then(item.text() + "  \u2713")
+                                                           .otherwise(item.text() + "  \u2717"));
+                                                   styleProperty().bind(Bindings
+                                                           .when(gameState.ticketCompleteProperty(item).isEqualTo(trueProperty))
+                                                           .then(":selected{-fx-background-color: B0F2B6;}")
+                                                           .otherwise(":selected{-fx-background-color: FF6961;}"));
+
+                                               }
+                                           }
                                        };
                                    }
                                }
@@ -134,12 +149,36 @@ abstract class DecksViewCreator {
             });
 
             cardVue.getChildren().add(card);
+            BooleanProperty disable = new SimpleBooleanProperty();
 
-            card.disableProperty().bind(drawCardHandler.isNull());
-            card.setOnMouseClicked(s -> {drawCardHandler.get().onDrawCard(i);
-               
+            card.disableProperty().bind(drawCardHandler.isNull().or(disable));
+            card.setOnMouseClicked(s -> {
+                drawCardHandler.get().onDrawCard(i);
+                disable.set(true);
+                TranslateTransition transition1 = new TranslateTransition();
+                transition1.setNode(card);
+                transition1.durationProperty().bind(Bindings.when(Bindings.lessThan(10,transition1.cycleCountProperty()))
+                        .then(Duration.seconds(2)).otherwise(Duration.seconds(1))); //TODO TIME
+                transition1.setToX(-500);
+                transition1.setToY(-200);
+                transition1.setAutoReverse(true);
+                transition1.setCycleCount(2);
+                transition1.play();
+
+
+                ScaleTransition transition2 = new ScaleTransition();
+                transition2.setNode(card);
+                transition2.durationProperty().bind(Bindings.when(Bindings.equal(1,transition1.cycleCountProperty()))
+                        .then(Duration.seconds(2)).otherwise(Duration.seconds(1)));
+                transition2.setToX(2);
+                transition2.setToY(2);
+                transition2.setAutoReverse(true);
+                transition2.setCycleCount(2);
+                transition2.play();
+                transition1.setOnFinished(event -> disable.set(false));
 
             });
+
         }
 
         cardVue.getChildren().add(cardDeckButton);
@@ -147,8 +186,7 @@ abstract class DecksViewCreator {
         ticketDeckButton.disableProperty().bind(drawTicketsHandler.isNull());
         cardDeckButton.disableProperty().bind(drawCardHandler.isNull());
         ticketDeckButton.setOnMouseClicked(s -> drawTicketsHandler.get().onDrawTickets());
-        cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(-1)
-        );
+        cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(-1));
 
         return cardVue;
     }

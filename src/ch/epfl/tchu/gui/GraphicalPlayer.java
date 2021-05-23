@@ -77,6 +77,7 @@ public final class GraphicalPlayer {
         stage.show();
     }
 
+
     /**
      * Makes sure that when the player decides to perform an action, the corresponding handler is called
      *
