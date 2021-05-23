@@ -3,6 +3,7 @@ package ch.epfl.tchu.gui;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,7 +41,7 @@ public final class ObservableGameState {
 
     //Properties concerning the private state of the player who instantiates ObservableGameState
     private final ObservableList<Ticket> ticketsOnHand;
-    private final Map<Ticket,BooleanProperty> ticketsComplete;
+    private  Map<Ticket,BooleanProperty> ticketsComplete;
     private final Map<Card, IntegerProperty> numberOfEachCards;
     private final Map<Route, BooleanProperty> claimForEachRoute;
 
@@ -62,7 +63,7 @@ public final class ObservableGameState {
         numberOfBuildingPointsOnHand = createMapIntPropertyBothPlayers();
 
         ticketsOnHand = FXCollections.observableArrayList();
-        ticketsComplete = FXCollections.observableMap(Map.of());
+        ticketsComplete =new HashMap<>();
 
         numberOfEachCards = createNumberOfEachCard();
         claimForEachRoute = createClaimForEachRoute();
@@ -109,7 +110,10 @@ public final class ObservableGameState {
         numberOfBuildingPointsOnHand.get(playerId.next()).set(newGameState.playerState(playerId.next()).claimPoints());
 
         ticketsOnHand.setAll(newPlayerState.tickets().toList());
-        ticketsComplete.setAll(newPlayerState.ticketsDone());
+        for (Ticket t : ticketsOnHand){
+            ticketsComplete.putIfAbsent(t, new SimpleBooleanProperty());
+            ticketsComplete.get(t).set(newPlayerState.ticketsDone(t));
+        }
 
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
@@ -240,7 +244,11 @@ public final class ObservableGameState {
     //==============================================================//
 
 
-    public ReadOnlyBooleanProperty numberOfTicketsComplete
+    public ReadOnlyBooleanProperty numberOfTicketsCompleteProperty(PlayerId playerId) {
+        return ticketsComplete.get(playerId);
+    }
+
+
     //==============================================================//
 
     /**
@@ -405,6 +413,10 @@ public final class ObservableGameState {
 
         return playerState.possibleClaimCards(route);
 
+    }
+
+    public ReadOnlyBooleanProperty ticketDoneProperty(Ticket t){
+        return ticketsComplete.get(t);
     }
 
 

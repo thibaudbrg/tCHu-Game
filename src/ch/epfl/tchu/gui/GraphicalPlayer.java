@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -62,6 +63,7 @@ public final class GraphicalPlayer {
 
         Stage stage = new Stage();
         stage.setTitle("tCHu \u2014 " + playerNames.get(playerId));
+        stage.getIcons().add(new Image("map.png"));
         this.mainStage = stage;
 
         BorderPane borderPane = new BorderPane(

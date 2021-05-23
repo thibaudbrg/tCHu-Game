@@ -211,13 +211,9 @@ public final class PlayerState extends PublicPlayerState {
 
     }
 
-    public Map<Ticket, Boolean> ticketsDone() {
-        StationConnectivity stationConnectivity = getStationConnectivity();
-        Map<Ticket, Boolean> map = new HashMap<>();
-        for (Ticket t : tickets) {
-            map.put(t, t.points(stationConnectivity) > 0);
-        }
-        return map;
+    public Boolean ticketsDone(Ticket t) {
+        Preconditions.checkArgument(tickets.contains(t));
+        return t.points(getStationConnectivity())>0;
     }
 
 }

@@ -2,7 +2,9 @@ package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.game.*;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -12,6 +14,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Transform;
+import javafx.scene.transform.Translate;
 import javafx.util.Callback;
 
 import java.util.Collections;
@@ -37,19 +41,23 @@ abstract class DecksViewCreator {
         ListView<Ticket> tickets = new ListView<>(gameState.ticketsOnHandProperty());
         tickets.setId("tickets");
         tickets.setCellFactory(new Callback<ListView<Ticket>, ListCell<Ticket>>() {
-            @Override
-            public ListCell<Ticket> call(ListView<Ticket> param) {
-                return new ListCell<Ticket>() {
-                    @Override
-                    protected void updateItem(Ticket item, boolean empty) {
-                        super.updateItem(item, empty);
-                    }
-                };
-            }
-        });
-
-
-
+                                   @Override
+                                   public ListCell<Ticket> call(ListView<Ticket> param) {
+                                       return new ListCell<Ticket>() {
+                                           @Override
+                                           protected void updateItem(Ticket item, boolean empty) {
+                                               super.updateItem(item, empty);
+                                               BooleanProperty trueProperty = new SimpleBooleanProperty();
+                                               trueProperty.set(true);
+                                               if(!empty) {
+                                                  // setOnMouseClicked((s)->setText());
+                                                    textProperty().bind(Bindings.when(gameState.ticketDoneProperty(item).isEqualTo(trueProperty)).then(item.text()+"  \u2713").otherwise(item.text()+"  \u2717"));
+                                                     styleProperty().bind(Bindings.when(gameState.ticketDoneProperty(item).isEqualTo(trueProperty)).then("-fx-border-color: B0F2B6;").otherwise("-fx-border-color: FF6961;"));
+                                               } }
+                                       };
+                                   }
+                               }
+        );
 
 
         HBox handCard = new HBox();
@@ -128,7 +136,10 @@ abstract class DecksViewCreator {
             cardVue.getChildren().add(card);
 
             card.disableProperty().bind(drawCardHandler.isNull());
-            card.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(i));
+            card.setOnMouseClicked(s -> {drawCardHandler.get().onDrawCard(i);
+               
+
+            });
         }
 
         cardVue.getChildren().add(cardDeckButton);
