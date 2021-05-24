@@ -192,7 +192,7 @@ public final class PlayerState extends PublicPlayerState {
         return tickets;
     }
 
-    public StationPartition getStationConnectivity() {
+    private StationPartition getStationConnectivity() {
         StationPartition.Builder builder = new StationPartition.Builder(maxId() + 1);
 
         this.routes().forEach(r -> builder.connect(r.station1(), r.station2()));
@@ -211,9 +211,9 @@ public final class PlayerState extends PublicPlayerState {
 
     }
 
-    public Boolean ticketsDone(Ticket t) {
+   /* public Boolean ticketsDone(Ticket t) {
         Preconditions.checkArgument(tickets.contains(t));
         return t.points(getStationConnectivity()) > 0;
-    }
+    }*/
 
 }
