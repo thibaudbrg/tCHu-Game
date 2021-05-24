@@ -38,6 +38,16 @@ import java.util.List;
  */
 abstract class DecksViewCreator {
 
+    public static int MIN_CARD_TEXT_VISIBLE_PROPERTY = 1;
+    public static int MIN_CARD_VISIBLE_PROPERTY=0;
+    public static int BUTTON_WIDTH=50;
+    public static int BUTTON_HEIGHT=5;
+
+    public static int CARD_WIDTH=60;
+    public static int CARD_HEIGHT=90;
+    public static int CARD_WIDTH_INSIDE=40;
+    public static int CARD_HEIGHT_INSIDE=70;
+
     /**
      * Takes as argument the observableGameState and returns the view of the hand
      *
@@ -48,7 +58,7 @@ abstract class DecksViewCreator {
 
         ListView<Ticket> tickets = new ListView<>(gameState.ticketsOnHandProperty());
         tickets.setId("tickets");
-        tickets.setCellFactory(new Callback<>() {
+        /*tickets.setCellFactory(new Callback<>() {
                                    @Override
                                    public ListCell<Ticket> call(ListView<Ticket> param) {
                                        return new ListCell<>() {
@@ -72,7 +82,7 @@ abstract class DecksViewCreator {
                                        };
                                    }
                                }
-        );
+        );*/
 
 
         HBox handCard = new HBox();
@@ -93,9 +103,9 @@ abstract class DecksViewCreator {
             else cardAndCount.getStyleClass().add(c.name());
 
 
-            cardAndCount.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 0));
+            cardAndCount.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), MIN_CARD_VISIBLE_PROPERTY));
             counter.textProperty().bind(Bindings.convert(gameState.numberOfEachCardsProperty(c)));
-            counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), 1));
+            counter.visibleProperty().bind(Bindings.greaterThan(gameState.numberOfEachCardsProperty(c), MIN_CARD_TEXT_VISIBLE_PROPERTY));
 
             handCard.getChildren().add(cardAndCount);
         }
@@ -154,10 +164,10 @@ abstract class DecksViewCreator {
             card.disableProperty().bind(drawCardHandler.isNull().or(disable));
             card.setOnMouseClicked(s -> {
                 drawCardHandler.get().onDrawCard(i);
-                disable.set(true);
+               /* disable.set(true);
                 TranslateTransition transition1 = new TranslateTransition();
                 transition1.setNode(card);
-                transition1.durationProperty().bind(Bindings.when(Bindings.lessThan(10,transition1.cycleCountProperty()))
+                transition1.durationProperty().bind(Bindings.when(Bindings.lessThan(10  ,transition1.cycleCountProperty()))
                         .then(Duration.seconds(2)).otherwise(Duration.seconds(1))); //TODO TIME
                 transition1.setToX(-500);
                 transition1.setToY(-200);
@@ -176,7 +186,7 @@ abstract class DecksViewCreator {
                 transition2.setCycleCount(2);
                 transition2.play();
                 transition1.setOnFinished(event -> disable.set(false));
-
+*/
             });
 
         }
@@ -186,7 +196,7 @@ abstract class DecksViewCreator {
         ticketDeckButton.disableProperty().bind(drawTicketsHandler.isNull());
         cardDeckButton.disableProperty().bind(drawCardHandler.isNull());
         ticketDeckButton.setOnMouseClicked(s -> drawTicketsHandler.get().onDrawTickets());
-        cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(-1));
+        cardDeckButton.setOnMouseClicked(s -> drawCardHandler.get().onDrawCard(Constants.DECK_SLOT));
 
         return cardVue;
     }
@@ -195,17 +205,17 @@ abstract class DecksViewCreator {
         Button button = new Button(text);
         button.getStyleClass().add("gauged");
 
-        Rectangle foregroundRect = new Rectangle(50, 5);
+        Rectangle foregroundRect = new Rectangle(BUTTON_WIDTH, BUTTON_HEIGHT);
         foregroundRect.getStyleClass().add("foreground");
 
 
-        Rectangle backgroundRect = new Rectangle(50, 5);
+        Rectangle backgroundRect = new Rectangle(BUTTON_WIDTH, BUTTON_HEIGHT);
         backgroundRect.getStyleClass().add("background");
 
         Group buttonGauge = new Group(backgroundRect, foregroundRect);
         button.setGraphic(buttonGauge);
-        foregroundRect.widthProperty().bind(text.equals(StringsFr.TICKETS) ? gameState.percentTicketsRemainingInDeckProperty().multiply(50).divide(100)
-                : gameState.percentCardsRemainingInDeckProperty().multiply(50).divide(100));
+        foregroundRect.widthProperty().bind(text.equals(StringsFr.TICKETS) ? gameState.percentTicketsRemainingInDeckProperty().multiply(BUTTON_WIDTH).divide(100)
+                : gameState.percentCardsRemainingInDeckProperty().multiply(BUTTON_WIDTH).divide(100));
 
         return button;
     }
@@ -213,14 +223,14 @@ abstract class DecksViewCreator {
     private static List<Node> initialiseCard() {
         List<Rectangle> list = new LinkedList<>();
 
-        Rectangle rectangleOutside = new Rectangle(60, 90);
+        Rectangle rectangleOutside = new Rectangle(CARD_WIDTH, CARD_HEIGHT);
         rectangleOutside.getStyleClass().add("outside");
 
-        Rectangle rectangleInside = new Rectangle(40, 70);
+        Rectangle rectangleInside = new Rectangle(CARD_WIDTH_INSIDE, CARD_HEIGHT_INSIDE);
         rectangleInside.getStyleClass().add("filled");
         rectangleInside.getStyleClass().add("inside");
 
-        Rectangle rectangleImage = new Rectangle(40, 70);
+        Rectangle rectangleImage = new Rectangle(CARD_WIDTH_INSIDE, CARD_HEIGHT_INSIDE);
         rectangleImage.getStyleClass().add("train-image");
 
         list.add(rectangleOutside);

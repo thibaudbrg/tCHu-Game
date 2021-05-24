@@ -21,6 +21,8 @@ import java.util.Map;
  * @author Bourgeois Thibaud (324604)
  */
 abstract class InfoViewCreator {
+
+    public static int CIRCLE_RADIUS = 5;
     /**
      * Create the information vue
      *
@@ -35,7 +37,7 @@ abstract class InfoViewCreator {
         playerStatsVBox.setId("player-stats");
 
         for (PlayerId i : List.of(id, id.next())) {
-            Circle circle = new Circle(5);
+            Circle circle = new Circle(CIRCLE_RADIUS);
             circle.getStyleClass().add("filled");
             Text text = new Text();
 

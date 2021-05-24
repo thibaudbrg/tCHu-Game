@@ -21,6 +21,13 @@ import java.util.List;
  * @author Bourgeois Thibaud (324604)
  */
 abstract class MapViewCreator {
+    public static int CIRCLE_RADIUS = 3;
+    public static int FIRST_CIRCLE_X = 12;
+    public static int CIRCLE_Y = 6;
+    public static int SECOND_CIRCLE_X = 24;
+    public static int RECTANGLE_WIDTH = 36;
+            public static int RECTANGLE_HEIGHT=12;
+
 
     /**
      * Functional interface to choose a card
@@ -68,17 +75,16 @@ abstract class MapViewCreator {
             groupRoute.getStyleClass().addAll(styleClass);
 
 
-
             for (int i = 1; i <= r.length(); i++) {
-                Rectangle voie = new Rectangle(36, 12);
+                Rectangle voie = new Rectangle(RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
                 List<String> styleClassR = List.of("track", "filled");
                 voie.getStyleClass().addAll(styleClassR);
 
-                Rectangle rectangle1 = new Rectangle(36,12);
+                Rectangle rectangle1 = new Rectangle(RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
                 rectangle1.getStyleClass().add("filled");
 
-                Circle circle1 = new Circle(12, 6, 3);
-                Circle circle2 = new Circle(24, 6, 3);
+                Circle circle1 = new Circle(FIRST_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
+                Circle circle2 = new Circle(SECOND_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
 
                 Group Wagon = new Group(rectangle1, circle1, circle2);
                 Wagon.getStyleClass().add("car");

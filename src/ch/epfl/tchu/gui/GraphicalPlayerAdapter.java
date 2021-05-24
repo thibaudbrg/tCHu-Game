@@ -24,13 +24,14 @@ public final class GraphicalPlayerAdapter implements Player {
     private final BlockingQueue<TurnKind> turnKindsQueue;
     private final BlockingQueue<Integer> cardsQueue;
     private final BlockingQueue<SortedBag<Card>> sortedBagCQueue;
+    public static int QUEUE_CAPACITY= 1;
 
     public GraphicalPlayerAdapter() {
-        sortedBagTQueue = new ArrayBlockingQueue<>(1);
-        routeQueue = new ArrayBlockingQueue<>(1);
-        turnKindsQueue = new ArrayBlockingQueue<>(1);
-        cardsQueue = new ArrayBlockingQueue<>(1);
-        sortedBagCQueue = new ArrayBlockingQueue<>(1);
+        sortedBagTQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
+        routeQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
+        turnKindsQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
+        cardsQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
+        sortedBagCQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
     }
 
     /**

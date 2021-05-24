@@ -48,6 +48,8 @@ public final class GraphicalPlayer {
     private final ObjectProperty<DrawCardHandler> drawCardHandlerObject = new SimpleObjectProperty<>();
     private final ObjectProperty<ClaimRouteHandler> claimRouteHandlerObject = new SimpleObjectProperty<>();
 
+
+    public static int INFO_LIST_MAX_SIZE = 5;
     /**
      * Constructs the graphical interface
      *
@@ -124,7 +126,7 @@ public final class GraphicalPlayer {
      */
     public void receiveInfo(String message) {
         assert isFxApplicationThread();
-        if (gameInfos.size() >= 5) gameInfos.remove(0);
+        if (gameInfos.size() >= INFO_LIST_MAX_SIZE) gameInfos.remove(0);
         gameInfos.add(new Text(message));
 
     }
@@ -177,7 +179,7 @@ public final class GraphicalPlayer {
      */
     public void chooseTickets(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
         assert isFxApplicationThread();
-        Preconditions.checkArgument(ticketSortedBag.size() == 3 || ticketSortedBag.size() == 5);
+        Preconditions.checkArgument(ticketSortedBag.size() == Constants.IN_GAME_TICKETS_COUNT || ticketSortedBag.size() == Constants.INITIAL_TICKETS_COUNT);
         constructDialogWindowTicket(ticketSortedBag, chooseTicketsHandler);
     }
 
