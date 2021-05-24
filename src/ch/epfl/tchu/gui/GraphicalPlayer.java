@@ -190,7 +190,7 @@ public final class GraphicalPlayer {
     }
 
     private void constructDialogWindowTicket(SortedBag<Ticket> ticketSortedBag, ChooseTicketsHandler chooseTicketsHandler) {
-        int numberOfTicketToClaim = ticketSortedBag.size() - 2;
+        int numberOfTicketToClaim = ticketSortedBag.size() - Constants.DISCARDABLE_TICKETS_COUNT;
         ObservableList<Ticket> observableListTickets = FXCollections.observableList(ticketSortedBag.toList());
 
         Stage dialogStage = new Stage(StageStyle.UTILITY);
