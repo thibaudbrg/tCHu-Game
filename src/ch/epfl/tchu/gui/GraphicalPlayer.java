@@ -50,6 +50,8 @@ public final class GraphicalPlayer {
 
 
     public static int INFO_LIST_MAX_SIZE = 5;
+    public static int CHOOSE_CARDS_DIALOG_WINDOW = 0;
+    public  static int ADDITIONAL_CARDS_DIALOG_WINDOW = 1;
     /**
      * Constructs the graphical interface
      *
@@ -155,7 +157,7 @@ public final class GraphicalPlayer {
      */
     public void chooseClaimCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         assert isFxApplicationThread();
-        constructDialogWindowCards(0, cards, chooseCardsHandler);
+        constructDialogWindowCards(CHOOSE_CARDS_DIALOG_WINDOW, cards, chooseCardsHandler);
 
     }
 
@@ -167,7 +169,7 @@ public final class GraphicalPlayer {
      */
     public void chooseAdditionalCards(List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
         assert isFxApplicationThread();
-        constructDialogWindowCards(1, cards, chooseCardsHandler);
+        constructDialogWindowCards(ADDITIONAL_CARDS_DIALOG_WINDOW, cards, chooseCardsHandler);
 
     }
 
@@ -219,7 +221,7 @@ public final class GraphicalPlayer {
     }
 
     private void constructDialogWindowCards(int i, List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
-        Preconditions.checkArgument(i == 1 || i == 0);
+        Preconditions.checkArgument(i == ADDITIONAL_CARDS_DIALOG_WINDOW|| i == CHOOSE_CARDS_DIALOG_WINDOW);
         ObservableList<SortedBag<Card>> sortedBagObservableList = FXCollections.observableList(cards);
         Stage dialogStage = new Stage(StageStyle.UTILITY);
         dialogStage.setOnCloseRequest(Event::consume);
@@ -228,11 +230,11 @@ public final class GraphicalPlayer {
         dialogStage.initOwner(mainStage);
         dialogStage.initModality(Modality.WINDOW_MODAL);
 
-        Text text = new Text(i == 0 ? StringsFr.CHOOSE_CARDS : StringsFr.CHOOSE_ADDITIONAL_CARDS);
+        Text text = new Text(i == CHOOSE_CARDS_DIALOG_WINDOW ? StringsFr.CHOOSE_CARDS : StringsFr.CHOOSE_ADDITIONAL_CARDS);
         TextFlow textFlow = new TextFlow(text);
         ListView<SortedBag<Card>> listView = new ListView<>(sortedBagObservableList);
         Button button = new Button(StringsFr.CHOOSE);
-        if (i == 0) {
+        if (i == CHOOSE_CARDS_DIALOG_WINDOW) {
             button.disableProperty().bind(Bindings.equal(0, Bindings.size(listView.getSelectionModel().getSelectedItems())));
         }
 

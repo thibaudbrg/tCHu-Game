@@ -14,6 +14,8 @@ import java.util.List;
  */
 public final class ClientMain extends Application {
 
+    public static int ARG_LIST_SIZE = 2;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -31,8 +33,8 @@ public final class ClientMain extends Application {
         List<String> argList = getParameters().getRaw();
         int size = argList.size();
         GraphicalPlayerAdapter player = new GraphicalPlayerAdapter();
-        String name = size == 2 || size == 1 ? argList.get(0) : "localhost";
-        int port = size == 2 ? Integer.parseInt(argList.get(1)) : 5108;
+        String name = size == ARG_LIST_SIZE|| size == 1 ? argList.get(0) : "localhost";
+        int port = size == ARG_LIST_SIZE ? Integer.parseInt(argList.get(1)) : 5108;
         new Thread(() -> new RemotePlayerClient(player, name, port).run()).start();
     }
 }
