@@ -157,6 +157,7 @@ abstract class DecksViewCreator {
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
                 if (card.isDisable()) {
 
+
                 } else {
                     card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
                     if (oldValue != null) {
@@ -214,8 +215,11 @@ abstract class DecksViewCreator {
                 transition3.setToAngle(360);
                 transition3.play();
 
-                transition1.setOnFinished(event -> {disable.set(false);
-                    );
+                transition1.setOnFinished(event -> {
+                    disable.set(false);
+                    card.getStyleClass().remove();
+                    card.getStyleClass().add(gameState.faceUpCardsProperty(i).)
+                });
             });
 
         }
