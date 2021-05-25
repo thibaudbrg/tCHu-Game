@@ -22,7 +22,7 @@ import java.util.Map;
  */
 abstract class InfoViewCreator {
 
-    public static int CIRCLE_RADIUS = 5;
+    private final static int CIRCLE_RADIUS = 5;
     /**
      * Create the information vue
      *

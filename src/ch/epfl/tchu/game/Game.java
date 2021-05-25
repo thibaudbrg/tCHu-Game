@@ -196,16 +196,6 @@ public final class Game {
         }
     }
 
-//TODO CHECK C'est surement ca
-   /* private static SortedBag<Card> threeOnTheTopDeckCards(GameState gameState, Random rng) {
-        SortedBag.Builder<Card> builder = new SortedBag.Builder<>();
-        for (int i = 0; i < Constants.IN_GAME_TICKETS_COUNT; ++i) {
-            gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
-            builder.add(gameState.topCard());
-            gameState = gameState.withoutTopCard();
-        }
-        return builder.build();
-    }*/
 
 
     private static void sendInfoToBothPlayers(Map<PlayerId, Player> players, String s) {

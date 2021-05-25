@@ -41,7 +41,7 @@ public final class ObservableGameState {
 
     //Properties concerning the private state of the player who instantiates ObservableGameState
     private final ObservableList<Ticket> ticketsOnHand;
-   // private Map<Ticket, BooleanProperty> ticketsComplete;
+    private Map<Ticket, BooleanProperty> ticketsComplete;
     private final Map<Card, IntegerProperty> numberOfEachCards;
     private final Map<Route, BooleanProperty> claimForEachRoute;
 
@@ -63,7 +63,7 @@ public final class ObservableGameState {
         numberOfBuildingPointsOnHand = createMapIntPropertyBothPlayers();
 
         ticketsOnHand = FXCollections.observableArrayList();
-      //  ticketsComplete = new HashMap<>();
+        ticketsComplete = new HashMap<>();
 
         numberOfEachCards = createNumberOfEachCard();
         claimForEachRoute = createClaimForEachRoute();
@@ -111,13 +111,13 @@ public final class ObservableGameState {
 
         ticketsOnHand.setAll(newPlayerState.tickets().toList());
 
-     /*   for (Ticket t : ticketsOnHand) {
+        for (Ticket t : ticketsOnHand) {
             ticketsComplete.putIfAbsent(t, new SimpleBooleanProperty());
             BooleanProperty propertyTickCom = ticketsComplete.get(t);
             if (!propertyTickCom.get()) {
                 propertyTickCom.set(newPlayerState.ticketsDone(t));
             }
-        }*/
+        }
 
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
 
@@ -343,21 +343,21 @@ public final class ObservableGameState {
      * @param t (Ticket) The given ticket
      * @return (ReadOnlyIntegerProperty) The unmodifiable property
      */
-    /*
+
     public ReadOnlyBooleanProperty ticketCompleteProperty(Ticket t) {
         return ticketsComplete.get(t);
-    }*/
+    }
 
     /**
      * Returns the value of the property at the chosen Ticket
      * @param t (Ticket) The ticket
      * @return (boolean) the value
      */
-    /*
+
     public boolean getTicketComplete(Ticket t) {
         return ticketsComplete.get(t).get();
 
-    }*/
+    }
 
     //==============================================================//
 

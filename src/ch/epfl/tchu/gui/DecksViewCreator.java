@@ -1,6 +1,7 @@
 package ch.epfl.tchu.gui;
 
 import ch.epfl.tchu.game.*;
+import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.animation.ScaleTransition;
 
@@ -21,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 import javafx.util.Callback;
@@ -38,15 +40,16 @@ import java.util.List;
  */
 abstract class DecksViewCreator {
 
-    public static int MIN_CARD_TEXT_VISIBLE_PROPERTY = 1;
-    public static int MIN_CARD_VISIBLE_PROPERTY=0;
-    public static int BUTTON_WIDTH=50;
-    public static int BUTTON_HEIGHT=5;
+    private final static int MIN_CARD_TEXT_VISIBLE_PROPERTY = 1;
+    private final static int MIN_CARD_VISIBLE_PROPERTY = 0;
+    private final static int BUTTON_WIDTH = 50;
+    private final static int BUTTON_HEIGHT = 5;
 
-    public static int CARD_WIDTH=60;
-    public static int CARD_HEIGHT=90;
-    public static int CARD_WIDTH_INSIDE=40;
-    public static int CARD_HEIGHT_INSIDE=70;
+    private final static int CARD_WIDTH = 60;
+
+    private final static int CARD_HEIGHT = 90;
+    private final static int CARD_WIDTH_INSIDE = 40;
+    private final static int CARD_HEIGHT_INSIDE = 70;
 
     /**
      * Takes as argument the observableGameState and returns the view of the hand
@@ -58,7 +61,7 @@ abstract class DecksViewCreator {
 
         ListView<Ticket> tickets = new ListView<>(gameState.ticketsOnHandProperty());
         tickets.setId("tickets");
-        /*tickets.setCellFactory(new Callback<>() {
+        tickets.setCellFactory(new Callback<>() {
                                    @Override
                                    public ListCell<Ticket> call(ListView<Ticket> param) {
                                        return new ListCell<>() {
@@ -74,15 +77,15 @@ abstract class DecksViewCreator {
                                                            .otherwise(item.text() + "  \u2717"));
                                                    styleProperty().bind(Bindings
                                                            .when(gameState.ticketCompleteProperty(item).isEqualTo(trueProperty))
-                                                           .then(":selected{-fx-background-color: B0F2B6;}")
-                                                           .otherwise(":selected{-fx-background-color: FF6961;}"));
+                                                           .then("-fx-background-color: B0F2B6;")
+                                                           .otherwise("-fx-background-color: FF6961;"));
 
                                                }
                                            }
                                        };
                                    }
                                }
-        );*/
+        );
 
 
         HBox handCard = new HBox();
@@ -152,9 +155,14 @@ abstract class DecksViewCreator {
             card.getChildren().addAll(cardNodeList);
 
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
-                card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
-                if (oldValue != null) {
-                    card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : oldValue.name());
+                if (card.isDisable()) {
+
+                } else {
+                    card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
+                    if (oldValue != null) {
+
+                        card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : oldValue.name());
+                    }
                 }
             });
 
@@ -164,29 +172,50 @@ abstract class DecksViewCreator {
             card.disableProperty().bind(drawCardHandler.isNull().or(disable));
             card.setOnMouseClicked(s -> {
                 drawCardHandler.get().onDrawCard(i);
-               /* disable.set(true);
-                TranslateTransition transition1 = new TranslateTransition();
+                disable.set(true);
+                TranslateTransition transition1 = new TranslateTransition(Duration.seconds(2), card);
                 transition1.setNode(card);
-                transition1.durationProperty().bind(Bindings.when(Bindings.lessThan(10  ,transition1.cycleCountProperty()))
-                        .then(Duration.seconds(2)).otherwise(Duration.seconds(1))); //TODO TIME
-                transition1.setToX(-500);
-                transition1.setToY(-200);
+                transition1.setToX(-600);
+                switch (i) {
+                    case 0:
+
+                        transition1.setToY(200);
+                        break;
+                    case 1:
+                        transition1.setToY(100);
+                        break;
+                    case 2:
+                        transition1.setToY(0);
+                        break;
+                    case 3:
+                        transition1.setToY(-100);
+                        break;
+                    case 4:
+                        transition1.setToY(-200);
+                        break;
+
+                }
                 transition1.setAutoReverse(true);
                 transition1.setCycleCount(2);
                 transition1.play();
 
 
-                ScaleTransition transition2 = new ScaleTransition();
+                ScaleTransition transition2 = new ScaleTransition(Duration.seconds(2), card);
                 transition2.setNode(card);
-                transition2.durationProperty().bind(Bindings.when(Bindings.equal(1,transition1.cycleCountProperty()))
-                        .then(Duration.seconds(2)).otherwise(Duration.seconds(1)));
-                transition2.setToX(2);
-                transition2.setToY(2);
+                transition2.setToX(4);
+                transition2.setToY(4);
                 transition2.setAutoReverse(true);
                 transition2.setCycleCount(2);
                 transition2.play();
-                transition1.setOnFinished(event -> disable.set(false));
-*/
+
+
+                RotateTransition transition3 = new RotateTransition(Duration.seconds(2), card);
+                transition3.setFromAngle(0);
+                transition3.setToAngle(360);
+                transition3.play();
+
+                transition1.setOnFinished(event -> {disable.set(false);
+                    );
             });
 
         }

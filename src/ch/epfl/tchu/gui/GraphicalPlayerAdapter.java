@@ -24,7 +24,7 @@ public final class GraphicalPlayerAdapter implements Player {
     private final BlockingQueue<TurnKind> turnKindsQueue;
     private final BlockingQueue<Integer> cardsQueue;
     private final BlockingQueue<SortedBag<Card>> sortedBagCQueue;
-    public static int QUEUE_CAPACITY= 1;
+    private final static int QUEUE_CAPACITY= 1;
 
     public GraphicalPlayerAdapter() {
         sortedBagTQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);

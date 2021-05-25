@@ -21,12 +21,12 @@ import java.util.List;
  * @author Bourgeois Thibaud (324604)
  */
 abstract class MapViewCreator {
-    public static int CIRCLE_RADIUS = 3;
-    public static int FIRST_CIRCLE_X = 12;
-    public static int CIRCLE_Y = 6;
-    public static int SECOND_CIRCLE_X = 24;
-    public static int RECTANGLE_WIDTH = 36;
-            public static int RECTANGLE_HEIGHT=12;
+    private final static int CIRCLE_RADIUS = 3;
+    private final static int FIRST_CIRCLE_X = 12;
+    private final static int CIRCLE_Y = 6;
+    private final static int SECOND_CIRCLE_X = 24;
+    private final static int RECTANGLE_WIDTH = 36;
+    private final static int RECTANGLE_HEIGHT = 12;
 
 
     /**

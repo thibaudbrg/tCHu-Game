@@ -14,7 +14,7 @@ import java.util.List;
  */
 public final class ClientMain extends Application {
 
-    public static int ARG_LIST_SIZE = 2;
+    private final static int ARG_LIST_SIZE = 2;
 
     public static void main(String[] args) {
         launch(args);

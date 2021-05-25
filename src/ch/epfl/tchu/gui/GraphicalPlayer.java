@@ -49,9 +49,10 @@ public final class GraphicalPlayer {
     private final ObjectProperty<ClaimRouteHandler> claimRouteHandlerObject = new SimpleObjectProperty<>();
 
 
-    public static int INFO_LIST_MAX_SIZE = 5;
-    public static int CHOOSE_CARDS_DIALOG_WINDOW = 0;
-    public  static int ADDITIONAL_CARDS_DIALOG_WINDOW = 1;
+    private final static int INFO_LIST_MAX_SIZE = 5;
+    private final static int CHOOSE_CARDS_DIALOG_WINDOW = 0;
+    private final static int ADDITIONAL_CARDS_DIALOG_WINDOW = 1;
+
     /**
      * Constructs the graphical interface
      *
@@ -67,7 +68,7 @@ public final class GraphicalPlayer {
 
         Stage stage = new Stage();
         stage.setTitle("tCHu \u2014 " + playerNames.get(playerId));
-        stage.getIcons().add(new Image("map.png"));
+
         this.mainStage = stage;
 
         BorderPane borderPane = new BorderPane(
@@ -221,7 +222,7 @@ public final class GraphicalPlayer {
     }
 
     private void constructDialogWindowCards(int i, List<SortedBag<Card>> cards, ChooseCardsHandler chooseCardsHandler) {
-        Preconditions.checkArgument(i == ADDITIONAL_CARDS_DIALOG_WINDOW|| i == CHOOSE_CARDS_DIALOG_WINDOW);
+        Preconditions.checkArgument(i == ADDITIONAL_CARDS_DIALOG_WINDOW || i == CHOOSE_CARDS_DIALOG_WINDOW);
         ObservableList<SortedBag<Card>> sortedBagObservableList = FXCollections.observableList(cards);
         Stage dialogStage = new Stage(StageStyle.UTILITY);
         dialogStage.setOnCloseRequest(Event::consume);
