@@ -1,9 +1,7 @@
 package ch.epfl.tchu.gui;
 
-import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.*;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,9 +39,10 @@ public final class ObservableGameState {
 
     //Properties concerning the private state of the player who instantiates ObservableGameState
     private final ObservableList<Ticket> ticketsOnHand;
-    private Map<Ticket, BooleanProperty> ticketsComplete;
+    private final Map<Ticket, BooleanProperty> ticketsComplete;
     private final Map<Card, IntegerProperty> numberOfEachCards;
     private final Map<Route, BooleanProperty> claimForEachRoute;
+    private final Map<Route, BooleanProperty> longestTrail;
 
     /**
      * Takes as argument the identity of the player to which it corresponds
@@ -67,6 +66,7 @@ public final class ObservableGameState {
 
         numberOfEachCards = createNumberOfEachCard();
         claimForEachRoute = createClaimForEachRoute();
+        longestTrail = createClaimForEachRoute();
     }
 
 
@@ -95,6 +95,16 @@ public final class ObservableGameState {
                     id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next());
                 }
             }
+        });
+        List<Route> longestTCurrentPlayer = Trail.longest(newPlayerState.routes()).getRoutes();
+        List<Route> longestTOtherPlayer = Trail.longest(newGameState.playerState(playerId.next()).routes()).getRoutes();
+        List<Route> longestRoute = longestTCurrentPlayer.size() < longestTOtherPlayer.size() ? longestTOtherPlayer : longestTCurrentPlayer;
+        if (longestTOtherPlayer.size() == longestTCurrentPlayer.size()) {
+            longestRoute.addAll(longestTOtherPlayer);
+        }
+        longestTrail.forEach((r, b) -> {
+            if (longestRoute.contains(r)) b.set(true);
+            else b.set(false);
         });
 
         numberOfTicketsOnHand.get(playerId).set(newPlayerState.ticketCount());
@@ -131,10 +141,7 @@ public final class ObservableGameState {
                     } else b.setValue(false);
                 } else b.setValue(false);
             } else b.setValue(false);
-
         });
-
-
     }
 
     //==============================================================//
@@ -248,7 +255,6 @@ public final class ObservableGameState {
     //==============================================================//
 
 
-
     //==============================================================//
 
     /**
@@ -350,6 +356,7 @@ public final class ObservableGameState {
 
     /**
      * Returns the value of the property at the chosen Ticket
+     *
      * @param t (Ticket) The ticket
      * @return (boolean) the value
      */
@@ -434,6 +441,15 @@ public final class ObservableGameState {
      */
     public List<SortedBag<Card>> possibleClaimCards(Route route) {
         return playerState.possibleClaimCards(route);
+
+    }
+
+    public ReadOnlyBooleanProperty longuestTrailProperty(Route r) {
+        return longestTrail.get(r);
+    }
+
+    public boolean longuestTrail(Route r) {
+        return longestTrail.get(r).get();
 
     }
 

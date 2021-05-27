@@ -112,6 +112,15 @@ public final class Trail {
     }
 
     /**
+     * Get the all the routes of the this Trail
+     *
+     * @return (List<RouteW) The routes
+     */
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    /**
      * Returns the list provided by all Trail stations followed by the length of the Trail.
      *
      * @return (String) the list provided by all Trail stations followed by the length of the Trail.
@@ -152,5 +161,4 @@ public final class Trail {
 
         return listStation;
     }
-
 }

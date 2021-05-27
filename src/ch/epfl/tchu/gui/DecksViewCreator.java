@@ -154,12 +154,12 @@ abstract class DecksViewCreator {
             List<Node> cardNodeList = initialiseCard();
             card.getChildren().addAll(cardNodeList);
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
-                if (oldValue == null) {
+                 if (drawCardHandler.isNull().get()) {
+                    if (oldValue != null) card.getStyleClass().remove(oldValue);
                     card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
 
 
                 }
-
             });
 
             cardVue.getChildren().add(card);
@@ -174,7 +174,6 @@ abstract class DecksViewCreator {
                 transition1.setToX(-600);
                 switch (i) {
                     case 0:
-
                         transition1.setToY(200);
                         break;
                     case 1:
@@ -189,7 +188,6 @@ abstract class DecksViewCreator {
                     case 4:
                         transition1.setToY(-200);
                         break;
-
                 }
                 transition1.setAutoReverse(true);
                 transition1.setCycleCount(2);

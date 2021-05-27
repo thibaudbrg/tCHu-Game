@@ -3,10 +3,7 @@ package ch.epfl.tchu.game;
 import ch.epfl.tchu.Preconditions;
 import ch.epfl.tchu.SortedBag;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Represents the state of the game tChu
@@ -255,4 +252,5 @@ public final class GameState extends PublicGameState {
                 new GameState(completeCardState, currentPlayerId().next(),
                         completePlayerState, ticketsDeck,lastTurnBegins() ?currentPlayerId():lastPlayer());
     }
+
 }

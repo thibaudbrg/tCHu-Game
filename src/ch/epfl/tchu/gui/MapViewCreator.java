@@ -4,11 +4,15 @@ import ch.epfl.tchu.SortedBag;
 import ch.epfl.tchu.game.Card;
 import ch.epfl.tchu.game.ChMap;
 import ch.epfl.tchu.game.Route;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
@@ -74,25 +78,7 @@ abstract class MapViewCreator {
             List<String> styleClass = List.of("route", r.level().name(), r.color() == null ? StringsFr.NEUTRAL : r.color().name());
             groupRoute.getStyleClass().addAll(styleClass);
 
-
-            for (int i = 1; i <= r.length(); i++) {
-                Rectangle voie = new Rectangle(RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
-                List<String> styleClassR = List.of("track", "filled");
-                voie.getStyleClass().addAll(styleClassR);
-
-                Rectangle rectangle1 = new Rectangle(RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
-                rectangle1.getStyleClass().add("filled");
-
-                Circle circle1 = new Circle(FIRST_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
-                Circle circle2 = new Circle(SECOND_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
-
-                Group Wagon = new Group(rectangle1, circle1, circle2);
-                Wagon.getStyleClass().add("car");
-
-                Group Case = new Group(voie, Wagon);
-                Case.setId(r.id() + "_" + i);
-                groupRoute.getChildren().add(Case);
-            }
+            createRoute(r, groupRoute, gameState);
 
             groupRoute.disableProperty().bind(claimRouteHP.isNull().or(gameState.claimForEachRouteProperty(r).not()));
 
@@ -111,6 +97,34 @@ abstract class MapViewCreator {
             Carte.getChildren().add(groupRoute);
         }
         return Carte;
+    }
+
+    private static void createRoute(Route r, Group group, ObservableGameState gameState) {
+        BooleanProperty trueProperty = new SimpleBooleanProperty();
+        trueProperty.set(true);
+        for (int i = 1; i <= r.length(); i++) {
+            Rectangle voie = new Rectangle(RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
+            List<String> styleClassR = List.of("track", "filled");
+            voie.getStyleClass().addAll(styleClassR);
+
+            Rectangle rectangle1 = new Rectangle(RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
+            rectangle1.getStyleClass().add("filled");
+
+            Circle circle1 = new Circle(FIRST_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
+            Circle circle2 = new Circle(SECOND_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
+
+
+            circle1.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(4.5).otherwise(3));
+            circle2.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(4.5).otherwise(3));
+            circle1.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.SKYBLUE).otherwise(Color.WHITE));
+            circle2.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.SKYBLUE).otherwise(Color.WHITE));
+            Group Wagon = new Group(rectangle1, circle1, circle2);
+            Wagon.getStyleClass().add("car");
+
+            Group Case = new Group(voie, Wagon);
+            Case.setId(r.id() + "_" + i);
+            group.getChildren().add(Case);
+        }
     }
 
 
