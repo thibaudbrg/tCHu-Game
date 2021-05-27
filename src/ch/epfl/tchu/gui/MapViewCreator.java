@@ -17,6 +17,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.util.List;
+import java.util.zip.DeflaterOutputStream;
 
 /**
  * Allows to create the map view
@@ -31,6 +32,7 @@ abstract class MapViewCreator {
     private final static int SECOND_CIRCLE_X = 24;
     private final static int RECTANGLE_WIDTH = 36;
     private final static int RECTANGLE_HEIGHT = 12;
+    private final static double CIRCLE_RADIUS_LONGEST = 3.5;
 
 
     /**
@@ -114,10 +116,10 @@ abstract class MapViewCreator {
             Circle circle2 = new Circle(SECOND_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
 
 
-            circle1.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(4.5).otherwise(3));
-            circle2.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(4.5).otherwise(3));
-            circle1.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.SKYBLUE).otherwise(Color.WHITE));
-            circle2.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.SKYBLUE).otherwise(Color.WHITE));
+            circle1.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(CIRCLE_RADIUS_LONGEST).otherwise(CIRCLE_RADIUS));
+            circle2.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(CIRCLE_RADIUS_LONGEST).otherwise(CIRCLE_RADIUS));
+            circle1.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.rgb(114,114,114)).otherwise(Color.WHITE));
+            circle2.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.rgb(114,114,114)).otherwise(Color.WHITE));
             Group Wagon = new Group(rectangle1, circle1, circle2);
             Wagon.getStyleClass().add("car");
 

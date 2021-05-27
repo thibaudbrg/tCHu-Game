@@ -43,6 +43,7 @@ public final class ObservableGameState {
     private final Map<Card, IntegerProperty> numberOfEachCards;
     private final Map<Route, BooleanProperty> claimForEachRoute;
     private final Map<Route, BooleanProperty> longestTrail;
+    private final BooleanProperty update;
 
     /**
      * Takes as argument the identity of the player to which it corresponds
@@ -55,7 +56,7 @@ public final class ObservableGameState {
         percentCardsRemainingInDeck = new SimpleIntegerProperty();
         faceUpCards = createFaceUpCards();
         routes = createRoute();
-
+update = new SimpleBooleanProperty();
         numberOfTicketsOnHand = createMapIntPropertyBothPlayers();
         numberOfCardsOnHand = createMapIntPropertyBothPlayers();
         numberOfCarsOnHand = createMapIntPropertyBothPlayers();
@@ -80,7 +81,7 @@ public final class ObservableGameState {
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
         gameState = Objects.requireNonNull(newGameState);
         playerState = Objects.requireNonNull(newPlayerState);
-
+        update.set(numberOfCardsOnHand.get(playerId).get() == newGameState.playerState(playerId).cardCount());
         percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / (double) Constants.TICKETS_COUNT) * 100));
         percentCardsRemainingInDeck.set((int) Math.floor(((double) newGameState.cardState().deckSize() / (double) Constants.ALL_CARDS.size()) * 100));
 
@@ -451,6 +452,9 @@ public final class ObservableGameState {
     public boolean longuestTrail(Route r) {
         return longestTrail.get(r).get();
 
+    }
+    public boolean numberOfCardChanged(){
+        return update.get();
     }
 
 

@@ -77,8 +77,8 @@ abstract class DecksViewCreator {
                                                            .otherwise(item.text() + "  \u2717"));
                                                    styleProperty().bind(Bindings
                                                            .when(gameState.ticketCompleteProperty(item).isEqualTo(trueProperty))
-                                                           .then("-fx-background-color: B0F2B6;")
-                                                           .otherwise("-fx-background-color: FF6961;"));
+                                                           .then("-fx-background-color: D7FBED;")
+                                                           .otherwise("-fx-background-color: FFD1D0;"));
 
                                                }
                                            }
@@ -154,12 +154,13 @@ abstract class DecksViewCreator {
             List<Node> cardNodeList = initialiseCard();
             card.getChildren().addAll(cardNodeList);
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
-                 if (drawCardHandler.isNull().get()) {
-                    if (oldValue != null) card.getStyleClass().remove(oldValue);
+                if (oldValue == null || gameState.numberOfCardChanged()) {
+                    if (oldValue != null) {
+                        card.getStyleClass().remove(oldValue);
+                    }
                     card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
-
-
                 }
+
             });
 
             cardVue.getChildren().add(card);
