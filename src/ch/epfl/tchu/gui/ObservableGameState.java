@@ -98,8 +98,8 @@ public final class ObservableGameState {
         });
         List<Route> longestTCurrentPlayer = Trail.longest(newPlayerState.routes()).getRoutes();
         List<Route> longestTOtherPlayer = Trail.longest(newGameState.playerState(playerId.next()).routes()).getRoutes();
-        List<Route> longestRoute = longestTCurrentPlayer.size() < longestTOtherPlayer.size() ? longestTOtherPlayer : longestTCurrentPlayer;
-        if (longestTOtherPlayer.size() == longestTCurrentPlayer.size()) {
+        List<Route> longestRoute = Trail.trailLength(longestTCurrentPlayer) < Trail.trailLength(longestTOtherPlayer) ? longestTOtherPlayer : longestTCurrentPlayer;
+        if (Trail.trailLength(longestTCurrentPlayer) == Trail.trailLength(longestTOtherPlayer)) {
             longestRoute.addAll(longestTOtherPlayer);
         }
         longestTrail.forEach((r, b) -> {

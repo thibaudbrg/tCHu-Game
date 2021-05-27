@@ -131,7 +131,7 @@ public final class Trail {
         return String.join(" - ", listStation) + " (" + length() + ")";
     }
 
-    private int trailLength(List<Route> routes) {
+    public static int trailLength(List<Route> routes) {
         int lengthConstructor = 0;
         if (!routes.isEmpty()) {
             for (Route route : routes) {
