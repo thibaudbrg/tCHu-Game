@@ -23,7 +23,7 @@ public final class Serdes {
 
     public final static Serde<PlayerId> PLAYER_ID_SERDE = Serde.oneOf(PlayerId.ALL);
     public final static Serde<Player.TurnKind> TURN_KIND_SERDE = Serde.oneOf(Player.TurnKind.ALL);
-    public final static Serde<Card> CARD_SERDE = Serde.oneOf(Card.ALL);
+    public final static Serde<Card> CARD_SERDE = Serde.oneOf(Card.ALLEXTENDED);
     public final static Serde<Route> ROUTE_SERDE = Serde.oneOf(ChMap.routes());
     public final static Serde<Ticket> TICKET_SERDE = Serde.oneOf(ChMap.tickets());
 

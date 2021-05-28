@@ -230,6 +230,17 @@ public final class GameState extends PublicGameState {
 
     }
 
+    public GameState withDestroyedRoute(Route route){
+        Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
+        newPlayerState.put(currentPlayerId(), completePlayerState.
+                get(currentPlayerId()).removeMulticolor());
+        newPlayerState.put(currentPlayerId().next(),completePlayerState.get(currentPlayerId().next()).withDestroyedRoute(route));
+        return new GameState(completeCardState.withMoreDiscardedCards(SortedBag.of(Card.MULTICOLOR)),
+                currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
+
+
+    }
+
     /**
      * returns true if the last turn begins,
      * i.e. if the identity of the last player is currently unknown but the current player has only two or fewer cars left

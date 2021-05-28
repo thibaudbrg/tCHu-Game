@@ -9,7 +9,7 @@ import java.util.List;
  * @author Bourgeois Thibaud (324604)
  */
 public enum Color {
-    BLACK, VIOLET, BLUE, GREEN, YELLOW, ORANGE, RED, WHITE;
+    BLACK, VIOLET, BLUE, GREEN, YELLOW, ORANGE, RED, WHITE, MULTICOLOR;
 
     public final static List<Color> ALL = List.of(values());
     public final static int COUNT = ALL.size();

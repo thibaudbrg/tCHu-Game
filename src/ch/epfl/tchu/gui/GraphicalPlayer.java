@@ -207,7 +207,7 @@ public final class GraphicalPlayer {
         Button button = new Button(StringsFr.CHOOSE);
 
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        button.disableProperty().bind(Bindings.greaterThan(numberOfTicketToClaim, Bindings.size(listView.getSelectionModel().getSelectedItems()))); //TODO comprends pas
+        button.disableProperty().bind(Bindings.greaterThan(numberOfTicketToClaim, Bindings.size(listView.getSelectionModel().getSelectedItems()))); 
         button.setOnAction(s -> {
             dialogStage.hide();
             chooseTicketsHandler.onChooseTickets(SortedBag.of(listView.getSelectionModel().getSelectedItems()));

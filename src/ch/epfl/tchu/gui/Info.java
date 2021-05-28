@@ -55,6 +55,8 @@ public final class Info {
                 return StringsFr.RED_CARD + plural(count);
             case WHITE:
                 return StringsFr.WHITE_CARD + plural(count);
+            case MULTICOLOR:
+                return StringsFr.MULTICOLOR_CARD + plural(count);
             default:
                 throw  new Error();
 
@@ -177,6 +179,9 @@ public final class Info {
         return String.format(StringsFr.CLAIMED_ROUTE, playerName, routeName(route), cardDescription(cards));
     }
 
+    public String deleteEnemyRoute(List<String> playerNames, Route route) {
+        return String.format(StringsFr.MULTICOLOR_CLAIM, playerNames.get(0), routeName(route), playerNames.get(1), StringsFr.MULTICOLOR_CARD);
+    }
     /**
      * Returns a String declaring that the player try to claim the given route with the given cards
      *

@@ -32,6 +32,7 @@ public final class Constants {
     private static SortedBag<Card> computeAllCards() {
         var cardsBuilder = new SortedBag.Builder<Card>();
         cardsBuilder.add(LOCOMOTIVE_CARDS_COUNT, Card.LOCOMOTIVE);
+        cardsBuilder.add(6,Card.MULTICOLOR);
         for (Card card : Card.CARS)
             cardsBuilder.add(CAR_CARDS_COUNT, card);
         assert cardsBuilder.size() == TOTAL_CARDS_COUNT;

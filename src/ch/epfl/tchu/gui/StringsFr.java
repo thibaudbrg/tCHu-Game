@@ -14,6 +14,7 @@ public final class  StringsFr {
     public static final String WHITE_CARD = "blanche";
     public static final String YELLOW_CARD = "jaune";
     public static final String LOCOMOTIVE_CARD = "locomotive";
+    public static final String MULTICOLOR_CARD = "multicolor";
 
     // Button labels
     public static final String TICKETS = "Billets";
@@ -48,6 +49,8 @@ public final class  StringsFr {
             "%s a tiré une carte %s visible.\n";
     public static final String CLAIMED_ROUTE =
             "%s a pris possession de la route %s au moyen de %s.\n";
+    public static final String MULTICOLOR_CLAIM =
+            "%s a retiré la route %s de %s grâce à une carte %s.\n";
     public static final String ATTEMPTS_TUNNEL_CLAIM =
             "%s tente de s'emparer du tunnel %s au moyen de %s !\n";
     public static final String ADDITIONAL_CARDS_ARE =

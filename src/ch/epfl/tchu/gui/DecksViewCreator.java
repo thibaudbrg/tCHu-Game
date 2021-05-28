@@ -9,22 +9,15 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Transform;
-import javafx.scene.transform.Translate;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
@@ -91,7 +84,7 @@ abstract class DecksViewCreator {
         HBox handCard = new HBox();
         handCard.setId("hand-pane");
 
-        for (Card c : Card.ALL) {
+        for (Card c : Card.ALLEXTENDED) {
             StackPane cardAndCount = new StackPane();
             cardAndCount.getStyleClass().add("card");
 
@@ -156,7 +149,7 @@ abstract class DecksViewCreator {
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
                 if (oldValue == null || gameState.numberOfCardChanged()) {
                     if (oldValue != null) {
-                        card.getStyleClass().remove(oldValue);
+                        card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE)?StringsFr.NEUTRAL:oldValue.name());
                     }
                     card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
                 }
@@ -211,7 +204,7 @@ abstract class DecksViewCreator {
 
                 transition1.setOnFinished(event -> {
                     disable.set(false);
-                    for (Card c : Card.ALL) card.getStyleClass().remove(c.name());
+                    for (Card c : Card.ALLEXTENDED) card.getStyleClass().remove(c.name());
                     card.getStyleClass().remove(StringsFr.NEUTRAL);
                     card.getStyleClass().add(gameState.faceUpCardsProperty(i).get().equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : gameState.faceUpCardsProperty(i).get().name());
                 });

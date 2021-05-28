@@ -5,7 +5,6 @@ import ch.epfl.tchu.game.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.util.List;
 import java.util.Map;
 
 import static ch.epfl.tchu.game.PlayerId.PLAYER_1;

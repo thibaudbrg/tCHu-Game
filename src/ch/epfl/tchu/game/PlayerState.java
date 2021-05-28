@@ -74,10 +74,10 @@ public final class PlayerState extends PublicPlayerState {
      * @return (boolean) true if the player can take the given road, i.e. if he has enough wagons left and if he has the necessary cards
      */
     public boolean canClaimRoute(Route route) {
-        boolean haveTheCards = route.possibleClaimCards().stream()
+        boolean haveTheCards = route.possibleClaimCards().stream().filter(cards -> !cards.contains(Card.MULTICOLOR))
                 .anyMatch(cards::contains);
 
-        return haveTheCards && (route.length() <= this.carCount());
+        return (haveTheCards && (route.length() <= this.carCount()));
     }
 
     /**
@@ -147,6 +147,26 @@ public final class PlayerState extends PublicPlayerState {
         return new PlayerState(tickets, cards.difference(claimCards), routesCopy);
     }
 
+    /**
+     * Remove the enemy route when player uses a multicolor card
+     *
+     * @param route (Route) the route
+     * @return (PlayerState) an identical state to the receiver,
+     * except that the player remove a route to the other player
+     */
+    public PlayerState withDestroyedRoute(Route route) {
+        List<Route> newRoute = new LinkedList<>(this.routes());
+        newRoute.remove(route);
+        return new PlayerState(tickets, cards, newRoute);
+    }
+
+    /**
+     * @return
+     */
+    public PlayerState removeMulticolor() {
+        return new PlayerState(tickets, cards.difference(SortedBag.of(Card.MULTICOLOR)), routes());
+    }
+
 
     /**
      * Return all the points obtained by the player with its tickets
@@ -211,7 +231,7 @@ public final class PlayerState extends PublicPlayerState {
 
     }
 
-   public Boolean ticketsDone(Ticket t) {
+    public Boolean ticketsDone(Ticket t) {
         Preconditions.checkArgument(tickets.contains(t));
         return t.points(getStationConnectivity()) > 0;
     }

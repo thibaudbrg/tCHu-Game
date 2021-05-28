@@ -17,7 +17,9 @@ import java.util.Random;
  */
 public final class Game {
 
-    private Game(){}
+    private Game() {
+    }
+
     /**
      * Plays a game of tCHu to the given players, whose names are listed in the playerNames table;
      * the tickets available for this game are those of tickets, and the random generator rng is used to create
@@ -60,6 +62,7 @@ public final class Game {
         while (true) {
             Player actualPlayer = players.get(gameState.currentPlayerId());
             String actualPlayerName = playerNames.get(gameState.currentPlayerId());
+            String nextPlayerName = playerNames.get(gameState.currentPlayerId().next());
             Info currentInfoPlayer = new Info(actualPlayerName);
 
             sendInfoToBothPlayers(players, currentInfoPlayer.canPlay());
@@ -68,7 +71,7 @@ public final class Game {
             switch (actualPlayer.nextTurn()) {
                 // If the actualPlayer wants to draw some tickets
                 case DRAW_TICKETS:
-                   SortedBag<Ticket> topTickets = gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT);
+                    SortedBag<Ticket> topTickets = gameState.topTickets(Constants.IN_GAME_TICKETS_COUNT);
                     sendInfoToBothPlayers(players, currentInfoPlayer.drewTickets(Constants.IN_GAME_TICKETS_COUNT));
                     SortedBag<Ticket> chosenTickets = actualPlayer.chooseTickets(topTickets);
                     sendInfoToBothPlayers(players, currentInfoPlayer.keptTickets(chosenTickets.size()));
@@ -97,48 +100,55 @@ public final class Game {
                     SortedBag<Card> initialClaimCards = actualPlayer.initialClaimCards();
 
                     // If the claim route is a tunnel
+                    if (initialClaimCards.equals(SortedBag.of(Card.MULTICOLOR))) {
+                        sendInfoToBothPlayers(players, currentInfoPlayer.deleteEnemyRoute(List.of(actualPlayerName, nextPlayerName), route));
+                        gameState = gameState.withDestroyedRoute(route);
 
-                    if (route.level().equals(Route.Level.UNDERGROUND)) {
-                        sendInfoToBothPlayers(players, currentInfoPlayer.attemptsTunnelClaim(route, initialClaimCards));
-                        SortedBag.Builder<Card> builder = new SortedBag.Builder<>();
-                        for (int i = 0; i < Constants.IN_GAME_TICKETS_COUNT; ++i) {
-                            gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
-                            builder.add(gameState.topCard());
-                            gameState = gameState.withoutTopCard();
-                        }
-                        SortedBag<Card> drawnCard = builder.build();
-                        int additionalCost = route.additionalClaimCardsCount(initialClaimCards, drawnCard);
-                        sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
+                    } else {
 
-                        if (additionalCost >= 1) {
-                            List<SortedBag<Card>> possibleAdditionalCards = gameState.currentPlayerState().possibleAdditionalCards(additionalCost, initialClaimCards);
-                            if (possibleAdditionalCards.isEmpty()) {
-                                sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
-                            } else {
-                                SortedBag<Card> theCardToTake = actualPlayer.chooseAdditionalCards(possibleAdditionalCards);
-                                if (theCardToTake.isEmpty()) {
+                        if (route.level().equals(Route.Level.UNDERGROUND)) {
+                            sendInfoToBothPlayers(players, currentInfoPlayer.attemptsTunnelClaim(route, initialClaimCards));
+                            SortedBag.Builder<Card> builder = new SortedBag.Builder<>();
+                            for (int i = 0; i < Constants.IN_GAME_TICKETS_COUNT; ++i) {
+                                gameState = gameState.withCardsDeckRecreatedIfNeeded(rng);
+                                builder.add(gameState.topCard());
+                                gameState = gameState.withoutTopCard();
+                            }
+                            SortedBag<Card> drawnCard = builder.build();
+                            int additionalCost = route.additionalClaimCardsCount(initialClaimCards, drawnCard);
+                            sendInfoToBothPlayers(players, currentInfoPlayer.drewAdditionalCards(drawnCard, additionalCost));
+
+                            if (additionalCost >= 1) {
+                                List<SortedBag<Card>> possibleAdditionalCards = gameState.currentPlayerState().possibleAdditionalCards(additionalCost, initialClaimCards);
+                                if (possibleAdditionalCards.isEmpty()) {
                                     sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
                                 } else {
-                                    gameState = gameState.withClaimedRoute(route, theCardToTake.union(initialClaimCards));
-                                    sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, theCardToTake.union(initialClaimCards)));
+                                    SortedBag<Card> theCardToTake = actualPlayer.chooseAdditionalCards(possibleAdditionalCards);
+                                    if (theCardToTake.isEmpty()) {
+                                        sendInfoToBothPlayers(players, currentInfoPlayer.didNotClaimRoute(route));
+                                    } else {
+                                        gameState = gameState.withClaimedRoute(route, theCardToTake.union(initialClaimCards));
+                                        sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, theCardToTake.union(initialClaimCards)));
+                                    }
                                 }
+                            } else {
+                                gameState = gameState.withClaimedRoute(route, initialClaimCards);
+                                sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                             }
-                        } else {
+                            gameState = gameState.withMoreDiscardedCards(drawnCard);
+                        }
+                        // If the claim route is not a tunnel
+                        else {
                             gameState = gameState.withClaimedRoute(route, initialClaimCards);
                             sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
                         }
-                        gameState = gameState.withMoreDiscardedCards(drawnCard);
-                    }
-                    // If the claim route is not a tunnel
-                    else {
-                        gameState = gameState.withClaimedRoute(route, initialClaimCards);
-                        sendInfoToBothPlayers(players, currentInfoPlayer.claimedRoute(route, initialClaimCards));
-                    }
-                    break;
+                        break;
 
+                    }
             }
 
-            if (gameState.lastTurnBegins()) sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(gameState.currentPlayerState().carCount()));
+            if (gameState.lastTurnBegins())
+                sendInfoToBothPlayers(players, currentInfoPlayer.lastTurnBegins(gameState.currentPlayerState().carCount()));
 
             if (gameState.lastPlayer() == gameState.currentPlayerId()) break;
 
@@ -170,7 +180,8 @@ public final class Game {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_2)).getsLongestTrailBonus(longestPlayer2Trail));
             player2Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
 
-        }  if (longestPlayer1Trail.length() >= longestPlayer2Trail.length()) {
+        }
+        if (longestPlayer1Trail.length() >= longestPlayer2Trail.length()) {
             sendInfoToBothPlayers(players, new Info(playerNames.get(PlayerId.PLAYER_1)).getsLongestTrailBonus(longestPlayer1Trail));
             player1Points += Constants.LONGEST_TRAIL_BONUS_POINTS;
         }
@@ -195,7 +206,6 @@ public final class Game {
             sendInfoToBothPlayers(players, Info.draw(playerNamesList, playerPoints[0]));
         }
     }
-
 
 
     private static void sendInfoToBothPlayers(Map<PlayerId, Player> players, String s) {

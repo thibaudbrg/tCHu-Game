@@ -56,7 +56,7 @@ public final class ObservableGameState {
         percentCardsRemainingInDeck = new SimpleIntegerProperty();
         faceUpCards = createFaceUpCards();
         routes = createRoute();
-update = new SimpleBooleanProperty();
+        update = new SimpleBooleanProperty();
         numberOfTicketsOnHand = createMapIntPropertyBothPlayers();
         numberOfCardsOnHand = createMapIntPropertyBothPlayers();
         numberOfCarsOnHand = createMapIntPropertyBothPlayers();
@@ -81,7 +81,7 @@ update = new SimpleBooleanProperty();
     public void setState(PublicGameState newGameState, PlayerState newPlayerState) {
         gameState = Objects.requireNonNull(newGameState);
         playerState = Objects.requireNonNull(newPlayerState);
-        update.set(numberOfCardsOnHand.get(playerId).get() == newGameState.playerState(playerId).cardCount());
+        update.set(numberOfCardsOnHand.get(playerId).get() == newPlayerState.cardCount());
         percentTicketsRemainingInDeck.set((int) Math.floor(((double) newGameState.ticketsCount() / (double) Constants.TICKETS_COUNT) * 100));
         percentCardsRemainingInDeck.set((int) Math.floor(((double) newGameState.cardState().deckSize() / (double) Constants.ALL_CARDS.size()) * 100));
 
@@ -91,11 +91,10 @@ update = new SimpleBooleanProperty();
         }
 
         routes.forEach((r, id) -> {
-            if (id.get() == null) {
-                if (newGameState.claimedRoutes().contains(r)) {
-                    id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next());
-                }
-            }
+            if (newGameState.claimedRoutes().contains(r)) {
+                id.setValue(newPlayerState.routes().contains(r) ? playerId : playerId.next());
+
+            } else id.setValue(null);
         });
         List<Route> longestTCurrentPlayer = Trail.longest(newPlayerState.routes()).getRoutes();
         List<Route> longestTOtherPlayer = Trail.longest(newGameState.playerState(playerId.next()).routes()).getRoutes();
@@ -140,7 +139,11 @@ update = new SimpleBooleanProperty();
                             b.setValue(true);
                         }
                     } else b.setValue(false);
-                } else b.setValue(false);
+                } else {
+                    if (newGameState.playerState(playerId.next()).routes().contains(r) && newPlayerState.cards().contains(Card.MULTICOLOR))
+                        b.setValue(true);
+                    else b.setValue(false);
+                }
             } else b.setValue(false);
         });
     }
@@ -441,8 +444,13 @@ update = new SimpleBooleanProperty();
      * @return (List < SortedBag < Card > >) A list of all the sets of cards that the player could use to take possession of the given route
      */
     public List<SortedBag<Card>> possibleClaimCards(Route route) {
-        return playerState.possibleClaimCards(route);
-
+        if (gameState.claimedRoutes().contains(route) && playerState.possibleClaimCards(route).contains(SortedBag.of(Card.MULTICOLOR))) {
+            return List.of(SortedBag.of(Card.MULTICOLOR));
+        } else {
+            List<SortedBag<Card>> possibleClaim = playerState.possibleClaimCards(route);
+            possibleClaim.remove(SortedBag.of(Card.MULTICOLOR));
+            return possibleClaim;
+        }
     }
 
     public ReadOnlyBooleanProperty longuestTrailProperty(Route r) {
@@ -453,7 +461,8 @@ update = new SimpleBooleanProperty();
         return longestTrail.get(r).get();
 
     }
-    public boolean numberOfCardChanged(){
+
+    public boolean numberOfCardChanged() {
         return update.get();
     }
 
@@ -486,7 +495,7 @@ update = new SimpleBooleanProperty();
 
     private static Map<Card, IntegerProperty> createNumberOfEachCard() {
         Map<Card, IntegerProperty> map = new HashMap<>();
-        for (Card card : Card.ALL) {
+        for (Card card : Card.ALLEXTENDED) {
             map.put(card, new SimpleIntegerProperty());
         }
         return Collections.unmodifiableMap(map);

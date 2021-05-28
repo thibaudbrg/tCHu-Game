@@ -2,6 +2,7 @@ package ch.epfl.tchu.game;
 
 import ch.epfl.tchu.Preconditions;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,11 +21,13 @@ public enum Card {
     ORANGE(Color.ORANGE),
     RED(Color.RED),
     WHITE(Color.WHITE),
-    LOCOMOTIVE(null);
+    LOCOMOTIVE(null),
+    MULTICOLOR(Color.MULTICOLOR);
 
     private final Color color;
 
-    public final static List<Card> ALL = List.of(values());
+    public final static List<Card> ALLEXTENDED = List.of(values());
+    public final static List<Card> ALL = ALLEXTENDED.subList(0, ALLEXTENDED.size() - 1);
     public final static int COUNT = ALL.size();
     public final static List<Card> CARS = ALL.subList(0, 8);
 
@@ -62,6 +65,8 @@ public enum Card {
                 return VIOLET;
             case YELLOW:
                 return YELLOW;
+            case MULTICOLOR:
+                return MULTICOLOR;
             default:
               return null;
         }

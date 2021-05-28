@@ -126,7 +126,7 @@ public final class Route {
                 possibleClaim.add(cardBuilder.build());
             }
         }
-
+        possibleClaim.add(SortedBag.of(Card.MULTICOLOR));
         return possibleClaim;
     }
 
