@@ -124,9 +124,7 @@ public final class ObservableGameState {
         for (Ticket t : ticketsOnHand) {
             ticketsComplete.putIfAbsent(t, new SimpleBooleanProperty());
             BooleanProperty propertyTickCom = ticketsComplete.get(t);
-            if (!propertyTickCom.get()) {
                 propertyTickCom.set(newPlayerState.ticketsDone(t));
-            }
         }
 
         numberOfEachCards.forEach((card, integerProperty) -> integerProperty.setValue(newPlayerState.cards().countOf(card)));
