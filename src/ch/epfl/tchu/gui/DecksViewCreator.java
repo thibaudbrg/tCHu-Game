@@ -146,8 +146,11 @@ abstract class DecksViewCreator {
             card.getStyleClass().add("card");
             List<Node> cardNodeList = initialiseCard();
             card.getChildren().addAll(cardNodeList);
+
+            BooleanProperty disable = new SimpleBooleanProperty();
+
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
-                if (oldValue == null || gameState.numberOfCardChanged()) {
+                if ((oldValue == null || (gameState.numberOfCardChanged() && (!disable.get())))) {
                     if (oldValue != null) {
                         card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE)?StringsFr.NEUTRAL:oldValue.name());
                     }
@@ -157,7 +160,7 @@ abstract class DecksViewCreator {
             });
 
             cardVue.getChildren().add(card);
-            BooleanProperty disable = new SimpleBooleanProperty();
+
 
             card.disableProperty().bind(drawCardHandler.isNull().or(disable));
             card.setOnMouseClicked(s -> {
@@ -206,7 +209,9 @@ abstract class DecksViewCreator {
                     disable.set(false);
                     for (Card c : Card.ALLEXTENDED) card.getStyleClass().remove(c.name());
                     card.getStyleClass().remove(StringsFr.NEUTRAL);
-                    card.getStyleClass().add(gameState.faceUpCardsProperty(i).get().equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : gameState.faceUpCardsProperty(i).get().name());
+                    card.getStyleClass().add(gameState.faceUpCardsProperty(i).get().equals(Card.LOCOMOTIVE)
+                            ? StringsFr.NEUTRAL
+                            : gameState.faceUpCardsProperty(i).get().name());
                 });
             });
 

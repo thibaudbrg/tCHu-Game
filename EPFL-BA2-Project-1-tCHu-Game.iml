@@ -26,6 +26,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="lib" level="application" />
-    <orderEntry type="library" name="OpenJFX 11" level="application" />
   </component>
 </module>

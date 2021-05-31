@@ -14,7 +14,7 @@ public final class  StringsFr {
     public static final String WHITE_CARD = "blanche";
     public static final String YELLOW_CARD = "jaune";
     public static final String LOCOMOTIVE_CARD = "locomotive";
-    public static final String MULTICOLOR_CARD = "multicolor";
+    public static final String MULTICOLOR_CARD = "multicolore";
 
     // Button labels
     public static final String TICKETS = "Billets";
