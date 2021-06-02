@@ -63,7 +63,7 @@ abstract class DecksViewCreator {
                                                super.updateItem(item, empty);
                                                BooleanProperty trueProperty = new SimpleBooleanProperty();
                                                trueProperty.set(true);
-                                               if (!empty) {
+                                               if (!empty && item != null) {
                                                    textProperty().bind(Bindings
                                                            .when(gameState.ticketCompleteProperty(item).isEqualTo(trueProperty))
                                                            .then(item.text() + "  \u2713")

@@ -18,11 +18,17 @@ public final class Constants {
      */
     public static final int LOCOMOTIVE_CARDS_COUNT = 14;
 
+
     /**
-     * Nombre total de cartes wagon/locomotive.
+     * Nombre total de cartes wagon/locomotive
+     */
+    public static final int MULTICOLOR_COUNT = 2;
+
+    /**
+     * Nombre total de cartes wagon/locomotive (sans carte multicolore).
      */
     public static final int TOTAL_CARDS_COUNT =
-            LOCOMOTIVE_CARDS_COUNT + CAR_CARDS_COUNT * Color.COUNT;
+            LOCOMOTIVE_CARDS_COUNT + CAR_CARDS_COUNT * Color.COUNT  + MULTICOLOR_COUNT;
 
     /**
      * Ensemble de toutes les cartes (110 au total).
@@ -32,7 +38,7 @@ public final class Constants {
     private static SortedBag<Card> computeAllCards() {
         var cardsBuilder = new SortedBag.Builder<Card>();
         cardsBuilder.add(LOCOMOTIVE_CARDS_COUNT, Card.LOCOMOTIVE);
-        cardsBuilder.add(2, Card.MULTICOLOR);
+        cardsBuilder.add(MULTICOLOR_COUNT, Card.MULTICOLOR);
         for (Card card : Card.CARS)
             cardsBuilder.add(CAR_CARDS_COUNT, card);
         assert cardsBuilder.size() == TOTAL_CARDS_COUNT;
