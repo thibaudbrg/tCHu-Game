@@ -30,21 +30,19 @@ public interface Serde<E> {
      * Takes as argument a string and returns the corresponding object
      *
      * @param s (String) The String to deserialize
-     * @return (Serde<T>) The corresponding serde
+     * @return (Serde < T >) The corresponding serde
      */
     E deserialize(String s);
-
-
 
 
     /**
      * Takes as arguments a serialization function and a deserialization function,
      * and returns the corresponding serde
      *
-     * @param s (Function<T, String>) The serialization function
-     * @param ds (Function<String, T>)  The deserialization function
+     * @param s   (Function<T, String>) The serialization function
+     * @param ds  (Function<String, T>)  The deserialization function
      * @param <T> The type of the object that the method serializes or deserializes
-     * @return (Serde<T>) The corresponding serde
+     * @return (Serde < T >) The corresponding serde
      */
     static <T> Serde<T> of(Function<T, String> s, Function<String, T> ds) {
         return new Serde<>() {
@@ -65,7 +63,7 @@ public interface Serde<E> {
      * and returns the corresponding serde
      *
      * @param list (List<T>) The list of all values of an enumerated set of values
-     * @param <T> The type of the object that the method serializes or deserializes
+     * @param <T>  The type of the object that the method serializes or deserializes
      * @return (Serde) The corresponding serde
      */
     static <T> Serde oneOf(List<T> list) {
@@ -82,7 +80,7 @@ public interface Serde<E> {
             public T deserialize(String s) {
                 if (s.isEmpty()) return null;
 
-              Preconditions.checkArgument(Integer.parseInt(s) < list.size());
+                Preconditions.checkArgument(Integer.parseInt(s) < list.size());
                 return list.get(Integer.parseInt(s));
             }
         };
@@ -93,9 +91,9 @@ public interface Serde<E> {
      * and returns a serde capable of (de)serializing lists of values (de)serialized by the given serde
      *
      * @param serde (Serde<T>) The Serde capable to (de)serialize the objects in the List
-     * @param sep (String) The separator character
-     * @param <T> The type of the object that the method serializes or deserializes
-     * @return (Serde<List<T>>) The corresponding serde
+     * @param sep   (String) The separator character
+     * @param <T>   The type of the object that the method serializes or deserializes
+     * @return (Serde < List < T > >) The corresponding serde
      */
     static <T> Serde<List<T>> listOf(Serde<T> serde, String sep) {
         return new Serde<>() {
@@ -123,9 +121,9 @@ public interface Serde<E> {
      * and returns a serde capable of (de)serializing a SortedBag (de)serialized by the given serde
      *
      * @param serde (Serde<T>) The Serde capable to (de)serialize the objects in the SortedBag
-     * @param sep (String) The separator character
-     * @param <T> The type of the object that the method serializes or deserializes
-     * @return (Serde<SortedBag<T>>) The corresponding serde
+     * @param sep   (String) The separator character
+     * @param <T>   The type of the object that the method serializes or deserializes
+     * @return (Serde < SortedBag < T > >) The corresponding serde
      */
     static <T extends Comparable<T>> Serde<SortedBag<T>> bagOf(Serde<T> serde, String sep) {
         return new Serde<>() {

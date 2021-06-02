@@ -161,7 +161,10 @@ public final class PlayerState extends PublicPlayerState {
     }
 
     /**
-     * @return
+     * Remove the multicolor card in the deck
+     *
+     * @return (PlayerState) an identical state to the receiver,
+     * except that the player has not the multicolor card anymore
      */
     public PlayerState removeMulticolor() {
         return new PlayerState(tickets, cards.difference(SortedBag.of(Card.MULTICOLOR)), routes());
@@ -231,6 +234,12 @@ public final class PlayerState extends PublicPlayerState {
 
     }
 
+    /**
+     * Returns if the ticket is complete or not
+     *
+     * @param t (Ticket) Given Ticket
+     * @return if the ticket is complete or not
+     */
     public Boolean ticketsDone(Ticket t) {
         Preconditions.checkArgument(tickets.contains(t));
         return t.points(getStationConnectivity()) > 0;

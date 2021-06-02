@@ -176,10 +176,11 @@ public final class RemotePlayerProxy implements Player {
 
 
     private void sendMessage(MessageId messageId, String serialized) {
-        try {BufferedWriter w = new BufferedWriter(
-                new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.US_ASCII));
+        try {
+            BufferedWriter w = new BufferedWriter(
+                    new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.US_ASCII));
             w.write(messageId.name());
-           if(!serialized.isEmpty()) w.write(" " + serialized);
+            if (!serialized.isEmpty()) w.write(" " + serialized);
             w.write('\n');
             w.flush();
         } catch (IOException e) {
@@ -189,8 +190,9 @@ public final class RemotePlayerProxy implements Player {
     }
 
     private String receiveMessage() {
-        try {BufferedReader r = new BufferedReader(
-                new InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
+        try {
+            BufferedReader r = new BufferedReader(
+                    new InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
             return r.readLine();
         } catch (IOException e) {
             throw new UncheckedIOException(e);

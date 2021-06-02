@@ -47,7 +47,7 @@ public enum Card {
      * @return (Card) the corresponding card
      */
     public static Card of(Color color) {
-        Preconditions.checkArgument(color!=null);
+        Preconditions.checkArgument(color != null);
         switch (color) {
             case RED:
                 return RED;
@@ -68,7 +68,7 @@ public enum Card {
             case MULTICOLOR:
                 return MULTICOLOR;
             default:
-              return null;
+                return null;
         }
     }
 

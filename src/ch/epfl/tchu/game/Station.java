@@ -55,32 +55,4 @@ public final class Station {
     public String toString() {
         return name;
     }
-
-    /**
-     * Indicates whether some other station is "equal to" this one
-     *
-     * @param o (Object) The station
-     * @return (boolean) Return true if the two stations are equals
-     */
-    /*
-   @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Station station = (Station) o;
-        return id == station.id
-                && name.equals(station.name);
-    }
-*/
-
-    /**
-     * Returns a hash code value for the object. (Redefined because of equals())
-     *
-     * @return (int) The hashcode
-     */
-    /*
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-*/}
+}

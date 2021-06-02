@@ -23,13 +23,14 @@ import java.util.Map;
 abstract class InfoViewCreator {
 
     private final static int CIRCLE_RADIUS = 5;
+
     /**
      * Create the information vue
      *
-     * @param id (PlayerId) The corresponding player identity
-     * @param playerNames (Map<PlayerId,String>) The associative table of players' names
+     * @param id                             (PlayerId) The corresponding player identity
+     * @param playerNames                    (Map<PlayerId,String>) The associative table of players' names
      * @param gameState(ObservableGameState) The observable game state
-     * @param gameInfos (ObservableList<Text>) Observable list containing information on the course of the game
+     * @param gameInfos                      (ObservableList<Text>) Observable list containing information on the course of the game
      * @return (Node) The information vue
      */
     public static Node createInfoView(PlayerId id, Map<PlayerId, String> playerNames, ObservableGameState gameState, ObservableList<Text> gameInfos) {

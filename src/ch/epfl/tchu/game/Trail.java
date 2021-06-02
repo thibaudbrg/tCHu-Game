@@ -114,7 +114,7 @@ public final class Trail {
     /**
      * Get the all the routes of the this Trail
      *
-     * @return (List<RouteW) The routes
+     * @return (List < RouteW) The routes
      */
     public List<Route> getRoutes() {
         return routes;

@@ -38,9 +38,9 @@ public final class ServerMain extends Application {
      * @param primaryStage (Stage) Not used
      */
     @Override
-    public void start(Stage primaryStage)  {
+    public void start(Stage primaryStage) {
         List<String> argList = getParameters().getRaw();
-int size = argList.size();
+        int size = argList.size();
         String player1Name = size == PlayerId.COUNT || size == 1 ? argList.get(0) : "Ada";
         String player2Name = size == PlayerId.COUNT ? argList.get(1) : "Charles";
         Map<PlayerId, String> playersName = Map.of(PlayerId.PLAYER_1, player1Name, PlayerId.PLAYER_2, player2Name);
@@ -50,7 +50,7 @@ int size = argList.size();
             RemotePlayerProxy playerProxy = new RemotePlayerProxy(socket);
             new Thread(() -> Game.play(Map.of(PlayerId.PLAYER_1, player, PlayerId.PLAYER_2, playerProxy),
                     playersName, SortedBag.of(ChMap.tickets()), new Random())).start();
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
     }

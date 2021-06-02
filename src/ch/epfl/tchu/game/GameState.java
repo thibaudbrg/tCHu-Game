@@ -20,7 +20,7 @@ public final class GameState extends PublicGameState {
             PlayerState> playerState, Deck<Ticket> ticketsDeck, PlayerId lastPlayer) {
 
         super(ticketsDeck.size(), cardState, currentPlayerId, Map.copyOf(playerState), lastPlayer);
-        this.ticketsDeck = Objects.requireNonNull( ticketsDeck);
+        this.ticketsDeck = Objects.requireNonNull(ticketsDeck);
         completePlayerState = Map.copyOf(playerState);
         completeCardState = Objects.requireNonNull(cardState);
     }
@@ -69,7 +69,7 @@ public final class GameState extends PublicGameState {
      */
     @Override
     public PlayerState currentPlayerState() {
-        return  completePlayerState.get(currentPlayerId());
+        return completePlayerState.get(currentPlayerId());
     }
 
     /**
@@ -136,16 +136,16 @@ public final class GameState extends PublicGameState {
      */
     public GameState withCardsDeckRecreatedIfNeeded(Random rng) {
         return (!completeCardState.isDeckEmpty()) ?
-           this
+                this
                 :
-            new GameState(completeCardState.withDeckRecreatedFromDiscards(rng),
-                    currentPlayerId(), completePlayerState, ticketsDeck, lastPlayer());
+                new GameState(completeCardState.withDeckRecreatedFromDiscards(rng),
+                        currentPlayerId(), completePlayerState, ticketsDeck, lastPlayer());
     }
 
     /**
      * Returns a state identical to the receiver but in which the given tickets have been added to the given player's hand
      *
-     * @param playerId (PlayerId) The given player Id
+     * @param playerId      (PlayerId) The given player Id
      * @param chosenTickets (SortedBag<Tickets>) Tickets that the player chose to keep.
      * @return (GameState) a state identical to the receiver but in which the given tickets have been added to the given player's hand
      */
@@ -230,11 +230,18 @@ public final class GameState extends PublicGameState {
 
     }
 
-    public GameState withDestroyedRoute(Route route){
+    /**
+     * returns a identical state but without the given route for the not current player, removes a multicolor card from the current player playerState
+     *
+     * @param route (Route) destroyed route
+     * @return (GameState) identical state but without the given route for the not current player, removes a multicolor card from the current player playerState
+     */
+
+    public GameState withDestroyedRoute(Route route) {
         Map<PlayerId, PlayerState> newPlayerState = new HashMap<>(completePlayerState);
         newPlayerState.put(currentPlayerId(), completePlayerState.
                 get(currentPlayerId()).removeMulticolor());
-        newPlayerState.put(currentPlayerId().next(),completePlayerState.get(currentPlayerId().next()).withDestroyedRoute(route));
+        newPlayerState.put(currentPlayerId().next(), completePlayerState.get(currentPlayerId().next()).withDestroyedRoute(route));
         return new GameState(completeCardState.withMoreDiscardedCards(SortedBag.of(Card.MULTICOLOR)),
                 currentPlayerId(), newPlayerState, ticketsDeck, lastPlayer());
 
@@ -261,7 +268,7 @@ public final class GameState extends PublicGameState {
     public GameState forNextTurn() {
         return
                 new GameState(completeCardState, currentPlayerId().next(),
-                        completePlayerState, ticketsDeck,lastTurnBegins() ?currentPlayerId():lastPlayer());
+                        completePlayerState, ticketsDeck, lastTurnBegins() ? currentPlayerId() : lastPlayer());
     }
 
 }

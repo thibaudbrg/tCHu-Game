@@ -460,6 +460,10 @@ public final class ObservableGameState {
 
     }
 
+    /**
+     *
+     * @return true if the number of card didn't change
+     */
     public boolean numberOfCardChanged() {
         return update.get();
     }

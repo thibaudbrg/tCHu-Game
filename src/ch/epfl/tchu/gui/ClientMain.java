@@ -29,11 +29,11 @@ public final class ClientMain extends Application {
      * @param primaryStage (Stage) Not used
      */
     @Override
-    public void start(Stage primaryStage)  {
+    public void start(Stage primaryStage) {
         List<String> argList = getParameters().getRaw();
         int size = argList.size();
         GraphicalPlayerAdapter player = new GraphicalPlayerAdapter();
-        String name = size == ARG_LIST_SIZE|| size == 1 ? argList.get(0) : "localhost";
+        String name = size == ARG_LIST_SIZE || size == 1 ? argList.get(0) : "localhost";
         int port = size == ARG_LIST_SIZE ? Integer.parseInt(argList.get(1)) : 5108;
         new Thread(() -> new RemotePlayerClient(player, name, port).run()).start();
     }

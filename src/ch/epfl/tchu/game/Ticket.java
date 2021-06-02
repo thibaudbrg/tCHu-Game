@@ -14,6 +14,7 @@ public final class Ticket implements Comparable<Ticket> {
     private final String Text;
     private final Station stationFrom;
     private final List<Trip> trips;
+
     /**
      * Built a ticket
      *
@@ -78,9 +79,6 @@ public final class Ticket implements Comparable<Ticket> {
      */
     @Override
     public int compareTo(Ticket that) {
-        // <0 this precedes that in the alphabet
-        // >0 this is after that in the alphabet
-        // 0  this and that are the same word
         return (this.text().compareTo(that.text()));
     }
 

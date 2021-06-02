@@ -45,7 +45,7 @@ public final class RemotePlayerClient {
      */
     public RemotePlayerClient(Player player, String name, int port) {
         this.player = Objects.requireNonNull(player);
-        this.name =Objects.requireNonNull(name);
+        this.name = Objects.requireNonNull(name);
         this.port = port;
     }
 
@@ -86,7 +86,7 @@ public final class RemotePlayerClient {
                         player.setInitialTicketChoice(tickets);
                         break;
                     case CHOOSE_INITIAL_TICKETS:
-                        sendReply(w,ticketSortedBagSerde.serialize(player.chooseInitialTickets()));
+                        sendReply(w, ticketSortedBagSerde.serialize(player.chooseInitialTickets()));
                         break;
                     case NEXT_TURN:
                         sendReply(w, turnKindSerde.serialize(player.nextTurn()));
@@ -96,7 +96,7 @@ public final class RemotePlayerClient {
                         sendReply(w, (ticketSortedBagSerde.serialize(player.chooseTickets(options))));
                         break;
                     case DRAW_SLOT:
-                        sendReply(w,integerSerde.serialize(player.drawSlot()));
+                        sendReply(w, integerSerde.serialize(player.drawSlot()));
                         break;
                     case ROUTE:
                         sendReply(w, routeSerde.serialize((player.claimedRoute())));

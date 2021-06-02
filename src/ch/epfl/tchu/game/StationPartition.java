@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-
 /**
  * Represents a partition of Stations
  *
@@ -86,9 +85,10 @@ public final class StationPartition implements StationConnectivity {
 
 
         private int representative(int stationId) {
-            while (stationId != builderStationLink[stationId]){
+            while (stationId != builderStationLink[stationId]) {
                 stationId = builderStationLink[stationId];
-            } ;
+            }
+            ;
             return stationId;
         }
     }

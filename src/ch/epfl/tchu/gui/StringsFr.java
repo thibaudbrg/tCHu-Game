@@ -1,6 +1,6 @@
 package ch.epfl.tchu.gui;
 
-public final class  StringsFr {
+public final class StringsFr {
     private StringsFr() {
     }
 
@@ -79,7 +79,8 @@ public final class  StringsFr {
     public static final String EN_DASH_SEPARATOR = " – ";
 
 
-    public static final String NEUTRAL ="NEUTRAL";
+    public static final String NEUTRAL = "NEUTRAL";
+
     /**
      * Retourne une chaîne marquant le pluriel, ou la chaîne vide.
      *

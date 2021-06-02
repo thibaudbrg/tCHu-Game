@@ -120,10 +120,22 @@ abstract class MapViewCreator {
             Circle circle2 = new Circle(SECOND_CIRCLE_X, CIRCLE_Y, CIRCLE_RADIUS);
 
 
-            circle1.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(CIRCLE_RADIUS_LONGEST).otherwise(CIRCLE_RADIUS));
-            circle2.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(CIRCLE_RADIUS_LONGEST).otherwise(CIRCLE_RADIUS));
-            circle1.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.rgb(114, 114, 114)).otherwise(Color.WHITE));
-            circle2.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r).isEqualTo(trueProperty)).then(Color.rgb(114, 114, 114)).otherwise(Color.WHITE));
+            circle1.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r)
+                    .isEqualTo(trueProperty))
+                    .then(CIRCLE_RADIUS_LONGEST)
+                    .otherwise(CIRCLE_RADIUS));
+            circle2.radiusProperty().bind(Bindings.when(gameState.longuestTrailProperty(r)
+                    .isEqualTo(trueProperty))
+                    .then(CIRCLE_RADIUS_LONGEST)
+                    .otherwise(CIRCLE_RADIUS));
+            circle1.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r)
+                    .isEqualTo(trueProperty))
+                    .then(Color.rgb(114, 114, 114))
+                    .otherwise(Color.WHITE));
+            circle2.fillProperty().bind(Bindings.when(gameState.longuestTrailProperty(r)
+                    .isEqualTo(trueProperty))
+                    .then(Color.rgb(114, 114, 114))
+                    .otherwise(Color.WHITE));
             Group Wagon = new Group(rectangle1, circle1, circle2);
             Wagon.getStyleClass().add("car");
 

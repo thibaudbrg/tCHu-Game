@@ -32,7 +32,7 @@ public final class Constants {
     private static SortedBag<Card> computeAllCards() {
         var cardsBuilder = new SortedBag.Builder<Card>();
         cardsBuilder.add(LOCOMOTIVE_CARDS_COUNT, Card.LOCOMOTIVE);
-        cardsBuilder.add(6,Card.MULTICOLOR);
+        cardsBuilder.add(2, Card.MULTICOLOR);
         for (Card card : Card.CARS)
             cardsBuilder.add(CAR_CARDS_COUNT, card);
         assert cardsBuilder.size() == TOTAL_CARDS_COUNT;
@@ -79,7 +79,7 @@ public final class Constants {
      */
     public static final int DISCARDABLE_TICKETS_COUNT = 2;
 
-   
+
     /**
      * Nombre de cartes à tirer lors de la construction d'un tunnel.
      */
@@ -108,6 +108,9 @@ public final class Constants {
      */
     public static final int LONGEST_TRAIL_BONUS_POINTS = 10;
 
+    /**
+     * Nombre de billets du jeu
+     */
     public static final int TICKETS_COUNT = 46;
 
 }

@@ -24,7 +24,7 @@ public final class GraphicalPlayerAdapter implements Player {
     private final BlockingQueue<TurnKind> turnKindsQueue;
     private final BlockingQueue<Integer> cardsQueue;
     private final BlockingQueue<SortedBag<Card>> sortedBagCQueue;
-    private final static int QUEUE_CAPACITY= 1;
+    private final static int QUEUE_CAPACITY = 1;
 
     public GraphicalPlayerAdapter() {
         sortedBagTQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
@@ -162,7 +162,9 @@ public final class GraphicalPlayerAdapter implements Player {
      * @return (SortedBag < Card >) The Cards he initially wants to use
      */
     @Override
-    public SortedBag<Card> initialClaimCards() { return take(sortedBagCQueue); }
+    public SortedBag<Card> initialClaimCards() {
+        return take(sortedBagCQueue);
+    }
 
     /**
      * Calls, on the JavaFX thread, the method of the same name of the graphical player, and then blocks

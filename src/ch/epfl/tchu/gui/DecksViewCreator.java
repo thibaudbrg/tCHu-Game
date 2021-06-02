@@ -152,7 +152,7 @@ abstract class DecksViewCreator {
             gameState.faceUpCardsProperty(i).addListener((observable, oldValue, newValue) -> {
                 if ((oldValue == null || (gameState.numberOfCardChanged() && (!disable.get())))) {
                     if (oldValue != null) {
-                        card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE)?StringsFr.NEUTRAL:oldValue.name());
+                        card.getStyleClass().remove(oldValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : oldValue.name());
                     }
                     card.getStyleClass().add(newValue.equals(Card.LOCOMOTIVE) ? StringsFr.NEUTRAL : newValue.name());
                 }

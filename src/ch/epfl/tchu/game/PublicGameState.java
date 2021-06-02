@@ -105,12 +105,12 @@ public class PublicGameState {
     /**
      * Returns all the claimed road of the game
      *
-     * @return (List<Route>) all the claimed road of the game
+     * @return (List < Route >) all the claimed road of the game
      */
     public List<Route> claimedRoutes() {
 
         List<Route> claimedRoutes = new ArrayList<>();
-        PlayerId.ALL.forEach(c ->claimedRoutes.addAll(playerState(c).routes()));
+        PlayerId.ALL.forEach(c -> claimedRoutes.addAll(playerState(c).routes()));
         return claimedRoutes;
     }
 

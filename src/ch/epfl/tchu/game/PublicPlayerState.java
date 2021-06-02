@@ -61,7 +61,7 @@ public class PublicPlayerState {
     /**
      * Returns a list of all the roads claimed by the player
      *
-     * @return (List<Route>) a list of all the roads claimed by the player
+     * @return (List < Route >) a list of all the roads claimed by the player
      */
     public List<Route> routes() {
         return Collections.unmodifiableList(routes);
