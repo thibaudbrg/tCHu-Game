@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75bc9653-2117-4f1f-8e33-3a517e14447c" name="Default Changelist" comment="">
+    <list default="true" id="75bc9653-2117-4f1f-8e33-3a517e14447c" name="Default Changelist" comment="FINAL FINAL FINAL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/game/GameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/DecksViewCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/DecksViewCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/MapViewCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/MapViewCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/ObservableGameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EPFL-BA2-Project-1-tCHu-Game/ch/epfl/tchu/gui/ObservableGameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/gui/DecksViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/epfl/tchu/game/StationPartition.java" afterDir="false" />
     </list>
     <list id="40723fbf-506a-4357-aaf2-53143a73e0ea" name="Changes by matthieudecotignie" comment="" />
     <list id="acee1e83-278a-4e43-82e0-16086eb275b1" name="Changes by Thibaud" comment="" />
@@ -55,6 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="app.teamhub.trackedBranches" value="-19p8tu2/main" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="C:/Program Files/JavaFX/javafx-sdk-11.0.2/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -96,6 +92,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -216,6 +223,8 @@
       <workItem from="1622465429500" duration="7501000" />
       <workItem from="1622636811396" duration="757000" />
       <workItem from="1622637604737" duration="1507000" />
+      <workItem from="1625477214511" duration="57000" />
+      <workItem from="1625477346708" duration="1776000" />
     </task>
     <servers />
   </component>

@@ -31,10 +31,9 @@ public final class StationPartition implements StationConnectivity {
      */
     @Override
     public boolean connected(Station s1, Station s2) {
-        return (s1.id() >= arrayStationLink.length || s2.id() >= arrayStationLink.length) ?
-                s1.id() == s2.id()
-                :
-                arrayStationLink[s1.id()].equals(arrayStationLink[s2.id()]);
+        return (s1.id() >= arrayStationLink.length || s2.id() >= arrayStationLink.length)
+                ? s1.id() == s2.id()
+                : arrayStationLink[s1.id()].equals(arrayStationLink[s2.id()]);
     }
 
 
@@ -85,10 +84,7 @@ public final class StationPartition implements StationConnectivity {
 
 
         private int representative(int stationId) {
-            while (stationId != builderStationLink[stationId]) {
-                stationId = builderStationLink[stationId];
-            }
-            ;
+            while (stationId != builderStationLink[stationId]) stationId = builderStationLink[stationId];
             return stationId;
         }
     }
